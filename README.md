@@ -30,6 +30,7 @@ GPU调度从8次减到7次的完整链路 A/B 见 [M6报告](docs/M6_RANKED_DISP
 四段KV拼接与官方FA2的12场景成本基线见 [M8报告](docs/M8_GQA_PREFILL_BASELINE_REPORT.md)。
 FA2使用独立overlay，来源与复现见 [环境说明](docs/FLASH_ATTENTION_OPERATOR_ENVIRONMENT.md)。
 四段直读GQA与head分组的固定对照见 [M9报告](docs/M9_SEGMENTED_ATTENTION_REPORT.md)。
+统一KV遍历的有限搜索、冻结后回归与边界见 [M10报告](docs/M10_UNIFIED_ATTENTION_REPORT.md)。
 vLLM算子依赖使用独立overlay，见 [环境说明](docs/VLLM_OPERATOR_ENVIRONMENT.md)。
 源码支持通过 PYTHONPATH 运行；pyproject 提供后续标准安装入口。
 
@@ -44,7 +45,8 @@ vLLM算子依赖使用独立overlay，见 [环境说明](docs/VLLM_OPERATOR_ENVI
 7. M7：完整MoE有限搜索、shape选择规则冻结与15场景对照；T1024随机路由比自身原配置减少约25%，比固定vLLM默认配置减少约7–8%。其他场景见报告，不能推广为全面胜出。
 8. M8：四段GPU KV的复用缓冲区pack+FA2与预拼接FA2基线已完成；直接分段GQA kernel正在推进。
 9. M9：四段直读GQA的G1/2/4对照、全矩阵独立FP32和stream/Graph验证已完成；G1仅T64优于强FA2链路，较大形状仍回归。
-10. 后续：统一KV遍历与资源优化；NanoKV attention适配是可选应用验证。
+10. M10：统一KV遍历12候选训练与冻结验证完成；大T对自身首版减少约11–19%，T256回归，策略仅作实验记录。
+11. 后续：短query的split-KV/merge完整对照；NanoKV attention适配是可选应用验证。
 
 成熟基线的来源与工具链准备见 [M2 准备](docs/M2_BASELINE_PLAN.md)。
 

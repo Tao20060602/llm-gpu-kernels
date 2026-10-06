@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "status": "frozen_before_holdout",
+  "domain": {
+    "q_heads": 32,
+    "kv_heads": 8,
+    "head_dim": 128,
+    "segments": 4
+  },
+  "thresholds_T": [
+    128,
+    512
+  ],
+  "choices": {
+    "small": {
+      "mode": "m9",
+      "config": {
+        "token_tile": 32,
+        "key_tile": 64,
+        "head_group": 1,
+        "warps": 4,
+        "stages": 2
+      },
+      "candidate_index": null,
+      "reason": "no_eligible_candidate"
+    },
+    "medium": {
+      "mode": "unified",
+      "config": {
+        "token_tile": 32,
+        "key_tile": 64,
+        "head_group": 4,
+        "warps": 8,
+        "stages": 2
+      },
+      "candidate_index": 11,
+      "reason": "long_recheck_accepted"
+    },
+    "large": {
+      "mode": "unified",
+      "config": {
+        "token_tile": 32,
+        "key_tile": 64,
+        "head_group": 4,
+        "warps": 8,
+        "stages": 2
+      },
+      "candidate_index": 11,
+      "reason": "long_recheck_accepted"
+    }
+  },
+  "source_hashes": {
+    "docs/M10_UNIFIED_ATTENTION_TUNING_PLAN.md": "173daf70d8f247decf14260fe8a9b2e9e4e1e76cb652f0ac3cce11981a135179",
+    "src/llm_gpu_kernels/attention_unified.py": "2dc32701e6f9c9869831e50395a16b0b8db0462c374e7de981e326ad68f99fc8",
+    "src/llm_gpu_kernels/attention_unified_policy.py": "d80eb69131f0e70a95f480de58b31f60ebd17f44942afcc2e08a860ba6c828cc",
+    "src/llm_gpu_kernels/attention_unified_tuning.py": "e0e38672bc1968ba266144d5f58f9ef1bc56aa5d2f4e51c1d849b1ffb1019ca7",
+    "src/llm_gpu_kernels/attention_unified_holdout.py": "31e50f99e7df535c0055d738748fab1c00b60aa1bfff19db89c4e9bbdc194127",
+    "src/llm_gpu_kernels/attention_segmented.py": "e72702f5def4df841fba274af87d22efa72e260a19617316dcadc22cae4768cb",
+    "src/llm_gpu_kernels/attention_segmented_benchmark.py": "5961ef2f74fd94a7d6a973edcf471e3a7377ecaa2a040265848d796e7a47a0b4",
+    "src/llm_gpu_kernels/attention_baseline.py": "56064a0328cc0873d6468776e06b959fdff53feaba308c59ea0b99444b2e9438",
+    "src/llm_gpu_kernels/attention_baseline_benchmark.py": "15a88dd4277d9978356bc314c75371a0921ab2930698dbbac01d2019c1ea866e",
+    "src/llm_gpu_kernels/benchmark.py": "c3a12e68e37b09f62d7dd78d14738537074dc60b7a02e20c96e24d1923c565e4"
+  },
+  "training_record_path": "results/m10-attention-tuning-20261006T134513Z-341354793.json",
+  "training_record_sha256": "327b9d8cdcb0c95f753c3ddf478d0e824ebf19610bde0096dfda9e892e01cac1",
+  "training_hash_scope": "canonical_json_without_top_level_policy_sha256"
+}
