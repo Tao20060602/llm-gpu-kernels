@@ -106,3 +106,21 @@ vLLM native activation、down权重乘法和topk2/3/4 reduction的BF16舍入顺�
 15性能场景各自两次原地改X/IDs/weights验证Graph，再恢复原输入hash计时；
 Graph每replay8次完整forward，六轮正/逆循环，6样本/轮、2调用/样本。
 保留逐forward归一化的全部event/wall原始样本、p50/p95及计时后数值检查。
+
+## M6 / M7 ranked dispatch 与配置选择
+
+`prepare_ranked_moe_launcher`使用GPU histogram返回的局部rank，再结合GPU prefix
+直接dispatch；完整融合路径为7次启动。M4舍入顺序不变，新增int32 ranks[R]，
+旧workspace仍保留。输入值与路由可在固定地址下原地更新；已验证重复ID、tails、
+非默认stream及Graph更新，详见M6报告。
+
+`prepare_configured_moe`允许显式GemmConfig，prefix的task大小与gate/up、down一致。
+M7的FrozenMoEPolicy只在E128/H2048/I768/topk8域内按host已知shape的
+mu=T*topk/E选择small/medium/large；其他shape回退原配置。它不读取实际expert
+counts或route IDs，因此固定地址图的输入值变化不改变配置。
+
+12个预先声明配置在seed409的6个训练场景比较完整forward，按分桶几何平均与
+最坏回归限制选择，再长复测；策略在15场景候选对照前冻结。训练报告、策略、
+源码哈希相互绑定。这里的holdout指候选配置未用该对照结果选择，并非之前从未
+测过相同workload。改变配置可能改变FP32累加分组，不要求不同tile逐bit相同；
+全部保持原0.008误差界与finite检查。详细原始结果和适用边界见M7报告。

@@ -1,0 +1,107 @@
+{
+  "run_id": "m7-compile-evidence-20261006T105911Z",
+  "policy_sha256": "85040044bb4e817b9ceab770145f723741324067d79a94fcf8d305390a1c90a7",
+  "scope": "Static compile artifacts; not hardware utilization. Production E128 H2048 I768 topk8; T512 for all configs.",
+  "configs": {
+    "small": {
+      "config": {
+        "block_m": 32,
+        "block_n": 64,
+        "block_k": 32,
+        "warps": 4,
+        "stages": 3
+      },
+      "kernels": {
+        "gate_up_swiglu": {
+          "path": "artifacts/m7-compile-evidence-20261006T105911Z/small-gate_up_swiglu",
+          "ptx_sha256": "1a0455fdd3157ef9a7c0b3f10ba398b43821bb30dd758458312c00c609224e76",
+          "cubin_sha256": "6a10cb481db108351766e598f6e1915b1c36eb7393111bea199627bf1502cee1",
+          "ptx_mma_instructions": 16,
+          "sass_hmma_instructions": 16,
+          "sass_disassembly_returncode": 0,
+          "registers": 76,
+          "shared_memory_bytes": 20480,
+          "spills": 0
+        },
+        "down": {
+          "path": "artifacts/m7-compile-evidence-20261006T105911Z/small-down",
+          "ptx_sha256": "37e3777cf278d2a8c34e94ee75d1d20488ad122e48a9cda548100da6f7622127",
+          "cubin_sha256": "9edccbb2b7f24cdb3e1b9c8a09f01d4ed06a9cf97f58ffc93337225a18a6d79d",
+          "ptx_mma_instructions": 8,
+          "sass_hmma_instructions": 192,
+          "sass_disassembly_returncode": 0,
+          "registers": 55,
+          "shared_memory_bytes": 12288,
+          "spills": 0
+        }
+      }
+    },
+    "medium": {
+      "config": {
+        "block_m": 32,
+        "block_n": 256,
+        "block_k": 32,
+        "warps": 4,
+        "stages": 3
+      },
+      "kernels": {
+        "gate_up_swiglu": {
+          "path": "artifacts/m7-compile-evidence-20261006T105911Z/medium-gate_up_swiglu",
+          "ptx_sha256": "ecced1e7058816dc7eb3d20479aa4297872d3a663f1720ae5de0abe437671ee2",
+          "cubin_sha256": "07d8de7b1b8857ca548e9708918b834ae5a91d092070fc38cae360f0b826dc26",
+          "ptx_mma_instructions": 64,
+          "sass_hmma_instructions": 64,
+          "sass_disassembly_returncode": 0,
+          "registers": 255,
+          "shared_memory_bytes": 69632,
+          "spills": 6
+        },
+        "down": {
+          "path": "artifacts/m7-compile-evidence-20261006T105911Z/medium-down",
+          "ptx_sha256": "ea76d6b7303c7ae67804e89f880b2e2831f450012646e330491c7d791ddcc0e6",
+          "cubin_sha256": "49cc201a018231cc4852ff44b532b052838e55d612ce5a6b8767f2b8abda65fc",
+          "ptx_mma_instructions": 32,
+          "sass_hmma_instructions": 32,
+          "sass_disassembly_returncode": 0,
+          "registers": 168,
+          "shared_memory_bytes": 36864,
+          "spills": 0
+        }
+      }
+    },
+    "large": {
+      "config": {
+        "block_m": 64,
+        "block_n": 128,
+        "block_k": 32,
+        "warps": 4,
+        "stages": 3
+      },
+      "kernels": {
+        "gate_up_swiglu": {
+          "path": "artifacts/m7-compile-evidence-20261006T105911Z/large-gate_up_swiglu",
+          "ptx_sha256": "910f6e4a1062581c364cf3c93961fc5cccc867db746ee990221f848c3b74088d",
+          "cubin_sha256": "62db9c9d3926ee36bc3a53a21063074fe799aa24d1b08c88a67b4087e7d2c775",
+          "ptx_mma_instructions": 64,
+          "sass_hmma_instructions": 64,
+          "sass_disassembly_returncode": 0,
+          "registers": 255,
+          "shared_memory_bytes": 40960,
+          "spills": 0
+        },
+        "down": {
+          "path": "artifacts/m7-compile-evidence-20261006T105911Z/large-down",
+          "ptx_sha256": "f4f62132dbd6d901674f5ed1273d3dc19bbb744c482efae55d427db3f6327e58",
+          "cubin_sha256": "9624d1cb72d3f52ff4e15fb04e0718d1190f8d48323f871ff141ace3a5691aee",
+          "ptx_mma_instructions": 32,
+          "sass_hmma_instructions": 32,
+          "sass_disassembly_returncode": 0,
+          "registers": 159,
+          "shared_memory_bytes": 24576,
+          "spills": 0
+        }
+      }
+    }
+  },
+  "status": "passed"
+}

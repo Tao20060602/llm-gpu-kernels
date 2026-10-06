@@ -1,0 +1,120 @@
+{
+  "schema": 1,
+  "status": "frozen_before_holdout",
+  "source_run": "m7-full-moe-tuning-20261006T103809Z-241373177",
+  "training_record_path": "results/m7-full-moe-tuning-20261006T103809Z-241373177.json",
+  "training_record_sha256": "c226cd1bdca1a83ee6482b3cff76c95d21a582f10881be19d025d662788937a0",
+  "training_record_hash_scope": "canonical_json_without_top_level_policy_sha256",
+  "training_protocol": {
+    "seed": 409,
+    "tokens": [
+      64,
+      512,
+      4096
+    ],
+    "routes": [
+      "balanced",
+      "hot16"
+    ]
+  },
+  "domain": {
+    "experts": 128,
+    "hidden": 2048,
+    "intermediate": 768,
+    "topk": 8
+  },
+  "thresholds_mu": [
+    8.0,
+    64.0
+  ],
+  "configs": {
+    "small": {
+      "block_m": 32,
+      "block_n": 64,
+      "block_k": 32,
+      "warps": 4,
+      "stages": 3
+    },
+    "medium": {
+      "block_m": 32,
+      "block_n": 256,
+      "block_k": 32,
+      "warps": 4,
+      "stages": 3
+    },
+    "large": {
+      "block_m": 64,
+      "block_n": 128,
+      "block_k": 32,
+      "warps": 4,
+      "stages": 3
+    }
+  },
+  "fallback": {
+    "block_m": 32,
+    "block_n": 64,
+    "block_k": 32,
+    "warps": 4,
+    "stages": 3
+  },
+  "buckets": {
+    "small": {
+      "config_index": 0,
+      "config": {
+        "block_m": 32,
+        "block_n": 64,
+        "block_k": 32,
+        "warps": 4,
+        "stages": 3
+      },
+      "training_geomean_ratio": 1.0011985656377513,
+      "recheck_geomean_ratio": 1.0028585766784979,
+      "selection_reason": "baseline_selected_by_scan_or_fallback"
+    },
+    "medium": {
+      "config_index": 6,
+      "config": {
+        "block_m": 32,
+        "block_n": 256,
+        "block_k": 32,
+        "warps": 4,
+        "stages": 3
+      },
+      "training_geomean_ratio": 0.8835503763104947,
+      "recheck_geomean_ratio": 0.8815423707485209,
+      "selection_reason": "selected_config_passed_longer_recheck"
+    },
+    "large": {
+      "config_index": 9,
+      "config": {
+        "block_m": 64,
+        "block_n": 128,
+        "block_k": 32,
+        "warps": 4,
+        "stages": 3
+      },
+      "training_geomean_ratio": 0.8119791934373118,
+      "recheck_geomean_ratio": 0.8123098567880656,
+      "selection_reason": "selected_config_passed_longer_recheck"
+    }
+  },
+  "search_config_count": 12,
+  "source_hashes": {
+    "docs/M7_FULL_MOE_TUNING_PLAN.md": "82ff1146fa5b88e17c4365fc91eacbc821bba1eaa1c39041988edce2b1070a32",
+    "src/llm_gpu_kernels/__init__.py": "68bf65e24e4874e31b4d4e134d1700ad16779b387053307a1ff4661b727048b1",
+    "src/llm_gpu_kernels/benchmark.py": "c3a12e68e37b09f62d7dd78d14738537074dc60b7a02e20c96e24d1923c565e4",
+    "src/llm_gpu_kernels/baseline_benchmark.py": "b264751e44584606b52470b308d8b344288a022ae1e8006460a60a7d45e1b803",
+    "src/llm_gpu_kernels/gemm.py": "f1a207413c7db6a5a508fc72a4dc4430049030ded3faf7e8bafadd4c822e49b0",
+    "src/llm_gpu_kernels/moe.py": "64fd0282025071b43b6d432a149a1ba72f6d5d7417664087886e8a51b6b58597",
+    "src/llm_gpu_kernels/moe_benchmark.py": "1be148d270e78ad806ce8f49395f757606e6de114ba10517c94e85fe8f0da3e0",
+    "src/llm_gpu_kernels/moe_configured.py": "71b3332041f180dbbcb245083b8d75e24642c18552dd7bd874d068282fba9ded",
+    "src/llm_gpu_kernels/moe_fused.py": "9bae476d3341af2685c90a2960586132d693f1a3b8c4ca940eeb936e147271ea",
+    "src/llm_gpu_kernels/moe_full_policy.py": "2543147949dedd51fcb57bdc8d88d3cbe93fb97d1ecd4fe15fa57bf6cdffb510",
+    "src/llm_gpu_kernels/moe_full_tuning.py": "67d1c2290aead299b68f26aa5b01c3e4dd7549325bb2a3567ccb8eeab86c717d",
+    "src/llm_gpu_kernels/moe_prepared.py": "7b52ecf4234d6385d1a4e104b5a01656786571aa29d5ab2bad948589097acef8",
+    "src/llm_gpu_kernels/moe_ranked.py": "eff4861e812722b7b4bbbd833590d52bbe966d5301bf02e03a289ef5438ed705",
+    "src/llm_gpu_kernels/optimization_benchmark.py": "17c15a3eac5b4de21d694c63e55cda8cccd53d9f31a4e9e4a28b1e2712419f89",
+    "src/llm_gpu_kernels/reference.py": "da310c36314cc0403d1315be2846b7f970737afd089a614b80c36202fc1bc456"
+  },
+  "policy_scope": "shape-only rule for exact E/H/I/topk domain; no active route-count inspection"
+}
