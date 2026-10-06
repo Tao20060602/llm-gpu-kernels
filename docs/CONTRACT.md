@@ -89,3 +89,20 @@ combine按原slot顺序FP32加权求和后BF16。重复expert IDs不合并，权
 默认调用stream与固定Graph。非法ID做地址mask并置device status，非finite也置status；
 显式check_inputs同步检查，不能把非法输入下返回值当合法数学输出。
 图重放已验证同shape/地址下更换输入、权重与路由值；不表示动态shape可共用一张图。
+
+## M5 完整成熟后端 / 缓存入口
+
+`prepare_moe_launcher(..., fused=True/False)`固定绑定Triton3.3.1编译产物、
+完整参数和所有buffer owners，fused为8次launch、unfused为9次。
+shape/address固定，输入值/IDs/weights可原地更新；当前stream每次调用获取。
+不并发使用同一workspace，调用者显式建立跨stream依赖。
+M5验证cached两种路径逐bit相同、非默认stream及更新后的Graph。
+
+成熟对照调用未修改官方vLLM0.10.0 `fused_experts`，固定版本与默认自动config。
+vLLM native activation、down权重乘法和topk2/3/4 reduction的BF16舍入顺序
+与本项目不同；两者各自对完整FP32参考使用原0.008阈值，不要求彼此逐bit一致。
+完整算子不包含router或serving。公共API有临时tensor分配，本项目cached入口
+预分配；Graph模式缓存各自pool。计时包含这些不同接口成本，分别报告。
+15性能场景各自两次原地改X/IDs/weights验证Graph，再恢复原输入hash计时；
+Graph每replay8次完整forward，六轮正/逆循环，6样本/轮、2调用/样本。
+保留逐forward归一化的全部event/wall原始样本、p50/p95及计时后数值检查。
