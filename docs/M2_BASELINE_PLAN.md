@@ -1,13 +1,15 @@
 # M2 成熟基线接入准备
 
-2026-10-06，gpt-6-luna/max 子 agent 核查官方版本源码；尚未安装或编译基线。
+2026-10-06，gpt-6-luna/max 子 agent 已实现 wrapper 并编译加载，父 agent
+已运行 GPU 数值/图重放/性能检查，四轮对称 A/B 正式复测通过；
+实际完成状态和结果见 [M2报告](M2_BASELINE_REPORT.md)。
 
 ## 主候选：CUTLASS v3.8.0 classic grouped GEMM
 
 固定 `v3.8.0`，采用 [24_gemm_grouped](https://github.com/NVIDIA/cutlass/blob/v3.8.0/examples/24_gemm_grouped/gemm_grouped.cu)
 的经典 `DefaultGemmGrouped` / `GemmGrouped` 路径。该样例有 Sm80 TensorOp
 实例和 Ampere guard；不采用需要 Hopper/Blackwell 的新 grouped 路线。
-样例本身为 FP16，BF16/FP32 累加实例在 SM86 的编译与正确性仍需本机验证。
+样例本身为 FP16；本项目 BF16/FP32 累加实例已在 SM86 编译并运行数值检查。
 
 接入只需一个小 CUDA extension：每个活跃 expert 的 problem M/N/K、
 A/B/C device pointer、leading dimension、workspace、当前 PyTorch stream。
@@ -15,7 +17,7 @@ M=0 的 expert 排除。W[E,N,K] 存储方向与 CUTLASS B layout 必须显式�
 kernel-only 与 metadata/workspace 准备分别计时，不能把全 M padding 作为唯一对照。
 参考 [grouped scheduler/API](https://docs.nvidia.com/cutlass/latest/media/docs/cpp/grouped_scheduler.html)。
 
-### 当前工具链前置缺口
+### 起始工具链缺口与本轮修复
 
 项目有 torch CUDA 12.8 runtime，**没有 nvcc 12.8 toolkit**。共享 AI 环境的
 nvcc 是 13.2.86，系统 GCC 15.2。不能称当前已有匹配编译链，也不能直接
@@ -26,6 +28,19 @@ CUDA 12.8 的 [Linux compiler policy](https://docs.nvidia.com/cuda/archive/12.8.
 列出 GCC 6.x–14.x；当前 GCC15 不在该范围。
 需准备隔离的兼容 toolkit/host compiler，或先接入下面的纯 Triton 参考。
 此项不影响已经运行的 Triton bootstrap；本轮未改系统 compiler 或驱动。
+
+本轮已把 NVIDIA 官方 redistribution 的 nvcc12.8.93/cudart12.8.90/CCCL12.8.90
+下载并校验 vendor SHA256，准备到 `~/ai/toolchains/cuda-12.8`。Ubuntu 当前
+APT 仓库的 GCC14.3 六个包经 SHA256 校验后解压到 `~/ai/toolchains/gcc14`，
+没有做系统安装或替换默认 compiler。CUTLASS v3.8.0 固定 commit 为
+`afa1772203677c5118fcd82537a9c8fefbcc7008`，源码位于
+`~/ai/sources/cutlass-v3.8.0`。
+
+CUDA12.8 的六个 `crt/math_functions.h` 函数声明与 glibc2.43 的 noexcept
+冲突，在隔离工具链副本添加了匹配标记；原始 header/archives 保留。
+不改函数体、GPU 数学或 CUTLASS 源码。patch、vendor hash 与工具链来源已
+纳入 `results/provenance/`。这是本机兼容补丁，不称为 NVIDIA 对 Ubuntu26
+完整工具链的官方认证。编译探针和 extension 编译已通过。
 
 ## 完整 MoE 的候选：vLLM v0.9.2 固定源码参考
 

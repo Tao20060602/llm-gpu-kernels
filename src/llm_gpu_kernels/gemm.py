@@ -113,7 +113,8 @@ def _output(out, shape, device, inputs):
     _input(out, 2)
     if tuple(out.shape) != shape or out.device != device:
         raise ValueError("output shape/device mismatch")
-    if any(out.untyped_storage().data_ptr() == t.untyped_storage().data_ptr() for t in inputs):
+    # Distinct empty storages may both have data_ptr()==0; compare storage identity.
+    if any(out.untyped_storage()._cdata == t.untyped_storage()._cdata for t in inputs):
         raise ValueError("output must not alias inputs or plan metadata")
     return out
 

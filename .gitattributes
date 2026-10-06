@@ -1,0 +1,2 @@
+# Vendor-header diff context preserves the original NVIDIA whitespace verbatim.
+results/provenance/cuda-glibc-compat.patch -whitespace

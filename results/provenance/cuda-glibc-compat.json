@@ -1,0 +1,14 @@
+{
+  "reason": "CUDA12.8 declarations vs glibc2.43 noexcept mismatch",
+  "functions": [
+    "cospi",
+    "cospif",
+    "sinpi",
+    "sinpif",
+    "rsqrt",
+    "rsqrtf"
+  ],
+  "original_sha256": "2f2189d1752d862e96122f985484c89e16bd03a485a01e1f114514f738a2ed4f",
+  "patched_sha256": "2977b1031b5a6ee14743692f9253fe1d0fe114669105620022c4b74fb844e2b7",
+  "upstream_issue": "https://github.com/NVIDIA/cuda-samples/issues/378"
+}

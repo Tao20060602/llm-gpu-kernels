@@ -1,0 +1,32 @@
+[
+  {
+    "package": "cpp-14-x86-64-linux-gnu",
+    "version": "14.3.0-14ubuntu1",
+    "sha256": "9700595ea5b0a572fe857e5212886f259bc9a919fd73757a4bed36d2f38e3f88"
+  },
+  {
+    "package": "g++-14-x86-64-linux-gnu",
+    "version": "14.3.0-14ubuntu1",
+    "sha256": "8e7fccc2ff99edda636876a597cc6127cd95f6cd6c62879810ac32d46cbc55bc"
+  },
+  {
+    "package": "gcc-14-base",
+    "version": "14.3.0-14ubuntu1",
+    "sha256": "b57f451b53a4625cdc5869dd0b94c24b38bc97c61baf20dff91d998eb7b144d2"
+  },
+  {
+    "package": "gcc-14-x86-64-linux-gnu",
+    "version": "14.3.0-14ubuntu1",
+    "sha256": "2d6130e26f28d8fe60a94270e59110fbcfdb02a286f9e1be25a273796ed0acea"
+  },
+  {
+    "package": "libgcc-14-dev",
+    "version": "14.3.0-14ubuntu1",
+    "sha256": "03770c9fd5144b2cc8cf5b4e844112b5f6b4b254bdc64e040f7499a93d7adf84"
+  },
+  {
+    "package": "libstdc++-14-dev",
+    "version": "14.3.0-14ubuntu1",
+    "sha256": "e75bea7cdc381f96741bff68b9dc86d8e8b81557850bdcb0275de0dd8b4d2511"
+  }
+]

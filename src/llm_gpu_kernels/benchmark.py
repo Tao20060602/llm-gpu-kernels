@@ -66,14 +66,14 @@ def compile_artifacts(kernel, name, run_id):
             "shared_memory_bytes": kernel.metadata.shared}
 
 
-def measure_pair(functions, flops, samples, repeats):
+def measure_pair(functions, flops, samples, repeats, rounds_count=3):
     for function in functions.values():
         for _ in range(10):
             function()
     torch.cuda.synchronize()
     raw = {name: [] for name in functions}
     rounds = []
-    for round_index in range(3):
+    for round_index in range(rounds_count):
         order = list(functions)
         if round_index % 2:
             order.reverse()

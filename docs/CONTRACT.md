@@ -42,3 +42,19 @@ grouped 的 torch expert 循环是弱诊断对照，成熟 backend 对照仍待�
 
 保存 PTX/cubin/SASS 与 hash、寄存器和共享内存信息。HMMA 证明编译产物使用
 Tensor Core 指令，不能替代 profiler utilization/occupancy 指标。
+
+## M2 对照契约
+
+CUTLASS3.8 classic SM80-template，编译目标 SM86/device0，BF16/FP32 accumulate。
+CTA64x128x32、warp32x64x32、instruction16x8x16、3 stages、align8、DeviceOnly。
+要求 N/K 为8倍数，A/W/out 的基址16-byte aligned；拒绝不支持的连续偏移 view。
+所有 M 可以 ragged/0，不做 M padding。和 Triton 比较时只取共同支持的形状。
+plan 绑定具体 buffers，准备时构造/上传元数据；run 不重建plan或分配GPU输出。
+首次准备和跨 stream 使用前显式完成数据依赖；不允许并发写同一 out。
+
+两种计时都使用四轮 AB/BA/AB/BA，每轮8样本，每样本4调用。
+API-mode 仍包含 Python 调用、backend wrapper 检查和提交间隙。
+Graph-mode 每张固定图含8次 GEMM，按 GEMM 归一化；重复图提交的间隙仍可能计入。
+记录 `samples_ms_per_graph_replay` 和 `samples_ms_per_gemm` 以明确单位。
+只验证固定预分组 GEMM 的图重放，不代表动态路由或完整 MoE 可图捕获。
+未做 tile sweep / 后端调优；本轮结果是两个固定配置的对照。
