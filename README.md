@@ -36,6 +36,7 @@ FA2使用独立overlay，来源与复现见 [环境说明](docs/FLASH_ATTENTION_
 split-KV的完整成本与全域回退见 [M11报告](docs/M11_SPLIT_KV_REPORT.md)。
 窄域split与固定query64的新长度回归见 [M12报告](docs/M12_NARROW_SPLIT_REPORT.md) 和 [M13报告](docs/M13_FIXED64_REPORT.md)。
 query分块/流水线的新输入回归见 [M14报告](docs/M14_ATTENTION_RETILE_REPORT.md)。
+softmax状态简化的固定同配置 A/B 见 [M15报告](docs/M15_NONEMPTY_ATTENTION_REPORT.md)。
 vLLM算子依赖使用独立overlay，见 [环境说明](docs/VLLM_OPERATOR_ENVIRONMENT.md)。
 源码支持通过 PYTHONPATH 运行；pyproject 提供后续标准安装入口。
 
@@ -54,7 +55,8 @@ vLLM算子依赖使用独立overlay，见 [环境说明](docs/VLLM_OPERATOR_ENVI
 11. M11：split-KV/merge的8候选完整成本已测，未通过T≤256全域门槛，冻结为FA2回退。
 12. M12/M13：小query split与固定query64的新输入验证均因最坏回归未达门槛而保留FA2；全部数据与失败保留。
 13. M14：六种query分块/流水线配置及冻结边界验证；训练选择在T127/128长历史回归约16%，保留实验策略，推荐默认FA2。
-14. 后续：attention资源/布局与实际负载研究；NanoKV attention适配是可选应用验证。
+14. M15：在非空current契约下简化softmax状态，S2的13项同配置Graph耗时几何平均减少7.55%；成熟对照与大T回归完整保留。
+15. 后续：attention资源/布局与实际负载研究；NanoKV attention适配是可选应用验证。
 
 成熟基线的来源与工具链准备见 [M2 准备](docs/M2_BASELINE_PLAN.md)。
 

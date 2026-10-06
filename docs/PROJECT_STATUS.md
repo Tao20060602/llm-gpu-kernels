@@ -28,6 +28,9 @@
   [M9](M9_SEGMENTED_ATTENTION_REPORT.md)、[M10](M10_UNIFIED_ATTENTION_REPORT.md)、
   [M11](M11_SPLIT_KV_REPORT.md)、[M12](M12_NARROW_SPLIT_REPORT.md)、
   [M13](M13_FIXED64_REPORT.md)、[M14](M14_ATTENTION_RETILE_REPORT.md)。
+- M15简化softmax状态，同stage对照13输入全部减少耗时，S2几何平均少7.55%；
+  短query六项比强FA2少7.1–34.5%，大T仍落后。不是冻结域策略。
+  [M15报告](M15_NONEMPTY_ATTENTION_REPORT.md)。
 
 ## 复现冻结后的实验
 
@@ -46,6 +49,7 @@ python -m llm_gpu_kernels.attention_split_holdout
 python -m llm_gpu_kernels.attention_narrow_holdout
 python -m llm_gpu_kernels.attention_fixed_holdout
 python -m llm_gpu_kernels.attention_retile_holdout
+python -m llm_gpu_kernels.attention_nonempty_benchmark
 ```
 
 原始JSON保存每项输入/source hash、finite/误差、raw event/wall、p50/p95、telemetry、
