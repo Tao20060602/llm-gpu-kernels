@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "derived_from": "results/m17-real-input-20261006T154812Z-504068096.json",
+  "result_sha256": "ba18ad6f36fb13a372d145aa95b9c1ab18ea2ce4e29ec32a264ebbbf358ec0a5",
+  "real_input_cases": 12,
+  "direct_cases": 6,
+  "direct_graph_ratio_vs_strong_geomean": 0.6274167972482256,
+  "direct_graph_ratio_min": 0.6258992941811142,
+  "direct_graph_ratio_max": 0.6297921370889578,
+  "direct_api_ratio_vs_strong_geomean": 0.6234005787237501,
+  "metric_count": 204,
+  "max_relative_rms": 0.0017302248161286116,
+  "max_normalized_max": 0.0035264904145151377,
+  "scope": "real model tensor replay, strided V conversion included; not system A/B"
+}

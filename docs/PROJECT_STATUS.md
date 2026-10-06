@@ -37,6 +37,11 @@
   少22.09%，6项T127/128长历史小幅回归，最坏慢2.17%。没有按这些数据改策略。
   这是有限合成输入的独立prototype结论，NanoKV引擎默认仍未切换。
   [M16报告](M16_ATTENTION_RESOURCE_REPORT.md)、[使用契约](ATTENTION_USAGE.md)。
+- M17在固定Qwen3-4B、两条实际模型请求采集的12组Q/K/V上重放；6项96尾chunk
+  计入实际非连续V转换后，比强复用pack+FA2 Graph geomean少37.26%。原FA2/各arm
+  独立FP32及204项精度检查通过。4096仍用FA2；首次形状prepare约1.03s，动态地址
+  编译/绑定缓存与系统A/B尚未完成。不能将该数字写成请求加速。
+  [真实输入报告](M17_REAL_INPUT_BRIDGE_REPORT.md)。
 
 ## 复现冻结后的实验
 
