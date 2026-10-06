@@ -27,6 +27,8 @@ Prepared 入口、冻结选择规则与随机 holdout 收益见 [M3报告](docs/
 完整成熟MoE对照与入口开销见 [M5报告](docs/M5_MATURE_MOE_REPORT.md)。
 GPU调度从8次减到7次的完整链路 A/B 见 [M6报告](docs/M6_RANKED_DISPATCH_REPORT.md)。
 完整MoE冻结分块策略与vLLM对照见 [M7报告](docs/M7_FULL_MOE_OPTIMIZATION_REPORT.md)。
+四段KV拼接与官方FA2的12场景成本基线见 [M8报告](docs/M8_GQA_PREFILL_BASELINE_REPORT.md)。
+FA2使用独立overlay，来源与复现见 [环境说明](docs/FLASH_ATTENTION_OPERATOR_ENVIRONMENT.md)。
 vLLM算子依赖使用独立overlay，见 [环境说明](docs/VLLM_OPERATOR_ENVIRONMENT.md)。
 源码支持通过 PYTHONPATH 运行；pyproject 提供后续标准安装入口。
 
@@ -39,7 +41,8 @@ vLLM算子依赖使用独立overlay，见 [环境说明](docs/VLLM_OPERATOR_ENVI
 5. M5：已完成vLLM0.10.0完整链路、cached launcher、15形状对照。
 6. M6：已验证ranked dispatch将8次启动减到7次；小形状Graph减少约6–7%，大形状变化不足1%。
 7. M7：完整MoE有限搜索、shape选择规则冻结与15场景对照；T1024随机路由比自身原配置减少约25%，比固定vLLM默认配置减少约7–8%。其他场景见报告，不能推广为全面胜出。
-8. 后续：GQA prefill；NanoKV attention适配是可选应用验证。
+8. M8：四段GPU KV的复用缓冲区pack+FA2与预拼接FA2基线已完成；直接分段GQA kernel正在推进。
+9. 后续：分段GQA优化；NanoKV attention适配是可选应用验证。
 
 成熟基线的来源与工具链准备见 [M2 准备](docs/M2_BASELINE_PLAN.md)。
 

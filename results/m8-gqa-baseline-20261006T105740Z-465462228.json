@@ -1,0 +1,105 @@
+{
+  "schema": 1,
+  "run_id": "m8-gqa-baseline-20261006T105740Z-465462228",
+  "status": "failed",
+  "date_utc": "2026-10-06T10:57:40Z",
+  "scope": "GPU-resident four-segment BF16 GQA attention cost baseline; no NanoKV, model, router, H2D, or custom attention kernel",
+  "runtime": {
+    "python": "3.12.14",
+    "torch": "2.7.1+cu128",
+    "cuda_runtime": "12.8",
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "sm": [
+      8,
+      6
+    ],
+    "device_index": 0,
+    "fa2": {
+      "provenance": {
+        "schema": 1,
+        "version": "2.8.3.post1",
+        "tag": "v2.8.3.post1",
+        "tag_commit_short": "a8aa52b",
+        "runtime_path": "/home/tmz/ai/baselines/flash-attention-2.8.3.post1",
+        "wheel_name": "flash_attn-2.8.3.post1+cu12torch2.7cxx11abiTRUE-cp312-cp312-linux_x86_64.whl",
+        "official_wheel_url": "https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3.post1/flash_attn-2.8.3.post1%2Bcu12torch2.7cxx11abiTRUE-cp312-cp312-linux_x86_64.whl",
+        "official_release_api": "https://api.github.com/repos/Dao-AILab/flash-attention/releases/tags/v2.8.3.post1",
+        "official_release_asset_digest": "sha256:f87164bb919f5597cb94f7485196be6ac7842b71d7bf8e9f8e9133b9045ab5ea",
+        "wheel_sha256_verified": "f87164bb919f5597cb94f7485196be6ac7842b71d7bf8e9f8e9133b9045ab5ea",
+        "official_files_verified_count": 86,
+        "all_upstream_package_files_match_wheel": true,
+        "dependencies": {
+          "einops": "0.8.2"
+        },
+        "torch": "project .venv 2.7.1+cu128; not installed in overlay",
+        "scope": "FA2 public operator baseline; no source patches",
+        "wheel_build_version": "2.8.3.post1+cu12torch2.7cxx11abitrue"
+      },
+      "provenance_sha256": "500136ecc2bfa9385e573b38da27a26506ff42dacc7673ef322d6eb79a616780",
+      "imported_module_path": "/home/tmz/ai/baselines/flash-attention-2.8.3.post1/flash_attn/__init__.py",
+      "actual_distribution_version": "2.8.3.post1",
+      "runtime_path": "/home/tmz/ai/baselines/flash-attention-2.8.3.post1"
+    }
+  },
+  "source_hashes": {
+    "docs/M8_GQA_PREFILL_BASELINE_PLAN.md": "8c1a568fbc3b2071068f82e65e24fee936c7ca7a1463ccff3fb80b069c499eec",
+    "src/llm_gpu_kernels/attention_baseline.py": "56064a0328cc0873d6468776e06b959fdff53feaba308c59ea0b99444b2e9438",
+    "src/llm_gpu_kernels/attention_baseline_benchmark.py": "dba06f2aa0fd3a7432d17002ad77a55b25310cbe300ee24088ead93c9471454b"
+  },
+  "provenance_sha256": "500136ecc2bfa9385e573b38da27a26506ff42dacc7673ef322d6eb79a616780",
+  "limits": {
+    "relative_rms": 0.008,
+    "normalized_max": 0.008
+  },
+  "protocol": {
+    "Q": "[T,32,128] BF16 contiguous",
+    "segments": [
+      "selected history",
+      "sink",
+      "previous recent",
+      "current"
+    ],
+    "K_V": "each [L,8,128] BF16 contiguous; current length equals T",
+    "scale": 0.08838834764831843,
+    "mask": "all first-three-segment history visible; current key j visible iff j <= query i; FA2 public causal bottom-right alignment",
+    "api_measurement": {
+      "balanced_orders": [
+        "AB",
+        "BA",
+        "BA",
+        "AB"
+      ],
+      "rounds": 4,
+      "samples_per_round": 8,
+      "calls_per_sample": 2
+    },
+    "graph_measurement": {
+      "forwards_per_graph": 8,
+      "rounds": 4,
+      "samples_per_round": 8,
+      "replay_calls_per_sample": 2
+    },
+    "timed_arms": {
+      "full_chain_pack_plus_fa2": "torch.cat into reusable packed K/V buffers, then official public flash_attn_func",
+      "prepacked_fa2": "official public flash_attn_func only, after identical K/V were packed outside timing",
+      "pack_only_diagnostic": "reusable-buffer torch.cat only; separately reported and never subtracted from full-chain time"
+    },
+    "graph_update": "small T=9 fixed-address graph updates Q and every K/V on a non-default stream, checks oracle output, then restores and hashes all inputs",
+    "no_output_allocation_claim": "FA2 public API allocates its output; eager API timing includes that allocation behavior, while graph pool behavior is reported separately"
+  },
+  "seed": 819,
+  "telemetry_before": {
+    "returncode": 0,
+    "stdout": "595.91.07, 38, 34.51 W, 1545 MHz, 7001 MHz, 16 MiB",
+    "stderr": ""
+  },
+  "functional_validation": [],
+  "graph_update_validation": null,
+  "cases": [],
+  "failure": "RuntimeError: CUDA graphs must be captured on a non-default stream. (However, after capture, it's ok to replay them on the default stream.)",
+  "telemetry_after": {
+    "returncode": 0,
+    "stdout": "595.91.07, 38, 30.43 W, 1545 MHz, 7001 MHz, 261 MiB",
+    "stderr": ""
+  }
+}

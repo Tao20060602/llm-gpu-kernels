@@ -124,3 +124,18 @@ counts或route IDs，因此固定地址图的输入值变化不改变配置。
 源码哈希相互绑定。这里的holdout指候选配置未用该对照结果选择，并非之前从未
 测过相同workload。改变配置可能改变FP32累加分组，不要求不同tile逐bit相同；
 全部保持原0.008误差界与finite检查。详细原始结果和适用边界见M7报告。
+
+## M8 四段 KV GQA prefill
+
+连续CUDA BF16 Q[T,32,128]及四个K/V[L,8,128]，顺序为selected/sink/recent/current，
+current长度等于T。历史全可见、current j<=query_i，head映射q_head//4，scale=1/sqrt(128)，
+无dropout。输入已经完成位置处理；不含RoPE、router、CPU gather、H2D或模型。
+`prepare_segmented_attention`绑定owners和可复用packed KV，run是torch.cat到
+预分配buffer再调用未修改官方FA2公开API；T0无attention启动。
+
+M8分别记录full链路、相同输入的prepacked FA2及pack-only API；独立成本不相减。
+API公开FA2分配输出的行为计入，Graph各自保留捕获输出/pool。4轮AB/BA/BA/AB，
+8样本/轮、2调用/样本，Graph每次8forward并按forward归一化。只在小场景用
+独立FP32 oracle；12大矩阵比较为相同FA2 arm一致性，不外推为独立精度证明。
+固定地址图/非默认stream原地更新和恢复已验证；不允许并发写同一workspace。
+环境、所有样本与限制见M8报告。

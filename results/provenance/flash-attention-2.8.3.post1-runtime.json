@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "version": "2.8.3.post1",
+  "tag": "v2.8.3.post1",
+  "tag_commit_short": "a8aa52b",
+  "runtime_path": "/home/tmz/ai/baselines/flash-attention-2.8.3.post1",
+  "wheel_name": "flash_attn-2.8.3.post1+cu12torch2.7cxx11abiTRUE-cp312-cp312-linux_x86_64.whl",
+  "official_wheel_url": "https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3.post1/flash_attn-2.8.3.post1%2Bcu12torch2.7cxx11abiTRUE-cp312-cp312-linux_x86_64.whl",
+  "official_release_api": "https://api.github.com/repos/Dao-AILab/flash-attention/releases/tags/v2.8.3.post1",
+  "official_release_asset_digest": "sha256:f87164bb919f5597cb94f7485196be6ac7842b71d7bf8e9f8e9133b9045ab5ea",
+  "wheel_sha256_verified": "f87164bb919f5597cb94f7485196be6ac7842b71d7bf8e9f8e9133b9045ab5ea",
+  "official_files_verified_count": 86,
+  "all_upstream_package_files_match_wheel": true,
+  "dependencies": {
+    "einops": "0.8.2"
+  },
+  "torch": "project .venv 2.7.1+cu128; not installed in overlay",
+  "scope": "FA2 public operator baseline; no source patches",
+  "wheel_build_version": "2.8.3.post1+cu12torch2.7cxx11abitrue"
+}
