@@ -1,0 +1,6 @@
+{
+  "status": "failed",
+  "scope": "Startup source-hash collection before numerical validation or timing",
+  "failure": "FileNotFoundError: docs/M13_NARROW_SPLIT_PLAN.md",
+  "repair": "Corrected the plan reference to docs/M13_FIXED64_PLAN.md; candidate, input matrix and thresholds unchanged"
+}

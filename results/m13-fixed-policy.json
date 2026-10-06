@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "status": "frozen_before_holdout",
+  "domain": {
+    "T": 64,
+    "sink": 64,
+    "recent": 512,
+    "current": 64,
+    "max_history": 4096
+  },
+  "mode": "fa2",
+  "config": null,
+  "source_hashes": {
+    "docs/M11_SPLIT_KV_PLAN.md": "4af07dde8fc970059efdc8bc07affeea501c78bb3d34654684d15331a535697c",
+    "src/llm_gpu_kernels/attention_split.py": "7047f5d1075e03f7145a5e1609a33dcf9ece011a93135a2201c0bded79e54b4e",
+    "src/llm_gpu_kernels/attention_split_policy.py": "90a8c3d600ef88c97a9669a364b2025e502ab8dca105d6f9ac65947a40c74d69",
+    "src/llm_gpu_kernels/attention_split_tuning.py": "57e9ccc942c64bb2c329eb571df5ce280d8079da92d27b93427d5efc9c76675b",
+    "src/llm_gpu_kernels/attention_split_holdout.py": "46b85d91dd915151f9e2619b4e2c1a3092aa775b90f74c49d30eb62cdb7a970c",
+    "src/llm_gpu_kernels/attention_segmented.py": "e72702f5def4df841fba274af87d22efa72e260a19617316dcadc22cae4768cb",
+    "src/llm_gpu_kernels/attention_segmented_benchmark.py": "5961ef2f74fd94a7d6a973edcf471e3a7377ecaa2a040265848d796e7a47a0b4",
+    "src/llm_gpu_kernels/attention_baseline.py": "56064a0328cc0873d6468776e06b959fdff53feaba308c59ea0b99444b2e9438",
+    "src/llm_gpu_kernels/attention_baseline_benchmark.py": "15a88dd4277d9978356bc314c75371a0921ab2930698dbbac01d2019c1ea866e",
+    "src/llm_gpu_kernels/attention_unified.py": "2dc32701e6f9c9869831e50395a16b0b8db0462c374e7de981e326ad68f99fc8",
+    "src/llm_gpu_kernels/attention_unified_policy.py": "d80eb69131f0e70a95f480de58b31f60ebd17f44942afcc2e08a860ba6c828cc",
+    "src/llm_gpu_kernels/attention_unified_tuning.py": "e0e38672bc1968ba266144d5f58f9ef1bc56aa5d2f4e51c1d849b1ffb1019ca7",
+    "src/llm_gpu_kernels/moe_prepared.py": "7b52ecf4234d6385d1a4e104b5a01656786571aa29d5ab2bad948589097acef8",
+    "src/llm_gpu_kernels/benchmark.py": "c3a12e68e37b09f62d7dd78d14738537074dc60b7a02e20c96e24d1923c565e4",
+    "docs/M13_FIXED64_PLAN.md": "8f7f7cc954f0cd6941267edf13f1543fae8f81be5045933644eb5ae30866427c",
+    "src/llm_gpu_kernels/attention_fixed_policy.py": "1de3dbd5aa0372b4680fbf2243b14b4ced6436c6d56fc5f8dfac60bb4ec3429c",
+    "src/llm_gpu_kernels/attention_fixed_tuning.py": "46f3cfc4074fc21fb3e6f128fd08ffba65a68d15e83c078b00fe93e037819bd8",
+    "src/llm_gpu_kernels/attention_fixed_holdout.py": "74aa8fd59c393d8bc9a39359a1e2b3908740eec94a2e2dfc9316d787c9bf947d",
+    "src/llm_gpu_kernels/attention_fixed_trial.py": "99d6ef08cc226e70e63409e82b4ab87542f549b70c2ddb0b15e1810da47d7a69"
+  },
+  "training_record_path": "results/m13-fixed-tuning-20261006T141814Z-854724342.json",
+  "training_record_sha256": "1559166785a507c4a0568d6350e8d3694a008ec8478baee53675fc726db2478c",
+  "training_hash_scope": "canonical_json_without_top_level_policy_sha256"
+}
