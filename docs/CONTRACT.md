@@ -139,3 +139,17 @@ API公开FA2分配输出的行为计入，Graph各自保留捕获输出/pool。4
 独立FP32 oracle；12大矩阵比较为相同FA2 arm一致性，不外推为独立精度证明。
 固定地址图/非默认stream原地更新和恢复已验证；不允许并发写同一workspace。
 环境、所有样本与限制见M8报告。
+
+## M9 四段直读 kernel
+
+`prepare_segmented_kernel(q,segments,AttentionConfig)`绑定同M8输入契约，输出BF16，
+仅分配输出，无KV pack、KV repeat或softmax scratch。一个CTA处理token_tile与
+head_group个相邻head；G必须为1/2/4，group不跨对应KVhead。四段使用同一FP32
+在线softmax状态；QK BF16/FP32 dot，P转BF16后PV dot FP32累加，最终写BF16。
+尾部masked、empty history及all-masked行安全；T0无启动。
+
+固定shape/address，值可原地改变；runner每次使用当前stream，调用者显式建立
+跨stream依赖，不并发写同一output。M9固定token32/key64/warps4/stages2，对G1/2/4
+作探索比较，不是选择后的holdout。36功能case、每G2次Graph值更新和非默认stream，
+12性能case所有API/Graph前后独立chunk64 FP32验证，通过原0.008界。性能以复用
+pack+官方FA2为强对照，完整结果、回归与静态HMMA证据见M9报告。
