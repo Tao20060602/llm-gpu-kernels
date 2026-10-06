@@ -23,14 +23,20 @@
 - 强对照是每次复用buffer pack+未修改官方FA2，不用弱PyTorch reference作性能对照。
 - M9固定G1在T64若干场景有收益；M10统一遍历在大T对自身更快，但有边界回归。
   M11 split/merge、M12小query、M13固定Q64、M14分块/流水线都保留训练及新输入回归。
-- **当前推荐attention路径仍为FA2。** M11–M13冻结为回退；M10/M14冻结实验策略含自定义路径，但新输入存在回归。 局部收益不能拼成通用优化或可靠生产规则。
-  实现/数学验证已完成，稳定胜过成熟后端的attention策略仍待下一轮研究。
+- M11–M13冻结为FA2回退；M10/M14冻结实验策略含自定义路径，但新输入存在回归。 局部收益不能拼成通用优化或可靠生产规则。
+  这些历史实验的回归保留；后续可用短query路径见M16。
   [M9](M9_SEGMENTED_ATTENTION_REPORT.md)、[M10](M10_UNIFIED_ATTENTION_REPORT.md)、
   [M11](M11_SPLIT_KV_REPORT.md)、[M12](M12_NARROW_SPLIT_REPORT.md)、
   [M13](M13_FIXED64_REPORT.md)、[M14](M14_ATTENTION_RETILE_REPORT.md)。
 - M15简化softmax状态，同stage对照13输入全部减少耗时，S2几何平均少7.55%；
   短query六项比强FA2少7.1–34.5%，大T仍落后。不是冻结域策略。
   [M15报告](M15_NONEMPTY_ATTENTION_REPORT.md)。
+- **M16短query冻结路径通过当前验证矩阵。** T32–128、sink64/recent512/currentT、
+  总history≤4096用M15 token32/key64/G1/W4/S2，其余FA2。44项原holdout加25项
+  上限追加审计全部数值正确；36项实际custom路径Graph p50几何平均比完整FA2
+  少22.09%，6项T127/128长历史小幅回归，最坏慢2.17%。没有按这些数据改策略。
+  这是有限合成输入的独立prototype结论，NanoKV引擎默认仍未切换。
+  [M16报告](M16_ATTENTION_RESOURCE_REPORT.md)、[使用契约](ATTENTION_USAGE.md)。
 
 ## 复现冻结后的实验
 
@@ -50,6 +56,8 @@ python -m llm_gpu_kernels.attention_narrow_holdout
 python -m llm_gpu_kernels.attention_fixed_holdout
 python -m llm_gpu_kernels.attention_retile_holdout
 python -m llm_gpu_kernels.attention_nonempty_benchmark
+python -m llm_gpu_kernels.attention_resource_holdout
+python -m llm_gpu_kernels.attention_resource_boundary_audit
 ```
 
 原始JSON保存每项输入/source hash、finite/误差、raw event/wall、p50/p95、telemetry、

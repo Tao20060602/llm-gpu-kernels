@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "status": "frozen_before_holdout",
+  "domain": {
+    "min_T": 32,
+    "max_T": 4096,
+    "sink": 64,
+    "recent": 512,
+    "max_history": 4096
+  },
+  "choices": {
+    "small": {
+      "mode": "direct",
+      "config": {
+        "token_tile": 32,
+        "key_tile": 64,
+        "head_group": 1,
+        "warps": 4,
+        "stages": 2
+      },
+      "candidate_index": 5
+    },
+    "medium": {
+      "mode": "fa2",
+      "config": null,
+      "candidate_index": null
+    },
+    "large": {
+      "mode": "fa2",
+      "config": null,
+      "candidate_index": null
+    }
+  },
+  "source_hashes": {
+    "docs/M11_SPLIT_KV_PLAN.md": "4af07dde8fc970059efdc8bc07affeea501c78bb3d34654684d15331a535697c",
+    "src/llm_gpu_kernels/attention_split.py": "7047f5d1075e03f7145a5e1609a33dcf9ece011a93135a2201c0bded79e54b4e",
+    "src/llm_gpu_kernels/attention_split_policy.py": "90a8c3d600ef88c97a9669a364b2025e502ab8dca105d6f9ac65947a40c74d69",
+    "src/llm_gpu_kernels/attention_split_tuning.py": "57e9ccc942c64bb2c329eb571df5ce280d8079da92d27b93427d5efc9c76675b",
+    "src/llm_gpu_kernels/attention_split_holdout.py": "46b85d91dd915151f9e2619b4e2c1a3092aa775b90f74c49d30eb62cdb7a970c",
+    "src/llm_gpu_kernels/attention_segmented.py": "e72702f5def4df841fba274af87d22efa72e260a19617316dcadc22cae4768cb",
+    "src/llm_gpu_kernels/attention_segmented_benchmark.py": "5961ef2f74fd94a7d6a973edcf471e3a7377ecaa2a040265848d796e7a47a0b4",
+    "src/llm_gpu_kernels/attention_baseline.py": "56064a0328cc0873d6468776e06b959fdff53feaba308c59ea0b99444b2e9438",
+    "src/llm_gpu_kernels/attention_baseline_benchmark.py": "15a88dd4277d9978356bc314c75371a0921ab2930698dbbac01d2019c1ea866e",
+    "src/llm_gpu_kernels/attention_unified.py": "2dc32701e6f9c9869831e50395a16b0b8db0462c374e7de981e326ad68f99fc8",
+    "src/llm_gpu_kernels/attention_unified_policy.py": "d80eb69131f0e70a95f480de58b31f60ebd17f44942afcc2e08a860ba6c828cc",
+    "src/llm_gpu_kernels/attention_unified_tuning.py": "e0e38672bc1968ba266144d5f58f9ef1bc56aa5d2f4e51c1d849b1ffb1019ca7",
+    "src/llm_gpu_kernels/moe_prepared.py": "7b52ecf4234d6385d1a4e104b5a01656786571aa29d5ab2bad948589097acef8",
+    "src/llm_gpu_kernels/benchmark.py": "c3a12e68e37b09f62d7dd78d14738537074dc60b7a02e20c96e24d1923c565e4",
+    "docs/M13_FIXED64_PLAN.md": "8f7f7cc954f0cd6941267edf13f1543fae8f81be5045933644eb5ae30866427c",
+    "src/llm_gpu_kernels/attention_fixed_policy.py": "1de3dbd5aa0372b4680fbf2243b14b4ced6436c6d56fc5f8dfac60bb4ec3429c",
+    "src/llm_gpu_kernels/attention_fixed_tuning.py": "46f3cfc4074fc21fb3e6f128fd08ffba65a68d15e83c078b00fe93e037819bd8",
+    "src/llm_gpu_kernels/attention_fixed_holdout.py": "74aa8fd59c393d8bc9a39359a1e2b3908740eec94a2e2dfc9316d787c9bf947d",
+    "src/llm_gpu_kernels/attention_fixed_trial.py": "99d6ef08cc226e70e63409e82b4ab87542f549b70c2ddb0b15e1810da47d7a69",
+    "docs/M14_ATTENTION_RETILE_PLAN.md": "65ce8da88b5a3333842df599c55a79705fb9b6d8cf53ee07f1367f6ff8c6800c",
+    "src/llm_gpu_kernels/attention_retile_policy.py": "704ff31a3d5203612afe26bc9c72be997ebd42828aa84011175ea1fef8e1b404",
+    "src/llm_gpu_kernels/attention_retile_tuning.py": "8f5fc8f6768f20610d0aaaa76618899b198f42062f93c548c581f7c658b3747b",
+    "src/llm_gpu_kernels/attention_retile_holdout.py": "3d0cf8d0cab8732cc04c85d4ebaacdf6d7b48429b8f7913fe07344f1651fb479",
+    "docs/M15_NONEMPTY_ATTENTION_PLAN.md": "296a1ad9c859ff075a742737d6d83fa79dbfc1a811070828b437e7ade79f01c5",
+    "src/llm_gpu_kernels/attention_nonempty.py": "38f9e629c5542dba556c87e96c7b89be4344ff1a4c6f9a110b98356207398cea",
+    "src/llm_gpu_kernels/attention_nonempty_benchmark.py": "f9b8cebe19da265206a56fc2118a26f2550ac2d28c21c3fce3ea5d56880f39cd",
+    "docs/M16_ATTENTION_RESOURCE_PLAN.md": "d7bd24052e61a6b8638c9dd62be8ead736f4478fc291d7f807d0a959ff64e355",
+    "src/llm_gpu_kernels/attention_resource_policy.py": "1cef1525d380581ad2b642185f470d02fa2b1e6d724f9c853c3dd6d52edf6d2e",
+    "src/llm_gpu_kernels/attention_resource_tuning.py": "e4771d7a0a828288cf52aa61cc5b9589e3ede4e8dca05272f6a2c7c80247091c",
+    "src/llm_gpu_kernels/attention_resource_holdout.py": "9f11deb0a92f795ef3f735bb52f4b7151250db4f754c88139cf14b5189abf954",
+    "src/llm_gpu_kernels/attention_resource_trial.py": "fbf8375df6d033abf5d51a1bd633c3aecff0280579b839b29fe5f7b240ca3ce0"
+  },
+  "training_record_path": "results/m16-resource-tuning-20261006T144802Z-886701648.json",
+  "training_record_sha256": "31c06095d69bbda5179e7564d5dd51aa64d726c5c9101ecd0234e4f0bb3af5e9",
+  "training_hash_scope": "canonical_json_without_top_level_policy_sha256"
+}

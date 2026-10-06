@@ -3,7 +3,7 @@
 独立于 NanoKV 的算子项目：先做 **BF16 MoE grouped GEMM 与局部融合**，
 包含四段KV GQA prefill attention。硬件为 RTX 3080 Laptop 16 GiB，SM86。
 
-当前结果与复现入口见 [项目状态](docs/PROJECT_STATUS.md)。完整MoE已取得特定形状的成熟对照收益；attention数学实现和强对照已完成，推荐路径仍为FA2；冻结实验策略的回归完整保留。
+当前结果与复现入口见 [项目状态](docs/PROJECT_STATUS.md)。完整MoE已取得特定形状的成熟对照收益；attention已实现短query冻结选择：当前验证矩阵中，相对完整FA2链路Graph耗时几何平均减少22.09%，最坏慢2.17%；其他形状回退FA2。有限单GPU合成输入结论，历史回归完整保留。
 
 当前已完成 M0/M1 bootstrap、M2 固定 CUTLASS3.8 基线及 M3 参数优化：
 原始 Triton dense/grouped GEMM、FP32 MoE 语义参考、边界数值检查、
@@ -37,6 +37,7 @@ split-KV的完整成本与全域回退见 [M11报告](docs/M11_SPLIT_KV_REPORT.m
 窄域split与固定query64的新长度回归见 [M12报告](docs/M12_NARROW_SPLIT_REPORT.md) 和 [M13报告](docs/M13_FIXED64_REPORT.md)。
 query分块/流水线的新输入回归见 [M14报告](docs/M14_ATTENTION_RETILE_REPORT.md)。
 softmax状态简化的固定同配置 A/B 见 [M15报告](docs/M15_NONEMPTY_ATTENTION_REPORT.md)。
+短query资源搜索与44+25项冻结后验证见 [M16报告](docs/M16_ATTENTION_RESOURCE_REPORT.md)，接口与生命周期见 [使用说明](docs/ATTENTION_USAGE.md)。
 vLLM算子依赖使用独立overlay，见 [环境说明](docs/VLLM_OPERATOR_ENVIRONMENT.md)。
 源码支持通过 PYTHONPATH 运行；pyproject 提供后续标准安装入口。
 
@@ -56,7 +57,8 @@ vLLM算子依赖使用独立overlay，见 [环境说明](docs/VLLM_OPERATOR_ENVI
 12. M12/M13：小query split与固定query64的新输入验证均因最坏回归未达门槛而保留FA2；全部数据与失败保留。
 13. M14：六种query分块/流水线配置及冻结边界验证；训练选择在T127/128长历史回归约16%，保留实验策略，推荐默认FA2。
 14. M15：在非空current契约下简化softmax状态，S2的13项同配置Graph耗时几何平均减少7.55%；成熟对照与大T回归完整保留。
-15. 后续：attention资源/布局与实际负载研究；NanoKV attention适配是可选应用验证。
+15. M16：简化状态后的八种资源分块训练、冻结与69项验证；短query规则保留，其他形状FA2，最坏回归2.17%和适用边界完整记录。
+16. 后续：attention资源/布局与实际负载研究；NanoKV attention适配是可选应用验证。
 
 成熟基线的来源与工具链准备见 [M2 准备](docs/M2_BASELINE_PLAN.md)。
 

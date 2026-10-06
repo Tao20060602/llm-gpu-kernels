@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "derived_from": [
+    "results/m16-resource-tuning-20261006T144802Z-886701648.json",
+    "results/m16-resource-holdout-20261006T144956Z-578677552.json",
+    "results/m16-boundary-audit-20261006T145309Z-32579199.json"
+  ],
+  "source_hashes": {
+    "results/m16-resource-tuning-20261006T144802Z-886701648.json": "10cfdfe392401b4e65b16614b63b62aea11f37073a774de627a9e318d4757465",
+    "results/m16-resource-holdout-20261006T144956Z-578677552.json": "9199e4b67eacd13e5452f0e203fd3ee98ac0b23ddba18ee70ed3dc3ce8b9b256",
+    "results/m16-boundary-audit-20261006T145309Z-32579199.json": "257e028e0abe5a10a6f49983a462eedf141c492f5e2954625bf2c8476aed2f10"
+  },
+  "actual_custom_cases": 36,
+  "graph_ratio_vs_fa2_geomean": 0.779101000624204,
+  "graph_ratio_vs_fa2_worst": 1.02170363030385,
+  "graph_ratio_vs_fa2_min": 0.4912052892836745,
+  "cases_slower_than_fa2": 6,
+  "api_ratio_vs_fa2_geomean": 0.7118558668244941,
+  "graph_ratio_vs_m9_geomean": 0.9036225269211707,
+  "scope": "hot repeated synthetic operator; not model/serving",
+  "audit_registration": "additional plan after original holdout observed; policy unchanged"
+}
