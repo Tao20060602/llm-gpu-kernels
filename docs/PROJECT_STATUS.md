@@ -22,12 +22,12 @@
   独立全矩阵chunk64 FP32参考，固定地址Graph值更新和非默认stream。
 - 强对照是每次复用buffer pack+未修改官方FA2，不用弱PyTorch reference作性能对照。
 - M9固定G1在T64若干场景有收益；M10统一遍历在大T对自身更快，但有边界回归。
-  M11 split/merge、M12小query、M13固定Q64新长度验证都完整保留失败门槛。
-- **当前冻结attention策略均选择FA2回退。** 局部收益不能拼成通用优化或可靠生产规则。
+  M11 split/merge、M12小query、M13固定Q64、M14分块/流水线都保留训练及新输入回归。
+- **当前推荐attention路径仍为FA2。** M11–M13冻结为回退；M10/M14冻结实验策略含自定义路径，但新输入存在回归。 局部收益不能拼成通用优化或可靠生产规则。
   实现/数学验证已完成，稳定胜过成熟后端的attention策略仍待下一轮研究。
   [M9](M9_SEGMENTED_ATTENTION_REPORT.md)、[M10](M10_UNIFIED_ATTENTION_REPORT.md)、
   [M11](M11_SPLIT_KV_REPORT.md)、[M12](M12_NARROW_SPLIT_REPORT.md)、
-  [M13](M13_FIXED64_REPORT.md)。
+  [M13](M13_FIXED64_REPORT.md)、[M14](M14_ATTENTION_RETILE_REPORT.md)。
 
 ## 复现冻结后的实验
 
@@ -45,6 +45,7 @@ python -m llm_gpu_kernels.attention_unified_holdout
 python -m llm_gpu_kernels.attention_split_holdout
 python -m llm_gpu_kernels.attention_narrow_holdout
 python -m llm_gpu_kernels.attention_fixed_holdout
+python -m llm_gpu_kernels.attention_retile_holdout
 ```
 
 原始JSON保存每项输入/source hash、finite/误差、raw event/wall、p50/p95、telemetry、

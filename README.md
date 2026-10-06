@@ -3,7 +3,7 @@
 独立于 NanoKV 的算子项目：先做 **BF16 MoE grouped GEMM 与局部融合**，
 包含四段KV GQA prefill attention。硬件为 RTX 3080 Laptop 16 GiB，SM86。
 
-当前结果与复现入口见 [项目状态](docs/PROJECT_STATUS.md)。完整MoE已取得特定形状的成熟对照收益；attention数学实现和强对照已完成，冻结性能策略保持FA2回退。
+当前结果与复现入口见 [项目状态](docs/PROJECT_STATUS.md)。完整MoE已取得特定形状的成熟对照收益；attention数学实现和强对照已完成，推荐路径仍为FA2；冻结实验策略的回归完整保留。
 
 当前已完成 M0/M1 bootstrap、M2 固定 CUTLASS3.8 基线及 M3 参数优化：
 原始 Triton dense/grouped GEMM、FP32 MoE 语义参考、边界数值检查、
@@ -35,6 +35,7 @@ FA2使用独立overlay，来源与复现见 [环境说明](docs/FLASH_ATTENTION_
 统一KV遍历的有限搜索、冻结后回归与边界见 [M10报告](docs/M10_UNIFIED_ATTENTION_REPORT.md)。
 split-KV的完整成本与全域回退见 [M11报告](docs/M11_SPLIT_KV_REPORT.md)。
 窄域split与固定query64的新长度回归见 [M12报告](docs/M12_NARROW_SPLIT_REPORT.md) 和 [M13报告](docs/M13_FIXED64_REPORT.md)。
+query分块/流水线的新输入回归见 [M14报告](docs/M14_ATTENTION_RETILE_REPORT.md)。
 vLLM算子依赖使用独立overlay，见 [环境说明](docs/VLLM_OPERATOR_ENVIRONMENT.md)。
 源码支持通过 PYTHONPATH 运行；pyproject 提供后续标准安装入口。
 
@@ -52,7 +53,8 @@ vLLM算子依赖使用独立overlay，见 [环境说明](docs/VLLM_OPERATOR_ENVI
 10. M10：统一KV遍历12候选训练与冻结验证完成；大T对自身首版减少约11–19%，T256回归，策略仅作实验记录。
 11. M11：split-KV/merge的8候选完整成本已测，未通过T≤256全域门槛，冻结为FA2回退。
 12. M12/M13：小query split与固定query64的新输入验证均因最坏回归未达门槛而保留FA2；全部数据与失败保留。
-13. 后续：attention资源/布局与实际负载研究；NanoKV attention适配是可选应用验证。
+13. M14：六种query分块/流水线配置及冻结边界验证；训练选择在T127/128长历史回归约16%，保留实验策略，推荐默认FA2。
+14. 后续：attention资源/布局与实际负载研究；NanoKV attention适配是可选应用验证。
 
 成熟基线的来源与工具链准备见 [M2 准备](docs/M2_BASELINE_PLAN.md)。
 
