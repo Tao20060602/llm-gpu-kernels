@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "source_run": "m3-scan-20261006T093119Z",
+  "domain": {
+    "N": 1536,
+    "K": 2048
+  },
+  "density_thresholds": [
+    8,
+    64
+  ],
+  "configs": {
+    "small": {
+      "block_m": 32,
+      "block_n": 64,
+      "block_k": 32,
+      "warps": 4,
+      "stages": 3
+    },
+    "medium": {
+      "block_m": 32,
+      "block_n": 256,
+      "block_k": 32,
+      "warps": 8,
+      "stages": 3
+    },
+    "large": {
+      "block_m": 64,
+      "block_n": 256,
+      "block_k": 64,
+      "warps": 4,
+      "stages": 2
+    }
+  },
+  "fallback": {
+    "block_m": 32,
+    "block_n": 64,
+    "block_k": 32,
+    "warps": 4,
+    "stages": 3
+  },
+  "status": "frozen_before_holdout"
+}

@@ -3,7 +3,8 @@
 首版仅 forward、单 GPU、连续 BF16 输入与输出、FP32 累加，无 bias/backward。
 N/K > 0，M 可为 0。输入不修改，out 不得与输入共享 storage。
 跨 stream 的 metadata 构造/使用由调用者显式同步；首轮只用默认 stream。
-未验证 CUDA Graph、非连续 stride、线程并发与多卡。
+M0/M1当时未验证 CUDA Graph；M2/M3补充固定图和stream验证见下文。
+非连续 stride、线程并发与多卡不在当前范围。
 
 ## Dense calibration
 
@@ -58,3 +59,14 @@ Graph-mode 每张固定图含8次 GEMM，按 GEMM 归一化；重复图提交的
 记录 `samples_ms_per_graph_replay` 和 `samples_ms_per_gemm` 以明确单位。
 只验证固定预分组 GEMM 的图重放，不代表动态路由或完整 MoE 可图捕获。
 未做 tile sweep / 后端调优；本轮结果是两个固定配置的对照。
+
+## M3 prepared / 选择规则
+
+`prepare_grouped_gemm` 绑定全部输入/output/plan owners、固定shape和指针，
+持有Triton3.3.1 CompiledKernel runner。输入values可变，buffers不可resize/替换，
+metadata只读；调用者保证跨stream依赖、同一output无并发写。
+runner每次获取当前stream。M3已验证非默认stream输入更新及固定图重放。
+
+FrozenPolicy只适用N1536/K2048，按host已知counts平均活跃行数选3组tile；
+其他shape回退原配置。所有选择发生在计时前，不包括counts readback或动态router。
+BF16/FP32语义和误差阈值不变。详见M3_EXPERIMENT_PLAN与M3_OPTIMIZATION_REPORT。

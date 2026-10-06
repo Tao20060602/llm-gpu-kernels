@@ -1,0 +1,17 @@
+{
+  "model": "muse-spark-1.3-contributor",
+  "status": "completed",
+  "usage": {
+    "input_tokens": 500,
+    "output_tokens": 1189,
+    "total_tokens": 1689,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens_details": {
+      "reasoning_tokens": 824
+    }
+  },
+  "role": "advisory method review, not measured evidence",
+  "review": "M3方向合理,关键是隔离开销与冻结规则.\n\n(1)三个可检验假设与所需证据:\nH1 小T瓶颈在启动/分块开销而非FLOPs.需同条件下分开报告graph内时间与Python API端到端,并做E_active变化而sumM不变的对照.\nH2 最优tile由N,K,meanM/maxM及偏度决定.需训练集全候选p50/p95分布,FP32 oracle全通过记录,失败配置保留不可丢.\nH3 大T下CUTLASS与Triton各有适用区.需old/tuned/CUTLASS同图A/B平衡轮换重复,看分布重叠而非单点p50.\n\n(2)最高风险错误:\n训练挑tile后又用holdout再调造成泄漏;把Python启动计入kernel;时钟/功耗/温度未固定又无ncu,未做cyclic interleaving+telemetry;热buffer复用高估真实 serving;counts与task元数据口径在timed区外不一致;stream复用正确性只验一次;BF16/FP32容差阈值不明.\n\n(3)简单选择规则,避免holdout调参:\n冻结前只用训练特征:sumM,活跃E,meanM,maxM,偏度,N,K.限2-3分支查表,如小meanM用BM16/BN64,均匀大M用大BN/BK,其余回退原BM32配置,down GEMM N2048 K768单独一表.holdout只查表不搜索,记录hash,fallback率与p95."
+}
