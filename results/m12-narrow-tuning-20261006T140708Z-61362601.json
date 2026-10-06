@@ -1,0 +1,1937 @@
+{
+  "schema": 1,
+  "run_id": "m12-narrow-tuning-20261006T140708Z-61362601",
+  "status": "passed",
+  "seed": 5109,
+  "training_T": [
+    24,
+    56
+  ],
+  "selected_lengths": [
+    257,
+    1537
+  ],
+  "config": {
+    "token_tile": 16,
+    "key_tile": 64,
+    "head_group": 4,
+    "warps": 8,
+    "stages": 2,
+    "splits": 2
+  },
+  "hypothesis_origin": "results/m11-split-tuning-20261006T140016Z-227795202.json",
+  "hypothesis_origin_sha256": "30f5923ebf7ae563513ad0aafbe1f6001e86ba661d5c099ba5b95e128838c5fe",
+  "source_hashes": {
+    "docs/M11_SPLIT_KV_PLAN.md": "4af07dde8fc970059efdc8bc07affeea501c78bb3d34654684d15331a535697c",
+    "src/llm_gpu_kernels/attention_split.py": "7047f5d1075e03f7145a5e1609a33dcf9ece011a93135a2201c0bded79e54b4e",
+    "src/llm_gpu_kernels/attention_split_policy.py": "90a8c3d600ef88c97a9669a364b2025e502ab8dca105d6f9ac65947a40c74d69",
+    "src/llm_gpu_kernels/attention_split_tuning.py": "57e9ccc942c64bb2c329eb571df5ce280d8079da92d27b93427d5efc9c76675b",
+    "src/llm_gpu_kernels/attention_split_holdout.py": "46b85d91dd915151f9e2619b4e2c1a3092aa775b90f74c49d30eb62cdb7a970c",
+    "src/llm_gpu_kernels/attention_segmented.py": "e72702f5def4df841fba274af87d22efa72e260a19617316dcadc22cae4768cb",
+    "src/llm_gpu_kernels/attention_segmented_benchmark.py": "5961ef2f74fd94a7d6a973edcf471e3a7377ecaa2a040265848d796e7a47a0b4",
+    "src/llm_gpu_kernels/attention_baseline.py": "56064a0328cc0873d6468776e06b959fdff53feaba308c59ea0b99444b2e9438",
+    "src/llm_gpu_kernels/attention_baseline_benchmark.py": "15a88dd4277d9978356bc314c75371a0921ab2930698dbbac01d2019c1ea866e",
+    "src/llm_gpu_kernels/attention_unified.py": "2dc32701e6f9c9869831e50395a16b0b8db0462c374e7de981e326ad68f99fc8",
+    "src/llm_gpu_kernels/attention_unified_policy.py": "d80eb69131f0e70a95f480de58b31f60ebd17f44942afcc2e08a860ba6c828cc",
+    "src/llm_gpu_kernels/attention_unified_tuning.py": "e0e38672bc1968ba266144d5f58f9ef1bc56aa5d2f4e51c1d849b1ffb1019ca7",
+    "src/llm_gpu_kernels/moe_prepared.py": "7b52ecf4234d6385d1a4e104b5a01656786571aa29d5ab2bad948589097acef8",
+    "src/llm_gpu_kernels/benchmark.py": "c3a12e68e37b09f62d7dd78d14738537074dc60b7a02e20c96e24d1923c565e4",
+    "docs/M12_NARROW_SPLIT_PLAN.md": "695cf7adcc7ee2d9d3aed1eb7b827b544aef41903516dc9307e009bce4da4ed5",
+    "src/llm_gpu_kernels/attention_narrow_policy.py": "6bfde4f11d87ba82fddede5b1c8c124f79e8efe27788104543300621e4058906",
+    "src/llm_gpu_kernels/attention_narrow_tuning.py": "7d0b2aba3f8e2ac6e86e2b4817b8717026a79b7a27d0bdb42ffa4f9700165b7c",
+    "src/llm_gpu_kernels/attention_narrow_holdout.py": "885a5099718412464f08e86845619f6796cab2f4db83d70d75070a347373dfa3"
+  },
+  "runtime": {
+    "torch": "2.7.1+cu128",
+    "cuda_runtime": "12.8",
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "fa2": {
+      "provenance": {
+        "schema": 1,
+        "version": "2.8.3.post1",
+        "tag": "v2.8.3.post1",
+        "tag_commit_short": "a8aa52b",
+        "runtime_path": "/home/tmz/ai/baselines/flash-attention-2.8.3.post1",
+        "wheel_name": "flash_attn-2.8.3.post1+cu12torch2.7cxx11abiTRUE-cp312-cp312-linux_x86_64.whl",
+        "official_wheel_url": "https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3.post1/flash_attn-2.8.3.post1%2Bcu12torch2.7cxx11abiTRUE-cp312-cp312-linux_x86_64.whl",
+        "official_release_api": "https://api.github.com/repos/Dao-AILab/flash-attention/releases/tags/v2.8.3.post1",
+        "official_release_asset_digest": "sha256:f87164bb919f5597cb94f7485196be6ac7842b71d7bf8e9f8e9133b9045ab5ea",
+        "wheel_sha256_verified": "f87164bb919f5597cb94f7485196be6ac7842b71d7bf8e9f8e9133b9045ab5ea",
+        "official_files_verified_count": 86,
+        "all_upstream_package_files_match_wheel": true,
+        "dependencies": {
+          "einops": "0.8.2"
+        },
+        "torch": "project .venv 2.7.1+cu128; not installed in overlay",
+        "scope": "FA2 public operator baseline; no source patches",
+        "wheel_build_version": "2.8.3.post1+cu12torch2.7cxx11abitrue"
+      },
+      "provenance_sha256": "500136ecc2bfa9385e573b38da27a26506ff42dacc7673ef322d6eb79a616780",
+      "imported_module_path": "/home/tmz/ai/baselines/flash-attention-2.8.3.post1/flash_attn/__init__.py",
+      "actual_distribution_version": "2.8.3.post1",
+      "runtime_path": "/home/tmz/ai/baselines/flash-attention-2.8.3.post1"
+    }
+  },
+  "limits": {
+    "relative_rms": 0.008,
+    "normalized_max": 0.008
+  },
+  "functional": {
+    "config": {
+      "token_tile": 16,
+      "key_tile": 64,
+      "head_group": 4,
+      "warps": 8,
+      "stages": 2,
+      "splits": 2
+    },
+    "status": "passed",
+    "cases": [
+      {
+        "name": "empty_history",
+        "config": {
+          "token_tile": 16,
+          "key_tile": 64,
+          "head_group": 4,
+          "warps": 8,
+          "stages": 2,
+          "splits": 2
+        },
+        "tokens": 7,
+        "lengths": [
+          0,
+          0,
+          0,
+          7
+        ],
+        "status": "passed",
+        "vs_fp32": {
+          "relative_rms": 0.0015594058204442263,
+          "normalized_max": 0.0023443603422492743,
+          "max_abs": 0.008241891860961914,
+          "finite": true,
+          "passed": true
+        },
+        "vs_fa2": {
+          "relative_rms": 0.0,
+          "normalized_max": 0.0,
+          "max_abs": 0.0,
+          "finite": true,
+          "passed": true
+        },
+        "resources": {
+          "registers": 185,
+          "spills": 0,
+          "shared_memory_bytes": 57344
+        },
+        "empty_no_launch": false,
+        "input_hash_preserved": true
+      },
+      {
+        "name": "segment_tails",
+        "config": {
+          "token_tile": 16,
+          "key_tile": 64,
+          "head_group": 4,
+          "warps": 8,
+          "stages": 2,
+          "splits": 2
+        },
+        "tokens": 17,
+        "lengths": [
+          5,
+          4,
+          7,
+          17
+        ],
+        "status": "passed",
+        "vs_fp32": {
+          "relative_rms": 0.0020578978583216667,
+          "normalized_max": 0.002821447094902396,
+          "max_abs": 0.0051326751708984375,
+          "finite": true,
+          "passed": true
+        },
+        "vs_fa2": {
+          "relative_rms": 0.0,
+          "normalized_max": 0.0,
+          "max_abs": 0.0,
+          "finite": true,
+          "passed": true
+        },
+        "resources": {
+          "registers": 201,
+          "spills": 0,
+          "shared_memory_bytes": 57344
+        },
+        "empty_no_launch": false,
+        "input_hash_preserved": true
+      },
+      {
+        "name": "extreme_logits",
+        "config": {
+          "token_tile": 16,
+          "key_tile": 64,
+          "head_group": 4,
+          "warps": 8,
+          "stages": 2,
+          "splits": 2
+        },
+        "tokens": 5,
+        "lengths": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "status": "passed",
+        "vs_fp32": {
+          "relative_rms": 7.24875062587671e-05,
+          "normalized_max": 0.0007832068367861211,
+          "max_abs": 0.0032062530517578125,
+          "finite": true,
+          "passed": true
+        },
+        "vs_fa2": {
+          "relative_rms": 0.0,
+          "normalized_max": 0.0,
+          "max_abs": 0.0,
+          "finite": true,
+          "passed": true
+        },
+        "resources": {
+          "registers": 219,
+          "spills": 0,
+          "shared_memory_bytes": 57344
+        },
+        "empty_no_launch": false,
+        "input_hash_preserved": true
+      },
+      {
+        "name": "gqa_head_mapping",
+        "config": {
+          "token_tile": 16,
+          "key_tile": 64,
+          "head_group": 4,
+          "warps": 8,
+          "stages": 2,
+          "splits": 2
+        },
+        "tokens": 6,
+        "lengths": [
+          3,
+          2,
+          5,
+          6
+        ],
+        "status": "passed",
+        "vs_fp32": {
+          "relative_rms": 4.772054396084968e-08,
+          "normalized_max": 1.0596379951266499e-07,
+          "max_abs": 7.62939453125e-06,
+          "finite": true,
+          "passed": true
+        },
+        "vs_fa2": {
+          "relative_rms": 0.0,
+          "normalized_max": 0.0,
+          "max_abs": 0.0,
+          "finite": true,
+          "passed": true
+        },
+        "resources": {
+          "registers": 219,
+          "spills": 0,
+          "shared_memory_bytes": 57344
+        },
+        "empty_no_launch": false,
+        "input_hash_preserved": true
+      },
+      {
+        "name": "empty_query",
+        "config": {
+          "token_tile": 16,
+          "key_tile": 64,
+          "head_group": 4,
+          "warps": 8,
+          "stages": 2,
+          "splits": 2
+        },
+        "tokens": 0,
+        "lengths": [
+          3,
+          4,
+          5,
+          0
+        ],
+        "status": "passed",
+        "vs_fp32": {
+          "relative_rms": 0.0,
+          "normalized_max": 0.0,
+          "max_abs": 0.0,
+          "finite": true,
+          "empty": true,
+          "passed": true
+        },
+        "vs_fa2": {
+          "relative_rms": 0.0,
+          "normalized_max": 0.0,
+          "max_abs": 0.0,
+          "finite": true,
+          "empty": true,
+          "passed": true
+        },
+        "resources": null,
+        "empty_no_launch": true,
+        "input_hash_preserved": true
+      },
+      {
+        "name": "tile_boundary",
+        "config": {
+          "token_tile": 16,
+          "key_tile": 64,
+          "head_group": 4,
+          "warps": 8,
+          "stages": 2,
+          "splits": 2
+        },
+        "tokens": 65,
+        "lengths": [
+          33,
+          17,
+          41,
+          65
+        ],
+        "status": "passed",
+        "vs_fp32": {
+          "relative_rms": 0.002092131646350026,
+          "normalized_max": 0.002435300499200821,
+          "max_abs": 0.0031636953353881836,
+          "finite": true,
+          "passed": true
+        },
+        "vs_fa2": {
+          "relative_rms": 0.0016551150474697351,
+          "normalized_max": 0.0030120480805635452,
+          "max_abs": 0.00390625,
+          "finite": true,
+          "passed": true
+        },
+        "resources": {
+          "registers": 219,
+          "spills": 0,
+          "shared_memory_bytes": 57344
+        },
+        "empty_no_launch": false,
+        "input_hash_preserved": true
+      },
+      {
+        "name": "empty_history_17",
+        "config": {
+          "token_tile": 16,
+          "key_tile": 64,
+          "head_group": 4,
+          "warps": 8,
+          "stages": 2,
+          "splits": 2
+        },
+        "tokens": 17,
+        "lengths": [
+          0,
+          0,
+          0,
+          17
+        ],
+        "status": "passed",
+        "vs_fp32": {
+          "relative_rms": 0.0016839576419442892,
+          "normalized_max": 0.002350296825170517,
+          "max_abs": 0.008850336074829102,
+          "finite": true,
+          "passed": true
+        },
+        "vs_fa2": {
+          "relative_rms": 3.4292572763661155e-06,
+          "normalized_max": 0.0001296680566156283,
+          "max_abs": 0.00048828125,
+          "finite": true,
+          "passed": true
+        },
+        "resources": {
+          "registers": 198,
+          "spills": 0,
+          "shared_memory_bytes": 57344
+        },
+        "empty_no_launch": false,
+        "input_hash_preserved": true
+      },
+      {
+        "name": "short_tails_63",
+        "config": {
+          "token_tile": 16,
+          "key_tile": 64,
+          "head_group": 4,
+          "warps": 8,
+          "stages": 2,
+          "splits": 2
+        },
+        "tokens": 63,
+        "lengths": [
+          1,
+          5,
+          7,
+          63
+        ],
+        "status": "passed",
+        "vs_fp32": {
+          "relative_rms": 0.0020460044033825397,
+          "normalized_max": 0.002847108291462064,
+          "max_abs": 0.005005598068237305,
+          "finite": true,
+          "passed": true
+        },
+        "vs_fa2": {
+          "relative_rms": 0.00026222181622870266,
+          "normalized_max": 0.002222222276031971,
+          "max_abs": 0.00390625,
+          "finite": true,
+          "passed": true
+        },
+        "resources": {
+          "registers": 220,
+          "spills": 0,
+          "shared_memory_bytes": 57344
+        },
+        "empty_no_launch": false,
+        "input_hash_preserved": true
+      },
+      {
+        "name": "cross_key_tile_65",
+        "config": {
+          "token_tile": 16,
+          "key_tile": 64,
+          "head_group": 4,
+          "warps": 8,
+          "stages": 2,
+          "splits": 2
+        },
+        "tokens": 65,
+        "lengths": [
+          3,
+          17,
+          5,
+          65
+        ],
+        "status": "passed",
+        "vs_fp32": {
+          "relative_rms": 0.0020715619903057814,
+          "normalized_max": 0.002874430501833558,
+          "max_abs": 0.004660964012145996,
+          "finite": true,
+          "passed": true
+        },
+        "vs_fa2": {
+          "relative_rms": 0.0005640506860800087,
+          "normalized_max": 0.0024038462433964014,
+          "max_abs": 0.00390625,
+          "finite": true,
+          "passed": true
+        },
+        "resources": {
+          "registers": 244,
+          "spills": 0,
+          "shared_memory_bytes": 57344
+        },
+        "empty_no_launch": false,
+        "input_hash_preserved": true
+      },
+      {
+        "name": "causal_boundary",
+        "config": {
+          "token_tile": 16,
+          "key_tile": 64,
+          "head_group": 4,
+          "warps": 8,
+          "stages": 2,
+          "splits": 2
+        },
+        "tokens": 9,
+        "lengths": [
+          2,
+          3,
+          5,
+          9
+        ],
+        "status": "passed",
+        "vs_fp32": {
+          "relative_rms": 0.0,
+          "normalized_max": 0.0,
+          "max_abs": 0.0,
+          "finite": true,
+          "passed": true
+        },
+        "vs_fa2": {
+          "relative_rms": 0.0,
+          "normalized_max": 0.0,
+          "max_abs": 0.0,
+          "finite": true,
+          "passed": true
+        },
+        "resources": {
+          "registers": 201,
+          "spills": 0,
+          "shared_memory_bytes": 57344
+        },
+        "empty_no_launch": false,
+        "input_hash_preserved": true
+      },
+      {
+        "name": "extreme_logits_9",
+        "config": {
+          "token_tile": 16,
+          "key_tile": 64,
+          "head_group": 4,
+          "warps": 8,
+          "stages": 2,
+          "splits": 2
+        },
+        "tokens": 9,
+        "lengths": [
+          2,
+          3,
+          5,
+          9
+        ],
+        "status": "passed",
+        "vs_fp32": {
+          "relative_rms": 0.00012052573583787307,
+          "normalized_max": 0.001418286468833685,
+          "max_abs": 0.005628824234008789,
+          "finite": true,
+          "passed": true
+        },
+        "vs_fa2": {
+          "relative_rms": 0.0,
+          "normalized_max": 0.0,
+          "max_abs": 0.0,
+          "finite": true,
+          "passed": true
+        },
+        "resources": {
+          "registers": 201,
+          "spills": 0,
+          "shared_memory_bytes": 57344
+        },
+        "empty_no_launch": false,
+        "input_hash_preserved": true
+      },
+      {
+        "name": "gqa_head_mapping_5",
+        "config": {
+          "token_tile": 16,
+          "key_tile": 64,
+          "head_group": 4,
+          "warps": 8,
+          "stages": 2,
+          "splits": 2
+        },
+        "tokens": 5,
+        "lengths": [
+          2,
+          2,
+          2,
+          5
+        ],
+        "status": "passed",
+        "vs_fp32": {
+          "relative_rms": 4.059670288825146e-08,
+          "normalized_max": 1.0596379951266499e-07,
+          "max_abs": 7.62939453125e-06,
+          "finite": true,
+          "passed": true
+        },
+        "vs_fa2": {
+          "relative_rms": 0.0,
+          "normalized_max": 0.0,
+          "max_abs": 0.0,
+          "finite": true,
+          "passed": true
+        },
+        "resources": {
+          "registers": 200,
+          "spills": 0,
+          "shared_memory_bytes": 57344
+        },
+        "empty_no_launch": false,
+        "input_hash_preserved": true
+      }
+    ],
+    "graph_updates": [
+      {
+        "update": 0,
+        "status": "passed",
+        "updated_hash": "a29ded1bd7b8abfa17b9e6ee10c452aa3b81804837c91324981bab1c27f1cd14",
+        "side_stream_vs_fp32": {
+          "relative_rms": 0.0020079859532415867,
+          "normalized_max": 0.0024806945584714413,
+          "max_abs": 0.005048394203186035,
+          "finite": true,
+          "passed": true
+        },
+        "graph_vs_fp32": {
+          "relative_rms": 0.0020079859532415867,
+          "normalized_max": 0.0024806945584714413,
+          "max_abs": 0.005048394203186035,
+          "finite": true,
+          "passed": true
+        }
+      },
+      {
+        "update": 1,
+        "status": "passed",
+        "updated_hash": "6a027c20e71a449469c5444df6d115179b8e59320a460877c0a8ed9bb17490b5",
+        "side_stream_vs_fp32": {
+          "relative_rms": 0.001989370910450816,
+          "normalized_max": 0.002053044270724058,
+          "max_abs": 0.004776597023010254,
+          "finite": true,
+          "passed": true
+        },
+        "graph_vs_fp32": {
+          "relative_rms": 0.001989370910450816,
+          "normalized_max": 0.002053044270724058,
+          "max_abs": 0.004776597023010254,
+          "finite": true,
+          "passed": true
+        }
+      }
+    ],
+    "phase": "graph_restore",
+    "original_hash": "0f7a9d4efab9bd4a977e4379c0b72752a60101bf0f072b3b26ae168ca4cb101c",
+    "restored_hash": "0f7a9d4efab9bd4a977e4379c0b72752a60101bf0f072b3b26ae168ca4cb101c",
+    "restored_vs_fp32": {
+      "relative_rms": 0.0019992701709270477,
+      "normalized_max": 0.0024199788458645344,
+      "max_abs": 0.005262851715087891,
+      "finite": true,
+      "passed": true
+    },
+    "passed": true
+  },
+  "cases": [
+    {
+      "T": 24,
+      "selected_history": 257,
+      "status": "passed",
+      "telemetry_before": {
+        "returncode": 0,
+        "stdout": "595.91.07, 41, 30.70 W, 1545 MHz, 7001 MHz, 265 MiB",
+        "stderr": ""
+      },
+      "passed": true,
+      "input_sha256": "bbb0a6b3ecfbd27484bacb8884639cebeddf980a0c4f898f2fbe2c9aa1eb7efa",
+      "config": {
+        "token_tile": 16,
+        "key_tile": 64,
+        "head_group": 4,
+        "warps": 8,
+        "stages": 2,
+        "splits": 2
+      },
+      "initial_vs_fp32": {
+        "fa2_baseline": {
+          "relative_rms": 0.0022028826642781496,
+          "normalized_max": 0.0034857727587223053,
+          "max_abs": 0.0010039806365966797,
+          "finite": true,
+          "passed": true
+        },
+        "split_candidate": {
+          "relative_rms": 0.0022014679852873087,
+          "normalized_max": 0.003295383881777525,
+          "max_abs": 0.0009491443634033203,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "initial_graph_vs_fp32": {
+        "fa2_baseline": {
+          "relative_rms": 0.0022028826642781496,
+          "normalized_max": 0.0034857727587223053,
+          "max_abs": 0.0010039806365966797,
+          "finite": true,
+          "passed": true
+        },
+        "split_candidate": {
+          "relative_rms": 0.0022014679852873087,
+          "normalized_max": 0.003295383881777525,
+          "max_abs": 0.0009491443634033203,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "post_api_vs_fp32": {
+        "fa2_baseline": {
+          "relative_rms": 0.0022028826642781496,
+          "normalized_max": 0.0034857727587223053,
+          "max_abs": 0.0010039806365966797,
+          "finite": true,
+          "passed": true
+        },
+        "split_candidate": {
+          "relative_rms": 0.0022014679852873087,
+          "normalized_max": 0.003295383881777525,
+          "max_abs": 0.0009491443634033203,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "post_graph_vs_fp32": {
+        "fa2_baseline": {
+          "relative_rms": 0.0022028826642781496,
+          "normalized_max": 0.0034857727587223053,
+          "max_abs": 0.0010039806365966797,
+          "finite": true,
+          "passed": true
+        },
+        "split_candidate": {
+          "relative_rms": 0.0022014679852873087,
+          "normalized_max": 0.003295383881777525,
+          "max_abs": 0.0009491443634033203,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "graph": {
+        "rounds": [
+          {
+            "order": [
+              "fa2_baseline",
+              "split_candidate"
+            ],
+            "event_ms_per_forward": {
+              "fa2_baseline": [
+                0.07123199850320816,
+                0.07129599899053574,
+                0.07110399752855301,
+                0.07103999704122543,
+                0.07116799801588058,
+                0.07116799801588058,
+                0.07103999704122543,
+                0.07110399752855301
+              ],
+              "split_candidate": [
+                0.045504000037908554,
+                0.04556800052523613,
+                0.045632001012563705,
+                0.045618001371622086,
+                0.04556800052523613,
+                0.04556800052523613,
+                0.04582199826836586,
+                0.045504000037908554
+              ]
+            },
+            "wall_ms_per_forward": {
+              "fa2_baseline": [
+                0.07269418756550294,
+                0.07208324996099691,
+                0.07184218748079729,
+                0.07175937480496941,
+                0.07184275000327034,
+                0.07182293734331324,
+                0.07173718745434599,
+                0.07181749992923869
+              ],
+              "split_candidate": [
+                0.046235750005507725,
+                0.04624318762580515,
+                0.04629081263374246,
+                0.04624687494469981,
+                0.046221562570281094,
+                0.04630550006368139,
+                0.04646274987862853,
+                0.04615206239577674
+              ]
+            }
+          },
+          {
+            "order": [
+              "split_candidate",
+              "fa2_baseline"
+            ],
+            "event_ms_per_forward": {
+              "split_candidate": [
+                0.045504000037908554,
+                0.04562800005078316,
+                0.045823998749256134,
+                0.045632001012563705,
+                0.04614400118589401,
+                0.045566000044345856,
+                0.045632001012563705,
+                0.04569600149989128
+              ],
+              "fa2_baseline": [
+                0.07116799801588058,
+                0.07097599655389786,
+                0.07103200256824493,
+                0.07116799801588058,
+                0.07109200209379196,
+                0.07143200188875198,
+                0.07103999704122543,
+                0.07097599655389786
+              ]
+            },
+            "wall_ms_per_forward": {
+              "split_candidate": [
+                0.0462258124116488,
+                0.04629099998965103,
+                0.0465003124645591,
+                0.046271999963209964,
+                0.04686881243287644,
+                0.04623781251211767,
+                0.046282187668111874,
+                0.04634131255443208
+              ],
+              "fa2_baseline": [
+                0.07184593755482638,
+                0.07160281234064314,
+                0.07169393734329788,
+                0.07181981231951795,
+                0.07177431234595133,
+                0.07213431240415957,
+                0.07165431247813103,
+                0.07160718746490602
+              ]
+            }
+          },
+          {
+            "order": [
+              "split_candidate",
+              "fa2_baseline"
+            ],
+            "event_ms_per_forward": {
+              "split_candidate": [
+                0.04543999955058098,
+                0.0453759990632534,
+                0.0453759990632534,
+                0.04569600149989128,
+                0.045632001012563705,
+                0.045834001153707504,
+                0.04569600149989128,
+                0.045504000037908554
+              ],
+              "fa2_baseline": [
+                0.07110399752855301,
+                0.07110399752855301,
+                0.07135199755430222,
+                0.07123199850320816,
+                0.07122000306844711,
+                0.07109799981117249,
+                0.07109799981117249,
+                0.07110399752855301
+              ]
+            },
+            "wall_ms_per_forward": {
+              "split_candidate": [
+                0.0460956248389266,
+                0.04608099993674841,
+                0.046020812305869185,
+                0.046394312448683195,
+                0.046270999973785365,
+                0.0464964375623822,
+                0.046325687662829296,
+                0.04613787496055011
+              ],
+              "fa2_baseline": [
+                0.07175256246227946,
+                0.07198093749138934,
+                0.07254318734339904,
+                0.07234706254166667,
+                0.07193224996626668,
+                0.07173600010901282,
+                0.07177331235652673,
+                0.0718138749107311
+              ]
+            }
+          },
+          {
+            "order": [
+              "fa2_baseline",
+              "split_candidate"
+            ],
+            "event_ms_per_forward": {
+              "fa2_baseline": [
+                0.07116799801588058,
+                0.07091200351715088,
+                0.07103999704122543,
+                0.07103999704122543,
+                0.07103999704122543,
+                0.07103999704122543,
+                0.07110399752855301,
+                0.07116799801588058
+              ],
+              "split_candidate": [
+                0.045504000037908554,
+                0.04568000137805939,
+                0.04543999955058098,
+                0.04575999826192856,
+                0.04569600149989128,
+                0.04569600149989128,
+                0.04562599956989288,
+                0.04549400135874748
+              ]
+            },
+            "wall_ms_per_forward": {
+              "fa2_baseline": [
+                0.07188868744378851,
+                0.07170193748606835,
+                0.0717486250323418,
+                0.07168193747020268,
+                0.07171168749664503,
+                0.07178850000855164,
+                0.07178831265264307,
+                0.07182700005614606
+              ],
+              "split_candidate": [
+                0.04615362513504806,
+                0.046280187461889,
+                0.04606787501870713,
+                0.046378437446037424,
+                0.04633831258615828,
+                0.046364875061044586,
+                0.04623606264431146,
+                0.04612462498698733
+              ]
+            }
+          }
+        ],
+        "samples_per_round": 8,
+        "calls_per_sample": 2,
+        "forwards_per_call": 8,
+        "summary": {
+          "fa2_baseline": {
+            "event_p50_ms_per_forward": 0.07110399752855301,
+            "event_p95_ms_per_forward": 0.07132119834423065,
+            "wall_p50_ms_per_forward": 0.07180118745964137,
+            "wall_p95_ms_per_forward": 0.07243531870244624
+          },
+          "split_candidate": {
+            "event_p50_ms_per_forward": 0.04562699981033802,
+            "event_p95_ms_per_forward": 0.04582849983125925,
+            "wall_p50_ms_per_forward": 0.046271499968497665,
+            "wall_p95_ms_per_forward": 0.046498181268361805
+          }
+        },
+        "wall_scope": "synchronized end-to-end sample including event creation and dispatch, not isolated host launch"
+      },
+      "ratio_over_fa2": 0.6416938765224238,
+      "partial_resources": {
+        "registers": 201,
+        "spills": 0,
+        "shared_memory_bytes": 57344
+      },
+      "merge_resources": {
+        "registers": 40,
+        "spills": 0,
+        "shared_memory_bytes": 4096
+      },
+      "scratch_bytes": 798720,
+      "owned_output_and_scratch_bytes": 995328,
+      "telemetry_after": {
+        "returncode": 0,
+        "stdout": "595.91.07, 42, 32.24 W, 1545 MHz, 7001 MHz, 289 MiB",
+        "stderr": ""
+      }
+    },
+    {
+      "T": 24,
+      "selected_history": 1537,
+      "status": "passed",
+      "telemetry_before": {
+        "returncode": 0,
+        "stdout": "595.91.07, 42, 49.32 W, 1545 MHz, 7001 MHz, 257 MiB",
+        "stderr": ""
+      },
+      "passed": true,
+      "input_sha256": "7d0f04db36bfdb60d1058503377c10c253a71053f62000e0c36bbc24c7f66143",
+      "config": {
+        "token_tile": 16,
+        "key_tile": 64,
+        "head_group": 4,
+        "warps": 8,
+        "stages": 2,
+        "splits": 2
+      },
+      "initial_vs_fp32": {
+        "fa2_baseline": {
+          "relative_rms": 0.002196979708969593,
+          "normalized_max": 0.0027364850975573063,
+          "max_abs": 0.0005213767290115356,
+          "finite": true,
+          "passed": true
+        },
+        "split_candidate": {
+          "relative_rms": 0.002219501882791519,
+          "normalized_max": 0.0029538304079324007,
+          "max_abs": 0.0005627870559692383,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "initial_graph_vs_fp32": {
+        "fa2_baseline": {
+          "relative_rms": 0.002196979708969593,
+          "normalized_max": 0.0027364850975573063,
+          "max_abs": 0.0005213767290115356,
+          "finite": true,
+          "passed": true
+        },
+        "split_candidate": {
+          "relative_rms": 0.002219501882791519,
+          "normalized_max": 0.0029538304079324007,
+          "max_abs": 0.0005627870559692383,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "post_api_vs_fp32": {
+        "fa2_baseline": {
+          "relative_rms": 0.002196979708969593,
+          "normalized_max": 0.0027364850975573063,
+          "max_abs": 0.0005213767290115356,
+          "finite": true,
+          "passed": true
+        },
+        "split_candidate": {
+          "relative_rms": 0.002219501882791519,
+          "normalized_max": 0.0029538304079324007,
+          "max_abs": 0.0005627870559692383,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "post_graph_vs_fp32": {
+        "fa2_baseline": {
+          "relative_rms": 0.002196979708969593,
+          "normalized_max": 0.0027364850975573063,
+          "max_abs": 0.0005213767290115356,
+          "finite": true,
+          "passed": true
+        },
+        "split_candidate": {
+          "relative_rms": 0.002219501882791519,
+          "normalized_max": 0.0029538304079324007,
+          "max_abs": 0.0005627870559692383,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "graph": {
+        "rounds": [
+          {
+            "order": [
+              "fa2_baseline",
+              "split_candidate"
+            ],
+            "event_ms_per_forward": {
+              "fa2_baseline": [
+                0.1335040032863617,
+                0.13363200426101685,
+                0.13337600231170654,
+                0.1332480013370514,
+                0.13330599665641785,
+                0.1334960013628006,
+                0.1335040032863617,
+                0.13337600231170654
+              ],
+              "split_candidate": [
+                0.09600000083446503,
+                0.09638399630784988,
+                0.0963200032711029,
+                0.0963200032711029,
+                0.09637799859046936,
+                0.09644799679517746,
+                0.09619200229644775,
+                0.09623800218105316
+              ]
+            },
+            "wall_ms_per_forward": {
+              "fa2_baseline": [
+                0.1348732500900951,
+                0.13434856236926862,
+                0.13403737489170453,
+                0.13393893755164754,
+                0.13392312507676252,
+                0.13412625003184075,
+                0.13418875005299924,
+                0.1340498749868857
+              ],
+              "split_candidate": [
+                0.09670681265561143,
+                0.09707899994282343,
+                0.09696818756310677,
+                0.09704756257633562,
+                0.09702450006443541,
+                0.09709118762657454,
+                0.09686318753665546,
+                0.09691606260275876
+              ]
+            }
+          },
+          {
+            "order": [
+              "split_candidate",
+              "fa2_baseline"
+            ],
+            "event_ms_per_forward": {
+              "split_candidate": [
+                0.09651199728250504,
+                0.0963200032711029,
+                0.09625600278377533,
+                0.09619200229644775,
+                0.09623999893665314,
+                0.09625600278377533,
+                0.09676799923181534,
+                0.09651199728250504
+              ],
+              "fa2_baseline": [
+                0.13356800377368927,
+                0.13369600474834442,
+                0.1336279958486557,
+                0.13343599438667297,
+                0.1332480013370514,
+                0.13344000279903412,
+                0.13336199522018433,
+                0.13324600458145142
+              ]
+            },
+            "wall_ms_per_forward": {
+              "split_candidate": [
+                0.09719424997456372,
+                0.0970189373674657,
+                0.09697531254460046,
+                0.09685493751021568,
+                0.09688975001154176,
+                0.09770606243364455,
+                0.09839337508310564,
+                0.09739224992699747
+              ],
+              "fa2_baseline": [
+                0.13461981234286213,
+                0.1350191873825679,
+                0.13444881255963992,
+                0.13414718750937027,
+                0.13409531243269157,
+                0.1342773748547188,
+                0.1339904999895225,
+                0.13388281240622746
+              ]
+            }
+          },
+          {
+            "order": [
+              "split_candidate",
+              "fa2_baseline"
+            ],
+            "event_ms_per_forward": {
+              "split_candidate": [
+                0.09644799679517746,
+                0.09638399630784988,
+                0.09625600278377533,
+                0.09619200229644775,
+                0.09651199728250504,
+                0.09612400084733963,
+                0.09657000005245209,
+                0.09638399630784988
+              ],
+              "fa2_baseline": [
+                0.13344000279903412,
+                0.13363200426101685,
+                0.13331200182437897,
+                0.13414399325847626,
+                0.13331200182437897,
+                0.13336999714374542,
+                0.1332480013370514,
+                0.13369600474834442
+              ]
+            },
+            "wall_ms_per_forward": {
+              "split_candidate": [
+                0.09713456256577047,
+                0.0970623125340353,
+                0.09693781248643063,
+                0.09687300007499289,
+                0.09719262493490533,
+                0.09681418760010274,
+                0.09720031243887206,
+                0.09705825004857616
+              ],
+              "fa2_baseline": [
+                0.13417562490758428,
+                0.1342949376521574,
+                0.13440043744594732,
+                0.13633612502417236,
+                0.13402462491285405,
+                0.13403768753050826,
+                0.13395962491813407,
+                0.13433981234811654
+              ]
+            }
+          },
+          {
+            "order": [
+              "fa2_baseline",
+              "split_candidate"
+            ],
+            "event_ms_per_forward": {
+              "fa2_baseline": [
+                0.13369600474834442,
+                0.13356800377368927,
+                0.13355399668216705,
+                0.13331200182437897,
+                0.1335040032863617,
+                0.1332480013370514,
+                0.13337600231170654,
+                0.13331200182437897
+              ],
+              "split_candidate": [
+                0.09636999666690826,
+                0.09619200229644775,
+                0.09644400328397751,
+                0.09651199728250504,
+                0.09638199955224991,
+                0.09643399715423584,
+                0.09644799679517746,
+                0.09643799811601639
+              ]
+            },
+            "wall_ms_per_forward": {
+              "fa2_baseline": [
+                0.1343495625860669,
+                0.13423125005829206,
+                0.13420306254374736,
+                0.13401081241681823,
+                0.13419512492873764,
+                0.133911937382436,
+                0.13405812501332548,
+                0.13400600005297747
+              ],
+              "split_candidate": [
+                0.09700962505121424,
+                0.0968326876318315,
+                0.09703587511467049,
+                0.0971294373357523,
+                0.09705006232252344,
+                0.09711481266094779,
+                0.0971230624600139,
+                0.09709024993753701
+              ]
+            }
+          }
+        ],
+        "samples_per_round": 8,
+        "calls_per_sample": 2,
+        "forwards_per_call": 8,
+        "summary": {
+          "fa2_baseline": {
+            "event_p50_ms_per_forward": 0.13343799859285355,
+            "event_p95_ms_per_forward": 0.13369600474834442,
+            "wall_p50_ms_per_forward": 0.13416140620847727,
+            "wall_p95_ms_per_forward": 0.13493892187170786
+          },
+          "split_candidate": {
+            "event_p50_ms_per_forward": 0.09637999907135963,
+            "event_p95_ms_per_forward": 0.09653809852898121,
+            "wall_p50_ms_per_forward": 0.09704881244942953,
+            "wall_p95_ms_per_forward": 0.09753346555498865
+          }
+        },
+        "wall_scope": "synchronized end-to-end sample including event creation and dispatch, not isolated host launch"
+      },
+      "ratio_over_fa2": 0.7222830084962125,
+      "partial_resources": {
+        "registers": 201,
+        "spills": 0,
+        "shared_memory_bytes": 57344
+      },
+      "merge_resources": {
+        "registers": 40,
+        "spills": 0,
+        "shared_memory_bytes": 4096
+      },
+      "scratch_bytes": 798720,
+      "owned_output_and_scratch_bytes": 995328,
+      "telemetry_after": {
+        "returncode": 0,
+        "stdout": "595.91.07, 43, 42.52 W, 1545 MHz, 7001 MHz, 307 MiB",
+        "stderr": ""
+      }
+    },
+    {
+      "T": 56,
+      "selected_history": 257,
+      "status": "passed",
+      "telemetry_before": {
+        "returncode": 0,
+        "stdout": "595.91.07, 44, 42.52 W, 1545 MHz, 7001 MHz, 257 MiB",
+        "stderr": ""
+      },
+      "passed": true,
+      "input_sha256": "d830d00f355df66edd5e12a9f43036ff5e788988a156241d30e1f42f7e8b9bcf",
+      "config": {
+        "token_tile": 16,
+        "key_tile": 64,
+        "head_group": 4,
+        "warps": 8,
+        "stages": 2,
+        "splits": 2
+      },
+      "initial_vs_fp32": {
+        "fa2_baseline": {
+          "relative_rms": 0.00217900681309402,
+          "normalized_max": 0.003425809321925044,
+          "max_abs": 0.0011950433254241943,
+          "finite": true,
+          "passed": true
+        },
+        "split_candidate": {
+          "relative_rms": 0.002182506490498781,
+          "normalized_max": 0.0028465683571994305,
+          "max_abs": 0.0009929835796356201,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "initial_graph_vs_fp32": {
+        "fa2_baseline": {
+          "relative_rms": 0.00217900681309402,
+          "normalized_max": 0.003425809321925044,
+          "max_abs": 0.0011950433254241943,
+          "finite": true,
+          "passed": true
+        },
+        "split_candidate": {
+          "relative_rms": 0.002182506490498781,
+          "normalized_max": 0.0028465683571994305,
+          "max_abs": 0.0009929835796356201,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "post_api_vs_fp32": {
+        "fa2_baseline": {
+          "relative_rms": 0.00217900681309402,
+          "normalized_max": 0.003425809321925044,
+          "max_abs": 0.0011950433254241943,
+          "finite": true,
+          "passed": true
+        },
+        "split_candidate": {
+          "relative_rms": 0.002182506490498781,
+          "normalized_max": 0.0028465683571994305,
+          "max_abs": 0.0009929835796356201,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "post_graph_vs_fp32": {
+        "fa2_baseline": {
+          "relative_rms": 0.00217900681309402,
+          "normalized_max": 0.003425809321925044,
+          "max_abs": 0.0011950433254241943,
+          "finite": true,
+          "passed": true
+        },
+        "split_candidate": {
+          "relative_rms": 0.002182506490498781,
+          "normalized_max": 0.0028465683571994305,
+          "max_abs": 0.0009929835796356201,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "graph": {
+        "rounds": [
+          {
+            "order": [
+              "fa2_baseline",
+              "split_candidate"
+            ],
+            "event_ms_per_forward": {
+              "fa2_baseline": [
+                0.07878399640321732,
+                0.07462400197982788,
+                0.07475200295448303,
+                0.07449600100517273,
+                0.07475200295448303,
+                0.07737600058317184,
+                0.07487999647855759,
+                0.07481600344181061
+              ],
+              "split_candidate": [
+                0.08108799904584885,
+                0.08204799890518188,
+                0.08083199709653854,
+                0.08083199709653854,
+                0.08089599758386612,
+                0.0809599980711937,
+                0.08089599758386612,
+                0.08089599758386612
+              ]
+            },
+            "wall_ms_per_forward": {
+              "fa2_baseline": [
+                0.0871305001055589,
+                0.07575387508040876,
+                0.07603762492180977,
+                0.07527875004598172,
+                0.07853037504901295,
+                0.0837555000998691,
+                0.07655318745491968,
+                0.07684693741794035
+              ],
+              "split_candidate": [
+                0.08195268742383632,
+                0.08287006244245276,
+                0.0815725625216146,
+                0.08152825012075482,
+                0.08159837489074562,
+                0.08168749991455115,
+                0.08168462500179885,
+                0.08158300011018582
+              ]
+            }
+          },
+          {
+            "order": [
+              "split_candidate",
+              "fa2_baseline"
+            ],
+            "event_ms_per_forward": {
+              "split_candidate": [
+                0.08102399855852127,
+                0.0809599980711937,
+                0.08102399855852127,
+                0.08115199953317642,
+                0.08108799904584885,
+                0.08102399855852127,
+                0.08102399855852127,
+                0.08108799904584885
+              ],
+              "fa2_baseline": [
+                0.07474000006914139,
+                0.0745600014925003,
+                0.07449600100517273,
+                0.07462400197982788,
+                0.0745600014925003,
+                0.07462400197982788,
+                0.07448200136423111,
+                0.07443200051784515
+              ]
+            },
+            "wall_ms_per_forward": {
+              "split_candidate": [
+                0.08179149995157786,
+                0.08170731234713458,
+                0.08173618743967381,
+                0.08184406237887742,
+                0.08174762501766963,
+                0.08175706261681626,
+                0.08170331238943618,
+                0.08181581256394566
+              ],
+              "fa2_baseline": [
+                0.07547975019406294,
+                0.07519437508562987,
+                0.07517249991906283,
+                0.07529587514909508,
+                0.07526487502218515,
+                0.07533106258961197,
+                0.07534700012001849,
+                0.07511743751820177
+              ]
+            }
+          },
+          {
+            "order": [
+              "split_candidate",
+              "fa2_baseline"
+            ],
+            "event_ms_per_forward": {
+              "split_candidate": [
+                0.08140800148248672,
+                0.0809599980711937,
+                0.08076799660921097,
+                0.0809599980711937,
+                0.0809599980711937,
+                0.0809599980711937,
+                0.08095800131559372,
+                0.0809599980711937
+              ],
+              "fa2_baseline": [
+                0.07454799860715866,
+                0.07454600185155869,
+                0.07462400197982788,
+                0.07449600100517273,
+                0.07462400197982788,
+                0.07460600137710571,
+                0.07449600100517273,
+                0.07462400197982788
+              ]
+            },
+            "wall_ms_per_forward": {
+              "split_candidate": [
+                0.08215943762479583,
+                0.08164799987753213,
+                0.08146287518684403,
+                0.08167012492776848,
+                0.08166993734448624,
+                0.08177150016308588,
+                0.08160449988281471,
+                0.08158950004144572
+              ],
+              "fa2_baseline": [
+                0.07521518750763789,
+                0.07520887493228656,
+                0.07532412496402685,
+                0.07524018747062655,
+                0.07526312492700526,
+                0.07526006243097072,
+                0.07518681263718463,
+                0.07526975014116033
+              ]
+            }
+          },
+          {
+            "order": [
+              "fa2_baseline",
+              "split_candidate"
+            ],
+            "event_ms_per_forward": {
+              "fa2_baseline": [
+                0.07449600100517273,
+                0.07449600100517273,
+                0.07449600100517273,
+                0.0745600014925003,
+                0.07455000281333923,
+                0.07455399632453918,
+                0.0745600014925003,
+                0.07449600100517273
+              ],
+              "split_candidate": [
+                0.08076799660921097,
+                0.0813480019569397,
+                0.08083199709653854,
+                0.0809599980711937,
+                0.08089599758386612,
+                0.0808899998664856,
+                0.08082800358533859,
+                0.08089599758386612
+              ]
+            },
+            "wall_ms_per_forward": {
+              "fa2_baseline": [
+                0.07519550013057597,
+                0.07521781253672088,
+                0.07515674997193855,
+                0.0752713124256843,
+                0.07522056262132537,
+                0.07523718750235275,
+                0.07518918732785096,
+                0.07511806256843556
+              ],
+              "split_candidate": [
+                0.08146324989866116,
+                0.08204643745557405,
+                0.08150506232595944,
+                0.08161368759829202,
+                0.08153756243700627,
+                0.08155618729688285,
+                0.08151043743964692,
+                0.08151881229423452
+              ]
+            }
+          }
+        ],
+        "samples_per_round": 8,
+        "calls_per_sample": 2,
+        "forwards_per_call": 8,
+        "summary": {
+          "fa2_baseline": {
+            "event_p50_ms_per_forward": 0.0745600014925003,
+            "event_p95_ms_per_forward": 0.076003198325634,
+            "wall_p50_ms_per_forward": 0.07526399997459521,
+            "wall_p95_ms_per_forward": 0.08088168132189821
+          },
+          "split_candidate": {
+            "event_p50_ms_per_forward": 0.0809599980711937,
+            "event_p95_ms_per_forward": 0.08137500174343586,
+            "wall_p50_ms_per_forward": 0.08167003113612736,
+            "wall_p95_ms_per_forward": 0.08209728753172385
+          }
+        },
+        "wall_scope": "synchronized end-to-end sample including event creation and dispatch, not isolated host launch"
+      },
+      "ratio_over_fa2": 1.0858368622663874,
+      "partial_resources": {
+        "registers": 201,
+        "spills": 0,
+        "shared_memory_bytes": 57344
+      },
+      "merge_resources": {
+        "registers": 40,
+        "spills": 0,
+        "shared_memory_bytes": 4096
+      },
+      "scratch_bytes": 1863680,
+      "owned_output_and_scratch_bytes": 2322432,
+      "telemetry_after": {
+        "returncode": 0,
+        "stdout": "595.91.07, 42, 45.08 W, 1635 MHz, 7001 MHz, 291 MiB",
+        "stderr": ""
+      }
+    },
+    {
+      "T": 56,
+      "selected_history": 1537,
+      "status": "passed",
+      "telemetry_before": {
+        "returncode": 0,
+        "stdout": "595.91.07, 44, 45.08 W, 1635 MHz, 7001 MHz, 257 MiB",
+        "stderr": ""
+      },
+      "passed": true,
+      "input_sha256": "cecf31d49e71a3f6849fa74f842fb44c2099ea18472e1b363c1f5740edf9b7c5",
+      "config": {
+        "token_tile": 16,
+        "key_tile": 64,
+        "head_group": 4,
+        "warps": 8,
+        "stages": 2,
+        "splits": 2
+      },
+      "initial_vs_fp32": {
+        "fa2_baseline": {
+          "relative_rms": 0.0022255945950746536,
+          "normalized_max": 0.003117948304861784,
+          "max_abs": 0.0005829334259033203,
+          "finite": true,
+          "passed": true
+        },
+        "split_candidate": {
+          "relative_rms": 0.0022319520357996225,
+          "normalized_max": 0.003557665040716529,
+          "max_abs": 0.0006651431322097778,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "initial_graph_vs_fp32": {
+        "fa2_baseline": {
+          "relative_rms": 0.0022255945950746536,
+          "normalized_max": 0.003117948304861784,
+          "max_abs": 0.0005829334259033203,
+          "finite": true,
+          "passed": true
+        },
+        "split_candidate": {
+          "relative_rms": 0.0022319520357996225,
+          "normalized_max": 0.003557665040716529,
+          "max_abs": 0.0006651431322097778,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "post_api_vs_fp32": {
+        "fa2_baseline": {
+          "relative_rms": 0.0022255945950746536,
+          "normalized_max": 0.003117948304861784,
+          "max_abs": 0.0005829334259033203,
+          "finite": true,
+          "passed": true
+        },
+        "split_candidate": {
+          "relative_rms": 0.0022319520357996225,
+          "normalized_max": 0.003557665040716529,
+          "max_abs": 0.0006651431322097778,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "post_graph_vs_fp32": {
+        "fa2_baseline": {
+          "relative_rms": 0.0022255945950746536,
+          "normalized_max": 0.003117948304861784,
+          "max_abs": 0.0005829334259033203,
+          "finite": true,
+          "passed": true
+        },
+        "split_candidate": {
+          "relative_rms": 0.0022319520357996225,
+          "normalized_max": 0.003557665040716529,
+          "max_abs": 0.0006651431322097778,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "graph": {
+        "rounds": [
+          {
+            "order": [
+              "fa2_baseline",
+              "split_candidate"
+            ],
+            "event_ms_per_forward": {
+              "fa2_baseline": [
+                0.13285000622272491,
+                0.1327279955148697,
+                0.1325259953737259,
+                0.13228799402713776,
+                0.13228799402713776,
+                0.13222399353981018,
+                0.13279999792575836,
+                0.13234199583530426
+              ],
+              "split_candidate": [
+                0.16529999673366547,
+                0.16550399363040924,
+                0.16575999557971954,
+                0.1656319946050644,
+                0.16575999557971954,
+                0.16582000255584717,
+                0.1658879965543747,
+                0.16601400077342987
+              ]
+            },
+            "wall_ms_per_forward": {
+              "fa2_baseline": [
+                0.13596662483905675,
+                0.1341438751296664,
+                0.13335624998944695,
+                0.13306575010574306,
+                0.13302387515068403,
+                0.13308749998941494,
+                0.1337956875886448,
+                0.133090437429928
+              ],
+              "split_candidate": [
+                0.16598468755546492,
+                0.16617681239949889,
+                0.16649050007799815,
+                0.1663020000250981,
+                0.16710862496438494,
+                0.1665969375608256,
+                0.1665928748479928,
+                0.16665268731230753
+              ]
+            }
+          },
+          {
+            "order": [
+              "split_candidate",
+              "fa2_baseline"
+            ],
+            "event_ms_per_forward": {
+              "split_candidate": [
+                0.16601599752902985,
+                0.16582399606704712,
+                0.16569599509239197,
+                0.16575999557971954,
+                0.16587400436401367,
+                0.1656319946050644,
+                0.16581599414348602,
+                0.16582399606704712
+              ],
+              "fa2_baseline": [
+                0.13254199922084808,
+                0.13260799646377563,
+                0.13260799646377563,
+                0.1326719969511032,
+                0.13279999792575836,
+                0.1329279989004135,
+                0.13260799646377563,
+                0.13247999548912048
+              ]
+            },
+            "wall_ms_per_forward": {
+              "split_candidate": [
+                0.1667447500039998,
+                0.1665451875396684,
+                0.16636350005683198,
+                0.16651581245241687,
+                0.16661187487443385,
+                0.16639631257930887,
+                0.16653700004098937,
+                0.16652643739689665
+              ],
+              "fa2_baseline": [
+                0.13322937502380228,
+                0.1333401248757582,
+                0.1333810000687663,
+                0.13333106244317605,
+                0.1335215624749253,
+                0.13367906240091543,
+                0.13328399995771179,
+                0.13324243741408281
+              ]
+            }
+          },
+          {
+            "order": [
+              "split_candidate",
+              "fa2_baseline"
+            ],
+            "event_ms_per_forward": {
+              "split_candidate": [
+                0.16556799411773682,
+                0.16574999690055847,
+                0.1658879965543747,
+                0.16601599752902985,
+                0.16652800142765045,
+                0.16652800142765045,
+                0.166143998503685,
+                0.16600200533866882
+              ],
+              "fa2_baseline": [
+                0.1329279989004135,
+                0.13222399353981018,
+                0.13260799646377563,
+                0.13259799778461456,
+                0.13254399597644806,
+                0.13254399597644806,
+                0.13260799646377563,
+                0.13254399597644806
+              ]
+            },
+            "wall_ms_per_forward": {
+              "split_candidate": [
+                0.1663278123942291,
+                0.16646468748149346,
+                0.16662318739690818,
+                0.1672542498454277,
+                0.168267062463201,
+                0.1680584373389138,
+                0.1674608749908657,
+                0.16713568743398355
+              ],
+              "fa2_baseline": [
+                0.13412293742476322,
+                0.13310006238498318,
+                0.13340224995772587,
+                0.13328249997357489,
+                0.1332455624378781,
+                0.13321631240614806,
+                0.13330112506082514,
+                0.13321537517185789
+              ]
+            }
+          },
+          {
+            "order": [
+              "fa2_baseline",
+              "split_candidate"
+            ],
+            "event_ms_per_forward": {
+              "fa2_baseline": [
+                0.1326719969511032,
+                0.13254399597644806,
+                0.13258999586105347,
+                0.13241399824619293,
+                0.13247999548912048,
+                0.1323380023241043,
+                0.1327359974384308,
+                0.1326719969511032
+              ],
+              "split_candidate": [
+                0.1653759926557541,
+                0.16595199704170227,
+                0.1709440052509308,
+                0.17080600559711456,
+                0.17100800573825836,
+                0.1712000072002411,
+                0.17118200659751892,
+                0.17118200659751892
+              ]
+            },
+            "wall_ms_per_forward": {
+              "fa2_baseline": [
+                0.13339512520360586,
+                0.13321531264409714,
+                0.13320249991011224,
+                0.1330893123849819,
+                0.13316456261236453,
+                0.1329991250713647,
+                0.13342756255951826,
+                0.13344868762033002
+              ],
+              "split_candidate": [
+                0.16612037484264874,
+                0.1669261248480325,
+                0.17167043756671774,
+                0.1715246876301535,
+                0.17180018744511472,
+                0.17194618749272195,
+                0.17185806268571469,
+                0.1718431249173591
+              ]
+            }
+          }
+        ],
+        "samples_per_round": 8,
+        "calls_per_sample": 2,
+        "forwards_per_call": 8,
+        "summary": {
+          "fa2_baseline": {
+            "event_p50_ms_per_forward": 0.13259399682283401,
+            "event_p95_ms_per_forward": 0.1328851029276848,
+            "wall_p50_ms_per_forward": 0.13328324996564334,
+            "wall_p95_ms_per_forward": 0.13413235939196966
+          },
+          "split_candidate": {
+            "event_p50_ms_per_forward": 0.16588100045919418,
+            "event_p95_ms_per_forward": 0.17118200659751892,
+            "wall_p50_ms_per_forward": 0.16661753113567102,
+            "wall_p95_ms_per_forward": 0.1718498469131191
+          }
+        },
+        "wall_scope": "synchronized end-to-end sample including event creation and dispatch, not isolated host launch"
+      },
+      "ratio_over_fa2": 1.2510445754255128,
+      "partial_resources": {
+        "registers": 201,
+        "spills": 0,
+        "shared_memory_bytes": 57344
+      },
+      "merge_resources": {
+        "registers": 40,
+        "spills": 0,
+        "shared_memory_bytes": 4096
+      },
+      "scratch_bytes": 1863680,
+      "owned_output_and_scratch_bytes": 2322432,
+      "telemetry_after": {
+        "returncode": 0,
+        "stdout": "595.91.07, 46, 51.73 W, 1785 MHz, 7001 MHz, 307 MiB",
+        "stderr": ""
+      }
+    }
+  ],
+  "rechecks": [],
+  "telemetry_before": {
+    "returncode": 0,
+    "stdout": "595.91.07, 39, 34.56 W, 1545 MHz, 7001 MHz, 16 MiB",
+    "stderr": ""
+  },
+  "training_summary": {
+    "eligible": false,
+    "geomean_ratio": 0.8907752969390879,
+    "worst_ratio": 1.2510445754255128
+  },
+  "frozen_mode": "fa2",
+  "telemetry_after": {
+    "returncode": 0,
+    "stdout": "595.91.07, 46, 51.73 W, 1785 MHz, 7001 MHz, 257 MiB",
+    "stderr": ""
+  },
+  "policy_sha256": "41213e07c58f8b51113509c68b6c1beca4d9f9eddd8a681d76ce344d250599d3"
+}
