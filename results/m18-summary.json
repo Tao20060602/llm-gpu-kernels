@@ -1,0 +1,75 @@
+{
+  "status": "passed",
+  "record_path": "results/m18-dynamic-20261006T163700Z-761619917.json",
+  "record_sha256": "6247b6da2497bc0e98ab5fa9b1ea9796826ae47d3f82a1cbd802a9e08c7bd6bb",
+  "audit_path": "results/m18-layout-audit-20261006T163957Z.json",
+  "audit_sha256": "2b35f181c02d1f056b5453277edac5d9d28ef02097a88802401b304a16233be7",
+  "m17_sources_unchanged": 34,
+  "metric_count": 227,
+  "all_metrics_finite_passed": true,
+  "max_relative_rms": 0.0022643094416707754,
+  "max_normalized_max": 0.003972378559410572,
+  "ratios": {
+    "direct_api_vs_strong_pack_fa2": {
+      "geomean_ratio": 0.6683278627697657,
+      "minimum_ratio": 0.6620491017100067,
+      "maximum_ratio": 0.6739191447604708,
+      "cases": 6
+    },
+    "direct_api_vs_m17_fixed": {
+      "geomean_ratio": 1.0771905803031259,
+      "minimum_ratio": 1.0629420115921304,
+      "maximum_ratio": 1.1057143460601895,
+      "cases": 6
+    },
+    "direct_graph_vs_strong_pack_fa2": {
+      "geomean_ratio": 0.6288629975229153,
+      "minimum_ratio": 0.6268140649224697,
+      "maximum_ratio": 0.6332761174339694,
+      "cases": 6
+    },
+    "direct_graph_vs_m17_fixed": {
+      "geomean_ratio": 1.0048579272510805,
+      "minimum_ratio": 1.0016438481995174,
+      "maximum_ratio": 1.0104703220187305,
+      "cases": 6
+    },
+    "fa2_api_vs_strong_pack_fa2": {
+      "geomean_ratio": 1.0033619248158787,
+      "minimum_ratio": 0.9991456052780576,
+      "maximum_ratio": 1.007772090064497,
+      "cases": 6
+    },
+    "fa2_api_vs_m17_fixed": {
+      "geomean_ratio": 1.0058196458192261,
+      "minimum_ratio": 1.00223001096419,
+      "maximum_ratio": 1.0157790425856286,
+      "cases": 6
+    },
+    "fa2_graph_vs_strong_pack_fa2": {
+      "geomean_ratio": 0.9991256687561705,
+      "minimum_ratio": 0.9916977871260448,
+      "maximum_ratio": 1.0013397525437384,
+      "cases": 6
+    },
+    "fa2_graph_vs_m17_fixed": {
+      "geomean_ratio": 0.9998344908771881,
+      "minimum_ratio": 0.9926080285284657,
+      "maximum_ratio": 1.0039047023151981,
+      "cases": 6
+    },
+    "direct_api_vs_reprepare": {
+      "geomean_ratio": 0.47558980328892164,
+      "minimum_ratio": 0.46909765068777676,
+      "maximum_ratio": 0.4810085725103369,
+      "cases": 6
+    },
+    "direct_api_synchronized_wall_vs_strong": {
+      "geomean_ratio": 0.6719183085650696,
+      "minimum_ratio": 0.6602865831180937,
+      "maximum_ratio": 0.682277569850245,
+      "cases": 6
+    }
+  },
+  "scope": "GPU-resident replay, not model/request acceleration"
+}

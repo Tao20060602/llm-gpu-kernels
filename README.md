@@ -60,7 +60,8 @@ vLLM算子依赖使用独立overlay，见 [环境说明](docs/VLLM_OPERATOR_ENVI
 14. M15：在非空current契约下简化softmax状态，S2的13项同配置Graph耗时几何平均减少7.55%；成熟对照与大T回归完整保留。
 15. M16：简化状态后的八种资源分块训练、冻结与69项验证；短query规则保留，其他形状FA2，最坏回归2.17%和适用边界完整记录。
 16. M17：12组真实Qwen3-4B张量重放，6项96尾chunk计入V转换后Graph平均少37.26%；冷prepare约1.03s及系统未接入的边界公开。
-17. 后续：attention资源/布局与实际负载研究；NanoKV attention适配是可选应用验证。
+17. M18：编译模板LRU、动态地址与stream workspace；真实尾chunk动态API平均少33.17%，固定Graph少37.11%，完整请求收益尚未验证。[报告](docs/M18_DYNAMIC_BINDING_REPORT.md) / [使用](docs/M18_DYNAMIC_BINDING_USAGE.md)。
+18. 后续：NanoKV显式实验接入、状态/层输出核对与完整请求A/B。
 
 成熟基线的来源与工具链准备见 [M2 准备](docs/M2_BASELINE_PLAN.md)。
 
@@ -79,3 +80,4 @@ config revision/hash，详见 results/provenance。
 基础分块/`tl.dot` 技术为已有方法，本项目首版为自行编写的学习与测量起点。
 只击败 Python expert 循环不能声称超过成熟 MoE。所有本机数字保留适用形状、
 误差和计时边界；单 GPU prototype 不能说明 expert-parallel 或 serving 经验。
+

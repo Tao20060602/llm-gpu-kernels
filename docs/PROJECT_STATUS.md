@@ -43,6 +43,13 @@
   编译/绑定缓存与系统A/B尚未完成。不能将该数字写成请求加速。
   [真实输入报告](M17_REAL_INPUT_BRIDGE_REPORT.md)。
 
+
+- M18完成指针无关的编译模板LRU与stream独立动态workspace；12项真实输入、7项功能和
+  3项布局审计共227项精度指标通过。六项尾chunk计入动态绑定/生命周期/V转换后，API
+  比强FA2平均少33.17%，固定Graph少37.11%；动态API较M17固定入口多7.72%成本。
+  fallback额外预留output和全冷启动/系统接入未验证的限制公开。
+  [动态绑定报告](M18_DYNAMIC_BINDING_REPORT.md)、[入口契约](M18_DYNAMIC_BINDING_USAGE.md)。
+
 ## 复现冻结后的实验
 
 从本仓库根目录使用各自官方overlay；不重新覆盖冻结policy：

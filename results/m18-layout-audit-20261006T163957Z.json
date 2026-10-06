@@ -1,0 +1,169 @@
+{
+  "status": "passed",
+  "source_hashes": {
+    "docs/M11_SPLIT_KV_PLAN.md": "4af07dde8fc970059efdc8bc07affeea501c78bb3d34654684d15331a535697c",
+    "src/llm_gpu_kernels/attention_split.py": "7047f5d1075e03f7145a5e1609a33dcf9ece011a93135a2201c0bded79e54b4e",
+    "src/llm_gpu_kernels/attention_split_policy.py": "90a8c3d600ef88c97a9669a364b2025e502ab8dca105d6f9ac65947a40c74d69",
+    "src/llm_gpu_kernels/attention_split_tuning.py": "57e9ccc942c64bb2c329eb571df5ce280d8079da92d27b93427d5efc9c76675b",
+    "src/llm_gpu_kernels/attention_split_holdout.py": "46b85d91dd915151f9e2619b4e2c1a3092aa775b90f74c49d30eb62cdb7a970c",
+    "src/llm_gpu_kernels/attention_segmented.py": "e72702f5def4df841fba274af87d22efa72e260a19617316dcadc22cae4768cb",
+    "src/llm_gpu_kernels/attention_segmented_benchmark.py": "5961ef2f74fd94a7d6a973edcf471e3a7377ecaa2a040265848d796e7a47a0b4",
+    "src/llm_gpu_kernels/attention_baseline.py": "56064a0328cc0873d6468776e06b959fdff53feaba308c59ea0b99444b2e9438",
+    "src/llm_gpu_kernels/attention_baseline_benchmark.py": "15a88dd4277d9978356bc314c75371a0921ab2930698dbbac01d2019c1ea866e",
+    "src/llm_gpu_kernels/attention_unified.py": "2dc32701e6f9c9869831e50395a16b0b8db0462c374e7de981e326ad68f99fc8",
+    "src/llm_gpu_kernels/attention_unified_policy.py": "d80eb69131f0e70a95f480de58b31f60ebd17f44942afcc2e08a860ba6c828cc",
+    "src/llm_gpu_kernels/attention_unified_tuning.py": "e0e38672bc1968ba266144d5f58f9ef1bc56aa5d2f4e51c1d849b1ffb1019ca7",
+    "src/llm_gpu_kernels/moe_prepared.py": "7b52ecf4234d6385d1a4e104b5a01656786571aa29d5ab2bad948589097acef8",
+    "src/llm_gpu_kernels/benchmark.py": "c3a12e68e37b09f62d7dd78d14738537074dc60b7a02e20c96e24d1923c565e4",
+    "docs/M13_FIXED64_PLAN.md": "8f7f7cc954f0cd6941267edf13f1543fae8f81be5045933644eb5ae30866427c",
+    "src/llm_gpu_kernels/attention_fixed_policy.py": "1de3dbd5aa0372b4680fbf2243b14b4ced6436c6d56fc5f8dfac60bb4ec3429c",
+    "src/llm_gpu_kernels/attention_fixed_tuning.py": "46f3cfc4074fc21fb3e6f128fd08ffba65a68d15e83c078b00fe93e037819bd8",
+    "src/llm_gpu_kernels/attention_fixed_holdout.py": "74aa8fd59c393d8bc9a39359a1e2b3908740eec94a2e2dfc9316d787c9bf947d",
+    "src/llm_gpu_kernels/attention_fixed_trial.py": "99d6ef08cc226e70e63409e82b4ab87542f549b70c2ddb0b15e1810da47d7a69",
+    "docs/M14_ATTENTION_RETILE_PLAN.md": "65ce8da88b5a3333842df599c55a79705fb9b6d8cf53ee07f1367f6ff8c6800c",
+    "src/llm_gpu_kernels/attention_retile_policy.py": "704ff31a3d5203612afe26bc9c72be997ebd42828aa84011175ea1fef8e1b404",
+    "src/llm_gpu_kernels/attention_retile_tuning.py": "8f5fc8f6768f20610d0aaaa76618899b198f42062f93c548c581f7c658b3747b",
+    "src/llm_gpu_kernels/attention_retile_holdout.py": "3d0cf8d0cab8732cc04c85d4ebaacdf6d7b48429b8f7913fe07344f1651fb479",
+    "docs/M15_NONEMPTY_ATTENTION_PLAN.md": "296a1ad9c859ff075a742737d6d83fa79dbfc1a811070828b437e7ade79f01c5",
+    "src/llm_gpu_kernels/attention_nonempty.py": "38f9e629c5542dba556c87e96c7b89be4344ff1a4c6f9a110b98356207398cea",
+    "src/llm_gpu_kernels/attention_nonempty_benchmark.py": "f9b8cebe19da265206a56fc2118a26f2550ac2d28c21c3fce3ea5d56880f39cd",
+    "docs/M16_ATTENTION_RESOURCE_PLAN.md": "d7bd24052e61a6b8638c9dd62be8ead736f4478fc291d7f807d0a959ff64e355",
+    "src/llm_gpu_kernels/attention_resource_policy.py": "1cef1525d380581ad2b642185f470d02fa2b1e6d724f9c853c3dd6d52edf6d2e",
+    "src/llm_gpu_kernels/attention_resource_tuning.py": "e4771d7a0a828288cf52aa61cc5b9589e3ede4e8dca05272f6a2c7c80247091c",
+    "src/llm_gpu_kernels/attention_resource_holdout.py": "9f11deb0a92f795ef3f735bb52f4b7151250db4f754c88139cf14b5189abf954",
+    "src/llm_gpu_kernels/attention_resource_trial.py": "fbf8375df6d033abf5d51a1bd633c3aecff0280579b839b29fe5f7b240ca3ce0",
+    "docs/M17_REAL_INPUT_BRIDGE_PLAN.md": "6c78c1cb27f4cece69fc00acfb9686e7976813d9e4df0e873fdcbcb4451c3898",
+    "src/llm_gpu_kernels/attention_raw_boundary.py": "9c157907477655d3f9afc43ff847f998963413eab2ea970dc9b05a4ef21c4920",
+    "src/llm_gpu_kernels/attention_real_input_benchmark.py": "c6af5bb428fd7d6a266ca30e5e911c0e1e09d9fa1af2427e4acffc9a417221e1",
+    "docs/M18_DYNAMIC_BINDING_PLAN.md": "59dfdb249ec04734db4f360e5ccdb2fae8277c074bb2760e28ed3996892553d9",
+    "src/llm_gpu_kernels/attention_dynamic.py": "13b86877c31f53f0bfd20b5e61cb4ff09dbd024b3a52cc71ccb091b520cc8d64",
+    "src/llm_gpu_kernels/attention_dynamic_benchmark.py": "200dc3fcc67cca47234a51efe10d92f1893c3cd76f92c8bcac30a997ef13d543",
+    "src/llm_gpu_kernels/attention_dynamic_boundary_audit.py": "f617c4cfe52ed5ba30b83eaf58441313c28195f4d2f23030a5925ca1d4657bfa"
+  },
+  "policy_sha256": "2fed824e8493ad27a047a8995425c3c7e0f35c5376de1b12fdd4267bf215791d",
+  "cases": [
+    {
+      "name": "padded_q",
+      "checks": {
+        "initial": {
+          "relative_rms": 0.0022108142729848623,
+          "normalized_max": 0.002934370655566454,
+          "max_abs": 0.0009837746620178223,
+          "finite": true,
+          "passed": true
+        },
+        "rebound": {
+          "relative_rms": 0.0022108142729848623,
+          "normalized_max": 0.002934370655566454,
+          "max_abs": 0.0009837746620178223,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "conversion_workspace_bytes": 983040,
+      "passed": true
+    },
+    {
+      "name": "padded_history_keys",
+      "checks": {
+        "initial": {
+          "relative_rms": 0.0022108142729848623,
+          "normalized_max": 0.002934370655566454,
+          "max_abs": 0.0009837746620178223,
+          "finite": true,
+          "passed": true
+        },
+        "rebound": {
+          "relative_rms": 0.0022108142729848623,
+          "normalized_max": 0.002934370655566454,
+          "max_abs": 0.0009837746620178223,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "conversion_workspace_bytes": 1902592,
+      "passed": true
+    },
+    {
+      "name": "all_padded",
+      "checks": {
+        "initial": {
+          "relative_rms": 0.0022108142729848623,
+          "normalized_max": 0.002934370655566454,
+          "max_abs": 0.0009837746620178223,
+          "finite": true,
+          "passed": true
+        },
+        "rebound": {
+          "relative_rms": 0.0022108142729848623,
+          "normalized_max": 0.002934370655566454,
+          "max_abs": 0.0009837746620178223,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "conversion_workspace_bytes": 4591616,
+      "passed": true
+    }
+  ],
+  "rejections": {
+    "same_valid_contract_different_shape": "workspace shape/stride/device changed; create another workspace",
+    "misaligned_base": "expected 16-byte aligned input base",
+    "head_stride": "expected contiguous heads/dim and nonoverlapping token stride",
+    "overlap": "expected contiguous heads/dim and nonoverlapping token stride",
+    "changed_valid_stride": "workspace shape/stride/device changed; create another workspace",
+    "cpu_input": "expected CUDA BF16 on the same device"
+  },
+  "source_hashes_after": {
+    "docs/M11_SPLIT_KV_PLAN.md": "4af07dde8fc970059efdc8bc07affeea501c78bb3d34654684d15331a535697c",
+    "src/llm_gpu_kernels/attention_split.py": "7047f5d1075e03f7145a5e1609a33dcf9ece011a93135a2201c0bded79e54b4e",
+    "src/llm_gpu_kernels/attention_split_policy.py": "90a8c3d600ef88c97a9669a364b2025e502ab8dca105d6f9ac65947a40c74d69",
+    "src/llm_gpu_kernels/attention_split_tuning.py": "57e9ccc942c64bb2c329eb571df5ce280d8079da92d27b93427d5efc9c76675b",
+    "src/llm_gpu_kernels/attention_split_holdout.py": "46b85d91dd915151f9e2619b4e2c1a3092aa775b90f74c49d30eb62cdb7a970c",
+    "src/llm_gpu_kernels/attention_segmented.py": "e72702f5def4df841fba274af87d22efa72e260a19617316dcadc22cae4768cb",
+    "src/llm_gpu_kernels/attention_segmented_benchmark.py": "5961ef2f74fd94a7d6a973edcf471e3a7377ecaa2a040265848d796e7a47a0b4",
+    "src/llm_gpu_kernels/attention_baseline.py": "56064a0328cc0873d6468776e06b959fdff53feaba308c59ea0b99444b2e9438",
+    "src/llm_gpu_kernels/attention_baseline_benchmark.py": "15a88dd4277d9978356bc314c75371a0921ab2930698dbbac01d2019c1ea866e",
+    "src/llm_gpu_kernels/attention_unified.py": "2dc32701e6f9c9869831e50395a16b0b8db0462c374e7de981e326ad68f99fc8",
+    "src/llm_gpu_kernels/attention_unified_policy.py": "d80eb69131f0e70a95f480de58b31f60ebd17f44942afcc2e08a860ba6c828cc",
+    "src/llm_gpu_kernels/attention_unified_tuning.py": "e0e38672bc1968ba266144d5f58f9ef1bc56aa5d2f4e51c1d849b1ffb1019ca7",
+    "src/llm_gpu_kernels/moe_prepared.py": "7b52ecf4234d6385d1a4e104b5a01656786571aa29d5ab2bad948589097acef8",
+    "src/llm_gpu_kernels/benchmark.py": "c3a12e68e37b09f62d7dd78d14738537074dc60b7a02e20c96e24d1923c565e4",
+    "docs/M13_FIXED64_PLAN.md": "8f7f7cc954f0cd6941267edf13f1543fae8f81be5045933644eb5ae30866427c",
+    "src/llm_gpu_kernels/attention_fixed_policy.py": "1de3dbd5aa0372b4680fbf2243b14b4ced6436c6d56fc5f8dfac60bb4ec3429c",
+    "src/llm_gpu_kernels/attention_fixed_tuning.py": "46f3cfc4074fc21fb3e6f128fd08ffba65a68d15e83c078b00fe93e037819bd8",
+    "src/llm_gpu_kernels/attention_fixed_holdout.py": "74aa8fd59c393d8bc9a39359a1e2b3908740eec94a2e2dfc9316d787c9bf947d",
+    "src/llm_gpu_kernels/attention_fixed_trial.py": "99d6ef08cc226e70e63409e82b4ab87542f549b70c2ddb0b15e1810da47d7a69",
+    "docs/M14_ATTENTION_RETILE_PLAN.md": "65ce8da88b5a3333842df599c55a79705fb9b6d8cf53ee07f1367f6ff8c6800c",
+    "src/llm_gpu_kernels/attention_retile_policy.py": "704ff31a3d5203612afe26bc9c72be997ebd42828aa84011175ea1fef8e1b404",
+    "src/llm_gpu_kernels/attention_retile_tuning.py": "8f5fc8f6768f20610d0aaaa76618899b198f42062f93c548c581f7c658b3747b",
+    "src/llm_gpu_kernels/attention_retile_holdout.py": "3d0cf8d0cab8732cc04c85d4ebaacdf6d7b48429b8f7913fe07344f1651fb479",
+    "docs/M15_NONEMPTY_ATTENTION_PLAN.md": "296a1ad9c859ff075a742737d6d83fa79dbfc1a811070828b437e7ade79f01c5",
+    "src/llm_gpu_kernels/attention_nonempty.py": "38f9e629c5542dba556c87e96c7b89be4344ff1a4c6f9a110b98356207398cea",
+    "src/llm_gpu_kernels/attention_nonempty_benchmark.py": "f9b8cebe19da265206a56fc2118a26f2550ac2d28c21c3fce3ea5d56880f39cd",
+    "docs/M16_ATTENTION_RESOURCE_PLAN.md": "d7bd24052e61a6b8638c9dd62be8ead736f4478fc291d7f807d0a959ff64e355",
+    "src/llm_gpu_kernels/attention_resource_policy.py": "1cef1525d380581ad2b642185f470d02fa2b1e6d724f9c853c3dd6d52edf6d2e",
+    "src/llm_gpu_kernels/attention_resource_tuning.py": "e4771d7a0a828288cf52aa61cc5b9589e3ede4e8dca05272f6a2c7c80247091c",
+    "src/llm_gpu_kernels/attention_resource_holdout.py": "9f11deb0a92f795ef3f735bb52f4b7151250db4f754c88139cf14b5189abf954",
+    "src/llm_gpu_kernels/attention_resource_trial.py": "fbf8375df6d033abf5d51a1bd633c3aecff0280579b839b29fe5f7b240ca3ce0",
+    "docs/M17_REAL_INPUT_BRIDGE_PLAN.md": "6c78c1cb27f4cece69fc00acfb9686e7976813d9e4df0e873fdcbcb4451c3898",
+    "src/llm_gpu_kernels/attention_raw_boundary.py": "9c157907477655d3f9afc43ff847f998963413eab2ea970dc9b05a4ef21c4920",
+    "src/llm_gpu_kernels/attention_real_input_benchmark.py": "c6af5bb428fd7d6a266ca30e5e911c0e1e09d9fa1af2427e4acffc9a417221e1",
+    "docs/M18_DYNAMIC_BINDING_PLAN.md": "59dfdb249ec04734db4f360e5ccdb2fae8277c074bb2760e28ed3996892553d9",
+    "src/llm_gpu_kernels/attention_dynamic.py": "13b86877c31f53f0bfd20b5e61cb4ff09dbd024b3a52cc71ccb091b520cc8d64",
+    "src/llm_gpu_kernels/attention_dynamic_benchmark.py": "200dc3fcc67cca47234a51efe10d92f1893c3cd76f92c8bcac30a997ef13d543",
+    "src/llm_gpu_kernels/attention_dynamic_boundary_audit.py": "f617c4cfe52ed5ba30b83eaf58441313c28195f4d2f23030a5925ca1d4657bfa"
+  },
+  "cache_stats": {
+    "entries": 2,
+    "max_entries": 16,
+    "hits": 2,
+    "misses": 2,
+    "evictions": 0
+  },
+  "provenance": {
+    "passed": true,
+    "source_files_verified": 31,
+    "policy_sha256": "2fed824e8493ad27a047a8995425c3c7e0f35c5376de1b12fdd4267bf215791d"
+  }
+}
