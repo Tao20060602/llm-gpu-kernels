@@ -5,8 +5,9 @@
 
 当前已完成 M0/M1 bootstrap、M2 固定 CUTLASS3.8 基线及 M3 参数优化：
 原始 Triton dense/grouped GEMM、FP32 MoE 语义参考、边界数值检查、
-API/CUDA Graph 对照计时与 Tensor Core 编译产物。完整 MoE 优化、
-完整 MoE backend 对照、attention 与生产部署尚未完成。
+API/CUDA Graph 对照计时与 Tensor Core 编译产物。M4已实现GPU动态值路由的
+完整forward和gate/up+SwiGLU局部融合。完整MoE成熟backend对照、attention
+与生产部署尚未完成。
 
 ## 运行
 
@@ -22,6 +23,7 @@ python -m llm_gpu_kernels.benchmark
 实际数值、性能和限制见 [首轮报告](docs/BOOTSTRAP_REPORT.md)。
 固定成熟 grouped 实现的接入、结果与判断见 [M2报告](docs/M2_BASELINE_REPORT.md)。
 Prepared 入口、冻结选择规则与随机 holdout 收益见 [M3报告](docs/M3_OPTIMIZATION_REPORT.md)。
+全GPU固定路由MoE、动态路由值图重放和融合 A/B 见 [M4报告](docs/M4_MOE_REPORT.md)。
 源码支持通过 PYTHONPATH 运行；pyproject 提供后续标准安装入口。
 
 ## 路线
@@ -29,7 +31,7 @@ Prepared 入口、冻结选择规则与随机 holdout 收益见 [M3报告](docs/
 1. M0/M1：数值契约、基础 GEMM、ragged grouped GEMM 与 HMMA 证据。
 2. M2：已接入固定 CUTLASS grouped 配置，完成 top-k2/4/8 和偏斜对照。
 3. M3：已完成有限 tile/warp/stage 搜索；14个 holdout 与原实现/CUTLASS对照。
-4. M4：GPU dispatch、SwiGLU、down、combine 全链路；profile 后决定融合。
+4. M4：已实现GPU dispatch、SwiGLU、down、combine全链路和gate/up+SwiGLU融合；待成熟MoE对照。
 5. M5：GQA prefill；NanoKV attention 适配是可选应用验证。
 
 成熟基线的来源与工具链准备见 [M2 准备](docs/M2_BASELINE_PLAN.md)。

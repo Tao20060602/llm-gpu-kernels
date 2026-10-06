@@ -20,7 +20,7 @@ M0/M1当时未验证 CUDA Graph；M2/M3补充固定图和stream验证见下文�
 plan 和配置的 block_m 必须一致。调用者保持 plan 的 tensor 元数据只读。
 这是 host 预分组接口，尚未把 GPU 动态路由分组纳入核心算子。
 
-## 完整 MoE 语义（当前仅 FP32 reference）
+## 完整 MoE 数学语义
 
 X[T,H]，固定 IDs[T,topk] 与 routing weights[T,topk]。
 Gate/up 权重 [E,2I,H]，先 gate 后 up；down 权重 [E,H,I]。
@@ -70,3 +70,22 @@ runner每次获取当前stream。M3已验证非默认stream输入更新及固定
 FrozenPolicy只适用N1536/K2048，按host已知counts平均活跃行数选3组tile；
 其他shape回退原配置。所有选择发生在计时前，不包括counts readback或动态router。
 BF16/FP32语义和误差阈值不变。详见M3_EXPERIMENT_PLAN与M3_OPTIMIZATION_REPORT。
+
+## M4 GPU route forward
+
+`prepare_moe` / `prepare_fused_moe` 接收上述X/IDs/routing weights及BF16权重，
+返回绑定shape/buffers的workspace。IDs为CUDA int32/int64，routing weights为
+CUDA FP32；输出BF16。原地更换values/IDs允许，不resize/替换buffer，不并发run。
+当前prototype E<=256、topk<=32、N/H/I正数，T可0；连续同device输入。
+vector中间元素数受int32限制，指针乘法为int64。counts由GPU在每个run重新构造，
+所有workspace在prepare分配；run无tensor.item/CPU counts readback或GPU allocation。
+
+gate/up累加FP32后BF16；SwiGLU在FP32运算后BF16；down累加FP32后BF16；
+combine按原slot顺序FP32加权求和后BF16。重复expert IDs不合并，权重无重新归一化。
+融合版本保留gate/up的BF16 round-trip后做相同SwiGLU，projected buffer仍分配。
+调度使用GPU task offsets及固定上界grid，不按每expert最大容量做矩阵padding。
+
+调用者保证IDs属于[0,E)、weights finite，并建立跨stream依赖；首轮完整链路只验证
+默认调用stream与固定Graph。非法ID做地址mask并置device status，非finite也置status；
+显式check_inputs同步检查，不能把非法输入下返回值当合法数学输出。
+图重放已验证同shape/地址下更换输入、权重与路由值；不表示动态shape可共用一张图。
