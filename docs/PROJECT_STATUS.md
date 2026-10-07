@@ -3,7 +3,8 @@
 ## 已有成果
 
 独立仓库位于 `/home/tmz/文档/ChatGPT/llm-gpu-kernels`，与NanoKV引擎源码分开。
-单GPU SM86、BF16 forward原型，全部数字来自合成输入；不是生产部署或模型质量结果。
+单GPU SM86、BF16 forward原型。MoE使用合成固定路由；attention包含合成训练和真实
+Qwen3-4B张量重放。模型请求集成另有边界审计，尚未作为生产部署或广泛质量结果。
 
 ### 完整 MoE
 
@@ -49,6 +50,10 @@
   比强FA2平均少33.17%，固定Graph少37.11%；动态API较M17固定入口多7.72%成本。
   fallback额外预留output和全冷启动/系统接入未验证的限制公开。
   [动态绑定报告](M18_DYNAMIC_BINDING_REPORT.md)、[入口契约](M18_DYNAMIC_BINDING_USAGE.md)。
+
+- M19完成NanoKV显式实验接入和9个新进程三arm对照，1080项精度/864项状态检查通过。
+  完整prefill相对复用FA2平均仅少0.08%，相对原FA2慢0.60%；后续尾层检索集合变化，
+  默认继续FA2。[系统边界](M19_NATIVE_INTEGRATION_BOUNDARY.md)、[简历证据](PORTFOLIO_EVIDENCE.md)。
 
 ## 复现冻结后的实验
 

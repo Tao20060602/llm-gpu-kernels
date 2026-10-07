@@ -1,0 +1,319 @@
+{
+  "status": "measurement_completed_not_promoted",
+  "native_base_commit": "dc8cff5",
+  "operator_commit": "fa4da4d",
+  "tracked_artifacts": [
+    {
+      "original": "/home/tmz/.codex/worktrees/nanokv-native-linux/nanokv/bench_logs/operator_bridge/m19-native-20261007/operator-audit-recovered.json",
+      "tracked": "benchmarks/results/operator_bridge/m19-native/operator-audit-recovered.json",
+      "sha256": "3e90b39d7f04e019bb79aeb1f6dd46fa6459418649990dc0f4d0233cd882cc61"
+    },
+    {
+      "original": "/home/tmz/.codex/worktrees/nanokv-native-linux/nanokv/bench_logs/operator_bridge/m19-native-20261007/reuse-audit-recovered.json",
+      "tracked": "benchmarks/results/operator_bridge/m19-native/reuse-audit-recovered.json",
+      "sha256": "a24abddc36ae293b9e1d5c3db1dc28d2c9c74c28870a61a7de1cdd6639671ac6"
+    },
+    {
+      "original": "/home/tmz/.codex/worktrees/nanokv-native-linux/nanokv/bench_logs/operator_bridge/m19-native-20261007/operator-audit-bootstrap-failure.json",
+      "tracked": "benchmarks/results/operator_bridge/m19-native/operator-audit-bootstrap-failure.json",
+      "sha256": "b5046a894b2d09df818ec0b04aabb7bea5d5218ddae44011c54cd028d99954da"
+    },
+    {
+      "original": "/home/tmz/.codex/worktrees/nanokv-native-linux/nanokv/bench_logs/operator_bridge/m19-native-20261007/fresh-suite/suite.json",
+      "tracked": "benchmarks/results/operator_bridge/m19-native/suite.json",
+      "sha256": "fe9205bd61885bb9239ddf3222b06ee9480bdc21856deb0f448aee15257774dc"
+    },
+    {
+      "original": "/home/tmz/.codex/worktrees/nanokv-native-linux/nanokv/bench_logs/operator_bridge/m19-native-20261007/fresh-suite/group0-flash.json",
+      "tracked": "benchmarks/results/operator_bridge/m19-native/group0-flash.json",
+      "sha256": "a5b00722a0ffea72ff4774858b1c53dc771a808fa3107a460938618284a24db7"
+    },
+    {
+      "original": "/home/tmz/.codex/worktrees/nanokv-native-linux/nanokv/bench_logs/operator_bridge/m19-native-20261007/fresh-suite/group0-flash_reuse.json",
+      "tracked": "benchmarks/results/operator_bridge/m19-native/group0-flash_reuse.json",
+      "sha256": "486a7593cdce637155081fa7c15e722054ad141a72491dca9b95a81ec0c141c4"
+    },
+    {
+      "original": "/home/tmz/.codex/worktrees/nanokv-native-linux/nanokv/bench_logs/operator_bridge/m19-native-20261007/fresh-suite/group0-operator.json",
+      "tracked": "benchmarks/results/operator_bridge/m19-native/group0-operator.json",
+      "sha256": "b6420cf17f396881a2259ac9a22dfcf98018a7712981977552b6a18795b1297a"
+    },
+    {
+      "original": "/home/tmz/.codex/worktrees/nanokv-native-linux/nanokv/bench_logs/operator_bridge/m19-native-20261007/fresh-suite/group1-operator.json",
+      "tracked": "benchmarks/results/operator_bridge/m19-native/group1-operator.json",
+      "sha256": "42d5c09a2a99c894eff234531be563e314ceafd4b12567f48ad93ea6d30f7051"
+    },
+    {
+      "original": "/home/tmz/.codex/worktrees/nanokv-native-linux/nanokv/bench_logs/operator_bridge/m19-native-20261007/fresh-suite/group1-flash_reuse.json",
+      "tracked": "benchmarks/results/operator_bridge/m19-native/group1-flash_reuse.json",
+      "sha256": "4cd9a85d6ed28db7187a46fc02eaa9a6110496efb7440214d9ffedc18c6bed6a"
+    },
+    {
+      "original": "/home/tmz/.codex/worktrees/nanokv-native-linux/nanokv/bench_logs/operator_bridge/m19-native-20261007/fresh-suite/group1-flash.json",
+      "tracked": "benchmarks/results/operator_bridge/m19-native/group1-flash.json",
+      "sha256": "fea0dc3a86ce2957f2aed43d3b905cd4c3ac5f0879ab407976c35b13f11491fc"
+    },
+    {
+      "original": "/home/tmz/.codex/worktrees/nanokv-native-linux/nanokv/bench_logs/operator_bridge/m19-native-20261007/fresh-suite/group2-flash_reuse.json",
+      "tracked": "benchmarks/results/operator_bridge/m19-native/group2-flash_reuse.json",
+      "sha256": "9c6c26d20677f42c72232d67b6a4dbe9ba9c262917ae8e3ed8c1869050954c16"
+    },
+    {
+      "original": "/home/tmz/.codex/worktrees/nanokv-native-linux/nanokv/bench_logs/operator_bridge/m19-native-20261007/fresh-suite/group2-operator.json",
+      "tracked": "benchmarks/results/operator_bridge/m19-native/group2-operator.json",
+      "sha256": "24d63a136afd083338d6cca5a10611ca296d5feb32f4e011962cb40dcd04c969"
+    },
+    {
+      "original": "/home/tmz/.codex/worktrees/nanokv-native-linux/nanokv/bench_logs/operator_bridge/m19-native-20261007/fresh-suite/group2-flash.json",
+      "tracked": "benchmarks/results/operator_bridge/m19-native/group2-flash.json",
+      "sha256": "c71f584a73df89bb0d5726adbd1179b97bb7fac446e73e33af7b9a4529dbabc4"
+    }
+  ],
+  "audited_numeric_metrics": 1080,
+  "all_metrics_finite_passed": true,
+  "maximum_relative_rms": 0.0017794027226045728,
+  "maximum_normalized_max": 0.0060606058686971664,
+  "audited_later_layer_states": 864,
+  "source_files_per_worker": 43,
+  "source_files_suite": 44,
+  "model_files_verified_before_suite": 13,
+  "paired_measurement": {
+    "pairs": [
+      {
+        "group": 0,
+        "prompt": "archive",
+        "operator_vs_reuse_prefill": 0.9983091066128581,
+        "operator_vs_reuse_tail": 0.9858626730196101,
+        "reuse_vs_flash_prefill": 1.0060261491208202,
+        "operator_vs_flash_prefill": 1.00432506615798,
+        "original_generated_ids": [
+          2797
+        ],
+        "reuse_generated_ids": [
+          2797
+        ],
+        "operator_generated_ids": [
+          2797
+        ],
+        "greedy_matches_reuse": true,
+        "greedy_reuse_matches_original": true,
+        "logical_state_matches_reuse": true,
+        "compared_later_layer_selections": 144,
+        "ordered_selection_differences": 35,
+        "selection_set_differences": 11,
+        "reuse_matches_original_states": true
+      },
+      {
+        "group": 0,
+        "prompt": "code",
+        "operator_vs_reuse_prefill": 1.00461101718642,
+        "operator_vs_reuse_tail": 0.9780191754027471,
+        "reuse_vs_flash_prefill": 1.0042122830250615,
+        "operator_vs_flash_prefill": 1.008842723120904,
+        "original_generated_ids": [
+          57912
+        ],
+        "reuse_generated_ids": [
+          57912
+        ],
+        "operator_generated_ids": [
+          57912
+        ],
+        "greedy_matches_reuse": true,
+        "greedy_reuse_matches_original": true,
+        "logical_state_matches_reuse": true,
+        "compared_later_layer_selections": 144,
+        "ordered_selection_differences": 31,
+        "selection_set_differences": 13,
+        "reuse_matches_original_states": true
+      },
+      {
+        "group": 1,
+        "prompt": "archive",
+        "operator_vs_reuse_prefill": 0.9926443289239102,
+        "operator_vs_reuse_tail": 1.0421991697883246,
+        "reuse_vs_flash_prefill": 1.0140008647018077,
+        "operator_vs_flash_prefill": 1.0065422078701907,
+        "original_generated_ids": [
+          2797
+        ],
+        "reuse_generated_ids": [
+          2797
+        ],
+        "operator_generated_ids": [
+          2797
+        ],
+        "greedy_matches_reuse": true,
+        "greedy_reuse_matches_original": true,
+        "logical_state_matches_reuse": true,
+        "compared_later_layer_selections": 144,
+        "ordered_selection_differences": 35,
+        "selection_set_differences": 11,
+        "reuse_matches_original_states": true
+      },
+      {
+        "group": 1,
+        "prompt": "code",
+        "operator_vs_reuse_prefill": 0.9944695108091381,
+        "operator_vs_reuse_tail": 0.9056664197420834,
+        "reuse_vs_flash_prefill": 1.014459237931088,
+        "operator_vs_flash_prefill": 1.00884878208114,
+        "original_generated_ids": [
+          57912
+        ],
+        "reuse_generated_ids": [
+          57912
+        ],
+        "operator_generated_ids": [
+          57912
+        ],
+        "greedy_matches_reuse": true,
+        "greedy_reuse_matches_original": true,
+        "logical_state_matches_reuse": true,
+        "compared_later_layer_selections": 144,
+        "ordered_selection_differences": 31,
+        "selection_set_differences": 13,
+        "reuse_matches_original_states": true
+      },
+      {
+        "group": 2,
+        "prompt": "archive",
+        "operator_vs_reuse_prefill": 1.0010199215535467,
+        "operator_vs_reuse_tail": 1.010579694878395,
+        "reuse_vs_flash_prefill": 1.0014257502570243,
+        "operator_vs_flash_prefill": 1.002447125963988,
+        "original_generated_ids": [
+          2797
+        ],
+        "reuse_generated_ids": [
+          2797
+        ],
+        "operator_generated_ids": [
+          2797
+        ],
+        "greedy_matches_reuse": true,
+        "greedy_reuse_matches_original": true,
+        "logical_state_matches_reuse": true,
+        "compared_later_layer_selections": 144,
+        "ordered_selection_differences": 35,
+        "selection_set_differences": 11,
+        "reuse_matches_original_states": true
+      },
+      {
+        "group": 2,
+        "prompt": "code",
+        "operator_vs_reuse_prefill": 1.0040366435419095,
+        "operator_vs_reuse_tail": 1.033006437249646,
+        "reuse_vs_flash_prefill": 1.0008912885602754,
+        "operator_vs_flash_prefill": 1.0049315299163957,
+        "original_generated_ids": [
+          57912
+        ],
+        "reuse_generated_ids": [
+          57912
+        ],
+        "operator_generated_ids": [
+          57912
+        ],
+        "greedy_matches_reuse": true,
+        "greedy_reuse_matches_original": true,
+        "logical_state_matches_reuse": true,
+        "compared_later_layer_selections": 144,
+        "ordered_selection_differences": 31,
+        "selection_set_differences": 13,
+        "reuse_matches_original_states": true
+      }
+    ],
+    "ratios": {
+      "operator_vs_reuse_prefill": {
+        "geomean": 0.9991715630110564,
+        "minimum": 0.9926443289239102,
+        "maximum": 1.00461101718642,
+        "n": 6
+      },
+      "operator_vs_reuse_tail": {
+        "geomean": 0.9915000251333185,
+        "minimum": 0.9056664197420834,
+        "maximum": 1.0421991697883246,
+        "n": 6
+      },
+      "reuse_vs_flash_prefill": {
+        "geomean": 1.0068209214212775,
+        "minimum": 1.0008912885602754,
+        "maximum": 1.014459237931088,
+        "n": 6
+      },
+      "operator_vs_flash_prefill": {
+        "geomean": 1.0059868337287299,
+        "minimum": 1.002447125963988,
+        "maximum": 1.00884878208114,
+        "n": 6
+      }
+    },
+    "per_prompt": {
+      "archive": {
+        "operator_vs_reuse_prefill": {
+          "geomean": 0.9973183420204225,
+          "minimum": 0.9926443289239102,
+          "maximum": 1.0010199215535467,
+          "n": 3
+        },
+        "operator_vs_reuse_tail": {
+          "geomean": 1.0126186103513133,
+          "minimum": 0.9858626730196101,
+          "maximum": 1.0421991697883246,
+          "n": 3
+        },
+        "reuse_vs_flash_prefill": {
+          "geomean": 1.0071375374172251,
+          "minimum": 1.0014257502570243,
+          "maximum": 1.0140008647018077,
+          "n": 3
+        },
+        "operator_vs_flash_prefill": {
+          "geomean": 1.004436739003478,
+          "minimum": 1.002447125963988,
+          "maximum": 1.0065422078701907,
+          "n": 3
+        }
+      },
+      "code": {
+        "operator_vs_reuse_prefill": {
+          "geomean": 1.0010282276644562,
+          "minimum": 0.9944695108091381,
+          "maximum": 1.00461101718642,
+          "n": 3
+        },
+        "operator_vs_reuse_tail": {
+          "geomean": 0.9708218768548096,
+          "minimum": 0.9056664197420834,
+          "maximum": 1.033006437249646,
+          "n": 3
+        },
+        "reuse_vs_flash_prefill": {
+          "geomean": 1.0065044049605825,
+          "minimum": 1.0008912885602754,
+          "maximum": 1.014459237931088,
+          "n": 3
+        },
+        "operator_vs_flash_prefill": {
+          "geomean": 1.0075393206341599,
+          "minimum": 1.0049315299163957,
+          "maximum": 1.00884878208114,
+          "n": 3
+        }
+      }
+    },
+    "all_greedy_matched": true,
+    "all_logical_states_matched": true,
+    "ordered_selection_differences": 198,
+    "selection_set_differences": 72
+  },
+  "default_backend": "flash",
+  "promotion_accepted": false,
+  "promotion_reasons": [
+    "no stable complete-prefill gain versus reusable FA2 or original FA2",
+    "downstream tail retrieval selections differ despite same first generated token"
+  ],
+  "scope": "two generated text prompts, three paired fresh-process groups, first-token prefill step sum; excludes model loading/precompile/warmup/state collection/disk I/O"
+}
