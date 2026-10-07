@@ -1,0 +1,118 @@
+{
+  "capture": {
+    "add_special_tokens": false,
+    "attention_backend": "eager",
+    "capture_kind": "real_model_layer0_moe_input",
+    "decoder_execution": "official Qwen3MoeDecoderLayer attention/norm path; router-only MLP stub returns zero expert output and preserves official gate logits",
+    "expert_outputs": "not captured; validate routed outputs with the independent FP32 oracle",
+    "layer": 0,
+    "prompt": "code",
+    "prompt_seed_sha256": "a182543b7df20b4dd1530fdaf0444833625236b839b5d85cf1af42d702b25bb1",
+    "source_extraction_manifest_sha256": "2e5553fd186cf32b614c3b774465d6204fd5a4bbaa4c855c8e541ca2c10e8ccc",
+    "token_ids": [
+      750,
+      62079,
+      6443,
+      819,
+      77479,
+      982,
+      262,
+      43645,
+      284,
+      5613,
+      262,
+      369,
+      3255,
+      304,
+      7424,
+      510,
+      286
+    ],
+    "token_ids_sha256": "bd5e8fc61ca99571e5ce1a676c15c8e772abb2525a4c08289ed5c352dd03c20f",
+    "tokenizer_asset_sha256": {
+      "tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+      "tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101"
+    },
+    "tokenizer_repo_id": "Qwen/Qwen3-30B-A3B",
+    "tokenizer_revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "tokens": 17,
+    "weight_concat_order": "gate_proj rows then up_proj rows"
+  },
+  "model": {
+    "hidden_size": 2048,
+    "intermediate_size": 768,
+    "num_experts": 128,
+    "repo_id": "Qwen/Qwen3-30B-A3B",
+    "revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "top_k": 8
+  },
+  "routing_contract": {
+    "conversion": "exact_bfloat16_to_float32_promotion",
+    "renormalization": "none",
+    "source_dtype": "bfloat16",
+    "stored_dtype": "float32",
+    "unique_expert_ids_per_token": true
+  },
+  "schema": "llm_gpu_kernels.moe_real_trace",
+  "schema_version": 1,
+  "status": "passed",
+  "trace": {
+    "format": "torch_weights_only_tensor_dict",
+    "path": "code-T17.pt",
+    "sha256": "b8158d57969ddb2dcb5844e6d3e2a0c47172bed60b37fe40ee53548cde2bc8b9",
+    "tensors": {
+      "expert_ids": {
+        "dtype": "int32",
+        "sha256": "9b73653e4684decbc832f6e5a42706093b81b6bd2641b8f996de499d848aa033",
+        "shape": [
+          17,
+          8
+        ]
+      },
+      "route_weights": {
+        "dtype": "float32",
+        "sha256": "17b3a877df979430e2ad2840cfec23d85fb3f2fadfc7f5377d3015ce7c30da9f",
+        "shape": [
+          17,
+          8
+        ]
+      },
+      "x": {
+        "dtype": "bfloat16",
+        "sha256": "92d634f7e029601708b509cb7b9df9e2c8266eb5a7b978de3f085a7f8fdba0de",
+        "shape": [
+          17,
+          2048
+        ]
+      }
+    }
+  },
+  "weights": {
+    "down": {
+      "dtype": "bfloat16",
+      "format": "torch_weights_only_bundle",
+      "path": "/home/tmz/ai/traces/m20-qwen3-layer0-20261007-attempt3/weights.pt",
+      "sha256": "e703f1ea866455f43685a2f0fdd15055e40efb4f2086c876a812c3498317c7c1",
+      "shape": [
+        128,
+        2048,
+        768
+      ],
+      "source_manifest_sha256": "2e5553fd186cf32b614c3b774465d6204fd5a4bbaa4c855c8e541ca2c10e8ccc",
+      "tensor_name": "down"
+    },
+    "gate_up": {
+      "dtype": "bfloat16",
+      "format": "torch_weights_only_bundle",
+      "path": "/home/tmz/ai/traces/m20-qwen3-layer0-20261007-attempt3/weights.pt",
+      "sha256": "e703f1ea866455f43685a2f0fdd15055e40efb4f2086c876a812c3498317c7c1",
+      "shape": [
+        128,
+        1536,
+        2048
+      ],
+      "source_manifest_sha256": "2e5553fd186cf32b614c3b774465d6204fd5a4bbaa4c855c8e541ca2c10e8ccc",
+      "tensor_name": "gate_up"
+    }
+  }
+}

@@ -3,7 +3,7 @@
 ## 已有成果
 
 独立仓库位于 `/home/tmz/文档/ChatGPT/llm-gpu-kernels`，与NanoKV引擎源码分开。
-单GPU SM86、BF16 forward原型。MoE使用合成固定路由；attention包含合成训练和真实
+单GPU SM86、BF16 forward原型。MoE包含合成训练及真实Qwen3-30B-A3B第一层固定路由重放；attention包含合成训练和真实
 Qwen3-4B张量重放。模型请求集成另有边界审计，尚未作为生产部署或广泛质量结果。
 
 ### 完整 MoE
@@ -16,6 +16,12 @@ Qwen3-4B张量重放。模型请求集成另有边界审计，尚未作为生产
 - M7有限训练搜索和长复测后冻结shape规则。T1024 random、两个seed，相对自身原ranked
   Graph p50少约25%，相对该固定vLLM默认配置少6.7–8.1%。T193/hot等仍落后，不能说
   所有形状优于vLLM。详见[M7报告](M7_FULL_MOE_OPTIMIZATION_REPORT.md)。
+- M20使用pinned真实Qwen3-30B-A3B第一层expert权重、官方HF路径的hidden与router；
+  两条示例文本×四种长度，三次新进程共432项数值指标通过，冻结M7策略保持原样。
+  T1024 Graph相对固定vLLM默认配置少3.20–6.99%；小输入Graph回归最多3.23%。
+  全24项等权p50比例几何平均API少2.30%、Graph少1.13%，不代表生产流量加权收益。
+  计时包含GPU分组、dispatch与expert forward，排除router/attention/模型。
+  [来源、逐项结果与复测](M20_REAL_MOE_REPORT.md)、[prepared接口](MOE_USAGE.md)。
 
 ### 四段 KV GQA attention
 
@@ -91,7 +97,8 @@ vLLM0.10.0与FA2 2.8.3.post1分别隔离安装，只用官方公开算子，不�
 环境说明：[vLLM](VLLM_OPERATOR_ENVIRONMENT.md)、[FA2](FLASH_ATTENTION_OPERATOR_ENVIRONMENT.md)。
 
 HMMA只证明编译产物使用Tensor Core，不能代替utilization、occupancy或DRAM计数器。
-本仓库微基准为hot repeated GPU resident输入：MoE使用给定合成路由，M17/M18 attention
+本仓库微基准为hot repeated GPU resident输入：M7 MoE使用给定合成路由，M20使用真实第一层
+权重与路由；M17/M18 attention
 使用真实模型采集张量，计时不包括CPU gather/H2D/router/RoPE或模型请求。
 M19请求测量在独立NanoKV仓库执行，包含该请求的数据路径；不含模型加载与warmup，
 只生成首token。两者均没有多GPU/expert parallel或生产serving证据；不能重复使用算子

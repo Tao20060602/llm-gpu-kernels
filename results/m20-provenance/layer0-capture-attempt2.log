@@ -1,0 +1,3 @@
+capture failed: RuntimeError: Error(s) in loading state_dict for Qwen3MoeAttention:
+	Missing key(s) in state_dict: "q_proj.weight", "k_proj.weight", "v_proj.weight", "o_proj.weight", "q_norm.weight", "k_norm.weight". 
+	Unexpected key(s) in state_dict: "self_attn.q_proj.weight", "self_attn.k_proj.weight", "self_attn.v_proj.weight", "self_attn.o_proj.weight", "self_attn.q_norm.weight", "self_attn.k_norm.weight". 

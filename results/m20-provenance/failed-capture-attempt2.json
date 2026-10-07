@@ -1,0 +1,93 @@
+{
+  "artifact_hashes": {
+    "weights.pt": {
+      "sha256": "e703f1ea866455f43685a2f0fdd15055e40efb4f2086c876a812c3498317c7c1",
+      "size_bytes": 1207961381
+    }
+  },
+  "cases": [],
+  "error": "RuntimeError: Error(s) in loading state_dict for Qwen3MoeAttention:\n\tMissing key(s) in state_dict: \"q_proj.weight\", \"k_proj.weight\", \"v_proj.weight\", \"o_proj.weight\", \"q_norm.weight\", \"k_norm.weight\". \n\tUnexpected key(s) in state_dict: \"self_attn.q_proj.weight\", \"self_attn.k_proj.weight\", \"self_attn.v_proj.weight\", \"self_attn.o_proj.weight\", \"self_attn.q_norm.weight\", \"self_attn.k_norm.weight\". ",
+  "model": {
+    "capture_scope": "layer0_moe_input_and_fixed_router",
+    "hidden_size": 2048,
+    "intermediate_size": 768,
+    "num_experts": 128,
+    "repo_id": "Qwen/Qwen3-30B-A3B",
+    "revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+    "top_k": 8
+  },
+  "routing_capture": {
+    "formula": "softmax(fp32 logits) -> topk(8) -> config norm_topk_prob -> BF16 -> exact FP32 promotion",
+    "official_expert_loop": "not run; only true hidden input, router logits, IDs, and weights are captured",
+    "source": "Qwen3MoeSparseMoeBlock router gate and official forward semantics"
+  },
+  "runtime": {
+    "attention_backend": "eager",
+    "device": "cuda:0",
+    "python": "3.12.14",
+    "safetensors": "0.8.0",
+    "torch": "2.7.1+cu128",
+    "transformers": "4.53.2"
+  },
+  "schema": "llm_gpu_kernels.qwen3_moe_layer0_capture",
+  "schema_version": 1,
+  "source_hashes_after": {
+    "capture_script": "387290af22c45c6408d5e17ee38f0d9f5b4fa8b74efd017a9f4ffe8d44c3a604",
+    "extraction_manifest": "2e5553fd186cf32b614c3b774465d6204fd5a4bbaa4c855c8e541ca2c10e8ccc",
+    "layer0_safetensors": "e8cc81d146128babd7279caf08ebbd50347a5462c173387a865a135fcac59c76",
+    "manifest.json": "b2bcd262a7fcd9b2eec78e86636b12cdbe4c27519ee2c85521cc310fc3a088c3",
+    "model_config": "2850ddb3bf7aecad20b611e2d44f3077fc8193f4827c93beddd4c02ad63c2297",
+    "model_index": "df0d481ec595c55a0ba58426d517390c6214a566ec4ff1c8fc4bbce9f57b3c24",
+    "source-api.json": "50125e73899ee83f43161c69fcbf774c91a7816c92cc9a1ab0a7f728e9712fe7",
+    "tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+    "tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+    "trace_writer": "45686545891174852bc05876add5e3dc7cbd33fe7ce093bc548fdec9db260eea",
+    "transformers_masking": "0b12d80efc738f1a15e589d3d537337b6411d75785b3e4a7914531bf36984c57",
+    "transformers_qwen3_moe_config": "0d0cc24a2c28d527cfac452bff0255d7837ca8cee254022e8460c8b7b0593c7c",
+    "transformers_qwen3_moe_modeling": "796ed159ce5a5cf195810d03a872a99e7f02f2528dd0e870cc69ec22eb59b001",
+    "transformers_rope": "dbf30af97b78b665f7d7ba5a12aecf3bb69e23fcb42029424ab37af79722dbfd"
+  },
+  "source_hashes_before": {
+    "capture_script": "387290af22c45c6408d5e17ee38f0d9f5b4fa8b74efd017a9f4ffe8d44c3a604",
+    "extraction_manifest": "2e5553fd186cf32b614c3b774465d6204fd5a4bbaa4c855c8e541ca2c10e8ccc",
+    "layer0_safetensors": "e8cc81d146128babd7279caf08ebbd50347a5462c173387a865a135fcac59c76",
+    "manifest.json": "b2bcd262a7fcd9b2eec78e86636b12cdbe4c27519ee2c85521cc310fc3a088c3",
+    "model_config": "2850ddb3bf7aecad20b611e2d44f3077fc8193f4827c93beddd4c02ad63c2297",
+    "model_index": "df0d481ec595c55a0ba58426d517390c6214a566ec4ff1c8fc4bbce9f57b3c24",
+    "source-api.json": "50125e73899ee83f43161c69fcbf774c91a7816c92cc9a1ab0a7f728e9712fe7",
+    "tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+    "tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+    "trace_writer": "45686545891174852bc05876add5e3dc7cbd33fe7ce093bc548fdec9db260eea",
+    "transformers_masking": "0b12d80efc738f1a15e589d3d537337b6411d75785b3e4a7914531bf36984c57",
+    "transformers_qwen3_moe_config": "0d0cc24a2c28d527cfac452bff0255d7837ca8cee254022e8460c8b7b0593c7c",
+    "transformers_qwen3_moe_modeling": "796ed159ce5a5cf195810d03a872a99e7f02f2528dd0e870cc69ec22eb59b001",
+    "transformers_rope": "dbf30af97b78b665f7d7ba5a12aecf3bb69e23fcb42029424ab37af79722dbfd"
+  },
+  "source_paths": {
+    "capture_script": "/home/tmz/文档/ChatGPT/llm-gpu-kernels/scripts/capture_qwen3_moe_layer0.py",
+    "extraction_manifest": "/home/tmz/models/Qwen3-30B-A3B-layer0/manifest.json",
+    "layer0_safetensors": "/home/tmz/models/Qwen3-30B-A3B-layer0/layer0.safetensors",
+    "manifest.json": "/home/tmz/models/Qwen3-30B-A3B-layer0/tokenizer/manifest.json",
+    "model_config": "/home/tmz/models/Qwen3-30B-A3B-layer0/config.json",
+    "model_index": "/home/tmz/models/Qwen3-30B-A3B-layer0/model.safetensors.index.json",
+    "source-api.json": "/home/tmz/models/Qwen3-30B-A3B-layer0/tokenizer/source-api.json",
+    "tokenizer.json": "/home/tmz/models/Qwen3-30B-A3B-layer0/tokenizer/tokenizer.json",
+    "tokenizer_config.json": "/home/tmz/models/Qwen3-30B-A3B-layer0/tokenizer/tokenizer_config.json",
+    "trace_writer": "/home/tmz/文档/ChatGPT/llm-gpu-kernels/src/llm_gpu_kernels/moe_real_trace.py",
+    "transformers_masking": "/home/tmz/ai/baselines/vllm-0.10.0/transformers/masking_utils.py",
+    "transformers_qwen3_moe_config": "/home/tmz/ai/baselines/vllm-0.10.0/transformers/models/qwen3_moe/configuration_qwen3_moe.py",
+    "transformers_qwen3_moe_modeling": "/home/tmz/ai/baselines/vllm-0.10.0/transformers/models/qwen3_moe/modeling_qwen3_moe.py",
+    "transformers_rope": "/home/tmz/ai/baselines/vllm-0.10.0/transformers/modeling_rope_utils.py"
+  },
+  "status": "failed",
+  "tokenizer": {
+    "files": {
+      "manifest.json": "b2bcd262a7fcd9b2eec78e86636b12cdbe4c27519ee2c85521cc310fc3a088c3",
+      "source-api.json": "50125e73899ee83f43161c69fcbf774c91a7816c92cc9a1ab0a7f728e9712fe7",
+      "tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+      "tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101"
+    },
+    "repo_id": "Qwen/Qwen3-30B-A3B",
+    "revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39"
+  }
+}

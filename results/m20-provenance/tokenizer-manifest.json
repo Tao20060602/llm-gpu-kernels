@@ -1,0 +1,37 @@
+{
+  "status": "passed",
+  "repo_id": "Qwen/Qwen3-30B-A3B",
+  "revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+  "metadata_sha256": "50125e73899ee83f43161c69fcbf774c91a7816c92cc9a1ab0a7f728e9712fe7",
+  "files": [
+    {
+      "name": "tokenizer_config.json",
+      "url": "https://huggingface.co/Qwen/Qwen3-30B-A3B/resolve/ad44e777bcd18fa416d9da3bd8f70d33ebb85d39/tokenizer_config.json",
+      "bytes": 9732,
+      "sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+      "git_blob_sha1": "417d038a63fa3de29cfde265caedae14d1a58d92",
+      "source": {
+        "rfilename": "tokenizer_config.json",
+        "blobId": "417d038a63fa3de29cfde265caedae14d1a58d92",
+        "size": 9732
+      }
+    },
+    {
+      "name": "tokenizer.json",
+      "url": "https://huggingface.co/Qwen/Qwen3-30B-A3B/resolve/ad44e777bcd18fa416d9da3bd8f70d33ebb85d39/tokenizer.json",
+      "bytes": 11422654,
+      "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+      "git_blob_sha1": "949e1ec83f61520a25c75426edc4a43acc36f29a",
+      "source": {
+        "rfilename": "tokenizer.json",
+        "blobId": "cd71f61a15a522601badb3dc960d800d9cb3766c",
+        "size": 11422654,
+        "lfs": {
+          "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+          "size": 11422654,
+          "pointerSize": 133
+        }
+      }
+    }
+  ]
+}

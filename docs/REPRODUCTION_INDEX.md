@@ -34,6 +34,7 @@ M18动态API比例和M19各比例/差异计数从原始记录重算。
 | 内容 | 入口 | 当前可支持的结论 |
 | --- | --- | --- |
 | MoE完整forward | [M7报告](M7_FULL_MOE_OPTIMIZATION_REPORT.md) | 特定T1024随机路由，两seed，Graph p50比固定vLLM默认配置少6.7–8.1%；不是全域领先 |
+| 真实MoE单层输入 | [M20报告](M20_REAL_MOE_REPORT.md)、[接口](MOE_USAGE.md) | 固定Qwen3-30B-A3B layer-0、真实权重/hidden/router，完整expert-forward；不含router或模型时间 |
 | Attention冻结策略 | [M16报告](M16_ATTENTION_RESOURCE_REPORT.md) | 短query有限域规则，36项custom Graph比例几何平均0.7791；最坏慢2.17% |
 | 真实模型输入与布局 | [M17报告](M17_REAL_INPUT_BRIDGE_REPORT.md) | 真实Q/K/V张量、非连续V转换成本；不是模型请求时间 |
 | 动态地址与缓存 | [M18报告](M18_DYNAMIC_BINDING_REPORT.md)、[使用契约](M18_DYNAMIC_BINDING_USAGE.md) | 六项T96动态API比例0.6683，包含绑定/V转换；单stream顺序消费 |
@@ -72,3 +73,37 @@ M17/M18重放另需要12份本机大型`.pt`采集张量及原manifest，详见M
 本机路径：NanoKV在 `/home/tmz/.codex/worktrees/nanokv-native-linux/nanokv`，
 模型在 `/home/tmz/models/Qwen3-4B`；迁移后使用实际路径。不能用0.6B替代4B对照。
 M19只生成首token、两条固定文本、三个新进程配对组；没有decode TPOT、广泛质量或生产验收。
+
+## 5. M20 真实 MoE 单层重放
+
+从算子仓库根目录执行。两个下载入口仅获取固定 revision 的第一层所需权重和 tokenizer，
+不是完整 30B 模型。已有下载目录可按下载入口的验证规则复用。
+
+```bash
+source scripts/activate-vllm.sh
+python scripts/fetch_qwen3_moe_layer0.py --output /home/tmz/models/Qwen3-30B-A3B-layer0 --chunk-mib 32 --workers 4 --max-total-gib 2
+python scripts/fetch_qwen3_moe_tokenizer.py --output /home/tmz/models/Qwen3-30B-A3B-layer0/tokenizer
+```
+
+采集目录必须在仓库外且为空；benchmark 输出必须是新文件。以下示例路径用于新一轮重跑：
+
+```bash
+export OMP_NUM_THREADS=8 MKL_NUM_THREADS=8 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
+python scripts/capture_qwen3_moe_layer0.py --model-dir /home/tmz/models/Qwen3-30B-A3B-layer0 --tokenizer-dir /home/tmz/models/Qwen3-30B-A3B-layer0/tokenizer --output-dir /home/tmz/ai/traces/m20-new-run
+python -m llm_gpu_kernels.moe_real_input_benchmark --capture-root /home/tmz/ai/traces/m20-new-run --output results/m20-new-run.json
+```
+
+GPU 上串行执行；新进程复测仍使用同一组 capture。真实 tokenizer 与 HF 第一层 attention/router
+只用于采集，benchmark 计时为给定路由的完整 expert-forward，不含 router 或请求。
+本轮 [来源目录](../results/m20-provenance/) 保存小型 manifest、token IDs 和失败日志；大型权重、
+trace tensors 和编译产物未入 Git。权重引用含采集机器绝对路径，移动整个 capture 目录后需要
+重新采集或显式生成新的路径 manifest，不能把旧 artifact 当成可直接移植的包。
+
+M20 的 CPU 核对独立于旧证据检查器，避免改写旧自哈希记录。`--record` 可重复；不指定
+`--capture-root` 时只校验已归档记录与当前源码，外部大文件标记为 recorded-only。
+
+```bash
+python3 scripts/check_m20_evidence.py --record results/m20-real-input-20261007-attempt2.json --record results/m20-real-input-20261007-repeat-2.json --record results/m20-real-input-20261007-repeat-3.json --capture-root /home/tmz/ai/traces/m20-qwen3-layer0-20261007-attempt3 --output results/m20-new-audit.json
+```
+
+详细来源范围、逐项计时、复测与静态 Tensor Core 证据见 [M20 报告](M20_REAL_MOE_REPORT.md)。

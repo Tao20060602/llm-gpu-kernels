@@ -5,6 +5,10 @@
 
 当前结果见 [项目状态](docs/PROJECT_STATUS.md)，查阅与复现见 [证据索引](docs/REPRODUCTION_INDEX.md)。完整MoE已取得特定形状的成熟对照收益；attention已实现短query冻结选择：合成验证矩阵中，相对完整FA2链路Graph耗时几何平均减少22.09%，最坏慢2.17%；其他形状回退FA2。M18另有真实模型张量重放，M19已完成系统接入对照，未取得稳定完整prefill收益。
 
+真实 Qwen3-30B-A3B layer-0 的 expert 权重、hidden 与 router 路由重放见
+[M20 报告](docs/M20_REAL_MOE_REPORT.md)；它与 M7 合成输入结果分开记录。
+完整 MoE prepared 接口与缓冲区生命周期见 [使用说明](docs/MOE_USAGE.md)。
+
 当前已完成 M0/M1 bootstrap、M2 固定 CUTLASS3.8 基线及 M3 参数优化：
 原始 Triton dense/grouped GEMM、FP32 MoE 语义参考、边界数值检查、
 API/CUDA Graph 对照计时与 Tensor Core 编译产物。M4已实现GPU动态值路由的
@@ -62,6 +66,7 @@ vLLM算子依赖使用独立overlay，见 [环境说明](docs/VLLM_OPERATOR_ENVI
 16. M17：12组真实Qwen3-4B张量重放，6项96尾chunk计入V转换后Graph平均少37.26%；首次形状prepare约1.03s，不是公平的完全冷启动对照。后续系统接入见M19。
 17. M18：编译模板LRU、动态地址与stream workspace；真实尾chunk动态API平均少33.17%，固定Graph少37.11%。后续完整prefill对照见M19。[报告](docs/M18_DYNAMIC_BINDING_REPORT.md) / [使用](docs/M18_DYNAMIC_BINDING_USAGE.md)。
 18. M19：NanoKV实验接入与三组新进程对照完成；完整prefill没有稳定收益，后续尾层检索集合有差异，默认维持FA2。[边界报告](docs/M19_NATIVE_INTEGRATION_BOUNDARY.md)。
+19. M20：pinned Qwen3-30B-A3B 第一层真实权重与路由输入、冻结 M7 策略的完整 expert-forward 对照；范围与原始记录见 [报告](docs/M20_REAL_MOE_REPORT.md)。
 
 两个独立项目的可用表述、证据和限制见[简历与面试证据](docs/PORTFOLIO_EVIDENCE.md)。
 

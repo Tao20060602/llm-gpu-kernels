@@ -14,12 +14,16 @@
 | --- | --- | --- |
 | 完整MoE前向7次GPU启动，无CPU counts回读 | GPU处理给定route IDs/weights，不含模型router或serving | [M6](M6_RANKED_DISPATCH_REPORT.md) |
 | 指定T1024 random场景Graph p50比固定vLLM默认算子少6.7–8.1% | 合成固定路由，E128/H2048/I768/topk8、两个seed；其他形状可能落后 | [M7](M7_FULL_MOE_OPTIMIZATION_REPORT.md) |
+| 真实Qwen3-30B-A3B第一层T1024输入，三次新进程Graph比固定vLLM默认算子少3.20–6.99%；432项数值指标通过 | 真实checkpoint权重/hidden/router但两条重复示例文本，单层固定路由expert-forward，不含router/模型；小输入最多慢3.23% | [M20](M20_REAL_MOE_REPORT.md) |
 | 六项真实Qwen3-4B T96输入重放，动态API耗时比复用pack+FA2平均少33.17% | GPU-resident算子计时，包含V转换/绑定，排除模型、CPU gather/H2D；不是请求加速 | [M18](M18_DYNAMIC_BINDING_REPORT.md) |
 | 编译模板LRU、独立workspace、新地址/值更新、固定图/stream和错误布局拒绝 | 图仍固定捕获地址，单GPU/stream顺序消费；LRU不限制Triton内部缓存 | [入口契约](M18_DYNAMIC_BINDING_USAGE.md) |
 | PTX/cubin/SASS中的HMMA证据及寄存器/spill/shared-memory记录 | 静态证据，不等于Tensor Core利用率或occupancy | [M7](M7_FULL_MOE_OPTIMIZATION_REPORT.md)、[M17](M17_REAL_INPUT_BRIDGE_REPORT.md) |
 
 面试可讲：为什么选择GQA head group、为何softmax状态跨四段共享、splitKV的merge成本、
 小query收益与大query回退、路由倾斜的调度成本、BF16舍入和成熟后端不同、冻结策略后保留失败。
+M20还可讲：16GiB设备上按checkpoint索引只提取第一层，区分LFS指针和payload来源校验；
+真实路由倾斜为何改变合成基准结论，medium融合kernel的spill静态证据为何不能替代瓶颈计数器。
+MoE固定地址workspace、状态同步与Graph/stream依赖见[接口指南](MOE_USAGE.md)。
 
 ## 项目二：NanoKV 系统工程
 
@@ -43,6 +47,8 @@
 
 - 独立算子：限定场景的成熟对照收益、Tensor Core指令证据和复现材料已具备。
 - 系统接入：工程路径可运行，性能/选择一致性证据不支持默认提升，结论公开。
+- NanoKV的新目标（稀疏attention与CPU offload的数据路径定位、优化及完整请求正收益）
+  仍待讨论目标负载并继续完成；历史收尾或算子收益不代表该目标已实现。
 - 两个项目都是单GPU实验原型；训练backward、多GPU/expert parallel、真实生产服务及
   广泛质量验收尚未得到验证。
 

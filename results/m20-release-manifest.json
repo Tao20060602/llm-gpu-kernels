@@ -1,0 +1,158 @@
+{
+  "schema": 1,
+  "stage": "M20 bounded real layer0 MoE closeout",
+  "status": "frozen",
+  "scope": "new and modified files in this stage; excludes this manifest itself",
+  "parent_commit": "1383b8c68434d4022a1dd9d1868ad310d6f2a6fe",
+  "files": {
+    "README.md": {
+      "sha256": "46e57df51a501b105c813ed93fb0768b4969198e450dfdb13ce59c80618ddc3d",
+      "bytes": 7859
+    },
+    "docs/M20_REAL_MOE_INPUT_PLAN.md": {
+      "sha256": "5ae440b591b3595954f38cbfbaaf6107a95aa172764fdd5ffd13cfffc78214cd",
+      "bytes": 10894
+    },
+    "docs/M20_REAL_MOE_REPORT.md": {
+      "sha256": "01bddb713e0aee4cb2151f82b51476595379eec7c55b4d36a3baaeef29161c28",
+      "bytes": 14427
+    },
+    "docs/M20_REAL_MOE_TRACE_CONTRACT.md": {
+      "sha256": "eb740e82b80e41b0ef9f910a5fa9159a29a7ed892dd9efc035e6ee54712cf179",
+      "bytes": 5352
+    },
+    "docs/MOE_USAGE.md": {
+      "sha256": "9654aa150bb1d51608d0614fc1cc9e48ce906ed6b65d9a68b50ab9d364625929",
+      "bytes": 11113
+    },
+    "docs/PORTFOLIO_EVIDENCE.md": {
+      "sha256": "5517eae2213d29e3112d001f3a4deeff0fcbf5d4a4bc325a6d80cb91f73702b9",
+      "bytes": 4395
+    },
+    "docs/PROJECT_STATUS.md": {
+      "sha256": "57019024944c95c77cfa44db3014348273df5498b78ca2a73cd1266fcfe56613",
+      "bytes": 7025
+    },
+    "docs/REPRODUCTION_INDEX.md": {
+      "sha256": "7f5ca790f8726acbd140a39d1873185cf478e95484dc8497807e895660e72205",
+      "bytes": 6625
+    },
+    "results/m20-evidence-20261007.json": {
+      "sha256": "559332fbe654898d983dd14732095913036821136e688e67ae47716c88c3983e",
+      "bytes": 363457
+    },
+    "results/m20-historical-integrity-20261007.json": {
+      "sha256": "919d44014057be5e3eb14892a8f96a12432549636f0c1e03f9468e3edfd0a2a0",
+      "bytes": 23030
+    },
+    "results/m20-provenance/capture-summary.json": {
+      "sha256": "163be24068637aa6c0d29ca28fcc47bef0e805d6583798ddd5a4908a6471d61c",
+      "bytes": 9092
+    },
+    "results/m20-provenance/config.json": {
+      "sha256": "2850ddb3bf7aecad20b611e2d44f3077fc8193f4827c93beddd4c02ad63c2297",
+      "bytes": 963
+    },
+    "results/m20-provenance/failed-capture-attempt2.json": {
+      "sha256": "ef86c75f4973da13eda5b8d53d5510b7b2d8377aceba3d55853e472855e8a1ab",
+      "bytes": 6087
+    },
+    "results/m20-provenance/layer0-capture-attempt2.log": {
+      "sha256": "c296b9822a4f150c5fb08a602f5e6ccd46c70baa1684b6fd3f70ab1fa2135a7c",
+      "bytes": 415
+    },
+    "results/m20-provenance/layer0-capture.log": {
+      "sha256": "8dd036bb8289cd55b614d68d076fcd7d794ee07ccea94fd9b86250a7f622ac34",
+      "bytes": 77
+    },
+    "results/m20-provenance/layer0-extraction-manifest.json": {
+      "sha256": "2e5553fd186cf32b614c3b774465d6204fd5a4bbaa4c855c8e541ca2c10e8ccc",
+      "bytes": 238716
+    },
+    "results/m20-provenance/real-input-benchmark.log": {
+      "sha256": "3610114197a244c1906785a64ef00490c29a57850f4f4877be44cfe323003b11",
+      "bytes": 1041
+    },
+    "results/m20-provenance/tokenizer-manifest.json": {
+      "sha256": "b2bcd262a7fcd9b2eec78e86636b12cdbe4c27519ee2c85521cc310fc3a088c3",
+      "bytes": 1400
+    },
+    "results/m20-provenance/tokenizer-source-api.json": {
+      "sha256": "50125e73899ee83f43161c69fcbf774c91a7816c92cc9a1ab0a7f728e9712fe7",
+      "bytes": 13663
+    },
+    "results/m20-provenance/traces/archive-T1024.json": {
+      "sha256": "5c49a2254dffdfb3304127a671ad52dd62233188d775be98bc362f657f078b0e",
+      "bytes": 15442
+    },
+    "results/m20-provenance/traces/archive-T17.json": {
+      "sha256": "e5f1d7872cd1b152c91c132196d0b6f814559ad323f904e3c372a5372b381c6c",
+      "bytes": 3637
+    },
+    "results/m20-provenance/traces/archive-T193.json": {
+      "sha256": "7f878fec6f670f35a8b1be60e0410365592283da37d7daf49712640ef5a3be83",
+      "bytes": 5703
+    },
+    "results/m20-provenance/traces/archive-T2049.json": {
+      "sha256": "bf74793f90e25e5e691b56aeea3c4303748b9b69af6d527dd96793a4cdb994a5",
+      "bytes": 27448
+    },
+    "results/m20-provenance/traces/code-T1024.json": {
+      "sha256": "218c330016cef10b9db21d6a099670218c708549e254802a0498822047506074",
+      "bytes": 15331
+    },
+    "results/m20-provenance/traces/code-T17.json": {
+      "sha256": "f8c20217f16343287a6e79eb5a78af63fe0ec5a6f0184236ad249f7d1723adbf",
+      "bytes": 3625
+    },
+    "results/m20-provenance/traces/code-T193.json": {
+      "sha256": "3aabf0e84a9f32c969632c7b8c178a1282f2c34dd4a52b5c36fa3060f9dce771",
+      "bytes": 5675
+    },
+    "results/m20-provenance/traces/code-T2049.json": {
+      "sha256": "50d0e4c73d54d21a06512625c0af34ec76244b9cfe851d6f6e7e1f9885a7d722",
+      "bytes": 27236
+    },
+    "results/m20-real-input-20261007-attempt2.json": {
+      "sha256": "b9b14c49b0b076e4dd4061f0afa67c394ad69324db9f10001e6df810fc56f8b9",
+      "bytes": 954569
+    },
+    "results/m20-real-input-20261007-repeat-2.json": {
+      "sha256": "c2409b862c61104065b89caad248b67d7a4aa2c9933ddf64d80a00bb53141f55",
+      "bytes": 954604
+    },
+    "results/m20-real-input-20261007-repeat-3.json": {
+      "sha256": "a1f9f90c64ba8e5c1a2a6998051512151f7e86e6dd8d993bc238eac231602b23",
+      "bytes": 954518
+    },
+    "results/m20-real-input-20261007.json": {
+      "sha256": "daa0689ae478cc83404dcddde7c065a25a3d98d53f9b8a0c200fab3982c82b1d",
+      "bytes": 119923
+    },
+    "scripts/capture_qwen3_moe_layer0.py": {
+      "sha256": "67229bd7eb0210281dd2ba5d8733af71a0533dd8bc596799c1474b3f5366911e",
+      "bytes": 38551
+    },
+    "scripts/check_m20_evidence.py": {
+      "sha256": "f8a91ddc8255a8cbe52cfd6d79495ae708c7b1f9d8544f11f126e77df16e444b",
+      "bytes": 53402
+    },
+    "scripts/fetch_qwen3_moe_layer0.py": {
+      "sha256": "d9ffd245e336e8b56da101a84b18fc7d5bea8b47ad8b94f2802599279207233d",
+      "bytes": 38382
+    },
+    "scripts/fetch_qwen3_moe_tokenizer.py": {
+      "sha256": "11be04582bff629c9df986d8e0abb65ccf83e96ece41753945aa2011a01ed4ef",
+      "bytes": 18304
+    },
+    "src/llm_gpu_kernels/moe_real_input_benchmark.py": {
+      "sha256": "f011ccf10297dcc858d38d65f018a6d6e6db347b6b585d00a3be60ea89b1e767",
+      "bytes": 14198
+    },
+    "src/llm_gpu_kernels/moe_real_trace.py": {
+      "sha256": "45686545891174852bc05876add5e3dc7cbd33fe7ce093bc548fdec9db260eea",
+      "bytes": 23371
+    }
+  },
+  "external_artifacts": "large model/trace/compiled files remain outside Git; see m20-evidence verification modes"
+}

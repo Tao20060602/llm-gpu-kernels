@@ -1,0 +1,13 @@
+WARNING 10-07 14:35:02 [fused_moe.py:695] Using default MoE config. Performance might be sub-optimal! Config file not found at /home/tmz/ai/baselines/vllm-0.10.0/vllm/model_executor/layers/fused_moe/configs/E=128,N=768,device_name=NVIDIA_GeForce_RTX_3080_Laptop_GPU.json
+real-input record results/m20-real-input-20261007.json
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/tmz/文档/ChatGPT/llm-gpu-kernels/src/llm_gpu_kernels/moe_real_input_benchmark.py", line 243, in <module>
+    run()
+  File "/home/tmz/文档/ChatGPT/llm-gpu-kernels/src/llm_gpu_kernels/moe_real_input_benchmark.py", line 221, in run
+    run_case(case, sibling, gpu_weights, policy, row, args.output.stem)
+  File "/home/tmz/文档/ChatGPT/llm-gpu-kernels/src/llm_gpu_kernels/moe_real_input_benchmark.py", line 146, in run_case
+    kernel = backends[name].base.kernels[kernel_name]
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'gate_up_swiglu'
