@@ -3,13 +3,13 @@
 独立于 NanoKV 的算子项目：先做 **BF16 MoE grouped GEMM 与局部融合**，
 包含四段KV GQA prefill attention。硬件为 RTX 3080 Laptop 16 GiB，SM86。
 
-当前结果与复现入口见 [项目状态](docs/PROJECT_STATUS.md)。完整MoE已取得特定形状的成熟对照收益；attention已实现短query冻结选择：当前验证矩阵中，相对完整FA2链路Graph耗时几何平均减少22.09%，最坏慢2.17%；其他形状回退FA2。有限单GPU合成输入结论，历史回归完整保留。
+当前结果见 [项目状态](docs/PROJECT_STATUS.md)，查阅与复现见 [证据索引](docs/REPRODUCTION_INDEX.md)。完整MoE已取得特定形状的成熟对照收益；attention已实现短query冻结选择：合成验证矩阵中，相对完整FA2链路Graph耗时几何平均减少22.09%，最坏慢2.17%；其他形状回退FA2。M18另有真实模型张量重放，M19已完成系统接入对照，未取得稳定完整prefill收益。
 
 当前已完成 M0/M1 bootstrap、M2 固定 CUTLASS3.8 基线及 M3 参数优化：
 原始 Triton dense/grouped GEMM、FP32 MoE 语义参考、边界数值检查、
 API/CUDA Graph 对照计时与 Tensor Core 编译产物。M4已实现GPU动态值路由的
 完整forward和gate/up+SwiGLU局部融合。M5已接入未修改的vLLM0.10.0完整MoE对照和缓存调用入口。
-M6减少GPU调度，M7完成完整MoE分块搜索与冻结策略对照。attention正在推进，生产部署尚未完成。
+M6减少GPU调度，M7完成完整MoE分块搜索与冻结策略对照。attention已完成M8–M19有限范围实验；两个项目均为单GPU原型。
 
 ## 运行
 
@@ -51,7 +51,7 @@ vLLM算子依赖使用独立overlay，见 [环境说明](docs/VLLM_OPERATOR_ENVI
 5. M5：已完成vLLM0.10.0完整链路、cached launcher、15形状对照。
 6. M6：已验证ranked dispatch将8次启动减到7次；小形状Graph减少约6–7%，大形状变化不足1%。
 7. M7：完整MoE有限搜索、shape选择规则冻结与15场景对照；T1024随机路由比自身原配置减少约25%，比固定vLLM默认配置减少约7–8%。其他场景见报告，不能推广为全面胜出。
-8. M8：四段GPU KV的复用缓冲区pack+FA2与预拼接FA2基线已完成；直接分段GQA kernel正在推进。
+8. M8：四段GPU KV的复用缓冲区pack+FA2与预拼接FA2基线已完成；后续直接分段GQA kernel见M9–M18。
 9. M9：四段直读GQA的G1/2/4对照、全矩阵独立FP32和stream/Graph验证已完成；G1仅T64优于强FA2链路，较大形状仍回归。
 10. M10：统一KV遍历12候选训练与冻结验证完成；大T对自身首版减少约11–19%，T256回归，策略仅作实验记录。
 11. M11：split-KV/merge的8候选完整成本已测，未通过T≤256全域门槛，冻结为FA2回退。
@@ -59,8 +59,8 @@ vLLM算子依赖使用独立overlay，见 [环境说明](docs/VLLM_OPERATOR_ENVI
 13. M14：六种query分块/流水线配置及冻结边界验证；训练选择在T127/128长历史回归约16%，保留实验策略，推荐默认FA2。
 14. M15：在非空current契约下简化softmax状态，S2的13项同配置Graph耗时几何平均减少7.55%；成熟对照与大T回归完整保留。
 15. M16：简化状态后的八种资源分块训练、冻结与69项验证；短query规则保留，其他形状FA2，最坏回归2.17%和适用边界完整记录。
-16. M17：12组真实Qwen3-4B张量重放，6项96尾chunk计入V转换后Graph平均少37.26%；冷prepare约1.03s及系统未接入的边界公开。
-17. M18：编译模板LRU、动态地址与stream workspace；真实尾chunk动态API平均少33.17%，固定Graph少37.11%，完整请求收益尚未验证。[报告](docs/M18_DYNAMIC_BINDING_REPORT.md) / [使用](docs/M18_DYNAMIC_BINDING_USAGE.md)。
+16. M17：12组真实Qwen3-4B张量重放，6项96尾chunk计入V转换后Graph平均少37.26%；首次形状prepare约1.03s，不是公平的完全冷启动对照。后续系统接入见M19。
+17. M18：编译模板LRU、动态地址与stream workspace；真实尾chunk动态API平均少33.17%，固定Graph少37.11%。后续完整prefill对照见M19。[报告](docs/M18_DYNAMIC_BINDING_REPORT.md) / [使用](docs/M18_DYNAMIC_BINDING_USAGE.md)。
 18. M19：NanoKV实验接入与三组新进程对照完成；完整prefill没有稳定收益，后续尾层检索集合有差异，默认维持FA2。[边界报告](docs/M19_NATIVE_INTEGRATION_BOUNDARY.md)。
 
 两个独立项目的可用表述、证据和限制见[简历与面试证据](docs/PORTFOLIO_EVIDENCE.md)。
@@ -82,4 +82,3 @@ config revision/hash，详见 results/provenance。
 基础分块/`tl.dot` 技术为已有方法，本项目首版为自行编写的学习与测量起点。
 只击败 Python expert 循环不能声称超过成熟 MoE。所有本机数字保留适用形状、
 误差和计时边界；单 GPU prototype 不能说明 expert-parallel 或 serving 经验。
-

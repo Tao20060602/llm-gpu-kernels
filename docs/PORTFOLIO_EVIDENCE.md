@@ -47,3 +47,4 @@
   广泛质量验收尚未得到验证。
 
 完整系统边界见[M19](M19_NATIVE_INTEGRATION_BOUNDARY.md)。
+查阅顺序、无GPU核对入口和重跑所需材料见[复现索引](REPRODUCTION_INDEX.md)。

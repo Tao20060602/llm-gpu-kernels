@@ -41,14 +41,14 @@ Qwen3-4B张量重放。模型请求集成另有边界审计，尚未作为生产
 - M17在固定Qwen3-4B、两条实际模型请求采集的12组Q/K/V上重放；6项96尾chunk
   计入实际非连续V转换后，比强复用pack+FA2 Graph geomean少37.26%。原FA2/各arm
   独立FP32及204项精度检查通过。4096仍用FA2；首次形状prepare约1.03s，动态地址
-  编译/绑定缓存与系统A/B尚未完成。不能将该数字写成请求加速。
+  当时编译/绑定缓存与系统A/B尚未完成，后续分别见M18/M19。不能将该数字写成请求加速。
   [真实输入报告](M17_REAL_INPUT_BRIDGE_REPORT.md)。
 
 
 - M18完成指针无关的编译模板LRU与stream独立动态workspace；12项真实输入、7项功能和
   3项布局审计共227项精度指标通过。六项尾chunk计入动态绑定/生命周期/V转换后，API
   比强FA2平均少33.17%，固定Graph少37.11%；动态API较M17固定入口多7.72%成本。
-  fallback额外预留output和全冷启动/系统接入未验证的限制公开。
+  fallback额外预留output和全冷启动未验证的限制公开；后续系统接入见M19。
   [动态绑定报告](M18_DYNAMIC_BINDING_REPORT.md)、[入口契约](M18_DYNAMIC_BINDING_USAGE.md)。
 
 - M19完成NanoKV显式实验接入和9个新进程三arm对照，1080项精度/864项状态检查通过。
@@ -56,6 +56,9 @@ Qwen3-4B张量重放。模型请求集成另有边界审计，尚未作为生产
   默认继续FA2。[系统边界](M19_NATIVE_INTEGRATION_BOUNDARY.md)、[简历证据](PORTFOLIO_EVIDENCE.md)。
 
 ## 复现冻结后的实验
+
+先查阅[复现与证据索引](REPRODUCTION_INDEX.md)：无GPU的文件核对、GPU微基准和真实模型
+请求分别有独立入口。以下命令重跑历史测量，不是查看已有结果所必需。
 
 从本仓库根目录使用各自官方overlay；不重新覆盖冻结policy：
 
@@ -88,6 +91,8 @@ vLLM0.10.0与FA2 2.8.3.post1分别隔离安装，只用官方公开算子，不�
 环境说明：[vLLM](VLLM_OPERATOR_ENVIRONMENT.md)、[FA2](FLASH_ATTENTION_OPERATOR_ENVIRONMENT.md)。
 
 HMMA只证明编译产物使用Tensor Core，不能代替utilization、occupancy或DRAM计数器。
-实验为hot repeated GPU resident输入，不包括CPU gather/H2D/router/RoPE、真实模型、
-多GPU/expert parallel或NanoKV请求。NanoKV系统项目另保留模型、KV状态/selection、
-同步与端到端证据；不能重复使用算子数字作为系统收益。
+本仓库微基准为hot repeated GPU resident输入：MoE使用给定合成路由，M17/M18 attention
+使用真实模型采集张量，计时不包括CPU gather/H2D/router/RoPE或模型请求。
+M19请求测量在独立NanoKV仓库执行，包含该请求的数据路径；不含模型加载与warmup，
+只生成首token。两者均没有多GPU/expert parallel或生产serving证据；不能重复使用算子
+数字作为系统收益。
