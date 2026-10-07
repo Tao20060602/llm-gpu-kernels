@@ -1,0 +1,322 @@
+{
+  "schema": "m22-release-manifest-v1",
+  "status": "complete",
+  "created_utc": "2026-10-07T15:27:53Z",
+  "scope": "M22 SM86 BF16 WMMA and W4A16 MoE kernels, validation, performance summaries, plans, and project entry documents.",
+  "files": [
+    {
+      "path": "PROJECT_STATUS.md",
+      "sha256": "49a06d20c235973cba326022484ee2d7e705c21038aa7068432dcdb61c36c64d",
+      "size_bytes": 2628
+    },
+    {
+      "path": "docs/M22_BF16_PERFORMANCE_PLAN.md",
+      "sha256": "f8e8ed061935c7f65d2193f918d9939fe8cdbbd31743cf21fa259b37e63c8c39",
+      "size_bytes": 3237
+    },
+    {
+      "path": "docs/M22_BF16_REPORT.md",
+      "sha256": "bfb9791765435cf0fde61b24d38018ff4f4ab0155be6b159032db592a79fdf84",
+      "size_bytes": 5382
+    },
+    {
+      "path": "docs/M22_CUDA_AUDIT_PLAN.md",
+      "sha256": "5de1e97aa444a4a84dc039fd71e8ee1c335d29bad52ea43a36d49a810c2d7e60",
+      "size_bytes": 2138
+    },
+    {
+      "path": "docs/M22_W4_IMPLEMENTATION_AUDIT_PLAN.md",
+      "sha256": "83350b9a3ebf201fbd8cb0ea39cf2df96f32ac9210699bb3d2cecaa43fceb49c",
+      "size_bytes": 2248
+    },
+    {
+      "path": "docs/M22_W4_PERFORMANCE_PLAN.md",
+      "sha256": "bccfb8ba506fcd99b2b92233267f81258b7cdd8d50c6bb52abf5ebb4b23a4fd7",
+      "size_bytes": 3640
+    },
+    {
+      "path": "docs/M22_W4_REPORT.md",
+      "sha256": "01aacd921c4872b5b7ffa18dc85216a32fbcbb69cd1a294bc928f265b580b88a",
+      "size_bytes": 7727
+    },
+    {
+      "path": "docs/POST_RELEASE_PLAN.md",
+      "sha256": "e4b422da3d9071c476c16232f9b3d4557e491ecd3e014ec2e114274571ee2f5d",
+      "size_bytes": 1737
+    },
+    {
+      "path": "docs/RESUME_NOTES.md",
+      "sha256": "c0ab799bbc2b557cb954ee2682b749450437c4692b463bf1f54f349d99136ce9",
+      "size_bytes": 5238
+    },
+    {
+      "path": "results/m22-bf16-audit-summary.json",
+      "sha256": "f2ba3b61ba4d7472a344be5b7ed8898834ff428707b9b572e33e6188a45d9b72",
+      "size_bytes": 14092
+    },
+    {
+      "path": "results/m22-bf16-binary-inspection.json",
+      "sha256": "c36d463103995a285f9d1e097dd58007de6ed46484f615f312a40477696d23a0",
+      "size_bytes": 2695
+    },
+    {
+      "path": "results/m22-bf16-performance-summary.json",
+      "sha256": "af524317c40e19b6b0334c4e4e80a9dd03e5e1c0ceb0671a697713695e5f1336",
+      "size_bytes": 5928643
+    },
+    {
+      "path": "results/m22-quant-format-preparation.json",
+      "sha256": "efda108e45b5f7d17307387da6aab6155f7e9eb5687cfc2257fe12f49342e118",
+      "size_bytes": 3895
+    },
+    {
+      "path": "results/m22-w4-audit-summary.json",
+      "sha256": "2edd121551e092f16ef3a7e965d5704c8d365ab978ed1a7c73c54c712882c546",
+      "size_bytes": 19506
+    },
+    {
+      "path": "results/m22-w4-binary-inspection.json",
+      "sha256": "e7f7427b099d1bcfb08cbf551f2408155faa4275a2ce03f3349273ea7407ceb4",
+      "size_bytes": 2375
+    },
+    {
+      "path": "results/m22-w4-perf-preflight-failure.json",
+      "sha256": "86503402b30dadd6e68202afae436c1f3ee26483769a3c344fb9ce1ef6dab611",
+      "size_bytes": 2912
+    },
+    {
+      "path": "results/m22-w4-performance-summary.json",
+      "sha256": "8271d4a1a9c493e861bb44c9a6edc2573eec460fc78d50999c3fb0536b45986d",
+      "size_bytes": 982756
+    },
+    {
+      "path": "scripts/summarize_m22_bf16.py",
+      "sha256": "60ff3da61d2e395b6a58d09b9af9a07a5b71f8602de1b0e0484f5373e160494e",
+      "size_bytes": 20825
+    },
+    {
+      "path": "scripts/summarize_m22_w4.py",
+      "sha256": "0d9e8305ddfaeb576e997eb05190abc0493605b3227073dad427ec7a76018960",
+      "size_bytes": 26384
+    },
+    {
+      "path": "src/llm_gpu_kernels/cuda_gate_up.cu",
+      "sha256": "9012fa52379a87296ff2f29076ff15951c90e3d82ba996d424a5c5e3aa6c4893",
+      "size_bytes": 9442
+    },
+    {
+      "path": "src/llm_gpu_kernels/cuda_w4_gate_up.cu",
+      "sha256": "9568364b9f7ef506259466b13cf16259dee6e459094335288914788a68aa60ac",
+      "size_bytes": 8240
+    },
+    {
+      "path": "src/llm_gpu_kernels/moe_cuda.py",
+      "sha256": "f770b39716d606b73d14e864e59ac6aad5aa1376beeb6244cc6d0dbe9e80b741",
+      "size_bytes": 3126
+    },
+    {
+      "path": "src/llm_gpu_kernels/moe_cuda_audit.py",
+      "sha256": "e6d24efa2a4b9236d33433d546306cdcd4c0fc5f22399f2d77861d4c907f6232",
+      "size_bytes": 8955
+    },
+    {
+      "path": "src/llm_gpu_kernels/moe_cuda_benchmark.py",
+      "sha256": "7fb83e1d196800092f3214350e665dcf7e93240d080b2e09bfd9ff06fa73fa61",
+      "size_bytes": 9864
+    },
+    {
+      "path": "src/llm_gpu_kernels/moe_w4_audit.py",
+      "sha256": "ed945c8a4a381b275b5bf31895b380e28bf1bb80f3d8a8aa334838f84d042bb7",
+      "size_bytes": 11607
+    },
+    {
+      "path": "src/llm_gpu_kernels/moe_w4_benchmark.py",
+      "sha256": "3c8a7bd2aa514ccb9f6d5a5f9e4bc8e46c0663217de2f136863d6e6b1a55320c",
+      "size_bytes": 14413
+    },
+    {
+      "path": "src/llm_gpu_kernels/moe_w4_cuda.py",
+      "sha256": "10ec8cdac931e6dc857f41e2d4f6061f18027954b2f7e68e7331d1e18ad9d8b7",
+      "size_bytes": 8745
+    },
+    {
+      "path": "src/llm_gpu_kernels/moe_weight_quant.py",
+      "sha256": "a4f60e9bafef12a5539c6a8531ab40935512cfe40f00114da51346d4a8e87661",
+      "size_bytes": 5382
+    }
+  ],
+  "proof": {
+    "bf16_correctness": {
+      "status": "complete",
+      "summary": "results/m22-bf16-audit-summary.json"
+    },
+    "bf16_binary_static_evidence": {
+      "summary": "results/m22-bf16-binary-inspection.json"
+    },
+    "bf16_performance": {
+      "status": "complete",
+      "case_count": 6,
+      "summary": "results/m22-bf16-performance-summary.json"
+    },
+    "w4_correctness": {
+      "status": "complete",
+      "summary": "results/m22-w4-audit-summary.json"
+    },
+    "w4_binary_static_evidence": {
+      "summary": "results/m22-w4-binary-inspection.json"
+    },
+    "w4_performance": {
+      "status": "complete",
+      "case_count": 6,
+      "summary": "results/m22-w4-performance-summary.json"
+    },
+    "preserved_w4_preflight_failure": {
+      "status": "preflight_failed_before_timing",
+      "summary": "results/m22-w4-perf-preflight-failure.json"
+    },
+    "quant_format_preparation": {
+      "status": "passed",
+      "summary": "results/m22-quant-format-preparation.json"
+    }
+  },
+  "source_dependencies": {
+    "direct_existing_python_modules": [
+      {
+        "path": "src/llm_gpu_kernels/baselines/vllm_moe.py",
+        "sha256": "8a67aecf2f8c5a379a40fe183670cd8b4b7de3ceac0854226c6f511be317cc4c",
+        "size_bytes": 3447
+      },
+      {
+        "path": "src/llm_gpu_kernels/benchmark.py",
+        "sha256": "c3a12e68e37b09f62d7dd78d14738537074dc60b7a02e20c96e24d1923c565e4",
+        "size_bytes": 11747
+      },
+      {
+        "path": "src/llm_gpu_kernels/gemm.py",
+        "sha256": "f1a207413c7db6a5a508fc72a4dc4430049030ded3faf7e8bafadd4c822e49b0",
+        "size_bytes": 6581
+      },
+      {
+        "path": "src/llm_gpu_kernels/mature_moe_benchmark.py",
+        "sha256": "a662f8cab1ba252f19d4bb49bb2439e667dae93d5e05113ed81f6567e48ea80f",
+        "size_bytes": 27839
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe.py",
+        "sha256": "64fd0282025071b43b6d432a149a1ba72f6d5d7417664087886e8a51b6b58597",
+        "size_bytes": 10884
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_benchmark.py",
+        "sha256": "1be148d270e78ad806ce8f49395f757606e6de114ba10517c94e85fe8f0da3e0",
+        "size_bytes": 31133
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_configured.py",
+        "sha256": "71b3332041f180dbbcb245083b8d75e24642c18552dd7bd874d068282fba9ded",
+        "size_bytes": 3209
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_full_holdout.py",
+        "sha256": "270077115b7455144fc40fb1012baaa6b80acd18c78e7df977ff6c5688f454c9",
+        "size_bytes": 35605
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_full_policy.py",
+        "sha256": "2543147949dedd51fcb57bdc8d88d3cbe93fb97d1ecd4fe15fa57bf6cdffb510",
+        "size_bytes": 8429
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_prepared.py",
+        "sha256": "7b52ecf4234d6385d1a4e104b5a01656786571aa29d5ab2bad948589097acef8",
+        "size_bytes": 7934
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_profile.py",
+        "sha256": "03e72384be55de710fbfdb2812b45b58829f3155febaf9b3232fdabbeddac210",
+        "size_bytes": 10966
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_ranked.py",
+        "sha256": "eff4861e812722b7b4bbbd833590d52bbe966d5301bf02e03a289ef5438ed705",
+        "size_bytes": 6771
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_real_input_benchmark.py",
+        "sha256": "f011ccf10297dcc858d38d65f018a6d6e6db347b6b585d00a3be60ea89b1e767",
+        "size_bytes": 14198
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_real_trace.py",
+        "sha256": "45686545891174852bc05876add5e3dc7cbd33fe7ce093bc548fdec9db260eea",
+        "size_bytes": 23371
+      },
+      {
+        "path": "src/llm_gpu_kernels/optimization_benchmark.py",
+        "sha256": "17c15a3eac5b4de21d694c63e55cda8cccd53d9f31a4e9e4a28b1e2712419f89",
+        "size_bytes": 11518
+      },
+      {
+        "path": "src/llm_gpu_kernels/reference.py",
+        "sha256": "da310c36314cc0403d1315be2846b7f970737afd089a614b80c36202fc1bc456",
+        "size_bytes": 2195
+      }
+    ],
+    "design_and_scope_references": [
+      {
+        "path": "docs/CONTRACT.md",
+        "sha256": "b46958c069ab8e1d5bd8c6eb9143f0cc43110e61c2e9270cfd193ce5791cd907",
+        "size_bytes": 10037
+      },
+      {
+        "path": "docs/M16_ATTENTION_RESOURCE_REPORT.md",
+        "sha256": "600ad550a7b95d0e734d0ac69dd9c03489addbc3282ea3181a50020f41df0aa6",
+        "size_bytes": 15984
+      },
+      {
+        "path": "docs/M20_REAL_MOE_REPORT.md",
+        "sha256": "01bddb713e0aee4cb2151f82b51476595379eec7c55b4d36a3baaeef29161c28",
+        "size_bytes": 14427
+      },
+      {
+        "path": "docs/M21_MOE_PROFILE_REPORT.md",
+        "sha256": "e8e569e7b4383a6aab96bcc9700cd1c8f29ce9688a55155b17f067614afcc455",
+        "size_bytes": 9400
+      },
+      {
+        "path": "docs/M21_MOE_PROFILE_PLAN.md",
+        "sha256": "b368bf2f14f6e0961d8491dc692d7d23d935b1188b2fc018f58963595e999bfb",
+        "size_bytes": 3264
+      },
+      {
+        "path": "docs/M22_CUDA_QUANT_DESIGN_DRAFT.md",
+        "sha256": "688f0a301f45903b939c975aa53993638e2c4c58391dcc0705fa73a034f01415",
+        "size_bytes": 6217
+      }
+    ],
+    "frozen_evidence_manifests": [
+      {
+        "milestone": "M20",
+        "path": "results/m20-release-manifest.json",
+        "sha256": "81651e3df2c8472c65069020c292a438ee196842637c74c65e7a5061d277700f",
+        "status": "frozen",
+        "file_count": 37
+      },
+      {
+        "milestone": "M21",
+        "path": "results/m21-release-manifest.json",
+        "sha256": "18bdfb75683d97f69e187f8b46fc10fbc87ad2ba0c7893e3f2e62cb5b95844fa",
+        "status": "diagnostics-complete",
+        "file_count": 9
+      }
+    ]
+  },
+  "publication_exclusions": [
+    "ignored artifacts and raw traces",
+    "model weights",
+    "capture and profiler logs",
+    "environment dumps",
+    "compiled shared objects"
+  ],
+  "self_hash": "omitted; this manifest enumerates and hashes every other newly published M22 file."
+}

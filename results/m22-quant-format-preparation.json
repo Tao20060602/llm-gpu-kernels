@@ -1,0 +1,108 @@
+{
+  "artifact": {
+    "path": "artifacts/m22-quant-pack-20261007-v1/gate-up-w4g128.pt",
+    "reloaded_weights_only_cpu": true,
+    "sha256": "317b88512a2a75c4fed279f077c6518c81e1218ed40497e21bdbab822671fe11",
+    "size_bytes": 207620773
+  },
+  "execution": {
+    "cuda_calls": false,
+    "dequantize_reference_wall_seconds": 1.0561523609976575,
+    "mode": "CPU-only format preparation and audit",
+    "quantize_wall_seconds": 5.353715630997613,
+    "timing_use": "preparation wall times only; not operator performance",
+    "torch_num_threads": 8,
+    "torch_version": "2.7.1+cu128"
+  },
+  "format": {
+    "encoding": "q+8, q in [-7,7], low nibble is earliest K",
+    "format_version": 1,
+    "group_size_k": 128,
+    "invalid_zero_code_count": 0,
+    "logical_weight_bytes": 805306368,
+    "packed_q_max": 7,
+    "packed_q_min": -7,
+    "packed_words_bytes": 201326592,
+    "packed_words_dtype": "torch.int32",
+    "packed_words_mib": 192.0,
+    "packed_words_shape": [
+      128,
+      1536,
+      256
+    ],
+    "scales_bytes": 6291456,
+    "scales_dtype": "torch.bfloat16",
+    "scales_finite_positive": true,
+    "scales_mib": 6.0,
+    "scales_shape": [
+      128,
+      1536,
+      16
+    ],
+    "word_storage": "int32 storage of uint32 bit pattern"
+  },
+  "format_error_audit": {
+    "interpretation": "format loss only; not kernel implementation error or model task quality",
+    "matches_metadata": {
+      "max_abs": true,
+      "normalized_max": true,
+      "relative_rms": true
+    },
+    "metadata": {
+      "max_abs": 0.04736328125,
+      "normalized_max": 0.06736111111111111,
+      "relative_rms": 0.127128597951562
+    },
+    "recomputed_from_dequantize_reference": {
+      "max_abs": 0.04736328125,
+      "normalized_max": 0.06736111111111111,
+      "relative_rms": 0.127128597951562
+    }
+  },
+  "format_source": {
+    "quantizer_path": "src/llm_gpu_kernels/moe_weight_quant.py",
+    "quantizer_sha256_before_after": {
+      "after": "a4f60e9bafef12a5539c6a8531ab40935512cfe40f00114da51346d4a8e87661",
+      "before": "a4f60e9bafef12a5539c6a8531ab40935512cfe40f00114da51346d4a8e87661"
+    },
+    "validator_path": "src/llm_gpu_kernels/moe_real_trace.py",
+    "validator_sha256_before_after": {
+      "after": "45686545891174852bc05876add5e3dc7cbd33fe7ce093bc548fdec9db260eea",
+      "before": "45686545891174852bc05876add5e3dc7cbd33fe7ce093bc548fdec9db260eea"
+    }
+  },
+  "input": {
+    "capture_id": "m20-qwen3-layer0-20261007-attempt3",
+    "capture_summary_path": "results/m20-provenance/capture-summary.json",
+    "capture_summary_sha256": "163be24068637aa6c0d29ca28fcc47bef0e805d6583798ddd5a4908a6471d61c",
+    "contiguous": true,
+    "device": "cpu",
+    "dtype": "torch.bfloat16",
+    "finite": true,
+    "manifest_status": "passed",
+    "manifest_weight_sha256": "e703f1ea866455f43685a2f0fdd15055e40efb4f2086c876a812c3498317c7c1",
+    "shape": [
+      128,
+      1536,
+      2048
+    ],
+    "source_extraction_manifest_sha256": "2e5553fd186cf32b614c3b774465d6204fd5a4bbaa4c855c8e541ca2c10e8ccc",
+    "tensor": "gate_up",
+    "trace_manifest_path": "traces/archive-T1024.json",
+    "trace_manifest_repo_copy_path": "results/m20-provenance/traces/archive-T1024.json",
+    "trace_manifest_repo_copy_sha256": "5c49a2254dffdfb3304127a671ad52dd62233188d775be98bc362f657f078b0e",
+    "trace_manifest_sha256_before_after": {
+      "after": "5c49a2254dffdfb3304127a671ad52dd62233188d775be98bc362f657f078b0e",
+      "before": "5c49a2254dffdfb3304127a671ad52dd62233188d775be98bc362f657f078b0e"
+    },
+    "weights_path": "weights.pt",
+    "weights_sha256_before_after": {
+      "after": "e703f1ea866455f43685a2f0fdd15055e40efb4f2086c876a812c3498317c7c1",
+      "before": "e703f1ea866455f43685a2f0fdd15055e40efb4f2086c876a812c3498317c7c1"
+    },
+    "weights_size_bytes": 1207961381
+  },
+  "schema": "m22-quant-format-preparation",
+  "schema_version": 1,
+  "status": "passed"
+}

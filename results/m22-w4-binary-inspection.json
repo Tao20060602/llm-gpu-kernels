@@ -1,0 +1,55 @@
+{
+  "schema": "m22-w4-binary-inspection-v1",
+  "audited_binary": {
+    "cache_artifact": "torch-extensions/py312_cu128/llm_gpu_kernels_m22_w4_gate_up_sm86_v1/llm_gpu_kernels_m22_w4_gate_up_sm86_v1.so",
+    "sha256": "ba043552d76fdd139de2775863655fba43fb8087a9c10e20215591a2fc9b6f65",
+    "matches_audit_and_build": true,
+    "audit_record_sha256": "358e5526a4f463fc900ae7f32a7e2a063e7b910e003288a2f69d49c6ec0d28e9"
+  },
+  "source_sha256": {
+    "src/llm_gpu_kernels/cuda_w4_gate_up.cu": "9568364b9f7ef506259466b13cf16259dee6e459094335288914788a68aa60ac",
+    "src/llm_gpu_kernels/moe_w4_cuda.py": "10ec8cdac931e6dc857f41e2d4f6061f18027954b2f7e68e7331d1e18ad9d8b7"
+  },
+  "tool_versions": {
+    "cuobjdump": "CUDA 13.1, V13.1.80",
+    "binary_compiler": "CUDA 12.8"
+  },
+  "device_code_evidence": {
+    "architecture": "sm_86",
+    "sass_present": true,
+    "embedded_ptx_device_functions_present": false,
+    "embedded_ptx_cp_async_present": null,
+    "instruction_scope": "static SASS opcode counts; these do not measure runtime utilization"
+  },
+  "kernel": {
+    "name": "cuda_gate_up_w4_sync",
+    "static_resources": {
+      "registers_per_thread": 72,
+      "stack_bytes": 0,
+      "static_shared_bytes_in_fatbin": 0,
+      "local_bytes": 0,
+      "constant0_bytes": 408,
+      "spill_store_bytes": 0,
+      "spill_load_bytes": 0
+    },
+    "dynamic_shared_launch_bytes": 16384,
+    "dynamic_shared_source": "2 * BM * BN * sizeof(float), BM=32, BN=64",
+    "sass_instruction_evidence_counts": {
+      "HMMA": 16,
+      "LDGSTS": 0
+    }
+  },
+  "build_resource_record": {
+    "status": "passed",
+    "exit_code": 0,
+    "registers_per_thread": 72,
+    "dynamic_shared_launch_bytes": 16384,
+    "static_shared_bytes_reported_by_build": null,
+    "stack_frame_bytes": 0,
+    "spill_store_bytes": 0,
+    "spill_load_bytes": 0,
+    "resource_summary_sha256": "e69ffb7c2230242167acacb00a4f2e11c4e316f6c1f077b2b044a9fc346fec46",
+    "build_info_sha256": "5de9f89b819a60c063820a983bf60cd006622bdc4543d76f21602807cf2ed2ec"
+  },
+  "interpretation": "cuobjdump reports 0 bytes of static shared memory in the SM86 function; the 16384-byte shared allocation is dynamic and supplied at launch. HMMA is present; LDGSTS is absent in this synchronous kernel. PTX device functions are not embedded in this fatbin. These are static code/resource observations, not runtime utilization."
+}

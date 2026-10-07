@@ -1,0 +1,557 @@
+{
+  "schema": 1,
+  "summary_type": "m22_w4_implementation_audit_safe_cpu_summary",
+  "status": "complete",
+  "audit": {
+    "experiment": "M22 W4A16 full-forward correctness",
+    "audit_status": "passed",
+    "case_count": 6,
+    "audit_states_per_case": 7,
+    "numerical_check_count": 42,
+    "dispatch_check_count": 42,
+    "variants": [
+      "w4_sync"
+    ],
+    "audit_states": [
+      "original-api",
+      "original-graph",
+      "duplicate-expert0-graph",
+      "duplicate-expert127-graph",
+      "nondefault-stream",
+      "restored-api",
+      "restored-graph"
+    ],
+    "numerical_limits": {
+      "relative_rms": 0.008,
+      "normalized_max": 0.008
+    },
+    "all_numerical_and_dispatch_checks_passed": true,
+    "cases": [
+      {
+        "case": "archive-T17",
+        "selected_bucket": "small",
+        "audit_states": [
+          "original-api",
+          "original-graph",
+          "duplicate-expert0-graph",
+          "duplicate-expert127-graph",
+          "nondefault-stream",
+          "restored-api",
+          "restored-graph"
+        ],
+        "numerical_checks": 7,
+        "dispatch_checks": 7,
+        "all_passed": true,
+        "implementation_error_vs_dequantized_bf16_oracle_max_over_states": {
+          "relative_rms": 0.003319373121485114,
+          "normalized_max": 0.004341739229857922,
+          "max_abs": 0.00253218412399292,
+          "finite": true
+        },
+        "input_sha256": "068d8ff811483045d27240b8c56843eeea266bd936400f5e8d9b6bb339c2b856",
+        "input_hash_unchanged": true,
+        "referenced_artifact_hashes_unchanged": true,
+        "format_forward_change_proxy": {
+          "relative_rms": 0.04054340720176697,
+          "normalized_max": 0.00982006173580885,
+          "max_abs": 0.009131312370300293,
+          "finite": true
+        },
+        "w4_cuda_vs_original_bf16_proxy": {
+          "relative_rms": 0.04059744253754616,
+          "normalized_max": 0.01011425070464611,
+          "max_abs": 0.009404867887496948,
+          "finite": true
+        }
+      },
+      {
+        "case": "archive-T193",
+        "selected_bucket": "medium",
+        "audit_states": [
+          "original-api",
+          "original-graph",
+          "duplicate-expert0-graph",
+          "duplicate-expert127-graph",
+          "nondefault-stream",
+          "restored-api",
+          "restored-graph"
+        ],
+        "numerical_checks": 7,
+        "dispatch_checks": 7,
+        "all_passed": true,
+        "implementation_error_vs_dequantized_bf16_oracle_max_over_states": {
+          "relative_rms": 0.003284968202933669,
+          "normalized_max": 0.003476751269772649,
+          "max_abs": 0.001905679702758789,
+          "finite": true
+        },
+        "input_sha256": "8ed759abe00002abe70642ec844c3fbd09a80135c32518c66de1aad9038f9288",
+        "input_hash_unchanged": true,
+        "referenced_artifact_hashes_unchanged": true,
+        "format_forward_change_proxy": {
+          "relative_rms": 0.043418001383543015,
+          "normalized_max": 0.009850113652646542,
+          "max_abs": 0.009124264121055603,
+          "finite": true
+        },
+        "w4_cuda_vs_original_bf16_proxy": {
+          "relative_rms": 0.04345068708062172,
+          "normalized_max": 0.01011550985276699,
+          "max_abs": 0.009370103478431702,
+          "finite": true
+        }
+      },
+      {
+        "case": "archive-T1024",
+        "selected_bucket": "medium",
+        "audit_states": [
+          "original-api",
+          "original-graph",
+          "duplicate-expert0-graph",
+          "duplicate-expert127-graph",
+          "nondefault-stream",
+          "restored-api",
+          "restored-graph"
+        ],
+        "numerical_checks": 7,
+        "dispatch_checks": 7,
+        "all_passed": true,
+        "implementation_error_vs_dequantized_bf16_oracle_max_over_states": {
+          "relative_rms": 0.0032936695497483015,
+          "normalized_max": 0.00418565608561039,
+          "max_abs": 0.0017109513282775879,
+          "finite": true
+        },
+        "input_sha256": "92cd5ccc89f04d379313f806cd7dcd5f976c9456894aad2fe31bd98dc0b673a9",
+        "input_hash_unchanged": true,
+        "referenced_artifact_hashes_unchanged": true,
+        "format_forward_change_proxy": {
+          "relative_rms": 0.04484264925122261,
+          "normalized_max": 0.00985022448003292,
+          "max_abs": 0.009138084948062897,
+          "finite": true
+        },
+        "w4_cuda_vs_original_bf16_proxy": {
+          "relative_rms": 0.044917408376932144,
+          "normalized_max": 0.010213419795036316,
+          "max_abs": 0.009475022554397583,
+          "finite": true
+        }
+      },
+      {
+        "case": "code-T17",
+        "selected_bucket": "small",
+        "audit_states": [
+          "original-api",
+          "original-graph",
+          "duplicate-expert0-graph",
+          "duplicate-expert127-graph",
+          "nondefault-stream",
+          "restored-api",
+          "restored-graph"
+        ],
+        "numerical_checks": 7,
+        "dispatch_checks": 7,
+        "all_passed": true,
+        "implementation_error_vs_dequantized_bf16_oracle_max_over_states": {
+          "relative_rms": 0.0032901878003031015,
+          "normalized_max": 0.002727238228544593,
+          "max_abs": 0.0038645267486572266,
+          "finite": true
+        },
+        "input_sha256": "5f8bda9af87db7d4ad9d027900ddbb17e8fb5ec248d083601e2ee13649121d0a",
+        "input_hash_unchanged": true,
+        "referenced_artifact_hashes_unchanged": true,
+        "format_forward_change_proxy": {
+          "relative_rms": 0.02610948495566845,
+          "normalized_max": 0.0020094069186598063,
+          "max_abs": 0.0042047202587127686,
+          "finite": true
+        },
+        "w4_cuda_vs_original_bf16_proxy": {
+          "relative_rms": 0.026301566511392593,
+          "normalized_max": 0.002599380910396576,
+          "max_abs": 0.005439251661300659,
+          "finite": true
+        }
+      },
+      {
+        "case": "code-T193",
+        "selected_bucket": "medium",
+        "audit_states": [
+          "original-api",
+          "original-graph",
+          "duplicate-expert0-graph",
+          "duplicate-expert127-graph",
+          "nondefault-stream",
+          "restored-api",
+          "restored-graph"
+        ],
+        "numerical_checks": 7,
+        "dispatch_checks": 7,
+        "all_passed": true,
+        "implementation_error_vs_dequantized_bf16_oracle_max_over_states": {
+          "relative_rms": 0.003238949691876769,
+          "normalized_max": 0.003447882132604718,
+          "max_abs": 0.002961874008178711,
+          "finite": true
+        },
+        "input_sha256": "9606898723d3b688dbdb3652eabc3ffb9c32b20fa9a73b4f266f6579c129e8f9",
+        "input_hash_unchanged": true,
+        "referenced_artifact_hashes_unchanged": true,
+        "format_forward_change_proxy": {
+          "relative_rms": 0.03357813507318497,
+          "normalized_max": 0.0031986343674361706,
+          "max_abs": 0.006684929132461548,
+          "finite": true
+        },
+        "w4_cuda_vs_original_bf16_proxy": {
+          "relative_rms": 0.03370601683855057,
+          "normalized_max": 0.0037043634802103043,
+          "max_abs": 0.007741868495941162,
+          "finite": true
+        }
+      },
+      {
+        "case": "code-T1024",
+        "selected_bucket": "medium",
+        "audit_states": [
+          "original-api",
+          "original-graph",
+          "duplicate-expert0-graph",
+          "duplicate-expert127-graph",
+          "nondefault-stream",
+          "restored-api",
+          "restored-graph"
+        ],
+        "numerical_checks": 7,
+        "dispatch_checks": 7,
+        "all_passed": true,
+        "implementation_error_vs_dequantized_bf16_oracle_max_over_states": {
+          "relative_rms": 0.003261406207457185,
+          "normalized_max": 0.003911750856786966,
+          "max_abs": 0.002967357635498047,
+          "finite": true
+        },
+        "input_sha256": "c493fa22e12c8efd09ba9583634ae8e65961989e8136f5622431dec4b6dc683e",
+        "input_hash_unchanged": true,
+        "referenced_artifact_hashes_unchanged": true,
+        "format_forward_change_proxy": {
+          "relative_rms": 0.03586667776107788,
+          "normalized_max": 0.0031971270218491554,
+          "max_abs": 0.006685927510261536,
+          "finite": true
+        },
+        "w4_cuda_vs_original_bf16_proxy": {
+          "relative_rms": 0.03600795567035675,
+          "normalized_max": 0.003293328918516636,
+          "max_abs": 0.006887108087539673,
+          "finite": true
+        }
+      }
+    ],
+    "maximum_implementation_error_over_all_cases_and_states": {
+      "relative_rms": 0.003319373121485114,
+      "normalized_max": 0.004341739229857922,
+      "max_abs": 0.0038645267486572266
+    },
+    "zero_token_case": {
+      "label": "T0",
+      "passed": true,
+      "launch_count": 0,
+      "dtype": "bfloat16",
+      "shape": [
+        0,
+        2048
+      ]
+    }
+  },
+  "format_proxies": {
+    "weight_tensor_quantization_vs_source_bf16": {
+      "relative_rms": 0.127128597951562,
+      "normalized_max": 0.06736111111111111,
+      "max_abs": 0.04736328125,
+      "interpretation": "format loss only; not kernel implementation error or model task quality"
+    },
+    "quantized_oracle_forward_change_vs_original_bf16": {
+      "case_count": 6,
+      "per_case": [
+        {
+          "case": "archive-T17",
+          "relative_rms": 0.04054340720176697,
+          "normalized_max": 0.00982006173580885,
+          "max_abs": 0.009131312370300293,
+          "finite": true
+        },
+        {
+          "case": "archive-T193",
+          "relative_rms": 0.043418001383543015,
+          "normalized_max": 0.009850113652646542,
+          "max_abs": 0.009124264121055603,
+          "finite": true
+        },
+        {
+          "case": "archive-T1024",
+          "relative_rms": 0.04484264925122261,
+          "normalized_max": 0.00985022448003292,
+          "max_abs": 0.009138084948062897,
+          "finite": true
+        },
+        {
+          "case": "code-T17",
+          "relative_rms": 0.02610948495566845,
+          "normalized_max": 0.0020094069186598063,
+          "max_abs": 0.0042047202587127686,
+          "finite": true
+        },
+        {
+          "case": "code-T193",
+          "relative_rms": 0.03357813507318497,
+          "normalized_max": 0.0031986343674361706,
+          "max_abs": 0.006684929132461548,
+          "finite": true
+        },
+        {
+          "case": "code-T1024",
+          "relative_rms": 0.03586667776107788,
+          "normalized_max": 0.0031971270218491554,
+          "max_abs": 0.006685927510261536,
+          "finite": true
+        }
+      ],
+      "maximum_over_cases": {
+        "relative_rms": 0.04484264925122261,
+        "normalized_max": 0.00985022448003292,
+        "max_abs": 0.009138084948062897
+      },
+      "interpretation": "format proxy only; not implementation pass/fail or task quality"
+    },
+    "w4_cuda_forward_vs_original_bf16": {
+      "case_count": 6,
+      "per_case": [
+        {
+          "case": "archive-T17",
+          "relative_rms": 0.04059744253754616,
+          "normalized_max": 0.01011425070464611,
+          "max_abs": 0.009404867887496948,
+          "finite": true
+        },
+        {
+          "case": "archive-T193",
+          "relative_rms": 0.04345068708062172,
+          "normalized_max": 0.01011550985276699,
+          "max_abs": 0.009370103478431702,
+          "finite": true
+        },
+        {
+          "case": "archive-T1024",
+          "relative_rms": 0.044917408376932144,
+          "normalized_max": 0.010213419795036316,
+          "max_abs": 0.009475022554397583,
+          "finite": true
+        },
+        {
+          "case": "code-T17",
+          "relative_rms": 0.026301566511392593,
+          "normalized_max": 0.002599380910396576,
+          "max_abs": 0.005439251661300659,
+          "finite": true
+        },
+        {
+          "case": "code-T193",
+          "relative_rms": 0.03370601683855057,
+          "normalized_max": 0.0037043634802103043,
+          "max_abs": 0.007741868495941162,
+          "finite": true
+        },
+        {
+          "case": "code-T1024",
+          "relative_rms": 0.03600795567035675,
+          "normalized_max": 0.003293328918516636,
+          "max_abs": 0.006887108087539673,
+          "finite": true
+        }
+      ],
+      "maximum_over_cases": {
+        "relative_rms": 0.044917408376932144,
+        "normalized_max": 0.010213419795036316,
+        "max_abs": 0.009475022554397583
+      },
+      "interpretation": "combined format and implementation difference; proxy only, not pass/fail or task quality"
+    },
+    "format_proxy_threshold_applied": false
+  },
+  "packed_format": {
+    "format_version": 1,
+    "logical_shape": [
+      128,
+      1536,
+      2048
+    ],
+    "group_size": 128,
+    "encoding": "q+8, q in [-7,7], low nibble is earliest K",
+    "word_storage": "int32 storage of uint32 bit pattern",
+    "scale_dtype": "bfloat16",
+    "activation_dtype": "bfloat16",
+    "accumulator_dtype": "float32",
+    "source_weight_bytes": 805306368,
+    "packed_weight_bytes": 201326592,
+    "scale_bytes": 6291456,
+    "source_sha256": "8dde6f8c9224b6ec7685dea0ece730929beaabb559d9f66b4567138abd0d7a61",
+    "words_sha256": "c15d4cf9a551afd6bbd5b4b9774d181bfce373741dc0cd987ae840c442d013a6",
+    "scales_sha256": "fd2dc55c077b7996b5b6e0aaa80316bab95271165338fb814f5fffe68cd3d06a"
+  },
+  "provenance": {
+    "audit_json": {
+      "path": "artifacts/m22-w4-audit-20261007-v1/audit.json",
+      "bytes": 658038,
+      "sha256": "358e5526a4f463fc900ae7f32a7e2a063e7b910e003288a2f69d49c6ec0d28e9"
+    },
+    "relevant_source_sha256": {
+      "docs/M22_W4_IMPLEMENTATION_AUDIT_PLAN.md": "83350b9a3ebf201fbd8cb0ea39cf2df96f32ac9210699bb3d2cecaa43fceb49c",
+      "src/llm_gpu_kernels/cuda_w4_gate_up.cu": "9568364b9f7ef506259466b13cf16259dee6e459094335288914788a68aa60ac",
+      "src/llm_gpu_kernels/moe_w4_cuda.py": "10ec8cdac931e6dc857f41e2d4f6061f18027954b2f7e68e7331d1e18ad9d8b7",
+      "src/llm_gpu_kernels/moe_weight_quant.py": "a4f60e9bafef12a5539c6a8531ab40935512cfe40f00114da51346d4a8e87661",
+      "src/llm_gpu_kernels/moe_w4_audit.py": "ed945c8a4a381b275b5bf31895b380e28bf1bb80f3d8a8aa334838f84d042bb7"
+    },
+    "source_hashes_before_after_unchanged": true,
+    "source_file_count": 25,
+    "binary": {
+      "name": "llm_gpu_kernels_m22_w4_gate_up_sm86_v1.so",
+      "sha256_before": "ba043552d76fdd139de2775863655fba43fb8087a9c10e20215591a2fc9b6f65",
+      "sha256_after": "ba043552d76fdd139de2775863655fba43fb8087a9c10e20215591a2fc9b6f65",
+      "unchanged": true
+    },
+    "packed_artifact_sha256": {
+      "before": "317b88512a2a75c4fed279f077c6518c81e1218ed40497e21bdbab822671fe11",
+      "after": "317b88512a2a75c4fed279f077c6518c81e1218ed40497e21bdbab822671fe11",
+      "unchanged": true
+    },
+    "pack_record_sha256": {
+      "before": "efda108e45b5f7d17307387da6aab6155f7e9eb5687cfc2257fe12f49342e118",
+      "after": "efda108e45b5f7d17307387da6aab6155f7e9eb5687cfc2257fe12f49342e118",
+      "unchanged": true
+    },
+    "packed_gpu_digest_after": {
+      "words": "c15d4cf9a551afd6bbd5b4b9774d181bfce373741dc0cd987ae840c442d013a6",
+      "scales": "fd2dc55c077b7996b5b6e0aaa80316bab95271165338fb814f5fffe68cd3d06a"
+    },
+    "cases": [
+      {
+        "case": "archive-T17",
+        "input_sha256": "068d8ff811483045d27240b8c56843eeea266bd936400f5e8d9b6bb339c2b856",
+        "input_hash_unchanged": true,
+        "referenced_artifact_hashes_unchanged": true
+      },
+      {
+        "case": "archive-T193",
+        "input_sha256": "8ed759abe00002abe70642ec844c3fbd09a80135c32518c66de1aad9038f9288",
+        "input_hash_unchanged": true,
+        "referenced_artifact_hashes_unchanged": true
+      },
+      {
+        "case": "archive-T1024",
+        "input_sha256": "92cd5ccc89f04d379313f806cd7dcd5f976c9456894aad2fe31bd98dc0b673a9",
+        "input_hash_unchanged": true,
+        "referenced_artifact_hashes_unchanged": true
+      },
+      {
+        "case": "code-T17",
+        "input_sha256": "5f8bda9af87db7d4ad9d027900ddbb17e8fb5ec248d083601e2ee13649121d0a",
+        "input_hash_unchanged": true,
+        "referenced_artifact_hashes_unchanged": true
+      },
+      {
+        "case": "code-T193",
+        "input_sha256": "9606898723d3b688dbdb3652eabc3ffb9c32b20fa9a73b4f266f6579c129e8f9",
+        "input_hash_unchanged": true,
+        "referenced_artifact_hashes_unchanged": true
+      },
+      {
+        "case": "code-T1024",
+        "input_sha256": "c493fa22e12c8efd09ba9583634ae8e65961989e8136f5622431dec4b6dc683e",
+        "input_hash_unchanged": true,
+        "referenced_artifact_hashes_unchanged": true
+      }
+    ]
+  },
+  "runtime_safety": {
+    "all_42_numerical_checks_passed": true,
+    "all_42_dispatch_checks_passed": true,
+    "tested_states": [
+      "original-api",
+      "original-graph",
+      "duplicate-expert0-graph",
+      "duplicate-expert127-graph",
+      "nondefault-stream",
+      "restored-api",
+      "restored-graph"
+    ],
+    "t0_passed_with_zero_launches": true,
+    "packed_data_and_case_inputs_unchanged": true
+  },
+  "build_resources": {
+    "status": "passed",
+    "exit_code": 0,
+    "arch": "sm_86",
+    "binary_sha256": "ba043552d76fdd139de2775863655fba43fb8087a9c10e20215591a2fc9b6f65",
+    "torch_version": "2.7.1+cu128",
+    "torch_cuda_build": "12.8",
+    "registers_per_thread": 72,
+    "dynamic_shared_launch_bytes": 16384,
+    "static_shared_bytes_reported_by_build": null,
+    "stack_frame_bytes": 0,
+    "spill_store_bytes": 0,
+    "spill_load_bytes": 0,
+    "barriers": 1,
+    "cmem0_bytes": 408,
+    "compile_time_ms": 24.162,
+    "source_hashes_match_build_info": true,
+    "cuda_calls_during_build": false
+  },
+  "frozen_release_checks": {
+    "m20": {
+      "status": "frozen",
+      "files_checked": 37,
+      "all_files_passed": true,
+      "manifest_sha256": "81651e3df2c8472c65069020c292a438ee196842637c74c65e7a5061d277700f",
+      "manifest_bytes": 6310
+    },
+    "m21": {
+      "status": "diagnostics-complete",
+      "files_checked": 9,
+      "all_files_passed": true,
+      "manifest_sha256": "18bdfb75683d97f69e187f8b46fc10fbc87ad2ba0c7893e3f2e62cb5b95844fa",
+      "manifest_bytes": 2026
+    },
+    "m20_m21_manifest_hashes_match": true,
+    "frozen_paths_worktree_clean": true
+  },
+  "source_artifacts": [
+    {
+      "path": "artifacts/m22-w4-audit-20261007-v1/audit.json",
+      "bytes": 658038,
+      "sha256": "358e5526a4f463fc900ae7f32a7e2a063e7b910e003288a2f69d49c6ec0d28e9"
+    },
+    {
+      "path": "artifacts/m22-w4-build-20261007-v1/resource-summary.json",
+      "bytes": 1410,
+      "sha256": "e69ffb7c2230242167acacb00a4f2e11c4e316f6c1f077b2b044a9fc346fec46"
+    },
+    {
+      "path": "artifacts/m22-w4-build-20261007-v1/build-info.json",
+      "bytes": 815,
+      "sha256": "5de9f89b819a60c063820a983bf60cd006622bdc4543d76f21602807cf2ed2ec"
+    },
+    {
+      "path": "artifacts/m22-w4-build-20261007-v1/build.log",
+      "bytes": 2788,
+      "sha256": "8c120fda9c2d5ba4f1fc6c8222107f7725e0e707cd16347542971b83c56b6dc8"
+    }
+  ],
+  "limitations": [
+    "The implementation error is measured against an FP32 oracle using the same dequantized BF16 packed gate/up weights and the original BF16 down projection.",
+    "Format proxies are reported separately and are not judged against the 0.008 implementation-correctness limit.",
+    "This audit reports correctness and static build properties, not performance, serving stability, allocator peak for a quantized-only path, or model-task quality."
+  ]
+}

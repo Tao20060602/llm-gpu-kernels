@@ -1,0 +1,391 @@
+{
+  "audit": {
+    "v1": {
+      "binary_sha256_before": "ede87005a4743dd22cb4a3c54ba09fbf7bf9c13dff60fe949b49160353ad97d2",
+      "compile_static_registers": {
+        "note": "No numeric static-register field is in the permitted v1 summary; do not infer a runtime register counter or attach a compile value to a different source revision.",
+        "reported_in_safe_audit_json": false,
+        "source_sha256_at_capture": "a1f7aa88fddce78ee64c1eba45011edb89ecea582338bee46ac45c4c26f4a9e6",
+        "value": null
+      },
+      "experiment": "M22 BF16 full-forward audit",
+      "kernel_source_sha256_at_capture": "a1f7aa88fddce78ee64c1eba45011edb89ecea582338bee46ac45c4c26f4a9e6",
+      "recorded_case": {
+        "case": "archive-T17",
+        "input_sha256_before": "068d8ff811483045d27240b8c56843eeea266bd936400f5e8d9b6bb339c2b856",
+        "status": "running"
+      },
+      "recorded_failure_reason": "metadata shape mismatch; caller must use BM32 prefix",
+      "schema": 1,
+      "status": "failed",
+      "variants": [
+        "sync",
+        "async",
+        "async_skip"
+      ]
+    },
+    "v2": {
+      "audit_states_per_case": 7,
+      "binary_sha256": {
+        "after": "17eab52e5a5b45ac80817d0600b420dbc4c24366af59956de661f854020c08f9",
+        "before": "17eab52e5a5b45ac80817d0600b420dbc4c24366af59956de661f854020c08f9",
+        "unchanged": true
+      },
+      "case_count": 6,
+      "cases": [
+        {
+          "audit_states": [
+            "original-api",
+            "original-graph",
+            "duplicate-expert0-graph",
+            "duplicate-expert127-graph",
+            "nondefault-stream",
+            "restored-api",
+            "restored-graph"
+          ],
+          "case": "archive-T17",
+          "input_hash_unchanged": true,
+          "input_sha256_after": "068d8ff811483045d27240b8c56843eeea266bd936400f5e8d9b6bb339c2b856",
+          "input_sha256_before": "068d8ff811483045d27240b8c56843eeea266bd936400f5e8d9b6bb339c2b856",
+          "selected_bucket": "small",
+          "variants": {
+            "async": {
+              "all_passed": true,
+              "checks": 7,
+              "max_abs": 0.0010271966457366943,
+              "normalized_max": 0.0025467027444392443,
+              "relative_rms": 0.003271586960181594
+            },
+            "async_skip": {
+              "all_passed": true,
+              "checks": 7,
+              "max_abs": 0.0010271966457366943,
+              "normalized_max": 0.0025467027444392443,
+              "relative_rms": 0.003271586960181594
+            },
+            "sync": {
+              "all_passed": true,
+              "checks": 7,
+              "max_abs": 0.0010271966457366943,
+              "normalized_max": 0.0025467027444392443,
+              "relative_rms": 0.003271586960181594
+            }
+          }
+        },
+        {
+          "audit_states": [
+            "original-api",
+            "original-graph",
+            "duplicate-expert0-graph",
+            "duplicate-expert127-graph",
+            "nondefault-stream",
+            "restored-api",
+            "restored-graph"
+          ],
+          "case": "archive-T193",
+          "input_hash_unchanged": true,
+          "input_sha256_after": "8ed759abe00002abe70642ec844c3fbd09a80135c32518c66de1aad9038f9288",
+          "input_sha256_before": "8ed759abe00002abe70642ec844c3fbd09a80135c32518c66de1aad9038f9288",
+          "selected_bucket": "medium",
+          "variants": {
+            "async": {
+              "all_passed": true,
+              "checks": 7,
+              "max_abs": 0.0029435157775878906,
+              "normalized_max": 0.004179789684712887,
+              "relative_rms": 0.0032294737175107002
+            },
+            "async_skip": {
+              "all_passed": true,
+              "checks": 7,
+              "max_abs": 0.0029435157775878906,
+              "normalized_max": 0.004179789684712887,
+              "relative_rms": 0.0032294737175107002
+            },
+            "sync": {
+              "all_passed": true,
+              "checks": 7,
+              "max_abs": 0.0029435157775878906,
+              "normalized_max": 0.004179789684712887,
+              "relative_rms": 0.0032294737175107002
+            }
+          }
+        },
+        {
+          "audit_states": [
+            "original-api",
+            "original-graph",
+            "duplicate-expert0-graph",
+            "duplicate-expert127-graph",
+            "nondefault-stream",
+            "restored-api",
+            "restored-graph"
+          ],
+          "case": "archive-T1024",
+          "input_hash_unchanged": true,
+          "input_sha256_after": "92cd5ccc89f04d379313f806cd7dcd5f976c9456894aad2fe31bd98dc0b673a9",
+          "input_sha256_before": "92cd5ccc89f04d379313f806cd7dcd5f976c9456894aad2fe31bd98dc0b673a9",
+          "selected_bucket": "medium",
+          "variants": {
+            "async": {
+              "all_passed": true,
+              "checks": 7,
+              "max_abs": 0.0019842982292175293,
+              "normalized_max": 0.004096128977835178,
+              "relative_rms": 0.003251435002312064
+            },
+            "async_skip": {
+              "all_passed": true,
+              "checks": 7,
+              "max_abs": 0.0019842982292175293,
+              "normalized_max": 0.004096128977835178,
+              "relative_rms": 0.003251435002312064
+            },
+            "sync": {
+              "all_passed": true,
+              "checks": 7,
+              "max_abs": 0.0019842982292175293,
+              "normalized_max": 0.004096128977835178,
+              "relative_rms": 0.003251435002312064
+            }
+          }
+        },
+        {
+          "audit_states": [
+            "original-api",
+            "original-graph",
+            "duplicate-expert0-graph",
+            "duplicate-expert127-graph",
+            "nondefault-stream",
+            "restored-api",
+            "restored-graph"
+          ],
+          "case": "code-T17",
+          "input_hash_unchanged": true,
+          "input_sha256_after": "5f8bda9af87db7d4ad9d027900ddbb17e8fb5ec248d083601e2ee13649121d0a",
+          "input_sha256_before": "5f8bda9af87db7d4ad9d027900ddbb17e8fb5ec248d083601e2ee13649121d0a",
+          "selected_bucket": "small",
+          "variants": {
+            "async": {
+              "all_passed": true,
+              "checks": 7,
+              "max_abs": 0.002182304859161377,
+              "normalized_max": 0.003160839667543769,
+              "relative_rms": 0.003310793312266469
+            },
+            "async_skip": {
+              "all_passed": true,
+              "checks": 7,
+              "max_abs": 0.002182304859161377,
+              "normalized_max": 0.003160839667543769,
+              "relative_rms": 0.003310793312266469
+            },
+            "sync": {
+              "all_passed": true,
+              "checks": 7,
+              "max_abs": 0.002182304859161377,
+              "normalized_max": 0.003160839667543769,
+              "relative_rms": 0.003310793312266469
+            }
+          }
+        },
+        {
+          "audit_states": [
+            "original-api",
+            "original-graph",
+            "duplicate-expert0-graph",
+            "duplicate-expert127-graph",
+            "nondefault-stream",
+            "restored-api",
+            "restored-graph"
+          ],
+          "case": "code-T193",
+          "input_hash_unchanged": true,
+          "input_sha256_after": "9606898723d3b688dbdb3652eabc3ffb9c32b20fa9a73b4f266f6579c129e8f9",
+          "input_sha256_before": "9606898723d3b688dbdb3652eabc3ffb9c32b20fa9a73b4f266f6579c129e8f9",
+          "selected_bucket": "medium",
+          "variants": {
+            "async": {
+              "all_passed": true,
+              "checks": 7,
+              "max_abs": 0.0038177967071533203,
+              "normalized_max": 0.0029736103024333715,
+              "relative_rms": 0.0032838787883520126
+            },
+            "async_skip": {
+              "all_passed": true,
+              "checks": 7,
+              "max_abs": 0.0038177967071533203,
+              "normalized_max": 0.0029736103024333715,
+              "relative_rms": 0.0032838787883520126
+            },
+            "sync": {
+              "all_passed": true,
+              "checks": 7,
+              "max_abs": 0.0038177967071533203,
+              "normalized_max": 0.0029736103024333715,
+              "relative_rms": 0.0032838787883520126
+            }
+          }
+        },
+        {
+          "audit_states": [
+            "original-api",
+            "original-graph",
+            "duplicate-expert0-graph",
+            "duplicate-expert127-graph",
+            "nondefault-stream",
+            "restored-api",
+            "restored-graph"
+          ],
+          "case": "code-T1024",
+          "input_hash_unchanged": true,
+          "input_sha256_after": "c493fa22e12c8efd09ba9583634ae8e65961989e8136f5622431dec4b6dc683e",
+          "input_sha256_before": "c493fa22e12c8efd09ba9583634ae8e65961989e8136f5622431dec4b6dc683e",
+          "selected_bucket": "medium",
+          "variants": {
+            "async": {
+              "all_passed": true,
+              "checks": 7,
+              "max_abs": 0.0025200843811035156,
+              "normalized_max": 0.004728102590888739,
+              "relative_rms": 0.0032874627504497766
+            },
+            "async_skip": {
+              "all_passed": true,
+              "checks": 7,
+              "max_abs": 0.0025200843811035156,
+              "normalized_max": 0.004728102590888739,
+              "relative_rms": 0.0032874627504497766
+            },
+            "sync": {
+              "all_passed": true,
+              "checks": 7,
+              "max_abs": 0.0025200843811035156,
+              "normalized_max": 0.004728102590888739,
+              "relative_rms": 0.0032874627504497766
+            }
+          }
+        }
+      ],
+      "experiment": "M22 BF16 full-forward audit",
+      "kernel_source_sha256": {
+        "after": "9012fa52379a87296ff2f29076ff15951c90e3d82ba996d424a5c5e3aa6c4893",
+        "before": "9012fa52379a87296ff2f29076ff15951c90e3d82ba996d424a5c5e3aa6c4893",
+        "path": "src/llm_gpu_kernels/cuda_gate_up.cu",
+        "unchanged": true
+      },
+      "maxima_over_all_cases_and_audit_states": {
+        "async": {
+          "max_abs": 0.0038177967071533203,
+          "normalized_max": 0.004728102590888739,
+          "relative_rms": 0.003310793312266469
+        },
+        "async_skip": {
+          "max_abs": 0.0038177967071533203,
+          "normalized_max": 0.004728102590888739,
+          "relative_rms": 0.003310793312266469
+        },
+        "sync": {
+          "max_abs": 0.0038177967071533203,
+          "normalized_max": 0.004728102590888739,
+          "relative_rms": 0.003310793312266469
+        }
+      },
+      "numerical_limits": {
+        "normalized_max": 0.008,
+        "relative_rms": 0.008
+      },
+      "schema": 1,
+      "status": "passed",
+      "variant_outcomes": {
+        "failed": 0,
+        "passed": 126
+      },
+      "variants": [
+        "sync",
+        "async",
+        "async_skip"
+      ],
+      "zero_token_case": {
+        "dtype": "bfloat16",
+        "label": "T0",
+        "launch_count": 0,
+        "passed": true,
+        "shape": [
+          0,
+          2048
+        ]
+      }
+    }
+  },
+  "frozen_release_checks": {
+    "m20": {
+      "all_files_passed": true,
+      "base_commit": null,
+      "files_checked": 37,
+      "manifest_bytes": 6310,
+      "manifest_sha256": "81651e3df2c8472c65069020c292a438ee196842637c74c65e7a5061d277700f",
+      "path": "results/m20-release-manifest.json",
+      "status": "frozen"
+    },
+    "m21": {
+      "all_files_passed": true,
+      "base_commit": "de431f0c9ac2d3ddca4d48e8749ae5027cf55355",
+      "files_checked": 9,
+      "manifest_bytes": 2026,
+      "manifest_sha256": "18bdfb75683d97f69e187f8b46fc10fbc87ad2ba0c7893e3f2e62cb5b95844fa",
+      "path": "results/m21-release-manifest.json",
+      "status": "diagnostics-complete"
+    },
+    "m22_v2_reported_manifest_checks": [
+      {
+        "all_files_passed": true,
+        "files_checked": 37,
+        "manifest_bytes": 6310,
+        "manifest_sha256": "81651e3df2c8472c65069020c292a438ee196842637c74c65e7a5061d277700f",
+        "status": "frozen"
+      },
+      {
+        "all_files_passed": true,
+        "files_checked": 9,
+        "manifest_bytes": 2026,
+        "manifest_sha256": "18bdfb75683d97f69e187f8b46fc10fbc87ad2ba0c7893e3f2e62cb5b95844fa",
+        "status": "diagnostics-complete"
+      }
+    ]
+  },
+  "limitations": [
+    "This summary reads structured audit JSON only; it does not include raw profiler/build logs, telemetry, model weights, or binary contents.",
+    "The per-variant maxima aggregate seven named audit states across six cases; they are numerical correctness diagnostics, not performance measurements.",
+    "The v1 compile-time static-register value is not present in the allowed report and is left unset."
+  ],
+  "metadata_guard_contract": {
+    "counts_length": "E entries",
+    "offsets_length": "E entries (one per expert)",
+    "recorded_v1_error_context": "The v1 summary records a BM32-prefix metadata shape mismatch; the E versus E+1 distinction is offsets/counts versus tasks, not an E+1 offsets requirement.",
+    "source_path": "src/llm_gpu_kernels/cuda_gate_up.cu",
+    "source_sha256": "9012fa52379a87296ff2f29076ff15951c90e3d82ba996d424a5c5e3aa6c4893",
+    "tasks_length": "E+1 prefix boundaries"
+  },
+  "schema": 1,
+  "source_artifacts": [
+    {
+      "bytes": 4490,
+      "path": "artifacts/m22-cuda-audit-20261007-v1/audit.json",
+      "sha256": "3a73f3f7a3c941d517ed04f4d3eae35d96cd01df19834f6240cba3ae75170539"
+    },
+    {
+      "bytes": 2276491,
+      "path": "artifacts/m22-cuda-audit-20261007-v2/audit.json",
+      "sha256": "5eba6d997ce077d096d5cfd7bde3666e8f750b6258b8385e6a560c8f47077dbf"
+    },
+    {
+      "bytes": 17484,
+      "path": "artifacts/m22-cuda-audit-20261007-v2/manifest-integrity.json",
+      "sha256": "0746acb2d490f26b71f9ee97cbba30b7d0f9b7980127208d80125290f732ab43"
+    }
+  ],
+  "status": "complete",
+  "summary_type": "m22_bf16_audit_safe_cpu_summary"
+}

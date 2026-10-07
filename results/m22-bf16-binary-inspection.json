@@ -1,0 +1,73 @@
+{
+  "schema": "m22-bf16-binary-inspection-v1",
+  "audited_binary": {
+    "artifact": "artifacts/m22-cuda-audit-20261007-v2/torch-extensions/llm_gpu_kernels_m22_cuda_gate_up_sm86_v1/llm_gpu_kernels_m22_cuda_gate_up_sm86_v1.so",
+    "sha256": "17eab52e5a5b45ac80817d0600b420dbc4c24366af59956de661f854020c08f9",
+    "matches_m22_cuda_audit_v2": true,
+    "audit_record_sha256": "5eba6d997ce077d096d5cfd7bde3666e8f750b6258b8385e6a560c8f47077dbf"
+  },
+  "source_sha256": {
+    "src/llm_gpu_kernels/cuda_gate_up.cu": "9012fa52379a87296ff2f29076ff15951c90e3d82ba996d424a5c5e3aa6c4893",
+    "src/llm_gpu_kernels/moe_cuda.py": "f770b39716d606b73d14e864e59ac6aad5aa1376beeb6244cc6d0dbe9e80b741"
+  },
+  "tool_versions": {
+    "cuobjdump": "CUDA 13.1, V13.1.80",
+    "binary_compiler": "CUDA 12.8, V12.8.93"
+  },
+  "device_code_evidence": {
+    "architecture": "sm_86",
+    "sass_present": true,
+    "embedded_ptx_device_functions_present": false,
+    "embedded_ptx_cp_async_present": null,
+    "resource_scope": "cuobjdump ELF per-function static resources; SHARED excludes launch-time dynamic allocation",
+    "instruction_scope": "static SASS opcode counts; these do not measure runtime utilization"
+  },
+  "variants": {
+    "sync": {
+      "function_template": "<false,false>",
+      "static_resources": {
+        "registers_per_thread": 71,
+        "stack_bytes": 0,
+        "static_shared_bytes": 0,
+        "local_bytes": 0,
+        "spill_store_bytes": 0,
+        "spill_load_bytes": 0
+      },
+      "sass_instruction_evidence_counts": {
+        "HMMA": 16,
+        "LDGSTS": 0
+      }
+    },
+    "async": {
+      "function_template": "<true,false>",
+      "static_resources": {
+        "registers_per_thread": 72,
+        "stack_bytes": 0,
+        "static_shared_bytes": 0,
+        "local_bytes": 0,
+        "spill_store_bytes": 0,
+        "spill_load_bytes": 0
+      },
+      "sass_instruction_evidence_counts": {
+        "HMMA": 16,
+        "LDGSTS": 26
+      }
+    },
+    "async_skip": {
+      "function_template": "<true,true>",
+      "static_resources": {
+        "registers_per_thread": 72,
+        "stack_bytes": 0,
+        "static_shared_bytes": 0,
+        "local_bytes": 0,
+        "spill_store_bytes": 0,
+        "spill_load_bytes": 0
+      },
+      "sass_instruction_evidence_counts": {
+        "HMMA": 16,
+        "LDGSTS": 26
+      }
+    }
+  },
+  "interpretation": "LDGSTS appears in the two Async template specializations as static machine-code evidence for the cp.async path. The synchronous specialization has no LDGSTS evidence. HMMA appears in all three. The fatbin contains SM86 SASS but no embedded device PTX functions, so PTX cp.async is not inspectable from this binary."
+}

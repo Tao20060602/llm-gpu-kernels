@@ -1,0 +1,57 @@
+{
+  "schema": "m22-w4-performance-preflight-failure-v1",
+  "experiment": "M22 W4 full-forward/stage performance",
+  "status": "preflight_failed_before_timing",
+  "failure": {
+    "case": "archive-T17",
+    "batch": 1,
+    "stage": "loaded-binary-integrity-preflight",
+    "component": "bf16",
+    "reason": "loaded binary differs from audit",
+    "timing_started": false,
+    "timing_sections_emitted": false,
+    "audited_binary_sha256": "17eab52e5a5b45ac80817d0600b420dbc4c24366af59956de661f854020c08f9",
+    "default_cache_binary_candidate_sha256": "05a28c158d31bad6f2b80983c812e74e406eb84f25597491456ebc1cfad4633d",
+    "hash_mismatch": true,
+    "source_sha256_matches_audit": true,
+    "compiler_configuration_matches_audit": true,
+    "normalized_compiler_configuration_sha256": "44f49424ebf22a5730143e0e4ae1475e8918198c7620a8e027c16be22ff63f8d",
+    "build_root_matches_audit": false
+  },
+  "preserved_audit_binary": {
+    "artifact": "artifacts/m22-cuda-audit-20261007-v2/torch-extensions/llm_gpu_kernels_m22_cuda_gate_up_sm86_v1/llm_gpu_kernels_m22_cuda_gate_up_sm86_v1.so",
+    "sha256": "17eab52e5a5b45ac80817d0600b420dbc4c24366af59956de661f854020c08f9",
+    "matches_audit_record": true
+  },
+  "w4_audit_binary": {
+    "sha256": "ba043552d76fdd139de2775863655fba43fb8087a9c10e20215591a2fc9b6f65",
+    "before_after_unchanged": true,
+    "matches_failed_preflight_loaded_w4_hash": true
+  },
+  "matching_runtime_source_sha256": {
+    "src/llm_gpu_kernels/cuda_gate_up.cu": "9012fa52379a87296ff2f29076ff15951c90e3d82ba996d424a5c5e3aa6c4893",
+    "src/llm_gpu_kernels/moe_cuda.py": "f770b39716d606b73d14e864e59ac6aad5aa1376beeb6244cc6d0dbe9e80b741",
+    "src/llm_gpu_kernels/cuda_w4_gate_up.cu": "9568364b9f7ef506259466b13cf16259dee6e459094335288914788a68aa60ac",
+    "src/llm_gpu_kernels/moe_w4_cuda.py": "10ec8cdac931e6dc857f41e2d4f6061f18027954b2f7e68e7331d1e18ad9d8b7"
+  },
+  "recovery": {
+    "planned": true,
+    "status": "pending; no retry/timing run recorded here",
+    "extension_root": "artifacts/m22-cuda-audit-20261007-v2/torch-extensions",
+    "target_binary_sha256": "17eab52e5a5b45ac80817d0600b420dbc4c24366af59956de661f854020c08f9",
+    "intent": "explicitly load the preserved audit-v2 BF16 extension from its audited build root"
+  },
+  "provenance": {
+    "preflight_record": {
+      "artifact": "artifacts/m22-w4-perf-20261007-v1/batch1-archive-T17.json",
+      "bytes": 5330,
+      "sha256": "ec0c0b7192096f16755944f68ea24d220eb279279fecff8c8d95da76aee51931"
+    },
+    "w4_audit_record_sha256": "358e5526a4f463fc900ae7f32a7e2a063e7b910e003288a2f69d49c6ec0d28e9",
+    "bf16_v2_audit_record_sha256": "5eba6d997ce077d096d5cfd7bde3666e8f750b6258b8385e6a560c8f47077dbf"
+  },
+  "limitations": [
+    "The worker stopped at the binary integrity preflight before timing; it produced no W4 performance result.",
+    "This record omits raw logs, environment values, and profiler data."
+  ]
+}
