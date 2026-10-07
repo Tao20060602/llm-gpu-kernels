@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "status": "diagnostics-complete",
+  "base_commit": "de431f0c9ac2d3ddca4d48e8749ae5027cf55355",
+  "scope": {
+    "clean_performance_captures": 4,
+    "nsight_timeline_analyses": 12,
+    "counter_kernels": 5,
+    "m20_frozen_files_verified": 37,
+    "m20_frozen_status": "passed"
+  },
+  "milestone_notes": [
+    "M7 remains unchanged.",
+    "No CUDA quantization was implemented at the M21 milestone.",
+    "The profile and counter artifacts are diagnostic evidence, not new policy acceptance."
+  ],
+  "files": [
+    {
+      "path": "docs/M21_MOE_PROFILE_PLAN.md",
+      "bytes": 3264,
+      "sha256": "b368bf2f14f6e0961d8491dc692d7d23d935b1188b2fc018f58963595e999bfb"
+    },
+    {
+      "path": "docs/M21_MOE_PROFILE_REPORT.md",
+      "bytes": 9400,
+      "sha256": "e8e569e7b4383a6aab96bcc9700cd1c8f29ce9688a55155b17f067614afcc455"
+    },
+    {
+      "path": "scripts/analyze_moe_profile.py",
+      "bytes": 21950,
+      "sha256": "613f68f59bb7dc25a8a4f28416f0e6936b567a1e35e17197634b97e5ccfb054d"
+    },
+    {
+      "path": "scripts/run_m21_ncu.sh",
+      "bytes": 2373,
+      "sha256": "f1d657fb5f2a683f1b2bcf7959b2f5f00cf5798c6e5d6dd5dcec1746b34dd2f0"
+    },
+    {
+      "path": "src/llm_gpu_kernels/moe_profile.py",
+      "bytes": 10966,
+      "sha256": "03e72384be55de710fbfdb2812b45b58829f3155febaf9b3232fdabbeddac210"
+    },
+    {
+      "path": "results/m21-profile-summary.json",
+      "bytes": 308560,
+      "sha256": "34c78effe75831fe03dbb862da6c287edeec3bd25884f11118cb50073302022f"
+    },
+    {
+      "path": "results/m21-counter-access.json",
+      "bytes": 7005,
+      "sha256": "2e40f62a546069bdeadcee9e68ff9b3176c029ebbc8e3351b2dff802b8ec969a"
+    },
+    {
+      "path": "results/m21-ncu-metrics.json",
+      "bytes": 180684,
+      "sha256": "06855ae0cfcd06cd54051ea41455317e6ff97d3e2f01a6e92e689ee9a844d757"
+    },
+    {
+      "path": "docs/M22_CUDA_QUANT_DESIGN_DRAFT.md",
+      "bytes": 6217,
+      "sha256": "688f0a301f45903b939c975aa53993638e2c4c58391dcc0705fa73a034f01415"
+    }
+  ]
+}

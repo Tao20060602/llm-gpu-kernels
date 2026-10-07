@@ -1,0 +1,139 @@
+{
+  "schema": 1,
+  "experiment": "M21 unprivileged NCU counter-access attempt",
+  "attempt": {
+    "execution_identity": "ordinary user; no sudo",
+    "exit_code": 1,
+    "ncu_error_code": "ERR_NVGPUCTRPERM",
+    "counter_capture_status": "not_collected",
+    "ncu_report": {
+      "path": "artifacts/m21-ncu-unprivileged-20261007-v1/gate-up-frozen.ncu-rep",
+      "exists": false
+    },
+    "ncu_version": "2026.3.0.0 (build 38525999) (public-release)",
+    "request": {
+      "case": "archive-T1024-real",
+      "phase": "profile",
+      "arm": "frozen",
+      "kernel_name_base": "function",
+      "kernel_name_regex": "regex:.*gate_up.*",
+      "launch_count": 1,
+      "profile_from_start": "off",
+      "section_identifiers": [
+        "SpeedOfLight",
+        "ComputeWorkloadAnalysis",
+        "MemoryWorkloadAnalysis",
+        "LaunchStats",
+        "Occupancy"
+      ],
+      "cache_control": "none",
+      "clock_control": "none"
+    },
+    "interpretation": "GPU counters were not obtained: NCU returned ERR_NVGPUCTRPERM and produced no .ncu-rep. Worker status passed records application-side numerical/dispatch/provenance audits only; it does not mean counter capture passed."
+  },
+  "worker": {
+    "path": "artifacts/m21-ncu-unprivileged-20261007-v1/worker.json",
+    "status": "passed",
+    "error": null,
+    "case": "archive-T1024-real",
+    "phase": "profile",
+    "arm": "frozen",
+    "timing_scope": "instrumented profile, not clean latency benchmark",
+    "audit_before": {
+      "numerical": {
+        "relative_rms": 0.0026397700421512127,
+        "normalized_max": 0.0021389364264905453,
+        "max_abs": 0.0019842982292175293,
+        "finite": true,
+        "passed": true
+      },
+      "dispatch": {
+        "passed": true,
+        "check_inputs_passed": true,
+        "status": 0
+      },
+      "policy_provenance": {
+        "passed": true,
+        "training_record_path": "results/m7-full-moe-tuning-20261006T103809Z-241373177.json",
+        "verified_sources_count": 15
+      }
+    },
+    "audit_after": {
+      "numerical": {
+        "relative_rms": 0.0026397700421512127,
+        "normalized_max": 0.0021389364264905453,
+        "max_abs": 0.0019842982292175293,
+        "finite": true,
+        "passed": true
+      },
+      "dispatch": {
+        "passed": true,
+        "check_inputs_passed": true,
+        "status": 0
+      },
+      "policy_provenance": {
+        "passed": true,
+        "training_record_path": "results/m7-full-moe-tuning-20261006T103809Z-241373177.json",
+        "verified_sources_count": 15
+      }
+    },
+    "hashes": {
+      "worker_json_sha256": "ffc1d4cb9c8b6b52f3aa8efd9e8f834de8cfb203973a217fd80ef46b3b724ecc",
+      "input_tensor_sha256_before": "92cd5ccc89f04d379313f806cd7dcd5f976c9456894aad2fe31bd98dc0b673a9",
+      "input_tensor_sha256_after": "92cd5ccc89f04d379313f806cd7dcd5f976c9456894aad2fe31bd98dc0b673a9",
+      "input_tensor_unchanged": true,
+      "source_hashes_unchanged": true,
+      "source_file_count": 21,
+      "source_sha256": {
+        "docs/M21_MOE_PROFILE_PLAN.md": "b368bf2f14f6e0961d8491dc692d7d23d935b1188b2fc018f58963595e999bfb",
+        "docs/M7_FULL_MOE_TUNING_PLAN.md": "82ff1146fa5b88e17c4365fc91eacbc821bba1eaa1c39041988edce2b1070a32",
+        "src/llm_gpu_kernels/__init__.py": "68bf65e24e4874e31b4d4e134d1700ad16779b387053307a1ff4661b727048b1",
+        "src/llm_gpu_kernels/baseline_benchmark.py": "b264751e44584606b52470b308d8b344288a022ae1e8006460a60a7d45e1b803",
+        "src/llm_gpu_kernels/benchmark.py": "c3a12e68e37b09f62d7dd78d14738537074dc60b7a02e20c96e24d1923c565e4",
+        "src/llm_gpu_kernels/gemm.py": "f1a207413c7db6a5a508fc72a4dc4430049030ded3faf7e8bafadd4c822e49b0",
+        "src/llm_gpu_kernels/mature_moe_benchmark.py": "a662f8cab1ba252f19d4bb49bb2439e667dae93d5e05113ed81f6567e48ea80f",
+        "src/llm_gpu_kernels/moe.py": "64fd0282025071b43b6d432a149a1ba72f6d5d7417664087886e8a51b6b58597",
+        "src/llm_gpu_kernels/moe_benchmark.py": "1be148d270e78ad806ce8f49395f757606e6de114ba10517c94e85fe8f0da3e0",
+        "src/llm_gpu_kernels/moe_configured.py": "71b3332041f180dbbcb245083b8d75e24642c18552dd7bd874d068282fba9ded",
+        "src/llm_gpu_kernels/moe_full_holdout.py": "270077115b7455144fc40fb1012baaa6b80acd18c78e7df977ff6c5688f454c9",
+        "src/llm_gpu_kernels/moe_full_policy.py": "2543147949dedd51fcb57bdc8d88d3cbe93fb97d1ecd4fe15fa57bf6cdffb510",
+        "src/llm_gpu_kernels/moe_full_tuning.py": "67d1c2290aead299b68f26aa5b01c3e4dd7549325bb2a3567ccb8eeab86c717d",
+        "src/llm_gpu_kernels/moe_fused.py": "9bae476d3341af2685c90a2960586132d693f1a3b8c4ca940eeb936e147271ea",
+        "src/llm_gpu_kernels/moe_prepared.py": "7b52ecf4234d6385d1a4e104b5a01656786571aa29d5ab2bad948589097acef8",
+        "src/llm_gpu_kernels/moe_profile.py": "03e72384be55de710fbfdb2812b45b58829f3155febaf9b3232fdabbeddac210",
+        "src/llm_gpu_kernels/moe_ranked.py": "eff4861e812722b7b4bbbd833590d52bbe966d5301bf02e03a289ef5438ed705",
+        "src/llm_gpu_kernels/moe_real_input_benchmark.py": "f011ccf10297dcc858d38d65f018a6d6e6db347b6b585d00a3be60ea89b1e767",
+        "src/llm_gpu_kernels/moe_real_trace.py": "45686545891174852bc05876add5e3dc7cbd33fe7ce093bc548fdec9db260eea",
+        "src/llm_gpu_kernels/optimization_benchmark.py": "17c15a3eac5b4de21d694c63e55cda8cccd53d9f31a4e9e4a28b1e2712419f89",
+        "src/llm_gpu_kernels/reference.py": "da310c36314cc0403d1315be2846b7f970737afd089a614b80c36202fc1bc456"
+      },
+      "capture_input_hashes_unchanged": true,
+      "capture_input_file_count": 4,
+      "capture_input_sha256": {
+        "capture-summary.json": "163be24068637aa6c0d29ca28fcc47bef0e805d6583798ddd5a4908a6471d61c",
+        "traces/archive-T1024.json": "5c49a2254dffdfb3304127a671ad52dd62233188d775be98bc362f657f078b0e",
+        "traces/archive-T1024.pt": "e1970c8f82221579fb5ce94c7efab821284dd9aef7bf5351fa4c56aebcd28596",
+        "weights.pt": "e703f1ea866455f43685a2f0fdd15055e40efb4f2086c876a812c3498317c7c1"
+      },
+      "capture_input_hash_paths_relative_to": "/home/tmz/ai/traces/m20-qwen3-layer0-20261007-attempt3"
+    }
+  },
+  "evidence": {
+    "ignored_artifact_directory": "artifacts/m21-ncu-unprivileged-20261007-v1",
+    "directory_is_gitignored": true,
+    "capture_log_path": "artifacts/m21-ncu-unprivileged-20261007-v1/capture.log",
+    "capture_log_copied": false,
+    "worker_json_path": "artifacts/m21-ncu-unprivileged-20261007-v1/worker.json",
+    "ncu_report_path": "artifacts/m21-ncu-unprivileged-20261007-v1/gate-up-frozen.ncu-rep",
+    "ncu_report_exists": false
+  },
+  "helper_environment_check": {
+    "script": "scripts/run_m21_ncu.sh",
+    "environment_is_cleared_with": "env -i",
+    "helper_invocation_uses_sudo": true,
+    "ordinary_user_attempt_used_sudo": false,
+    "cuda_toolkit_environment_forwarded": false,
+    "note": "Helper is an administrator flow; the recorded denied attempt was separately launched as an ordinary user with env -i."
+  },
+  "permission_reference": "https://developer.nvidia.com/ERR_NVGPUCTRPERM"
+}
