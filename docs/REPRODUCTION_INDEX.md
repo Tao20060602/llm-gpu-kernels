@@ -1,6 +1,6 @@
 # 复现与证据索引
 
-2026-10-07。先查已有结果，再按需要重跑。独立算子与NanoKV使用各自checkout和venv。
+2026-10-09。先查已有结果，再按需要重跑。独立算子与NanoKV使用各自checkout和venv。
 
 ## 1. 无GPU查阅与核对
 
@@ -40,6 +40,8 @@ M18动态API比例和M19各比例/差异计数从原始记录重算。
 | 动态地址与缓存 | [M18报告](M18_DYNAMIC_BINDING_REPORT.md)、[使用契约](M18_DYNAMIC_BINDING_USAGE.md) | 六项T96动态API比例0.6683，包含绑定/V转换；单stream顺序消费 |
 | NanoKV系统接入 | [M19边界](M19_NATIVE_INTEGRATION_BOUNDARY.md) | 完整prefill未取得稳定收益，尾层选择有差异，默认FA2 |
 | 求职项目表述 | [两项目证据](PORTFOLIO_EVIDENCE.md) | 实现、判断和限制分开说明，各项目使用各自测量数字 |
+| W4跨进程复测 | [M23报告](M23_W4_REPEAT_REPORT.md)、[样本与审计汇总](../results/m23-w4-repeat-summary.json)、[发布清单](../results/m23-release-manifest.json) | 固定T17/T193四case三批复现；T1024两case持续回归；汇总保留逐case所有arm的p50/p95及原始samples |
+| W4 packed-layout | [M24状态](M24_CURRENT_STATUS.md)、[性能报告](M24_W4_LAYOUT_PERFORMANCE_REPORT.md)、[NCU补充](M24_W4_LAYOUT_NCU_REPORT.md)、[NCU摘要](../results/m24-layout-ncu-summary.json) | 单批六case机制对照；NCU补充已采集，结论保留计数器定义和因果边界 |
 
 比例均为实验耗时/对应基线耗时，低于1才是耗时减少。不能把不同实验的百分比累加。
 
@@ -107,3 +109,25 @@ python3 scripts/check_m20_evidence.py --record results/m20-real-input-20261007-a
 ```
 
 详细来源范围、逐项计时、复测与静态 Tensor Core 证据见 [M20 报告](M20_REAL_MOE_REPORT.md)。
+
+## 6. M23 W4 跨进程复测
+
+结果与审计见 [M23报告](M23_W4_REPEAT_REPORT.md)、[运行恢复记录](M23_RUNTIME_RECOVERY.md) 和
+[汇总JSON](../results/m23-w4-repeat-summary.json)。汇总仅纳入固定首批六个worker与v4目录
+两批共18个通过worker，追加批次的12份startup receipt也逐项验证；所有p50、p95和wall
+p50均由worker原始samples复算。v1/v2/v3计时前失败产物保留但不作为耗时结果。
+
+CPU-only汇总入口为 [scripts/summarize_m23_w4.py](../scripts/summarize_m23_w4.py)。要复算，
+必须提供原worker JSON及receipt所在目录，并显式指定三个路径；脚本不从目录挑选结果，
+且拒绝覆盖输出：
+
+```bash
+python3 scripts/summarize_m23_w4.py \
+  --first-batch-dir /path/to/m22-w4-first-batch \
+  --repeat-dir /path/to/m23-w4-v4 \
+  --output results/m23-w4-recheck.json
+```
+
+公开汇总包含全部 raw timing samples、逐case各arm p50/p95及worker/receipt哈希；原worker、
+receipt、日志、trace、权重和编译共享库留在本机，不随release manifest发布。克隆仓库
+可查阅已归档的样本和统计，但不能据此声称重新执行了GPU benchmark。

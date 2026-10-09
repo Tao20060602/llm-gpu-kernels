@@ -17,7 +17,8 @@ W4A16 首版与三批复测的差异、逐 case 回归及限制见
 M24 对 W4 packed gate/up 做了不改量化值与算术顺序的物理布局机制对照：单批六个固定
 case 的 Full Graph p50 几何平均相对同量化 vLLM 低21.17%，相对旧 W4 低19.43%；T1024
 对 vLLM 一快一慢，不能表述为长输入普遍改善。范围与限制见[M24当前入口](docs/M24_CURRENT_STATUS.md)、
-[性能报告](docs/M24_W4_LAYOUT_PERFORMANCE_REPORT.md)和[汇总JSON](results/m24-w4-layout-summary.json)。
+[性能报告](docs/M24_W4_LAYOUT_PERFORMANCE_REPORT.md)、[NCU计数器补充](docs/M24_W4_LAYOUT_NCU_REPORT.md)和
+[汇总JSON](results/m24-w4-layout-summary.json)。NCU补充采集及分析已完成，指标解释与因果边界见补充报告。
 
 当前已完成 M0/M1 bootstrap、M2 固定 CUTLASS3.8 基线及 M3 参数优化：
 原始 Triton dense/grouped GEMM、FP32 MoE 语义参考、边界数值检查、

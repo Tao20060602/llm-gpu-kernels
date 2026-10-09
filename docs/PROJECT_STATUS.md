@@ -22,6 +22,15 @@ Qwen3-4B张量重放。模型请求集成另有边界审计，尚未作为生产
   全24项等权p50比例几何平均API少2.30%、Graph少1.13%，不代表生产流量加权收益。
   计时包含GPU分组、dispatch与expert forward，排除router/attention/模型。
   [来源、逐项结果与复测](M20_REAL_MOE_REPORT.md)、[prepared接口](MOE_USAGE.md)。
+- M23完成M22 W4A16首批结果的三批跨进程复测：18/18 worker、12/12 repeat startup
+  receipt及样本、身份、数值和ranked dispatch审计通过。固定T17/T193四case的Full Graph
+  p50等权几何平均相对同量化权重vLLM低10.00%、相对原BF16 vLLM低10.07%；T1024两case
+  分别慢17.30%和17.58%，18项总体只低1.69%和1.66%。没有统计置信区间，时钟未锁定，
+  仅适用于这组固定layer0输入。[逐case报告](M23_W4_REPEAT_REPORT.md)、
+  [样本/审计JSON](../results/m23-w4-repeat-summary.json)、
+  [启动恢复记录](M23_RUNTIME_RECOVERY.md)、[发布清单](../results/m23-release-manifest.json)。
+  M24 packed-layout后续完成42状态与T0正确性审计及单批六case Full Graph对照：相对同量化vLLM等权p50几何平均低21.17%，相对旧W4低19.43%；T1024对vLLM一快一慢。NCU补充采集已完成，但指标不证明DRAM流量或带宽的因果收益。见
+  [M24当前状态](M24_CURRENT_STATUS.md)、[性能报告](M24_W4_LAYOUT_PERFORMANCE_REPORT.md)和[NCU补充](M24_W4_LAYOUT_NCU_REPORT.md)。
 
 ### 四段 KV GQA attention
 

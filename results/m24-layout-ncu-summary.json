@@ -1,0 +1,320 @@
+{
+  "schema": 1,
+  "classification": "NCU profile-only; do not use these profiler-perturbed timings in an unprofiled performance summary.",
+  "source_manifest": {
+    "path": "artifacts/m24-layout-ncu-profile-only-20261009T100721Z/manifest.json",
+    "sha256": "4df55675df0c8d15f6373cf134ee9e7bc2ba5dc2dc9a80e772fb802fb4a39d5c",
+    "status": "complete"
+  },
+  "profiler": {
+    "version": "Nsight Compute 2026.3.0.0 (build 38525999) (public-release)",
+    "replay_mode": "kernel",
+    "launch_filter_semantics": "skip two matching launches, then profile one matching launch",
+    "kernel_name_base": "function"
+  },
+  "absent_metrics_in_all_four_raw_csvs": [
+    {
+      "wanted": "L1 global-load sector count",
+      "csv_header_search": "l1tex__t_sectors"
+    },
+    {
+      "wanted": "L1 global-load request count",
+      "csv_header_search": "l1tex__t_requests"
+    },
+    {
+      "wanted": "DRAM read bytes",
+      "csv_header_search": "dram__bytes_read"
+    },
+    {
+      "wanted": "DRAM write bytes",
+      "csv_header_search": "dram__bytes_write"
+    }
+  ],
+  "note": "memory_l1_tag_requests_global (sectors) is included as captured, but is not a separately collected global-load sectors/requests pair. DRAM throughput metrics are bytes per second, not byte totals.",
+  "captures": [
+    {
+      "tag": "archive-T17-w4_sync",
+      "case": "archive-T17",
+      "arm": "w4_sync",
+      "worker_status": "passed",
+      "capture_status": "ncu_capture_exit=0",
+      "kernel_filter": "cuda_gate_up_w4_sync",
+      "matched_kernel_name": "<unnamed>::cuda_gate_up_w4_sync(const __nv_bfloat16 *, const unsigned int *, const __nv_bfloat16 *, __nv_bfloat16 *, const int *, const int *, const int *)",
+      "launch": {
+        "ncu_launch_id": "0",
+        "grid": "(132, 12, 1)",
+        "block": "(128, 1, 1)",
+        "device": "0",
+        "context": "1",
+        "stream": "7",
+        "launch_skip": 2,
+        "launch_count": 1
+      },
+      "metrics": {
+        "gpu__time_duration.sum": {
+          "value": "672.160000",
+          "unit": "us"
+        },
+        "dram__bytes.avg.per_second": {
+          "value": "45.376958",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.sum.per_second": {
+          "value": "363.015663",
+          "unit": "Gbyte/s"
+        },
+        "l1tex__t_sector_hit_rate.pct": {
+          "value": "1.319381",
+          "unit": "%"
+        },
+        "memory_l1_tag_requests_global": {
+          "value": "7467641",
+          "unit": "sectors"
+        },
+        "lts__t_sector_hit_rate.pct": {
+          "value": "35.698639",
+          "unit": "%"
+        },
+        "lts__t_sectors_lookup_miss.sum": {
+          "value": "7536707.000000",
+          "unit": "sector"
+        }
+      },
+      "sources": {
+        "worker": {
+          "path": "artifacts/m24-layout-ncu-profile-only-20261009T100721Z/workers/archive-T17-w4_sync-PROFILE-ONLY-worker.json",
+          "sha256": "30d41050c156ecbc331839dfc28e3047048e08aa44f67dc5cd6c1b21b1d6da7e",
+          "sha256_match": true
+        },
+        "status_file": {
+          "path": "artifacts/m24-layout-ncu-profile-only-20261009T100721Z/status/archive-T17-w4_sync.status",
+          "sha256": "4b8a5b39bceeb88e54f8ea48392c43d15bd8c5f1b5cddd61a07ffd6a9522318f",
+          "sha256_match": true
+        },
+        "report": {
+          "path": "artifacts/m24-layout-ncu-profile-only-20261009T100721Z/reports/archive-T17-w4_sync.ncu-repz",
+          "sha256": "5d1056448bc17fd15f658084d1f67ee7b7caaca79447f7a251dac5fb1deaa66e",
+          "sha256_match": true
+        },
+        "csv": {
+          "path": "artifacts/m24-layout-ncu-profile-only-20261009T100721Z/csv/archive-T17-w4_sync-raw.csv",
+          "sha256": "2f0af0cf5d65e21d12e6cd478be27ca1c9621007a0932e91007a5170797531e5",
+          "sha256_match": true
+        }
+      }
+    },
+    {
+      "tag": "archive-T17-w4_layout",
+      "case": "archive-T17",
+      "arm": "layout",
+      "worker_status": "passed",
+      "capture_status": "ncu_capture_exit=0",
+      "kernel_filter": "cuda_gate_up_w4_layout_sync",
+      "matched_kernel_name": "<unnamed>::cuda_gate_up_w4_layout_sync(const __nv_bfloat16 *, const unsigned int *, const __nv_bfloat16 *, __nv_bfloat16 *, const int *, const int *, const int *)",
+      "launch": {
+        "ncu_launch_id": "0",
+        "grid": "(132, 12, 1)",
+        "block": "(128, 1, 1)",
+        "device": "0",
+        "context": "1",
+        "stream": "7",
+        "launch_skip": 2,
+        "launch_count": 1
+      },
+      "metrics": {
+        "gpu__time_duration.sum": {
+          "value": "425.984000",
+          "unit": "us"
+        },
+        "dram__bytes.avg.per_second": {
+          "value": "30.019419",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.sum.per_second": {
+          "value": "240.155349",
+          "unit": "Gbyte/s"
+        },
+        "l1tex__t_sector_hit_rate.pct": {
+          "value": "7.033030",
+          "unit": "%"
+        },
+        "memory_l1_tag_requests_global": {
+          "value": "2939271",
+          "unit": "sectors"
+        },
+        "lts__t_sector_hit_rate.pct": {
+          "value": "4.266619",
+          "unit": "%"
+        },
+        "lts__t_sectors_lookup_miss.sum": {
+          "value": "3133906.000000",
+          "unit": "sector"
+        }
+      },
+      "sources": {
+        "worker": {
+          "path": "artifacts/m24-layout-ncu-profile-only-20261009T100721Z/workers/archive-T17-w4_layout-PROFILE-ONLY-worker.json",
+          "sha256": "c781466712ad1bdacf9df4126d62da866b615a400483a510c742560786609132",
+          "sha256_match": true
+        },
+        "status_file": {
+          "path": "artifacts/m24-layout-ncu-profile-only-20261009T100721Z/status/archive-T17-w4_layout.status",
+          "sha256": "451e783ac7555ccffec117cf3b94461a1acfe07c943cb2988bae6d872dde8ea2",
+          "sha256_match": true
+        },
+        "report": {
+          "path": "artifacts/m24-layout-ncu-profile-only-20261009T100721Z/reports/archive-T17-w4_layout.ncu-repz",
+          "sha256": "23435c467c4014f82063a2933c30ce28d83dc01b715a0239eac0b08f62239a34",
+          "sha256_match": true
+        },
+        "csv": {
+          "path": "artifacts/m24-layout-ncu-profile-only-20261009T100721Z/csv/archive-T17-w4_layout-raw.csv",
+          "sha256": "9346a085928377cc021b33e91a96aec68297b971f10671693db67634f5e0bf2b",
+          "sha256_match": true
+        }
+      }
+    },
+    {
+      "tag": "code-T1024-w4_sync",
+      "case": "code-T1024",
+      "arm": "w4_sync",
+      "worker_status": "passed",
+      "capture_status": "ncu_capture_exit=0",
+      "kernel_filter": "cuda_gate_up_w4_sync",
+      "matched_kernel_name": "<unnamed>::cuda_gate_up_w4_sync(const __nv_bfloat16 *, const unsigned int *, const __nv_bfloat16 *, __nv_bfloat16 *, const int *, const int *, const int *)",
+      "launch": {
+        "ncu_launch_id": "0",
+        "grid": "(383, 12, 1)",
+        "block": "(128, 1, 1)",
+        "device": "0",
+        "context": "1",
+        "stream": "7",
+        "launch_skip": 2,
+        "launch_count": 1
+      },
+      "metrics": {
+        "gpu__time_duration.sum": {
+          "value": "3.012672",
+          "unit": "ms"
+        },
+        "dram__bytes.avg.per_second": {
+          "value": "23.683932",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.sum.per_second": {
+          "value": "189.471459",
+          "unit": "Gbyte/s"
+        },
+        "l1tex__t_sector_hit_rate.pct": {
+          "value": "1.287857",
+          "unit": "%"
+        },
+        "memory_l1_tag_requests_global": {
+          "value": "44368851",
+          "unit": "sectors"
+        },
+        "lts__t_sector_hit_rate.pct": {
+          "value": "76.009698",
+          "unit": "%"
+        },
+        "lts__t_sectors_lookup_miss.sum": {
+          "value": "17380195.000000",
+          "unit": "sector"
+        }
+      },
+      "sources": {
+        "worker": {
+          "path": "artifacts/m24-layout-ncu-profile-only-20261009T100721Z/workers/code-T1024-w4_sync-PROFILE-ONLY-worker.json",
+          "sha256": "37ae07cfba7ae22d436fd014d488e5e73e36745851ae6fbebd50746a47210b34",
+          "sha256_match": true
+        },
+        "status_file": {
+          "path": "artifacts/m24-layout-ncu-profile-only-20261009T100721Z/status/code-T1024-w4_sync.status",
+          "sha256": "b12d100e77cc79d16bac1fab47bf8c83e5d60dd78dfb36933ff508fb8f25e34e",
+          "sha256_match": true
+        },
+        "report": {
+          "path": "artifacts/m24-layout-ncu-profile-only-20261009T100721Z/reports/code-T1024-w4_sync.ncu-repz",
+          "sha256": "cc20779f944d8ae2d95b31ae608c9b1e497c09e45c3ee0706c52fe6f485a6df4",
+          "sha256_match": true
+        },
+        "csv": {
+          "path": "artifacts/m24-layout-ncu-profile-only-20261009T100721Z/csv/code-T1024-w4_sync-raw.csv",
+          "sha256": "6611fef222a2924b5c9e33f65d4bf78758c502b5c785838ece30dfed87492f6d",
+          "sha256_match": true
+        }
+      }
+    },
+    {
+      "tag": "code-T1024-w4_layout",
+      "case": "code-T1024",
+      "arm": "layout",
+      "worker_status": "passed",
+      "capture_status": "ncu_capture_exit=0",
+      "kernel_filter": "cuda_gate_up_w4_layout_sync",
+      "matched_kernel_name": "<unnamed>::cuda_gate_up_w4_layout_sync(const __nv_bfloat16 *, const unsigned int *, const __nv_bfloat16 *, __nv_bfloat16 *, const int *, const int *, const int *)",
+      "launch": {
+        "ncu_launch_id": "0",
+        "grid": "(383, 12, 1)",
+        "block": "(128, 1, 1)",
+        "device": "0",
+        "context": "1",
+        "stream": "7",
+        "launch_skip": 2,
+        "launch_count": 1
+      },
+      "metrics": {
+        "gpu__time_duration.sum": {
+          "value": "2.384128",
+          "unit": "ms"
+        },
+        "dram__bytes.avg.per_second": {
+          "value": "29.691621",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.sum.per_second": {
+          "value": "237.532965",
+          "unit": "Gbyte/s"
+        },
+        "l1tex__t_sector_hit_rate.pct": {
+          "value": "3.713301",
+          "unit": "%"
+        },
+        "memory_l1_tag_requests_global": {
+          "value": "13296313",
+          "unit": "sectors"
+        },
+        "lts__t_sector_hit_rate.pct": {
+          "value": "40.806298",
+          "unit": "%"
+        },
+        "lts__t_sectors_lookup_miss.sum": {
+          "value": "17257469.000000",
+          "unit": "sector"
+        }
+      },
+      "sources": {
+        "worker": {
+          "path": "artifacts/m24-layout-ncu-profile-only-20261009T100721Z/workers/code-T1024-w4_layout-PROFILE-ONLY-worker.json",
+          "sha256": "4c3ef56cd67fbcf76f38b6c1ad942fcb777a49330e38b542ab7e709f576314b9",
+          "sha256_match": true
+        },
+        "status_file": {
+          "path": "artifacts/m24-layout-ncu-profile-only-20261009T100721Z/status/code-T1024-w4_layout.status",
+          "sha256": "909576b4ce27b92338de34a7e422f45e2b3c15b0cd2d9b398987c70a4ee27523",
+          "sha256_match": true
+        },
+        "report": {
+          "path": "artifacts/m24-layout-ncu-profile-only-20261009T100721Z/reports/code-T1024-w4_layout.ncu-repz",
+          "sha256": "11cd5ec59b6e9b29f03761d3b3bb42a8a0935eaef90ae2ca4103ea4af2d484e9",
+          "sha256_match": true
+        },
+        "csv": {
+          "path": "artifacts/m24-layout-ncu-profile-only-20261009T100721Z/csv/code-T1024-w4_layout-raw.csv",
+          "sha256": "219f606d307188c837a1cabfa1d27a53f14fd2a56c0ceb0b5092ccdd24f1be4d",
+          "sha256_match": true
+        }
+      }
+    }
+  ]
+}
