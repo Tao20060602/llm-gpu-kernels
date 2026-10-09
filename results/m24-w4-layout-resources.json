@@ -1,0 +1,179 @@
+{
+  "schema": 1,
+  "experiment": "M24 W4 physical-layout audit resources",
+  "correctness_status": "passed",
+  "performance": "not measured in this audit",
+  "audit_record": {
+    "local_path": "artifacts/m24-w4-layout-audit-20261009-v1/audit.json",
+    "original_sha256": "bced7e90c17223a8f00c142953f09f076be1839159d3a4987085a95ab5b66517",
+    "public_path": "results/m24-w4-layout-audit.json",
+    "public_sha256": "c0e1d86fe078894c4abc4bb41dd6fd1c2cd725200ae24ba03727f6f3c962a8e9"
+  },
+  "binary": {
+    "name": "llm_gpu_kernels_m24_w4_layout_sm86_v1.so",
+    "relative_path": "artifacts/m24-w4-layout-audit-20261009-v1/torch-extensions/llm_gpu_kernels_m24_w4_layout_sm86_v1/llm_gpu_kernels_m24_w4_layout_sm86_v1.so",
+    "sha256": "47611e5354d01efddcaa1d22d1a649d539810ff66439d3be8a3e9a350f2d04dc",
+    "architecture": "sm_86"
+  },
+  "compile": {
+    "torch": "2.7.1+cu128",
+    "torch_cuda": "12.8",
+    "nvcc": "12.8.93",
+    "gcc": "14.3.0",
+    "gxx": "14.3.0",
+    "max_jobs": 1,
+    "ptxas": {
+      "registers_per_thread": 72,
+      "barriers": 1,
+      "stack_bytes": 0,
+      "spill_stores": 0,
+      "spill_loads": 0,
+      "constant_memory_0_bytes": 408,
+      "global_bytes_reported": 11,
+      "constant_memory_4_bytes": 88
+    }
+  },
+  "cuobjdump": {
+    "version": "CUDA 12.8.55",
+    "sha256": "ad1d0f0699f46603416eb58e7b9fdf9a293e95f9312c9df7fd6fda56a6c30d41",
+    "tool_path": ".venv/lib/python3.12/site-packages/triton/backends/nvidia/bin/cuobjdump",
+    "command_sass": "cuobjdump --dump-sass --gpu-architecture sm_86 <binary>",
+    "command_resources": "cuobjdump --dump-resource-usage --gpu-architecture sm_86 <binary>",
+    "resource_usage": {
+      "registers": 72,
+      "stack_bytes": 0,
+      "shared_bytes_reported": 0,
+      "local_bytes": 0,
+      "constant_memory_0_bytes": 408,
+      "global_bytes": 11,
+      "constant_memory_4_bytes": 88
+    }
+  },
+  "sass_inventory": {
+    "counts": {
+      "hmma": 16,
+      "ldg": 11,
+      "ldg_e_128": 1,
+      "lds": 10,
+      "sts": 21,
+      "bar_sync": 3
+    },
+    "hmma_opcode": "HMMA.16816.F32.BF16",
+    "interpretation": "static instruction inventory; not a performance or traffic measurement",
+    "independent_nvdisasm_counts": {
+      "hmma": 16,
+      "ldg": 11
+    }
+  },
+  "correctness": {
+    "case_count": 6,
+    "state_count": 42,
+    "all_cases_passed": true,
+    "all_states_finite": true,
+    "all_states_numerically_passed": true,
+    "all_dispatch_passed": true,
+    "limits": {
+      "relative_rms": 0.008,
+      "normalized_max": 0.008
+    },
+    "maximum_error": {
+      "relative_rms": 0.0033193733543157578,
+      "normalized_max": 0.004341739229857922,
+      "max_abs": 0.0038645267486572266
+    },
+    "format_proxy_maximum": {
+      "relative_rms": 0.04484264925122261,
+      "normalized_max": 0.00985022448003292,
+      "max_abs": 0.009138084948062897,
+      "interpretation": "format-loss proxy only; not implementation pass/fail or task quality"
+    },
+    "zero_tokens": {
+      "passed": true,
+      "launch_count": 0,
+      "dtype": "bfloat16",
+      "shape": [
+        0,
+        2048
+      ]
+    }
+  },
+  "layout_conversion": {
+    "passed": true,
+    "words_bitwise_equal": true,
+    "scales_bitwise_equal": true,
+    "cpu_repack_seconds": 0.24638902600008805,
+    "cpu_repack_timing_scope": "repack_gate_up including v1 input and v2 output digests; excludes restore and H2D",
+    "cpu_restore_seconds": 0.2484771350000301,
+    "physical_size_mib": 198.0,
+    "canonical_resident_bytes": 207618048,
+    "additional_repacked_bytes": 207618048,
+    "additional_roundtrip_restore_bytes": 207618048,
+    "peak_canonical_repacked_restored_bytes": 622854144,
+    "canonical_v1_sha256": {
+      "words_sha256": "c15d4cf9a551afd6bbd5b4b9774d181bfce373741dc0cd987ae840c442d013a6",
+      "scales_sha256": "fd2dc55c077b7996b5b6e0aaa80316bab95271165338fb814f5fffe68cd3d06a"
+    },
+    "physical_v2_cpu_sha256": {
+      "words_sha256": "0122df3ba6c9de32f258f04de6edc06efd25c2799046a5a7c25e66446ccb64f0",
+      "scales_sha256": "9169f9f19f63a22327720c81c43dff5a3fad55c58f29ccd6d4c734b56f4ec16d"
+    },
+    "physical_v2_gpu_sha256_after_transfer": {
+      "words_sha256": "0122df3ba6c9de32f258f04de6edc06efd25c2799046a5a7c25e66446ccb64f0",
+      "scales_sha256": "9169f9f19f63a22327720c81c43dff5a3fad55c58f29ccd6d4c734b56f4ec16d"
+    }
+  },
+  "source_hashes_before": {
+    "docs/M24_W4_LAYOUT_PLAN.md": "da6f19f8db1d6d7e2ecfcd05ac490eb8af85021e8766d5fb5e7ea879eea7ac40",
+    "docs/M7_FULL_MOE_TUNING_PLAN.md": "82ff1146fa5b88e17c4365fc91eacbc821bba1eaa1c39041988edce2b1070a32",
+    "src/llm_gpu_kernels/__init__.py": "68bf65e24e4874e31b4d4e134d1700ad16779b387053307a1ff4661b727048b1",
+    "src/llm_gpu_kernels/baseline_benchmark.py": "b264751e44584606b52470b308d8b344288a022ae1e8006460a60a7d45e1b803",
+    "src/llm_gpu_kernels/benchmark.py": "c3a12e68e37b09f62d7dd78d14738537074dc60b7a02e20c96e24d1923c565e4",
+    "src/llm_gpu_kernels/cuda_w4_layout_gate_up.cu": "cd187a98c403adcf4970aafbd5d1d3e004fcdfd30930c156427bf8b8318fdef1",
+    "src/llm_gpu_kernels/gemm.py": "f1a207413c7db6a5a508fc72a4dc4430049030ded3faf7e8bafadd4c822e49b0",
+    "src/llm_gpu_kernels/mature_moe_benchmark.py": "a662f8cab1ba252f19d4bb49bb2439e667dae93d5e05113ed81f6567e48ea80f",
+    "src/llm_gpu_kernels/moe.py": "64fd0282025071b43b6d432a149a1ba72f6d5d7417664087886e8a51b6b58597",
+    "src/llm_gpu_kernels/moe_benchmark.py": "1be148d270e78ad806ce8f49395f757606e6de114ba10517c94e85fe8f0da3e0",
+    "src/llm_gpu_kernels/moe_configured.py": "71b3332041f180dbbcb245083b8d75e24642c18552dd7bd874d068282fba9ded",
+    "src/llm_gpu_kernels/moe_cuda.py": "f770b39716d606b73d14e864e59ac6aad5aa1376beeb6244cc6d0dbe9e80b741",
+    "src/llm_gpu_kernels/moe_full_holdout.py": "270077115b7455144fc40fb1012baaa6b80acd18c78e7df977ff6c5688f454c9",
+    "src/llm_gpu_kernels/moe_full_policy.py": "2543147949dedd51fcb57bdc8d88d3cbe93fb97d1ecd4fe15fa57bf6cdffb510",
+    "src/llm_gpu_kernels/moe_full_tuning.py": "67d1c2290aead299b68f26aa5b01c3e4dd7549325bb2a3567ccb8eeab86c717d",
+    "src/llm_gpu_kernels/moe_fused.py": "9bae476d3341af2685c90a2960586132d693f1a3b8c4ca940eeb936e147271ea",
+    "src/llm_gpu_kernels/moe_prepared.py": "7b52ecf4234d6385d1a4e104b5a01656786571aa29d5ab2bad948589097acef8",
+    "src/llm_gpu_kernels/moe_profile.py": "03e72384be55de710fbfdb2812b45b58829f3155febaf9b3232fdabbeddac210",
+    "src/llm_gpu_kernels/moe_ranked.py": "eff4861e812722b7b4bbbd833590d52bbe966d5301bf02e03a289ef5438ed705",
+    "src/llm_gpu_kernels/moe_real_trace.py": "45686545891174852bc05876add5e3dc7cbd33fe7ce093bc548fdec9db260eea",
+    "src/llm_gpu_kernels/moe_w4_cuda.py": "10ec8cdac931e6dc857f41e2d4f6061f18027954b2f7e68e7331d1e18ad9d8b7",
+    "src/llm_gpu_kernels/moe_w4_layout_audit.py": "98ead019e5fb084daf187737238281db6ea4f2fc68b7b816df733c693b31ea18",
+    "src/llm_gpu_kernels/moe_w4_layout_cuda.py": "9d514fd22cffd0599addc3fb0f3e561bc296679ada6a7e2b0395e0cb61479d90",
+    "src/llm_gpu_kernels/moe_weight_layout.py": "0335b4087f235b027d3d43d488c2293ac9c89c81c7b9c0cf3210cd8b4c1a690f",
+    "src/llm_gpu_kernels/moe_weight_quant.py": "a4f60e9bafef12a5539c6a8531ab40935512cfe40f00114da51346d4a8e87661",
+    "src/llm_gpu_kernels/optimization_benchmark.py": "17c15a3eac5b4de21d694c63e55cda8cccd53d9f31a4e9e4a28b1e2712419f89",
+    "src/llm_gpu_kernels/reference.py": "da310c36314cc0403d1315be2846b7f970737afd089a614b80c36202fc1bc456"
+  },
+  "artifacts": {
+    "audit_log": "artifacts/m24-w4-layout-audit-20261009-v1/logs/audit.log",
+    "ptxas_log": "artifacts/m24-w4-layout-audit-20261009-v1/logs/audit.log",
+    "full_sass": "artifacts/m24-w4-layout-audit-20261009-v1/disassembly/m24-w4-layout-sm86.sass",
+    "key_sass_instructions": "artifacts/m24-w4-layout-audit-20261009-v1/disassembly/m24-w4-layout-sass-key-instructions.txt",
+    "cuobjdump_resource_output": "artifacts/m24-w4-layout-audit-20261009-v1/disassembly/m24-w4-layout-resource-usage.txt",
+    "embedded_elf_list": "artifacts/m24-w4-layout-audit-20261009-v1/disassembly/m24-w4-layout-elf-list.txt",
+    "run_manifest": "artifacts/m24-w4-layout-audit-20261009-v1/run_manifest.json",
+    "cubin": "artifacts/m24-w4-layout-audit-20261009-v1/disassembly/cuda_w4_layout_gate_up.sm_86.cubin",
+    "nvdisasm_sass": "artifacts/m24-w4-layout-audit-20261009-v1/disassembly/m24-w4-layout-nvdisasm.sass"
+  },
+  "nvdisasm": {
+    "version": "CUDA 12.8.55",
+    "sha256": "1080bc909a3020761ff4c78a9b7bd9b4937bdb9c0978709cbe52381de612a1f2",
+    "tool_path": ".venv/lib/python3.12/site-packages/triton/backends/nvidia/bin/nvdisasm",
+    "command": "nvdisasm --print-line-info --print-instruction-encoding cuda_w4_layout_gate_up.sm_86.cubin"
+  },
+  "artifact_sha256": {
+    "cuobjdump_sass": "1d9e2ed475dcd237c8785a02bd67b0eb76e97839223583cc911da70e66ee81f6",
+    "nvdisasm_sass": "aed8840b5602cbf4c9f90596f6a52bb028483c501884f9330728b7a998eb3239",
+    "cubin": "2bcdbe2ac645516530aa196cd37318f6b3568b24235a87c68cf764bf645e63df",
+    "key_instructions": "bec242f78b61596e85e1842eb0964125eed7b717cd1bf4cd87578a41755029c8",
+    "resource_output": "fdd9089eb4e57fcecffb852521a68fd081a317f47b9e11122f07fd66fb8e9817",
+    "elf_list": "cfd38f69acc50688040cf17c8ee4d58ce25c46fa571e9f0031a83417486a0246"
+  }
+}

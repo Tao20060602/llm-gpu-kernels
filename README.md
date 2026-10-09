@@ -3,11 +3,21 @@
 独立于 NanoKV 的算子项目：先做 **BF16 MoE grouped GEMM 与局部融合**，
 包含四段KV GQA prefill attention。硬件为 RTX 3080 Laptop 16 GiB，SM86。
 
-当前结果见 [项目状态](docs/PROJECT_STATUS.md)，查阅与复现见 [证据索引](docs/REPRODUCTION_INDEX.md)。完整MoE已取得特定形状的成熟对照收益；attention已实现短query冻结选择：合成验证矩阵中，相对完整FA2链路Graph耗时几何平均减少22.09%，最坏慢2.17%；其他形状回退FA2。M18另有真实模型张量重放，M19已完成系统接入对照，未取得稳定完整prefill收益。
+当前状态与M24最新结果见[M24当前入口](docs/M24_CURRENT_STATUS.md)；M23及更早阶段仍保留各自快照，历史项目脉络见[项目状态快照](docs/PROJECT_STATUS.md)，查阅与复现见[证据索引](docs/REPRODUCTION_INDEX.md)。完整MoE已取得特定形状的成熟对照收益；attention已实现短query冻结选择：合成验证矩阵中，相对完整FA2链路Graph耗时几何平均减少22.09%，最坏慢2.17%；其他形状回退FA2。M18另有真实模型张量重放，M19已完成系统接入对照，未取得稳定完整prefill收益。
 
 真实 Qwen3-30B-A3B layer-0 的 expert 权重、hidden 与 router 路由重放见
 [M20 报告](docs/M20_REAL_MOE_REPORT.md)；它与 M7 合成输入结果分开记录。
 完整 MoE prepared 接口与缓冲区生命周期见 [使用说明](docs/MOE_USAGE.md)。
+
+W4A16 首版与三批复测的差异、逐 case 回归及限制见
+[M23 W4 复测报告](docs/M23_W4_REPEAT_REPORT.md)和[完整样本/审计汇总](results/m23-w4-repeat-summary.json)：
+固定T17/T193四case的Full Graph p50几何平均相对同量化权重vLLM低10.00%，T1024两case
+慢17.30%，不代表全域或生产收益。发布文件清单见[M23 release manifest](results/m23-release-manifest.json)。
+
+M24 对 W4 packed gate/up 做了不改量化值与算术顺序的物理布局机制对照：单批六个固定
+case 的 Full Graph p50 几何平均相对同量化 vLLM 低21.17%，相对旧 W4 低19.43%；T1024
+对 vLLM 一快一慢，不能表述为长输入普遍改善。范围与限制见[M24当前入口](docs/M24_CURRENT_STATUS.md)、
+[性能报告](docs/M24_W4_LAYOUT_PERFORMANCE_REPORT.md)和[汇总JSON](results/m24-w4-layout-summary.json)。
 
 当前已完成 M0/M1 bootstrap、M2 固定 CUTLASS3.8 基线及 M3 参数优化：
 原始 Triton dense/grouped GEMM、FP32 MoE 语义参考、边界数值检查、
@@ -67,6 +77,7 @@ vLLM算子依赖使用独立overlay，见 [环境说明](docs/VLLM_OPERATOR_ENVI
 17. M18：编译模板LRU、动态地址与stream workspace；真实尾chunk动态API平均少33.17%，固定Graph少37.11%。后续完整prefill对照见M19。[报告](docs/M18_DYNAMIC_BINDING_REPORT.md) / [使用](docs/M18_DYNAMIC_BINDING_USAGE.md)。
 18. M19：NanoKV实验接入与三组新进程对照完成；完整prefill没有稳定收益，后续尾层检索集合有差异，默认维持FA2。[边界报告](docs/M19_NATIVE_INTEGRATION_BOUNDARY.md)。
 19. M20：pinned Qwen3-30B-A3B 第一层真实权重与路由输入、冻结 M7 策略的完整 expert-forward 对照；范围与原始记录见 [报告](docs/M20_REAL_MOE_REPORT.md)。
+20. M22/M23：W4A16在线解码与融合完成三批固定输入复测；小组T17/T193收益复现，但T1024两输入持续回归。M24 packed-layout 已完成42状态与T0正确性审计及单批六case机制对照；没有改变默认实现，也不是新holdout。见 [M23报告](docs/M23_W4_REPEAT_REPORT.md)、[M24状态](docs/M24_CURRENT_STATUS.md) 与 [M24计划](docs/M24_W4_LAYOUT_PLAN.md)。
 
 两个独立项目的可用表述、证据和限制见[简历与面试证据](docs/PORTFOLIO_EVIDENCE.md)。
 

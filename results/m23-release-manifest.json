@@ -1,0 +1,350 @@
+{
+  "created_utc": "2026-10-09T09:52:27Z",
+  "entry_routing": {
+    "frozen_current_stage_snapshot": "docs/M23_CURRENT_STATUS.md",
+    "frozen_resume_snapshot": "docs/M23_RESUME_NOTES.md",
+    "historical_m22_entries_restored": [
+      "PROJECT_STATUS.md",
+      "docs/RESUME_NOTES.md",
+      "docs/POST_RELEASE_PLAN.md"
+    ],
+    "long_lived_navigation_not_frozen": [
+      "README.md",
+      "docs/PROJECT_STATUS.md",
+      "docs/REPRODUCTION_INDEX.md"
+    ],
+    "m22_and_m23_protocols_modified": false,
+    "readme_current_stage_entry": "docs/M23_CURRENT_STATUS.md"
+  },
+  "files": [
+    {
+      "path": "docs/M23_CURRENT_STATUS.md",
+      "sha256": "0f974735d5c6d270f0debadf3b30e00f89e703d112c020a766151d1b2ddbd095",
+      "size_bytes": 2907
+    },
+    {
+      "path": "docs/M23_RESUME_NOTES.md",
+      "sha256": "fd85e6f874f17f50a73080122518674e4327a06d4bab6f7bc331fc290c100209",
+      "size_bytes": 5586
+    },
+    {
+      "path": "docs/M23_RUNTIME_RECOVERY.md",
+      "sha256": "a5636c8cd768406c93cb2c4e6e551875db2dadd5bea55b39fdd6b4687d33d4b6",
+      "size_bytes": 4650
+    },
+    {
+      "path": "docs/M23_W4_REPEAT_PLAN.md",
+      "sha256": "7426ec14576ddf64e4447630ba63e4404bff3b2abe8f8fd6fe34ebc362c75fd0",
+      "size_bytes": 5301
+    },
+    {
+      "path": "docs/M23_W4_REPEAT_REPORT.md",
+      "sha256": "4ab75bb0ca66774201104ac0ed113f3ab03702d5edc869db64103a30a6a1f09c",
+      "size_bytes": 18369
+    },
+    {
+      "path": "results/m23-w4-repeat-summary.json",
+      "sha256": "c229db42277a1256cb8dc1d0a9ab8f9f25b04bad41f28bb9a381026d3395dc69",
+      "size_bytes": 4708725
+    },
+    {
+      "path": "scripts/summarize_m23_w4.py",
+      "sha256": "2b6ac391be4c5a1c52d5317b73d82a5df47f79087c600dab94f01829086524d4",
+      "size_bytes": 48665
+    },
+    {
+      "path": "src/llm_gpu_kernels/moe_w4_repeat.py",
+      "sha256": "4e4dd332790e4ac5cd35df48e8d96d5972bc7ead95c606c83af652c9f0d4afe0",
+      "size_bytes": 12060
+    }
+  ],
+  "frozen_dependencies": {
+    "adapter_source_sha256": "4e4dd332790e4ac5cd35df48e8d96d5972bc7ead95c606c83af652c9f0d4afe0",
+    "m22_release_manifest": {
+      "all_entries_match_current_files": true,
+      "entry_count": 52,
+      "path": "results/m22-release-manifest.json",
+      "role": "unchanged M22 baseline release snapshot",
+      "sha256": "a961d7bee44ea80b12d599d8e0e8e9f30cbd4c5f67cba317374d76303a3edd82"
+    },
+    "worker_source_identities": [
+      {
+        "path": "docs/M22_CUDA_AUDIT_PLAN.md",
+        "sha256": "5de1e97aa444a4a84dc039fd71e8ee1c335d29bad52ea43a36d49a810c2d7e60",
+        "size_bytes": 2138
+      },
+      {
+        "path": "docs/M22_W4_IMPLEMENTATION_AUDIT_PLAN.md",
+        "sha256": "83350b9a3ebf201fbd8cb0ea39cf2df96f32ac9210699bb3d2cecaa43fceb49c",
+        "size_bytes": 2248
+      },
+      {
+        "path": "docs/M22_W4_PERFORMANCE_PLAN.md",
+        "sha256": "bccfb8ba506fcd99b2b92233267f81258b7cdd8d50c6bb52abf5ebb4b23a4fd7",
+        "size_bytes": 3640
+      },
+      {
+        "path": "docs/M7_FULL_MOE_TUNING_PLAN.md",
+        "sha256": "82ff1146fa5b88e17c4365fc91eacbc821bba1eaa1c39041988edce2b1070a32",
+        "size_bytes": 7489
+      },
+      {
+        "path": "results/provenance/vllm-0.10.0-runtime.json",
+        "sha256": "3fd87506ff778b2e104d659264705ae1c9cc25385a0ae8e6558eeeec1a01e7a9",
+        "size_bytes": 2704
+      },
+      {
+        "path": "src/llm_gpu_kernels/__init__.py",
+        "sha256": "68bf65e24e4874e31b4d4e134d1700ad16779b387053307a1ff4661b727048b1",
+        "size_bytes": 211
+      },
+      {
+        "path": "src/llm_gpu_kernels/baseline_benchmark.py",
+        "sha256": "b264751e44584606b52470b308d8b344288a022ae1e8006460a60a7d45e1b803",
+        "size_bytes": 14433
+      },
+      {
+        "path": "src/llm_gpu_kernels/baselines/vllm_moe.py",
+        "sha256": "8a67aecf2f8c5a379a40fe183670cd8b4b7de3ceac0854226c6f511be317cc4c",
+        "size_bytes": 3447
+      },
+      {
+        "path": "src/llm_gpu_kernels/benchmark.py",
+        "sha256": "c3a12e68e37b09f62d7dd78d14738537074dc60b7a02e20c96e24d1923c565e4",
+        "size_bytes": 11747
+      },
+      {
+        "path": "src/llm_gpu_kernels/cuda_gate_up.cu",
+        "sha256": "9012fa52379a87296ff2f29076ff15951c90e3d82ba996d424a5c5e3aa6c4893",
+        "size_bytes": 9442
+      },
+      {
+        "path": "src/llm_gpu_kernels/cuda_w4_gate_up.cu",
+        "sha256": "9568364b9f7ef506259466b13cf16259dee6e459094335288914788a68aa60ac",
+        "size_bytes": 8240
+      },
+      {
+        "path": "src/llm_gpu_kernels/gemm.py",
+        "sha256": "f1a207413c7db6a5a508fc72a4dc4430049030ded3faf7e8bafadd4c822e49b0",
+        "size_bytes": 6581
+      },
+      {
+        "path": "src/llm_gpu_kernels/mature_moe_benchmark.py",
+        "sha256": "a662f8cab1ba252f19d4bb49bb2439e667dae93d5e05113ed81f6567e48ea80f",
+        "size_bytes": 27839
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe.py",
+        "sha256": "64fd0282025071b43b6d432a149a1ba72f6d5d7417664087886e8a51b6b58597",
+        "size_bytes": 10884
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_benchmark.py",
+        "sha256": "1be148d270e78ad806ce8f49395f757606e6de114ba10517c94e85fe8f0da3e0",
+        "size_bytes": 31133
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_configured.py",
+        "sha256": "71b3332041f180dbbcb245083b8d75e24642c18552dd7bd874d068282fba9ded",
+        "size_bytes": 3209
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_cuda.py",
+        "sha256": "f770b39716d606b73d14e864e59ac6aad5aa1376beeb6244cc6d0dbe9e80b741",
+        "size_bytes": 3126
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_cuda_audit.py",
+        "sha256": "e6d24efa2a4b9236d33433d546306cdcd4c0fc5f22399f2d77861d4c907f6232",
+        "size_bytes": 8955
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_full_holdout.py",
+        "sha256": "270077115b7455144fc40fb1012baaa6b80acd18c78e7df977ff6c5688f454c9",
+        "size_bytes": 35605
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_full_policy.py",
+        "sha256": "2543147949dedd51fcb57bdc8d88d3cbe93fb97d1ecd4fe15fa57bf6cdffb510",
+        "size_bytes": 8429
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_full_tuning.py",
+        "sha256": "67d1c2290aead299b68f26aa5b01c3e4dd7549325bb2a3567ccb8eeab86c717d",
+        "size_bytes": 41571
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_fused.py",
+        "sha256": "9bae476d3341af2685c90a2960586132d693f1a3b8c4ca940eeb936e147271ea",
+        "size_bytes": 5472
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_prepared.py",
+        "sha256": "7b52ecf4234d6385d1a4e104b5a01656786571aa29d5ab2bad948589097acef8",
+        "size_bytes": 7934
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_profile.py",
+        "sha256": "03e72384be55de710fbfdb2812b45b58829f3155febaf9b3232fdabbeddac210",
+        "size_bytes": 10966
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_ranked.py",
+        "sha256": "eff4861e812722b7b4bbbd833590d52bbe966d5301bf02e03a289ef5438ed705",
+        "size_bytes": 6771
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_real_input_benchmark.py",
+        "sha256": "f011ccf10297dcc858d38d65f018a6d6e6db347b6b585d00a3be60ea89b1e767",
+        "size_bytes": 14198
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_real_trace.py",
+        "sha256": "45686545891174852bc05876add5e3dc7cbd33fe7ce093bc548fdec9db260eea",
+        "size_bytes": 23371
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_w4_audit.py",
+        "sha256": "ed945c8a4a381b275b5bf31895b380e28bf1bb80f3d8a8aa334838f84d042bb7",
+        "size_bytes": 11607
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_w4_benchmark.py",
+        "sha256": "3c8a7bd2aa514ccb9f6d5a5f9e4bc8e46c0663217de2f136863d6e6b1a55320c",
+        "size_bytes": 14413
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_w4_cuda.py",
+        "sha256": "10ec8cdac931e6dc857f41e2d4f6061f18027954b2f7e68e7331d1e18ad9d8b7",
+        "size_bytes": 8745
+      },
+      {
+        "path": "src/llm_gpu_kernels/moe_weight_quant.py",
+        "sha256": "a4f60e9bafef12a5539c6a8531ab40935512cfe40f00114da51346d4a8e87661",
+        "size_bytes": 5382
+      },
+      {
+        "path": "src/llm_gpu_kernels/optimization_benchmark.py",
+        "sha256": "17c15a3eac5b4de21d694c63e55cda8cccd53d9f31a4e9e4a28b1e2712419f89",
+        "size_bytes": 11518
+      },
+      {
+        "path": "src/llm_gpu_kernels/reference.py",
+        "sha256": "da310c36314cc0403d1315be2846b7f970737afd089a614b80c36202fc1bc456",
+        "size_bytes": 2195
+      }
+    ],
+    "worker_source_path": "src/llm_gpu_kernels/moe_w4_benchmark.py"
+  },
+  "proof": {
+    "conditions": {
+      "confidence_intervals_provided": false,
+      "gpu_clocks_locked": false,
+      "holdout_claim": false,
+      "marlin_superiority_claim": false,
+      "production_or_full_model_quality_claim": false
+    },
+    "full_graph_p50_equal_weight_time_ratio_geomeans": {
+      "original_bf16_vllm_lossy_tradeoff": {
+        "all18": 0.9833666355008289,
+        "large6": 1.1757609246228118,
+        "small12": 0.8993188413716365
+      },
+      "same_quantized_vllm": {
+        "all18": 0.9830596010234522,
+        "large6": 1.1729668685058994,
+        "small12": 0.8999676547646241
+      }
+    },
+    "small_group_reproduction": {
+      "original_bf16_lossy_tradeoff": {
+        "bf16_frozen": {
+          "per_batch_graph_ratio_geomean": {
+            "batch1": 0.883100418150847,
+            "batch2": 0.8824140138636597,
+            "batch3": 0.8834057472593146
+          },
+          "status": "reproduced_all_batches"
+        },
+        "bf16_vllm": {
+          "per_batch_graph_ratio_geomean": {
+            "batch1": 0.8994819925946228,
+            "batch2": 0.8986579145546582,
+            "batch3": 0.8998170126743033
+          },
+          "status": "reproduced_all_batches"
+        }
+      },
+      "same_quantization": {
+        "quant_cuda_sync": {
+          "per_batch_graph_ratio_geomean": {
+            "batch1": 0.8460789119442348,
+            "batch2": 0.8454279093750632,
+            "batch3": 0.8460607396973252
+          },
+          "status": "reproduced_all_batches"
+        },
+        "quant_frozen": {
+          "per_batch_graph_ratio_geomean": {
+            "batch1": 0.8832076532991588,
+            "batch2": 0.882364408564821,
+            "batch3": 0.8834839438489219
+          },
+          "status": "reproduced_all_batches"
+        },
+        "quant_vllm": {
+          "per_batch_graph_ratio_geomean": {
+            "batch1": 0.9002750609518033,
+            "batch2": 0.8992865950849375,
+            "batch3": 0.900341696283181
+          },
+          "status": "reproduced_all_batches"
+        }
+      }
+    },
+    "startup": {
+      "adapter_source_sha256": "4e4dd332790e4ac5cd35df48e8d96d5972bc7ead95c606c83af652c9f0d4afe0",
+      "all_prepare_phases_excluded_from_timing": true,
+      "batch1_load_mode": "legacy_jit_preparation",
+      "batches2_3_load_mode": "verified_native_binary_no_jit",
+      "receipt_status": "verified_all_repeat_receipts",
+      "scope": "startup native C++ extension loading only; worker Triton preparation is outside this claim"
+    },
+    "summary": {
+      "effective_tflops_used_for_comparison": false,
+      "passed_workers": 18,
+      "path": "results/m23-w4-repeat-summary.json",
+      "per_case_all_arm_p50_p95_wall_p50_recomputed_and_checked": true,
+      "raw_event_and_wall_samples_included": true,
+      "repeat_startup_receipts": 12,
+      "sha256": "c229db42277a1256cb8dc1d0a9ab8f9f25b04bad41f28bb9a381026d3395dc69",
+      "verified_repeat_startup_receipts": 12,
+      "workers": 18
+    },
+    "validation": {
+      "adapter_source_sha256_matches_current_file_and_all_receipts": true,
+      "all_12_repeat_startup_receipts_verified": true,
+      "all_18_workers_passed": true,
+      "all_audit_and_graph_numeric_checks_passed_with_0_008_limits": true,
+      "all_timing_rounds_and_samples_complete": true,
+      "cross_batch_per_case_input_trace_packed_source_binary_audit_and_shape_identity_stable": true,
+      "effective_tflops_not_recomputed_or_used_for_ratios": true,
+      "per_case_m7_bucket_and_frozen_config_verified": true,
+      "ranked_project_dispatch_checks_passed": true,
+      "reported_p50_p95_and_wall_p50_recalculated_from_samples": true,
+      "source_hashes_compared_directly": true,
+      "within_worker_input_packed_binary_and_provenance_hashes_stable": true
+    }
+  },
+  "publication_exclusions": [
+    "local worker JSON files, startup receipts, logs and preflight failure artifacts (summary retains relative source paths and hashes)",
+    "model weights, capture traces and private tensor artifacts",
+    "compiled shared libraries and profiler outputs",
+    "M24 candidate source and its performance output",
+    "machine-local paths and environment dumps as standalone manifest dependencies"
+  ],
+  "schema": "m23-w4-repeat-release-manifest-v1",
+  "scope": "Frozen M23 W4A16 repeat protocol, summary, report, recovery record, stage snapshot, resume snapshot, and required tool sources. Long-lived navigation documents remain independently editable.",
+  "self_hash": "omitted; the M23 manifest enumerates and hashes the stage-specific release files.",
+  "status": "complete"
+}
