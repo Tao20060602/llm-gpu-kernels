@@ -29,6 +29,11 @@ named-barrier 分工。80/28 组数值检查通过且与各自匹配旧路径逐
 设计取舍见 [M27/M28 讲义](docs/M27_M28_DESIGN.md)，全部候选和退化见
 [M27 报告](docs/M27_SCHEDULE_REPORT.md) / [M28 报告](docs/M28_WARP_SPECIALIZATION_REPORT.md)。
 
+M29 固定 CTA64×128/BK32，对照串行、B 寄存器双缓冲、A/B 寄存器双缓冲；
+72 项数值检查与匹配 M27 逐位一致。4096³ 单批改善仅 0.35%，未确认稳定收益，
+不替换现有实现。编译资源、SASS 调度与取舍见 [M29 设计](docs/M29_REGISTER_PIPELINE_DESIGN.md)，
+同批数据见 [M29 报告](docs/M29_REGISTER_PIPELINE_REPORT.md)。PyTorch 同场景 NCU 采集脚本已准备，结果待采集。
+
 W4A16 首版与三批复测的差异、逐 case 回归及限制见
 [M23 W4 复测报告](docs/M23_W4_REPEAT_REPORT.md)和[完整样本/审计汇总](results/m23-w4-repeat-summary.json)：
 固定T17/T193四case的Full Graph p50几何平均相对同量化权重vLLM低10.00%，T1024两case
