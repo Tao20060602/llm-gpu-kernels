@@ -1,0 +1,2591 @@
+{
+  "status": "passed",
+  "seed": 432,
+  "environment": {
+    "python": "3.12.14",
+    "torch": "2.7.1+cu128",
+    "torch_cuda": "12.8",
+    "cuda_home": "/home/tmz/ai/toolchains/cuda-12.8",
+    "cc": "/home/tmz/ai/toolchains/gcc14/usr/bin/x86_64-linux-gnu-gcc-14",
+    "cxx": "/home/tmz/ai/toolchains/gcc14/usr/bin/x86_64-linux-gnu-g++-14",
+    "torch_extensions_dir": null,
+    "device": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "capability": [
+      8,
+      6
+    ],
+    "tf32": false,
+    "float32_matmul_precision": "highest",
+    "allow_bf16_reduced_precision_reduction_outside_baseline_calls": false
+  },
+  "numerics": {
+    "reference": "torch.mm(A.float(), W.float().T), FP32 oracle, TF32 disabled",
+    "comparison": "BF16 output vs FP32 oracle and matched M32 group_m=16 output",
+    "relative_rms_limit": 0.008,
+    "max_abs_over_max_abs_reference_limit": 0.008,
+    "cta_m": 64,
+    "cta_n": 128,
+    "cta_k": 32,
+    "group_m": 16,
+    "group_n": 2,
+    "mode": 1,
+    "mode_name": "b_prefetch",
+    "stages": 2,
+    "cache_modes": [
+      {
+        "cache_mode": 0,
+        "cache_policy": "ca"
+      },
+      {
+        "cache_mode": 1,
+        "cache_policy": "cg"
+      },
+      {
+        "cache_mode": 2,
+        "cache_policy": "ca_l2_128b"
+      },
+      {
+        "cache_mode": 3,
+        "cache_policy": "cg_l2_128b"
+      }
+    ],
+    "selection_status": "M32 group_m=16 was selected from prior M32 observations; this followup is exploratory, not a holdout or frozen-policy test",
+    "candidate_configs_per_shape": 4,
+    "cases": [
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48
+      },
+      {
+        "M": 257,
+        "N": 257,
+        "K": 80
+      },
+      {
+        "M": 577,
+        "N": 513,
+        "K": 112
+      },
+      {
+        "M": 1089,
+        "N": 257,
+        "K": 144
+      },
+      {
+        "M": 65,
+        "N": 2177,
+        "K": 208
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256
+      }
+    ],
+    "matched_m32_results": [
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "arm": "m32_groupm16",
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "cta_k_iterations": 1,
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "arm": "m32_groupm16",
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "cta_k_iterations": 1,
+        "finite": true,
+        "relative_rms": 0.0005428292259255238,
+        "max_abs": 0.0001239776611328125,
+        "max_abs_reference": 0.2283916473388672,
+        "max_abs_over_max_abs_reference": 0.0005428292259255238,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "arm": "m32_groupm16",
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "cta_k_iterations": 2,
+        "finite": true,
+        "relative_rms": 0.0016191341308502665,
+        "max_abs": 0.062469482421875,
+        "max_abs_reference": 27.454509735107422,
+        "max_abs_over_max_abs_reference": 0.002275381459170339,
+        "passed": true
+      },
+      {
+        "M": 257,
+        "N": 257,
+        "K": 80,
+        "arm": "m32_groupm16",
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "cta_k_iterations": 3,
+        "finite": true,
+        "relative_rms": 0.0016542031863818797,
+        "max_abs": 0.1228485107421875,
+        "max_abs_reference": 40.31150817871094,
+        "max_abs_over_max_abs_reference": 0.003047479895755066,
+        "passed": true
+      },
+      {
+        "M": 577,
+        "N": 513,
+        "K": 112,
+        "arm": "m32_groupm16",
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "cta_k_iterations": 4,
+        "finite": true,
+        "relative_rms": 0.001661335510969161,
+        "max_abs": 0.12499237060546875,
+        "max_abs_reference": 54.246517181396484,
+        "max_abs_over_max_abs_reference": 0.0023041547568391015,
+        "passed": true
+      },
+      {
+        "M": 1089,
+        "N": 257,
+        "K": 144,
+        "arm": "m32_groupm16",
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "cta_k_iterations": 5,
+        "finite": true,
+        "relative_rms": 0.0016544713052749815,
+        "max_abs": 0.12482452392578125,
+        "max_abs_reference": 59.07747268676758,
+        "max_abs_over_max_abs_reference": 0.002112895461652678,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 2177,
+        "K": 208,
+        "arm": "m32_groupm16",
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "cta_k_iterations": 7,
+        "finite": true,
+        "relative_rms": 0.0016552767290558947,
+        "max_abs": 0.22093963623046875,
+        "max_abs_reference": 71.22093963623047,
+        "max_abs_over_max_abs_reference": 0.0031021724419664294,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "arm": "m32_groupm16",
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "cta_k_iterations": 8,
+        "finite": true,
+        "relative_rms": 0.0016659837484852336,
+        "max_abs": 0.2028656005859375,
+        "max_abs_reference": 72.64982604980469,
+        "max_abs_over_max_abs_reference": 0.0027923755859630564,
+        "passed": true
+      }
+    ],
+    "results": [
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "cache_mode": 0,
+        "cache_name": "ca",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 0,
+        "n_tiles": 1,
+        "n_tile_groups": 1,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 1,
+        "arm": "m33_ca",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "cache_mode": 1,
+        "cache_name": "cg",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 0,
+        "n_tiles": 1,
+        "n_tile_groups": 1,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 1,
+        "arm": "m33_cg",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "cache_mode": 2,
+        "cache_name": "ca_l2_128b",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 0,
+        "n_tiles": 1,
+        "n_tile_groups": 1,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 1,
+        "arm": "m33_ca_l2_128b",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "cache_mode": 3,
+        "cache_name": "cg_l2_128b",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 0,
+        "n_tiles": 1,
+        "n_tile_groups": 1,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 1,
+        "arm": "m33_cg_l2_128b",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "cache_mode": 0,
+        "cache_name": "ca",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 1,
+        "n_tiles": 1,
+        "n_tile_groups": 1,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 1,
+        "arm": "m33_ca",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0005428292259255238,
+        "max_abs": 0.0001239776611328125,
+        "max_abs_reference": 0.2283916473388672,
+        "max_abs_over_max_abs_reference": 0.0005428292259255238,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "cache_mode": 1,
+        "cache_name": "cg",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 1,
+        "n_tiles": 1,
+        "n_tile_groups": 1,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 1,
+        "arm": "m33_cg",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0005428292259255238,
+        "max_abs": 0.0001239776611328125,
+        "max_abs_reference": 0.2283916473388672,
+        "max_abs_over_max_abs_reference": 0.0005428292259255238,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "cache_mode": 2,
+        "cache_name": "ca_l2_128b",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 1,
+        "n_tiles": 1,
+        "n_tile_groups": 1,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 1,
+        "arm": "m33_ca_l2_128b",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0005428292259255238,
+        "max_abs": 0.0001239776611328125,
+        "max_abs_reference": 0.2283916473388672,
+        "max_abs_over_max_abs_reference": 0.0005428292259255238,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "cache_mode": 3,
+        "cache_name": "cg_l2_128b",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 1,
+        "n_tiles": 1,
+        "n_tile_groups": 1,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 1,
+        "arm": "m33_cg_l2_128b",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0005428292259255238,
+        "max_abs": 0.0001239776611328125,
+        "max_abs_reference": 0.2283916473388672,
+        "max_abs_over_max_abs_reference": 0.0005428292259255238,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "cache_mode": 0,
+        "cache_name": "ca",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 2,
+        "n_tiles": 2,
+        "n_tile_groups": 1,
+        "n_tiles_in_last_group": 2,
+        "cta_k_iterations": 2,
+        "arm": "m33_ca",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016191341308502665,
+        "max_abs": 0.062469482421875,
+        "max_abs_reference": 27.454509735107422,
+        "max_abs_over_max_abs_reference": 0.002275381459170339,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "cache_mode": 1,
+        "cache_name": "cg",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 2,
+        "n_tiles": 2,
+        "n_tile_groups": 1,
+        "n_tiles_in_last_group": 2,
+        "cta_k_iterations": 2,
+        "arm": "m33_cg",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016191341308502665,
+        "max_abs": 0.062469482421875,
+        "max_abs_reference": 27.454509735107422,
+        "max_abs_over_max_abs_reference": 0.002275381459170339,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "cache_mode": 2,
+        "cache_name": "ca_l2_128b",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 2,
+        "n_tiles": 2,
+        "n_tile_groups": 1,
+        "n_tiles_in_last_group": 2,
+        "cta_k_iterations": 2,
+        "arm": "m33_ca_l2_128b",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016191341308502665,
+        "max_abs": 0.062469482421875,
+        "max_abs_reference": 27.454509735107422,
+        "max_abs_over_max_abs_reference": 0.002275381459170339,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "cache_mode": 3,
+        "cache_name": "cg_l2_128b",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 2,
+        "n_tiles": 2,
+        "n_tile_groups": 1,
+        "n_tiles_in_last_group": 2,
+        "cta_k_iterations": 2,
+        "arm": "m33_cg_l2_128b",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016191341308502665,
+        "max_abs": 0.062469482421875,
+        "max_abs_reference": 27.454509735107422,
+        "max_abs_over_max_abs_reference": 0.002275381459170339,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 257,
+        "N": 257,
+        "K": 80,
+        "cache_mode": 0,
+        "cache_name": "ca",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 5,
+        "n_tiles": 3,
+        "n_tile_groups": 2,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 3,
+        "arm": "m33_ca",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016542031863818797,
+        "max_abs": 0.1228485107421875,
+        "max_abs_reference": 40.31150817871094,
+        "max_abs_over_max_abs_reference": 0.003047479895755066,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 257,
+        "N": 257,
+        "K": 80,
+        "cache_mode": 1,
+        "cache_name": "cg",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 5,
+        "n_tiles": 3,
+        "n_tile_groups": 2,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 3,
+        "arm": "m33_cg",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016542031863818797,
+        "max_abs": 0.1228485107421875,
+        "max_abs_reference": 40.31150817871094,
+        "max_abs_over_max_abs_reference": 0.003047479895755066,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 257,
+        "N": 257,
+        "K": 80,
+        "cache_mode": 2,
+        "cache_name": "ca_l2_128b",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 5,
+        "n_tiles": 3,
+        "n_tile_groups": 2,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 3,
+        "arm": "m33_ca_l2_128b",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016542031863818797,
+        "max_abs": 0.1228485107421875,
+        "max_abs_reference": 40.31150817871094,
+        "max_abs_over_max_abs_reference": 0.003047479895755066,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 257,
+        "N": 257,
+        "K": 80,
+        "cache_mode": 3,
+        "cache_name": "cg_l2_128b",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 5,
+        "n_tiles": 3,
+        "n_tile_groups": 2,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 3,
+        "arm": "m33_cg_l2_128b",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016542031863818797,
+        "max_abs": 0.1228485107421875,
+        "max_abs_reference": 40.31150817871094,
+        "max_abs_over_max_abs_reference": 0.003047479895755066,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 577,
+        "N": 513,
+        "K": 112,
+        "cache_mode": 0,
+        "cache_name": "ca",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 10,
+        "n_tiles": 5,
+        "n_tile_groups": 3,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 4,
+        "arm": "m33_ca",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.001661335510969161,
+        "max_abs": 0.12499237060546875,
+        "max_abs_reference": 54.246517181396484,
+        "max_abs_over_max_abs_reference": 0.0023041547568391015,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 577,
+        "N": 513,
+        "K": 112,
+        "cache_mode": 1,
+        "cache_name": "cg",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 10,
+        "n_tiles": 5,
+        "n_tile_groups": 3,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 4,
+        "arm": "m33_cg",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.001661335510969161,
+        "max_abs": 0.12499237060546875,
+        "max_abs_reference": 54.246517181396484,
+        "max_abs_over_max_abs_reference": 0.0023041547568391015,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 577,
+        "N": 513,
+        "K": 112,
+        "cache_mode": 2,
+        "cache_name": "ca_l2_128b",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 10,
+        "n_tiles": 5,
+        "n_tile_groups": 3,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 4,
+        "arm": "m33_ca_l2_128b",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.001661335510969161,
+        "max_abs": 0.12499237060546875,
+        "max_abs_reference": 54.246517181396484,
+        "max_abs_over_max_abs_reference": 0.0023041547568391015,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 577,
+        "N": 513,
+        "K": 112,
+        "cache_mode": 3,
+        "cache_name": "cg_l2_128b",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 10,
+        "n_tiles": 5,
+        "n_tile_groups": 3,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 4,
+        "arm": "m33_cg_l2_128b",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.001661335510969161,
+        "max_abs": 0.12499237060546875,
+        "max_abs_reference": 54.246517181396484,
+        "max_abs_over_max_abs_reference": 0.0023041547568391015,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 1089,
+        "N": 257,
+        "K": 144,
+        "cache_mode": 0,
+        "cache_name": "ca",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 18,
+        "n_tiles": 3,
+        "n_tile_groups": 2,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 5,
+        "arm": "m33_ca",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016544713052749815,
+        "max_abs": 0.12482452392578125,
+        "max_abs_reference": 59.07747268676758,
+        "max_abs_over_max_abs_reference": 0.002112895461652678,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 1089,
+        "N": 257,
+        "K": 144,
+        "cache_mode": 1,
+        "cache_name": "cg",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 18,
+        "n_tiles": 3,
+        "n_tile_groups": 2,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 5,
+        "arm": "m33_cg",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016544713052749815,
+        "max_abs": 0.12482452392578125,
+        "max_abs_reference": 59.07747268676758,
+        "max_abs_over_max_abs_reference": 0.002112895461652678,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 1089,
+        "N": 257,
+        "K": 144,
+        "cache_mode": 2,
+        "cache_name": "ca_l2_128b",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 18,
+        "n_tiles": 3,
+        "n_tile_groups": 2,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 5,
+        "arm": "m33_ca_l2_128b",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016544713052749815,
+        "max_abs": 0.12482452392578125,
+        "max_abs_reference": 59.07747268676758,
+        "max_abs_over_max_abs_reference": 0.002112895461652678,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 1089,
+        "N": 257,
+        "K": 144,
+        "cache_mode": 3,
+        "cache_name": "cg_l2_128b",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 18,
+        "n_tiles": 3,
+        "n_tile_groups": 2,
+        "n_tiles_in_last_group": 1,
+        "cta_k_iterations": 5,
+        "arm": "m33_cg_l2_128b",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016544713052749815,
+        "max_abs": 0.12482452392578125,
+        "max_abs_reference": 59.07747268676758,
+        "max_abs_over_max_abs_reference": 0.002112895461652678,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 65,
+        "N": 2177,
+        "K": 208,
+        "cache_mode": 0,
+        "cache_name": "ca",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 2,
+        "n_tiles": 18,
+        "n_tile_groups": 9,
+        "n_tiles_in_last_group": 2,
+        "cta_k_iterations": 7,
+        "arm": "m33_ca",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016552767290558947,
+        "max_abs": 0.22093963623046875,
+        "max_abs_reference": 71.22093963623047,
+        "max_abs_over_max_abs_reference": 0.0031021724419664294,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 65,
+        "N": 2177,
+        "K": 208,
+        "cache_mode": 1,
+        "cache_name": "cg",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 2,
+        "n_tiles": 18,
+        "n_tile_groups": 9,
+        "n_tiles_in_last_group": 2,
+        "cta_k_iterations": 7,
+        "arm": "m33_cg",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016552767290558947,
+        "max_abs": 0.22093963623046875,
+        "max_abs_reference": 71.22093963623047,
+        "max_abs_over_max_abs_reference": 0.0031021724419664294,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 65,
+        "N": 2177,
+        "K": 208,
+        "cache_mode": 2,
+        "cache_name": "ca_l2_128b",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 2,
+        "n_tiles": 18,
+        "n_tile_groups": 9,
+        "n_tiles_in_last_group": 2,
+        "cta_k_iterations": 7,
+        "arm": "m33_ca_l2_128b",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016552767290558947,
+        "max_abs": 0.22093963623046875,
+        "max_abs_reference": 71.22093963623047,
+        "max_abs_over_max_abs_reference": 0.0031021724419664294,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 65,
+        "N": 2177,
+        "K": 208,
+        "cache_mode": 3,
+        "cache_name": "cg_l2_128b",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 2,
+        "n_tiles": 18,
+        "n_tile_groups": 9,
+        "n_tiles_in_last_group": 2,
+        "cta_k_iterations": 7,
+        "arm": "m33_cg_l2_128b",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016552767290558947,
+        "max_abs": 0.22093963623046875,
+        "max_abs_reference": 71.22093963623047,
+        "max_abs_over_max_abs_reference": 0.0031021724419664294,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "cache_mode": 0,
+        "cache_name": "ca",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 4,
+        "n_tiles": 2,
+        "n_tile_groups": 1,
+        "n_tiles_in_last_group": 2,
+        "cta_k_iterations": 8,
+        "arm": "m33_ca",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016659837484852336,
+        "max_abs": 0.2028656005859375,
+        "max_abs_reference": 72.64982604980469,
+        "max_abs_over_max_abs_reference": 0.0027923755859630564,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "cache_mode": 1,
+        "cache_name": "cg",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 4,
+        "n_tiles": 2,
+        "n_tile_groups": 1,
+        "n_tiles_in_last_group": 2,
+        "cta_k_iterations": 8,
+        "arm": "m33_cg",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016659837484852336,
+        "max_abs": 0.2028656005859375,
+        "max_abs_reference": 72.64982604980469,
+        "max_abs_over_max_abs_reference": 0.0027923755859630564,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "cache_mode": 2,
+        "cache_name": "ca_l2_128b",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 4,
+        "n_tiles": 2,
+        "n_tile_groups": 1,
+        "n_tiles_in_last_group": 2,
+        "cta_k_iterations": 8,
+        "arm": "m33_ca_l2_128b",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016659837484852336,
+        "max_abs": 0.2028656005859375,
+        "max_abs_reference": 72.64982604980469,
+        "max_abs_over_max_abs_reference": 0.0027923755859630564,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "cache_mode": 3,
+        "cache_name": "cg_l2_128b",
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group_m": 16,
+        "group_n": 2,
+        "mode": 1,
+        "stages": 2,
+        "m_tiles": 4,
+        "n_tiles": 2,
+        "n_tile_groups": 1,
+        "n_tiles_in_last_group": 2,
+        "cta_k_iterations": 8,
+        "arm": "m33_cg_l2_128b",
+        "matched_m32_arm": "m32_groupm16",
+        "finite": true,
+        "relative_rms": 0.0016659837484852336,
+        "max_abs": 0.2028656005859375,
+        "max_abs_reference": 72.64982604980469,
+        "max_abs_over_max_abs_reference": 0.0027923755859630564,
+        "passed": true,
+        "bitwise_equal_to_matched_m32": true
+      }
+    ],
+    "status": "passed"
+  },
+  "benchmark": {
+    "timing_mode": "CUDA Graph only",
+    "timing_unit": "us/call",
+    "graph_replays_per_sample": 1,
+    "calls_per_graph_replay": 5,
+    "warmup_calls_per_arm_before_capture": 3,
+    "graph_warmup_replays_per_arm": 3,
+    "rounds": 3,
+    "samples_per_arm_per_round": 3,
+    "arm_order": "forward, reverse, forward",
+    "arms_per_shape": 8,
+    "candidate_comparison": "4 M33 cache policies; M32 group_m16; M29 group2/mode1 stage2; Torch strict/default BF16 reduction",
+    "cases": [
+      {
+        "M": 1024,
+        "N": 1024,
+        "K": 1024,
+        "rounds": 3,
+        "samples_per_arm_per_round": 3,
+        "calls_per_graph_replay": 5,
+        "warmup_calls_per_arm_before_capture": 3,
+        "graph_warmup_replays_per_arm": 3,
+        "arm_order_by_round": [
+          [
+            "m33_ca",
+            "m33_cg",
+            "m33_ca_l2_128b",
+            "m33_cg_l2_128b",
+            "m32_groupm16",
+            "m29_g2_mode1_s2",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ],
+          [
+            "torch_default_bf16_reduction",
+            "torch_strict_bf16_reduction",
+            "m29_g2_mode1_s2",
+            "m32_groupm16",
+            "m33_cg_l2_128b",
+            "m33_ca_l2_128b",
+            "m33_cg",
+            "m33_ca"
+          ],
+          [
+            "m33_ca",
+            "m33_cg",
+            "m33_ca_l2_128b",
+            "m33_cg_l2_128b",
+            "m32_groupm16",
+            "m29_g2_mode1_s2",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ]
+        ],
+        "validation": {
+          "before_graph_timing": {
+            "m33_ca": {
+              "finite": true,
+              "relative_rms": 0.001662307378806972,
+              "max_abs": 0.4951934814453125,
+              "max_abs_reference": 168.49288940429688,
+              "max_abs_over_max_abs_reference": 0.002938957739973828,
+              "passed": true
+            },
+            "m33_cg": {
+              "finite": true,
+              "relative_rms": 0.001662307378806972,
+              "max_abs": 0.4951934814453125,
+              "max_abs_reference": 168.49288940429688,
+              "max_abs_over_max_abs_reference": 0.002938957739973828,
+              "passed": true
+            },
+            "m33_ca_l2_128b": {
+              "finite": true,
+              "relative_rms": 0.001662307378806972,
+              "max_abs": 0.4951934814453125,
+              "max_abs_reference": 168.49288940429688,
+              "max_abs_over_max_abs_reference": 0.002938957739973828,
+              "passed": true
+            },
+            "m33_cg_l2_128b": {
+              "finite": true,
+              "relative_rms": 0.001662307378806972,
+              "max_abs": 0.4951934814453125,
+              "max_abs_reference": 168.49288940429688,
+              "max_abs_over_max_abs_reference": 0.002938957739973828,
+              "passed": true
+            },
+            "m32_groupm16": {
+              "finite": true,
+              "relative_rms": 0.001662307378806972,
+              "max_abs": 0.4951934814453125,
+              "max_abs_reference": 168.49288940429688,
+              "max_abs_over_max_abs_reference": 0.002938957739973828,
+              "passed": true
+            },
+            "m29_g2_mode1_s2": {
+              "finite": true,
+              "relative_rms": 0.001662307378806972,
+              "max_abs": 0.4951934814453125,
+              "max_abs_reference": 168.49288940429688,
+              "max_abs_over_max_abs_reference": 0.002938957739973828,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016623071454812703,
+              "max_abs": 0.4951934814453125,
+              "max_abs_reference": 168.49288940429688,
+              "max_abs_over_max_abs_reference": 0.002938957739973828,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.002419192972391141,
+              "max_abs": 0.7524261474609375,
+              "max_abs_reference": 168.49288940429688,
+              "max_abs_over_max_abs_reference": 0.004465625523552504,
+              "passed": true
+            }
+          },
+          "after_graph_timing": {
+            "m33_ca": {
+              "finite": true,
+              "relative_rms": 0.001662307378806972,
+              "max_abs": 0.4951934814453125,
+              "max_abs_reference": 168.49288940429688,
+              "max_abs_over_max_abs_reference": 0.002938957739973828,
+              "passed": true
+            },
+            "m33_cg": {
+              "finite": true,
+              "relative_rms": 0.001662307378806972,
+              "max_abs": 0.4951934814453125,
+              "max_abs_reference": 168.49288940429688,
+              "max_abs_over_max_abs_reference": 0.002938957739973828,
+              "passed": true
+            },
+            "m33_ca_l2_128b": {
+              "finite": true,
+              "relative_rms": 0.001662307378806972,
+              "max_abs": 0.4951934814453125,
+              "max_abs_reference": 168.49288940429688,
+              "max_abs_over_max_abs_reference": 0.002938957739973828,
+              "passed": true
+            },
+            "m33_cg_l2_128b": {
+              "finite": true,
+              "relative_rms": 0.001662307378806972,
+              "max_abs": 0.4951934814453125,
+              "max_abs_reference": 168.49288940429688,
+              "max_abs_over_max_abs_reference": 0.002938957739973828,
+              "passed": true
+            },
+            "m32_groupm16": {
+              "finite": true,
+              "relative_rms": 0.001662307378806972,
+              "max_abs": 0.4951934814453125,
+              "max_abs_reference": 168.49288940429688,
+              "max_abs_over_max_abs_reference": 0.002938957739973828,
+              "passed": true
+            },
+            "m29_g2_mode1_s2": {
+              "finite": true,
+              "relative_rms": 0.001662307378806972,
+              "max_abs": 0.4951934814453125,
+              "max_abs_reference": 168.49288940429688,
+              "max_abs_over_max_abs_reference": 0.002938957739973828,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016623071454812703,
+              "max_abs": 0.4951934814453125,
+              "max_abs_reference": 168.49288940429688,
+              "max_abs_over_max_abs_reference": 0.002938957739973828,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.002419192972391141,
+              "max_abs": 0.7524261474609375,
+              "max_abs_reference": 168.49288940429688,
+              "max_abs_over_max_abs_reference": 0.004465625523552504,
+              "passed": true
+            }
+          }
+        },
+        "arms": {
+          "m33_ca": {
+            "kind": "m33_cache_policy_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group_m": 16,
+            "group_n": 2,
+            "cache_mode": 0,
+            "cache_policy": "ca",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "warps": 4,
+            "cta_k_iterations": 32,
+            "m_tiles": 16,
+            "n_tiles": 8,
+            "n_tile_groups": 4,
+            "n_tiles_in_last_group": 2
+          },
+          "m33_cg": {
+            "kind": "m33_cache_policy_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group_m": 16,
+            "group_n": 2,
+            "cache_mode": 1,
+            "cache_policy": "cg",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "warps": 4,
+            "cta_k_iterations": 32,
+            "m_tiles": 16,
+            "n_tiles": 8,
+            "n_tile_groups": 4,
+            "n_tiles_in_last_group": 2
+          },
+          "m33_ca_l2_128b": {
+            "kind": "m33_cache_policy_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group_m": 16,
+            "group_n": 2,
+            "cache_mode": 2,
+            "cache_policy": "ca_l2_128b",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "warps": 4,
+            "cta_k_iterations": 32,
+            "m_tiles": 16,
+            "n_tiles": 8,
+            "n_tile_groups": 4,
+            "n_tiles_in_last_group": 2
+          },
+          "m33_cg_l2_128b": {
+            "kind": "m33_cache_policy_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group_m": 16,
+            "group_n": 2,
+            "cache_mode": 3,
+            "cache_policy": "cg_l2_128b",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "warps": 4,
+            "cta_k_iterations": 32,
+            "m_tiles": 16,
+            "n_tiles": 8,
+            "n_tile_groups": 4,
+            "n_tiles_in_last_group": 2
+          },
+          "m32_groupm16": {
+            "kind": "m32_raster_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group_m": 16,
+            "group_n": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "warps": 4,
+            "cta_k_iterations": 32,
+            "m_tiles": 16,
+            "n_tiles": 8,
+            "n_tile_groups": 4,
+            "n_tiles_in_last_group": 2
+          },
+          "m29_g2_mode1_s2": {
+            "kind": "m29_register_pipeline_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "cta_k_iterations": 32,
+            "warps": 4,
+            "m_tiles": 16,
+            "n_tiles": 8,
+            "n_tile_groups": 4,
+            "n_tiles_in_last_group": 2
+          },
+          "torch_strict_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": false,
+            "flag_set_explicitly_during_call_capture_and_replay": true,
+            "flag_restored_after_call": true
+          },
+          "torch_default_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": true,
+            "flag_set_explicitly_during_call_capture_and_replay": true,
+            "flag_restored_after_call": true
+          }
+        },
+        "graph": {
+          "samples_us_per_call": {
+            "m33_ca": [
+              [
+                100.32000541687012,
+                99.12319779396057,
+                98.9184021949768
+              ],
+              [
+                98.50879907608032,
+                98.50879907608032,
+                98.50879907608032
+              ],
+              [
+                98.89280200004578,
+                98.09920191764832,
+                98.67519736289978
+              ]
+            ],
+            "m33_cg": [
+              [
+                96.86400294303894,
+                96.66560292243958,
+                96.66560292243958
+              ],
+              [
+                96.87039852142334,
+                96.46080136299133,
+                99.12319779396057
+              ],
+              [
+                97.0624029636383,
+                96.81919813156128,
+                96.40960097312927
+              ]
+            ],
+            "m33_ca_l2_128b": [
+              [
+                99.12319779396057,
+                99.12319779396057,
+                98.30399751663208
+              ],
+              [
+                98.71360063552856,
+                98.50879907608032,
+                98.30399751663208
+              ],
+              [
+                98.30399751663208,
+                98.71360063552856,
+                98.47679734230042
+              ]
+            ],
+            "m33_cg_l2_128b": [
+              [
+                96.66560292243958,
+                96.25599980354309,
+                96.46080136299133
+              ],
+              [
+                98.48960041999817,
+                96.85119986534119,
+                96.44799828529358
+              ],
+              [
+                96.25599980354309,
+                96.25599980354309,
+                96.65279984474182
+              ]
+            ],
+            "m32_groupm16": [
+              [
+                98.9184021949768,
+                99.12319779396057,
+                98.86720180511475
+              ],
+              [
+                98.91200065612793,
+                98.71360063552856,
+                98.50879907608032
+              ],
+              [
+                98.8864004611969,
+                99.12319779396057,
+                98.48960041999817
+              ]
+            ],
+            "m29_g2_mode1_s2": [
+              [
+                98.9184021949768,
+                98.50879907608032,
+                98.9184021949768
+              ],
+              [
+                98.71360063552856,
+                98.30399751663208,
+                98.9184021949768
+              ],
+              [
+                98.09920191764832,
+                98.09920191764832,
+                98.30399751663208
+              ]
+            ],
+            "torch_strict_bf16_reduction": [
+              [
+                141.92639589309692,
+                140.69759845733643,
+                140.69759845733643
+              ],
+              [
+                142.54080057144165,
+                141.31200313568115,
+                140.90240001678467
+              ],
+              [
+                141.72159433364868,
+                140.49279689788818,
+                140.28799533843994
+              ]
+            ],
+            "torch_default_bf16_reduction": [
+              [
+                74.54720139503479,
+                74.9567985534668,
+                73.69599938392639
+              ],
+              [
+                74.75200295448303,
+                73.7280011177063,
+                78.27200293540955
+              ],
+              [
+                77.00480222702026,
+                73.92640113830566,
+                73.52319955825806
+              ]
+            ]
+          },
+          "median_us_per_call": {
+            "m33_ca": 98.67519736289978,
+            "m33_cg": 96.81919813156128,
+            "m33_ca_l2_128b": 98.50879907608032,
+            "m33_cg_l2_128b": 96.46080136299133,
+            "m32_groupm16": 98.8864004611969,
+            "m29_g2_mode1_s2": 98.50879907608032,
+            "torch_strict_bf16_reduction": 140.90240001678467,
+            "torch_default_bf16_reduction": 74.54720139503479
+          }
+        }
+      },
+      {
+        "M": 2048,
+        "N": 2048,
+        "K": 2048,
+        "rounds": 3,
+        "samples_per_arm_per_round": 3,
+        "calls_per_graph_replay": 5,
+        "warmup_calls_per_arm_before_capture": 3,
+        "graph_warmup_replays_per_arm": 3,
+        "arm_order_by_round": [
+          [
+            "m33_ca",
+            "m33_cg",
+            "m33_ca_l2_128b",
+            "m33_cg_l2_128b",
+            "m32_groupm16",
+            "m29_g2_mode1_s2",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ],
+          [
+            "torch_default_bf16_reduction",
+            "torch_strict_bf16_reduction",
+            "m29_g2_mode1_s2",
+            "m32_groupm16",
+            "m33_cg_l2_128b",
+            "m33_ca_l2_128b",
+            "m33_cg",
+            "m33_ca"
+          ],
+          [
+            "m33_ca",
+            "m33_cg",
+            "m33_ca_l2_128b",
+            "m33_cg_l2_128b",
+            "m32_groupm16",
+            "m29_g2_mode1_s2",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ]
+        ],
+        "validation": {
+          "before_graph_timing": {
+            "m33_ca": {
+              "finite": true,
+              "relative_rms": 0.0016553606091603342,
+              "max_abs": 0.500640869140625,
+              "max_abs_reference": 234.86648559570312,
+              "max_abs_over_max_abs_reference": 0.0021315977367772397,
+              "passed": true
+            },
+            "m33_cg": {
+              "finite": true,
+              "relative_rms": 0.0016553606091603342,
+              "max_abs": 0.500640869140625,
+              "max_abs_reference": 234.86648559570312,
+              "max_abs_over_max_abs_reference": 0.0021315977367772397,
+              "passed": true
+            },
+            "m33_ca_l2_128b": {
+              "finite": true,
+              "relative_rms": 0.0016553606091603342,
+              "max_abs": 0.500640869140625,
+              "max_abs_reference": 234.86648559570312,
+              "max_abs_over_max_abs_reference": 0.0021315977367772397,
+              "passed": true
+            },
+            "m33_cg_l2_128b": {
+              "finite": true,
+              "relative_rms": 0.0016553606091603342,
+              "max_abs": 0.500640869140625,
+              "max_abs_reference": 234.86648559570312,
+              "max_abs_over_max_abs_reference": 0.0021315977367772397,
+              "passed": true
+            },
+            "m32_groupm16": {
+              "finite": true,
+              "relative_rms": 0.0016553606091603342,
+              "max_abs": 0.500640869140625,
+              "max_abs_reference": 234.86648559570312,
+              "max_abs_over_max_abs_reference": 0.0021315977367772397,
+              "passed": true
+            },
+            "m29_g2_mode1_s2": {
+              "finite": true,
+              "relative_rms": 0.0016553606091603342,
+              "max_abs": 0.500640869140625,
+              "max_abs_reference": 234.86648559570312,
+              "max_abs_over_max_abs_reference": 0.0021315977367772397,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016553606091603342,
+              "max_abs": 0.500640869140625,
+              "max_abs_reference": 234.86648559570312,
+              "max_abs_over_max_abs_reference": 0.0021315977367772397,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016553606091603342,
+              "max_abs": 0.500640869140625,
+              "max_abs_reference": 234.86648559570312,
+              "max_abs_over_max_abs_reference": 0.0021315977367772397,
+              "passed": true
+            }
+          },
+          "after_graph_timing": {
+            "m33_ca": {
+              "finite": true,
+              "relative_rms": 0.0016553606091603342,
+              "max_abs": 0.500640869140625,
+              "max_abs_reference": 234.86648559570312,
+              "max_abs_over_max_abs_reference": 0.0021315977367772397,
+              "passed": true
+            },
+            "m33_cg": {
+              "finite": true,
+              "relative_rms": 0.0016553606091603342,
+              "max_abs": 0.500640869140625,
+              "max_abs_reference": 234.86648559570312,
+              "max_abs_over_max_abs_reference": 0.0021315977367772397,
+              "passed": true
+            },
+            "m33_ca_l2_128b": {
+              "finite": true,
+              "relative_rms": 0.0016553606091603342,
+              "max_abs": 0.500640869140625,
+              "max_abs_reference": 234.86648559570312,
+              "max_abs_over_max_abs_reference": 0.0021315977367772397,
+              "passed": true
+            },
+            "m33_cg_l2_128b": {
+              "finite": true,
+              "relative_rms": 0.0016553606091603342,
+              "max_abs": 0.500640869140625,
+              "max_abs_reference": 234.86648559570312,
+              "max_abs_over_max_abs_reference": 0.0021315977367772397,
+              "passed": true
+            },
+            "m32_groupm16": {
+              "finite": true,
+              "relative_rms": 0.0016553606091603342,
+              "max_abs": 0.500640869140625,
+              "max_abs_reference": 234.86648559570312,
+              "max_abs_over_max_abs_reference": 0.0021315977367772397,
+              "passed": true
+            },
+            "m29_g2_mode1_s2": {
+              "finite": true,
+              "relative_rms": 0.0016553606091603342,
+              "max_abs": 0.500640869140625,
+              "max_abs_reference": 234.86648559570312,
+              "max_abs_over_max_abs_reference": 0.0021315977367772397,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016553606091603342,
+              "max_abs": 0.500640869140625,
+              "max_abs_reference": 234.86648559570312,
+              "max_abs_over_max_abs_reference": 0.0021315977367772397,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016553606091603342,
+              "max_abs": 0.500640869140625,
+              "max_abs_reference": 234.86648559570312,
+              "max_abs_over_max_abs_reference": 0.0021315977367772397,
+              "passed": true
+            }
+          }
+        },
+        "arms": {
+          "m33_ca": {
+            "kind": "m33_cache_policy_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group_m": 16,
+            "group_n": 2,
+            "cache_mode": 0,
+            "cache_policy": "ca",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "warps": 4,
+            "cta_k_iterations": 64,
+            "m_tiles": 32,
+            "n_tiles": 16,
+            "n_tile_groups": 8,
+            "n_tiles_in_last_group": 2
+          },
+          "m33_cg": {
+            "kind": "m33_cache_policy_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group_m": 16,
+            "group_n": 2,
+            "cache_mode": 1,
+            "cache_policy": "cg",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "warps": 4,
+            "cta_k_iterations": 64,
+            "m_tiles": 32,
+            "n_tiles": 16,
+            "n_tile_groups": 8,
+            "n_tiles_in_last_group": 2
+          },
+          "m33_ca_l2_128b": {
+            "kind": "m33_cache_policy_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group_m": 16,
+            "group_n": 2,
+            "cache_mode": 2,
+            "cache_policy": "ca_l2_128b",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "warps": 4,
+            "cta_k_iterations": 64,
+            "m_tiles": 32,
+            "n_tiles": 16,
+            "n_tile_groups": 8,
+            "n_tiles_in_last_group": 2
+          },
+          "m33_cg_l2_128b": {
+            "kind": "m33_cache_policy_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group_m": 16,
+            "group_n": 2,
+            "cache_mode": 3,
+            "cache_policy": "cg_l2_128b",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "warps": 4,
+            "cta_k_iterations": 64,
+            "m_tiles": 32,
+            "n_tiles": 16,
+            "n_tile_groups": 8,
+            "n_tiles_in_last_group": 2
+          },
+          "m32_groupm16": {
+            "kind": "m32_raster_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group_m": 16,
+            "group_n": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "warps": 4,
+            "cta_k_iterations": 64,
+            "m_tiles": 32,
+            "n_tiles": 16,
+            "n_tile_groups": 8,
+            "n_tiles_in_last_group": 2
+          },
+          "m29_g2_mode1_s2": {
+            "kind": "m29_register_pipeline_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "cta_k_iterations": 64,
+            "warps": 4,
+            "m_tiles": 32,
+            "n_tiles": 16,
+            "n_tile_groups": 8,
+            "n_tiles_in_last_group": 2
+          },
+          "torch_strict_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": false,
+            "flag_set_explicitly_during_call_capture_and_replay": true,
+            "flag_restored_after_call": true
+          },
+          "torch_default_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": true,
+            "flag_set_explicitly_during_call_capture_and_replay": true,
+            "flag_restored_after_call": true
+          }
+        },
+        "graph": {
+          "samples_us_per_call": {
+            "m33_ca": [
+              [
+                635.0592136383057,
+                633.241605758667,
+                632.2175979614258
+              ],
+              [
+                624.6399879455566,
+                625.8687973022461,
+                625.2543926239014
+              ],
+              [
+                625.2543926239014,
+                626.8671989440918,
+                639.5904064178467
+              ]
+            ],
+            "m33_cg": [
+              [
+                617.8368091583252,
+                619.7247982025146,
+                619.7247982025146
+              ],
+              [
+                610.3040218353271,
+                611.3279819488525,
+                611.7311954498291
+              ],
+              [
+                624.0255832672119,
+                625.0495910644531,
+                623.0016231536865
+              ]
+            ],
+            "m33_ca_l2_128b": [
+              [
+                631.9615840911865,
+                630.9631824493408,
+                632.422399520874
+              ],
+              [
+                621.1584091186523,
+                619.5199966430664,
+                623.0016231536865
+              ],
+              [
+                636.7231845855713,
+                636.1087799072266,
+                636.7231845855713
+              ]
+            ],
+            "m33_cg_l2_128b": [
+              [
+                616.6528224945068,
+                617.6767826080322,
+                619.5199966430664
+              ],
+              [
+                595.7056045532227,
+                616.8575763702393,
+                606.4127922058105
+              ],
+              [
+                623.6159801483154,
+                622.380781173706,
+                622.1824169158936
+              ]
+            ],
+            "m32_groupm16": [
+              [
+                636.3135814666748,
+                635.2640151977539,
+                635.6991767883301
+              ],
+              [
+                627.0976066589355,
+                616.0384178161621,
+                613.9904022216797
+              ],
+              [
+                641.8432235717773,
+                640.6144142150879,
+                641.0240173339844
+              ]
+            ],
+            "m29_g2_mode1_s2": [
+              [
+                640.1472091674805,
+                640.7936096191406,
+                640.1663780212402
+              ],
+              [
+                644.0959930419922,
+                643.891191482544,
+                640.8192157745361
+              ],
+              [
+                642.8671836853027,
+                641.5999889373779,
+                631.8079948425293
+              ]
+            ],
+            "torch_strict_bf16_reduction": [
+              [
+                556.8511962890625,
+                561.356782913208,
+                553.16481590271
+              ],
+              [
+                553.16481590271,
+                552.7552127838135,
+                553.1392097473145
+              ],
+              [
+                555.622386932373,
+                552.5504112243652,
+                553.5615921020508
+              ]
+            ],
+            "torch_default_bf16_reduction": [
+              [
+                552.9600143432617,
+                552.9600143432617,
+                552.7552127838135
+              ],
+              [
+                553.7792205810547,
+                556.2367916107178,
+                552.9280185699463
+              ],
+              [
+                558.2655906677246,
+                558.080005645752,
+                557.8752040863037
+              ]
+            ]
+          },
+          "median_us_per_call": {
+            "m33_ca": 626.8671989440918,
+            "m33_cg": 619.7247982025146,
+            "m33_ca_l2_128b": 631.9615840911865,
+            "m33_cg_l2_128b": 617.6767826080322,
+            "m32_groupm16": 635.6991767883301,
+            "m29_g2_mode1_s2": 640.8192157745361,
+            "torch_strict_bf16_reduction": 553.16481590271,
+            "torch_default_bf16_reduction": 553.7792205810547
+          }
+        }
+      },
+      {
+        "M": 4096,
+        "N": 4096,
+        "K": 4096,
+        "rounds": 3,
+        "samples_per_arm_per_round": 3,
+        "calls_per_graph_replay": 5,
+        "warmup_calls_per_arm_before_capture": 3,
+        "graph_warmup_replays_per_arm": 3,
+        "arm_order_by_round": [
+          [
+            "m33_ca",
+            "m33_cg",
+            "m33_ca_l2_128b",
+            "m33_cg_l2_128b",
+            "m32_groupm16",
+            "m29_g2_mode1_s2",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ],
+          [
+            "torch_default_bf16_reduction",
+            "torch_strict_bf16_reduction",
+            "m29_g2_mode1_s2",
+            "m32_groupm16",
+            "m33_cg_l2_128b",
+            "m33_ca_l2_128b",
+            "m33_cg",
+            "m33_ca"
+          ],
+          [
+            "m33_ca",
+            "m33_cg",
+            "m33_ca_l2_128b",
+            "m33_cg_l2_128b",
+            "m32_groupm16",
+            "m29_g2_mode1_s2",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ]
+        ],
+        "validation": {
+          "before_graph_timing": {
+            "m33_ca": {
+              "finite": true,
+              "relative_rms": 0.0016615198323370092,
+              "max_abs": 0.99761962890625,
+              "max_abs_reference": 357.7257080078125,
+              "max_abs_over_max_abs_reference": 0.002788783714936313,
+              "passed": true
+            },
+            "m33_cg": {
+              "finite": true,
+              "relative_rms": 0.0016615198323370092,
+              "max_abs": 0.99761962890625,
+              "max_abs_reference": 357.7257080078125,
+              "max_abs_over_max_abs_reference": 0.002788783714936313,
+              "passed": true
+            },
+            "m33_ca_l2_128b": {
+              "finite": true,
+              "relative_rms": 0.0016615198323370092,
+              "max_abs": 0.99761962890625,
+              "max_abs_reference": 357.7257080078125,
+              "max_abs_over_max_abs_reference": 0.002788783714936313,
+              "passed": true
+            },
+            "m33_cg_l2_128b": {
+              "finite": true,
+              "relative_rms": 0.0016615198323370092,
+              "max_abs": 0.99761962890625,
+              "max_abs_reference": 357.7257080078125,
+              "max_abs_over_max_abs_reference": 0.002788783714936313,
+              "passed": true
+            },
+            "m32_groupm16": {
+              "finite": true,
+              "relative_rms": 0.0016615198323370092,
+              "max_abs": 0.99761962890625,
+              "max_abs_reference": 357.7257080078125,
+              "max_abs_over_max_abs_reference": 0.002788783714936313,
+              "passed": true
+            },
+            "m29_g2_mode1_s2": {
+              "finite": true,
+              "relative_rms": 0.0016615198323370092,
+              "max_abs": 0.99761962890625,
+              "max_abs_reference": 357.7257080078125,
+              "max_abs_over_max_abs_reference": 0.002788783714936313,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016615198323370092,
+              "max_abs": 0.99761962890625,
+              "max_abs_reference": 357.7257080078125,
+              "max_abs_over_max_abs_reference": 0.002788783714936313,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016615198323370092,
+              "max_abs": 0.99761962890625,
+              "max_abs_reference": 357.7257080078125,
+              "max_abs_over_max_abs_reference": 0.002788783714936313,
+              "passed": true
+            }
+          },
+          "after_graph_timing": {
+            "m33_ca": {
+              "finite": true,
+              "relative_rms": 0.0016615198323370092,
+              "max_abs": 0.99761962890625,
+              "max_abs_reference": 357.7257080078125,
+              "max_abs_over_max_abs_reference": 0.002788783714936313,
+              "passed": true
+            },
+            "m33_cg": {
+              "finite": true,
+              "relative_rms": 0.0016615198323370092,
+              "max_abs": 0.99761962890625,
+              "max_abs_reference": 357.7257080078125,
+              "max_abs_over_max_abs_reference": 0.002788783714936313,
+              "passed": true
+            },
+            "m33_ca_l2_128b": {
+              "finite": true,
+              "relative_rms": 0.0016615198323370092,
+              "max_abs": 0.99761962890625,
+              "max_abs_reference": 357.7257080078125,
+              "max_abs_over_max_abs_reference": 0.002788783714936313,
+              "passed": true
+            },
+            "m33_cg_l2_128b": {
+              "finite": true,
+              "relative_rms": 0.0016615198323370092,
+              "max_abs": 0.99761962890625,
+              "max_abs_reference": 357.7257080078125,
+              "max_abs_over_max_abs_reference": 0.002788783714936313,
+              "passed": true
+            },
+            "m32_groupm16": {
+              "finite": true,
+              "relative_rms": 0.0016615198323370092,
+              "max_abs": 0.99761962890625,
+              "max_abs_reference": 357.7257080078125,
+              "max_abs_over_max_abs_reference": 0.002788783714936313,
+              "passed": true
+            },
+            "m29_g2_mode1_s2": {
+              "finite": true,
+              "relative_rms": 0.0016615198323370092,
+              "max_abs": 0.99761962890625,
+              "max_abs_reference": 357.7257080078125,
+              "max_abs_over_max_abs_reference": 0.002788783714936313,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016615198323370092,
+              "max_abs": 0.99761962890625,
+              "max_abs_reference": 357.7257080078125,
+              "max_abs_over_max_abs_reference": 0.002788783714936313,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016615198323370092,
+              "max_abs": 0.99761962890625,
+              "max_abs_reference": 357.7257080078125,
+              "max_abs_over_max_abs_reference": 0.002788783714936313,
+              "passed": true
+            }
+          }
+        },
+        "arms": {
+          "m33_ca": {
+            "kind": "m33_cache_policy_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group_m": 16,
+            "group_n": 2,
+            "cache_mode": 0,
+            "cache_policy": "ca",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "warps": 4,
+            "cta_k_iterations": 128,
+            "m_tiles": 64,
+            "n_tiles": 32,
+            "n_tile_groups": 16,
+            "n_tiles_in_last_group": 2
+          },
+          "m33_cg": {
+            "kind": "m33_cache_policy_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group_m": 16,
+            "group_n": 2,
+            "cache_mode": 1,
+            "cache_policy": "cg",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "warps": 4,
+            "cta_k_iterations": 128,
+            "m_tiles": 64,
+            "n_tiles": 32,
+            "n_tile_groups": 16,
+            "n_tiles_in_last_group": 2
+          },
+          "m33_ca_l2_128b": {
+            "kind": "m33_cache_policy_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group_m": 16,
+            "group_n": 2,
+            "cache_mode": 2,
+            "cache_policy": "ca_l2_128b",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "warps": 4,
+            "cta_k_iterations": 128,
+            "m_tiles": 64,
+            "n_tiles": 32,
+            "n_tile_groups": 16,
+            "n_tiles_in_last_group": 2
+          },
+          "m33_cg_l2_128b": {
+            "kind": "m33_cache_policy_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group_m": 16,
+            "group_n": 2,
+            "cache_mode": 3,
+            "cache_policy": "cg_l2_128b",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "warps": 4,
+            "cta_k_iterations": 128,
+            "m_tiles": 64,
+            "n_tiles": 32,
+            "n_tile_groups": 16,
+            "n_tiles_in_last_group": 2
+          },
+          "m32_groupm16": {
+            "kind": "m32_raster_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group_m": 16,
+            "group_n": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "warps": 4,
+            "cta_k_iterations": 128,
+            "m_tiles": 64,
+            "n_tiles": 32,
+            "n_tile_groups": 16,
+            "n_tiles_in_last_group": 2
+          },
+          "m29_g2_mode1_s2": {
+            "kind": "m29_register_pipeline_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "cta_k_iterations": 128,
+            "warps": 4,
+            "m_tiles": 64,
+            "n_tiles": 32,
+            "n_tile_groups": 16,
+            "n_tiles_in_last_group": 2
+          },
+          "torch_strict_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": false,
+            "flag_set_explicitly_during_call_capture_and_replay": true,
+            "flag_restored_after_call": true
+          },
+          "torch_default_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": true,
+            "flag_set_explicitly_during_call_capture_and_replay": true,
+            "flag_restored_after_call": true
+          }
+        },
+        "graph": {
+          "samples_us_per_call": {
+            "m33_ca": [
+              [
+                4608.204650878906,
+                4815.052795410156,
+                4874.649429321289
+              ],
+              [
+                4792.729568481445,
+                4798.054504394531,
+                4798.668670654297
+              ],
+              [
+                4811.980819702148,
+                4813.004684448242,
+                4813.209533691406
+              ]
+            ],
+            "m33_cg": [
+              [
+                4757.503890991211,
+                4699.545669555664,
+                4676.812744140625
+              ],
+              [
+                4704.620742797852,
+                4694.83528137207,
+                4684.595108032227
+              ],
+              [
+                4748.883056640625,
+                4719.206237792969,
+                4702.207946777344
+              ]
+            ],
+            "m33_ca_l2_128b": [
+              [
+                4795.1873779296875,
+                4790.476989746094,
+                4804.198455810547
+              ],
+              [
+                4784.537506103516,
+                4780.23681640625,
+                4779.827117919922
+              ],
+              [
+                4785.766220092773,
+                4783.673477172852,
+                4772.6593017578125
+              ]
+            ],
+            "m33_cg_l2_128b": [
+              [
+                4651.827239990234,
+                4666.368103027344,
+                4672.102355957031
+              ],
+              [
+                4699.135971069336,
+                4663.910293579102,
+                4673.945617675781
+              ],
+              [
+                4661.043167114258,
+                4649.369430541992,
+                4639.129638671875
+              ]
+            ],
+            "m32_groupm16": [
+              [
+                4815.667343139648,
+                4848.633575439453,
+                4853.542327880859
+              ],
+              [
+                4944.281768798828,
+                4858.879852294922,
+                4809.113693237305
+              ],
+              [
+                4779.590225219727,
+                4803.583908081055,
+                4810.137557983398
+              ]
+            ],
+            "m29_g2_mode1_s2": [
+              [
+                4987.059020996094,
+                5041.356658935547,
+                5056.703948974609
+              ],
+              [
+                4863.161468505859,
+                4847.359848022461,
+                4875.667190551758
+              ],
+              [
+                4942.438507080078,
+                5155.020904541016,
+                5226.90544128418
+              ]
+            ],
+            "torch_strict_bf16_reduction": [
+              [
+                4478.566360473633,
+                4105.011367797852,
+                3796.1727142333984
+              ],
+              [
+                3616.3585662841797,
+                3621.683120727539,
+                3618.6111450195312
+              ],
+              [
+                4681.727981567383,
+                4177.510452270508,
+                3818.0862426757812
+              ]
+            ],
+            "torch_default_bf16_reduction": [
+              [
+                3672.0638275146484,
+                3645.849609375,
+                3639.0846252441406
+              ],
+              [
+                3638.886260986328,
+                3643.801498413086,
+                3621.0689544677734
+              ],
+              [
+                3691.7247772216797,
+                3624.710464477539,
+                3614.7201538085938
+              ]
+            ]
+          },
+          "median_us_per_call": {
+            "m33_ca": 4811.980819702148,
+            "m33_cg": 4702.207946777344,
+            "m33_ca_l2_128b": 4784.537506103516,
+            "m33_cg_l2_128b": 4663.910293579102,
+            "m32_groupm16": 4815.667343139648,
+            "m29_g2_mode1_s2": 4987.059020996094,
+            "torch_strict_bf16_reduction": 3818.0862426757812,
+            "torch_default_bf16_reduction": 3639.0846252441406
+          }
+        }
+      }
+    ],
+    "status": "passed"
+  }
+}

@@ -1,0 +1,2662 @@
+{
+  "status": "passed",
+  "seed": 431,
+  "environment": {
+    "python": "3.12.14",
+    "torch": "2.7.1+cu128",
+    "torch_cuda": "12.8",
+    "cuda_home": "/home/tmz/ai/toolchains/cuda-12.8",
+    "cc": "/home/tmz/ai/toolchains/gcc14/usr/bin/x86_64-linux-gnu-gcc-14",
+    "cxx": "/home/tmz/ai/toolchains/gcc14/usr/bin/x86_64-linux-gnu-g++-14",
+    "torch_extensions_dir": null,
+    "device": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "capability": [
+      8,
+      6
+    ],
+    "tf32": false,
+    "float32_matmul_precision": "highest",
+    "allow_bf16_reduced_precision_reduction_outside_baseline_calls": false
+  },
+  "numerics": {
+    "reference": "torch.mm(A.float(), W.float().T), FP32 oracle, TF32 disabled",
+    "comparison": "BF16 output vs FP32 oracle and matched M29 output",
+    "relative_rms_limit": 0.008,
+    "max_abs_over_max_abs_reference_limit": 0.008,
+    "cta_m_values": [
+      128,
+      256
+    ],
+    "cta_n": 128,
+    "cta_k": 32,
+    "block_threads": 256,
+    "groups": 2,
+    "mode": 1,
+    "mode_name": "b_prefetch",
+    "stages": [
+      2,
+      3
+    ],
+    "candidate_configs_per_shape": 4,
+    "cases": [
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48
+      },
+      {
+        "M": 17,
+        "N": 33,
+        "K": 80
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 112
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 144
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 208
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256
+      }
+    ],
+    "matched_m29_results": [
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "arm": "m29_g2_mode1_s2",
+        "group": 2,
+        "mode": 1,
+        "stages": 2,
+        "layout": "swizzle",
+        "cta_k_iterations": 1,
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "arm": "m29_g2_mode1_s3",
+        "group": 2,
+        "mode": 1,
+        "stages": 3,
+        "layout": "swizzle",
+        "cta_k_iterations": 1,
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "arm": "m29_g2_mode1_s2",
+        "group": 2,
+        "mode": 1,
+        "stages": 2,
+        "layout": "swizzle",
+        "cta_k_iterations": 1,
+        "finite": true,
+        "relative_rms": 0.002493080413941893,
+        "max_abs": 0.0015230178833007812,
+        "max_abs_reference": 0.6108980178833008,
+        "max_abs_over_max_abs_reference": 0.002493080413941893,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "arm": "m29_g2_mode1_s3",
+        "group": 2,
+        "mode": 1,
+        "stages": 3,
+        "layout": "swizzle",
+        "cta_k_iterations": 1,
+        "finite": true,
+        "relative_rms": 0.002493080413941893,
+        "max_abs": 0.0015230178833007812,
+        "max_abs_reference": 0.6108980178833008,
+        "max_abs_over_max_abs_reference": 0.002493080413941893,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "arm": "m29_g2_mode1_s2",
+        "group": 2,
+        "mode": 1,
+        "stages": 2,
+        "layout": "swizzle",
+        "cta_k_iterations": 2,
+        "finite": true,
+        "relative_rms": 0.0016296794900850125,
+        "max_abs": 0.06246185302734375,
+        "max_abs_reference": 31.131614685058594,
+        "max_abs_over_max_abs_reference": 0.0020063801270584877,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "arm": "m29_g2_mode1_s3",
+        "group": 2,
+        "mode": 1,
+        "stages": 3,
+        "layout": "swizzle",
+        "cta_k_iterations": 2,
+        "finite": true,
+        "relative_rms": 0.0016296794900850125,
+        "max_abs": 0.06246185302734375,
+        "max_abs_reference": 31.131614685058594,
+        "max_abs_over_max_abs_reference": 0.0020063801270584877,
+        "passed": true
+      },
+      {
+        "M": 17,
+        "N": 33,
+        "K": 80,
+        "arm": "m29_g2_mode1_s2",
+        "group": 2,
+        "mode": 1,
+        "stages": 2,
+        "layout": "swizzle",
+        "cta_k_iterations": 3,
+        "finite": true,
+        "relative_rms": 0.0016495071902060876,
+        "max_abs": 0.060459136962890625,
+        "max_abs_reference": 30.220928192138672,
+        "max_abs_over_max_abs_reference": 0.0020005718083343903,
+        "passed": true
+      },
+      {
+        "M": 17,
+        "N": 33,
+        "K": 80,
+        "arm": "m29_g2_mode1_s3",
+        "group": 2,
+        "mode": 1,
+        "stages": 3,
+        "layout": "swizzle",
+        "cta_k_iterations": 3,
+        "finite": true,
+        "relative_rms": 0.0016495071902060876,
+        "max_abs": 0.060459136962890625,
+        "max_abs_reference": 30.220928192138672,
+        "max_abs_over_max_abs_reference": 0.0020005718083343903,
+        "passed": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 112,
+        "arm": "m29_g2_mode1_s2",
+        "group": 2,
+        "mode": 1,
+        "stages": 2,
+        "layout": "swizzle",
+        "cta_k_iterations": 4,
+        "finite": true,
+        "relative_rms": 0.0016000992455983242,
+        "max_abs": 0.12375640869140625,
+        "max_abs_reference": 40.296409606933594,
+        "max_abs_over_max_abs_reference": 0.0030711522415662594,
+        "passed": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 112,
+        "arm": "m29_g2_mode1_s3",
+        "group": 2,
+        "mode": 1,
+        "stages": 3,
+        "layout": "swizzle",
+        "cta_k_iterations": 4,
+        "finite": true,
+        "relative_rms": 0.0016000992455983242,
+        "max_abs": 0.12375640869140625,
+        "max_abs_reference": 40.296409606933594,
+        "max_abs_over_max_abs_reference": 0.0030711522415662594,
+        "passed": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 144,
+        "arm": "m29_g2_mode1_s2",
+        "group": 2,
+        "mode": 1,
+        "stages": 2,
+        "layout": "swizzle",
+        "cta_k_iterations": 5,
+        "finite": true,
+        "relative_rms": 0.0016451466873794464,
+        "max_abs": 0.10674285888671875,
+        "max_abs_reference": 40.662986755371094,
+        "max_abs_over_max_abs_reference": 0.0026250619397164498,
+        "passed": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 144,
+        "arm": "m29_g2_mode1_s3",
+        "group": 2,
+        "mode": 1,
+        "stages": 3,
+        "layout": "swizzle",
+        "cta_k_iterations": 5,
+        "finite": true,
+        "relative_rms": 0.0016451466873794464,
+        "max_abs": 0.10674285888671875,
+        "max_abs_reference": 40.662986755371094,
+        "max_abs_over_max_abs_reference": 0.0026250619397164498,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 208,
+        "arm": "m29_g2_mode1_s2",
+        "group": 2,
+        "mode": 1,
+        "stages": 2,
+        "layout": "swizzle",
+        "cta_k_iterations": 7,
+        "finite": true,
+        "relative_rms": 0.0016572417678723612,
+        "max_abs": 0.12429046630859375,
+        "max_abs_reference": 56.41346740722656,
+        "max_abs_over_max_abs_reference": 0.00220320558230165,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 208,
+        "arm": "m29_g2_mode1_s3",
+        "group": 2,
+        "mode": 1,
+        "stages": 3,
+        "layout": "swizzle",
+        "cta_k_iterations": 7,
+        "finite": true,
+        "relative_rms": 0.0016572417678723612,
+        "max_abs": 0.12429046630859375,
+        "max_abs_reference": 56.41346740722656,
+        "max_abs_over_max_abs_reference": 0.00220320558230165,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "arm": "m29_g2_mode1_s2",
+        "group": 2,
+        "mode": 1,
+        "stages": 2,
+        "layout": "swizzle",
+        "cta_k_iterations": 8,
+        "finite": true,
+        "relative_rms": 0.0016629281529762937,
+        "max_abs": 0.2007904052734375,
+        "max_abs_reference": 74.076416015625,
+        "max_abs_over_max_abs_reference": 0.0027105847727714664,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "arm": "m29_g2_mode1_s3",
+        "group": 2,
+        "mode": 1,
+        "stages": 3,
+        "layout": "swizzle",
+        "cta_k_iterations": 8,
+        "finite": true,
+        "relative_rms": 0.0016629281529762937,
+        "max_abs": 0.2007904052734375,
+        "max_abs_reference": 74.076416015625,
+        "max_abs_over_max_abs_reference": 0.0027105847727714664,
+        "passed": true
+      }
+    ],
+    "results": [
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "bm": 128,
+        "stages": 2,
+        "cta_tile": [
+          128,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 32768,
+        "cta_k_iterations": 1,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm128_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "bm": 128,
+        "stages": 3,
+        "cta_tile": [
+          128,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 1,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm128_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "bm": 256,
+        "stages": 2,
+        "cta_tile": [
+          256,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 1,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm256_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "bm": 256,
+        "stages": 3,
+        "cta_tile": [
+          256,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 73728,
+        "cta_k_iterations": 1,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm256_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "bm": 128,
+        "stages": 2,
+        "cta_tile": [
+          128,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 32768,
+        "cta_k_iterations": 1,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm128_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.002493080413941893,
+        "max_abs": 0.0015230178833007812,
+        "max_abs_reference": 0.6108980178833008,
+        "max_abs_over_max_abs_reference": 0.002493080413941893,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "bm": 128,
+        "stages": 3,
+        "cta_tile": [
+          128,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 1,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm128_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.002493080413941893,
+        "max_abs": 0.0015230178833007812,
+        "max_abs_reference": 0.6108980178833008,
+        "max_abs_over_max_abs_reference": 0.002493080413941893,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "bm": 256,
+        "stages": 2,
+        "cta_tile": [
+          256,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 1,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm256_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.002493080413941893,
+        "max_abs": 0.0015230178833007812,
+        "max_abs_reference": 0.6108980178833008,
+        "max_abs_over_max_abs_reference": 0.002493080413941893,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "bm": 256,
+        "stages": 3,
+        "cta_tile": [
+          256,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 73728,
+        "cta_k_iterations": 1,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm256_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.002493080413941893,
+        "max_abs": 0.0015230178833007812,
+        "max_abs_reference": 0.6108980178833008,
+        "max_abs_over_max_abs_reference": 0.002493080413941893,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "bm": 128,
+        "stages": 2,
+        "cta_tile": [
+          128,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 32768,
+        "cta_k_iterations": 2,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm128_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016296794900850125,
+        "max_abs": 0.06246185302734375,
+        "max_abs_reference": 31.131614685058594,
+        "max_abs_over_max_abs_reference": 0.0020063801270584877,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "bm": 128,
+        "stages": 3,
+        "cta_tile": [
+          128,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 2,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm128_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016296794900850125,
+        "max_abs": 0.06246185302734375,
+        "max_abs_reference": 31.131614685058594,
+        "max_abs_over_max_abs_reference": 0.0020063801270584877,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "bm": 256,
+        "stages": 2,
+        "cta_tile": [
+          256,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 2,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm256_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016296794900850125,
+        "max_abs": 0.06246185302734375,
+        "max_abs_reference": 31.131614685058594,
+        "max_abs_over_max_abs_reference": 0.0020063801270584877,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "bm": 256,
+        "stages": 3,
+        "cta_tile": [
+          256,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 73728,
+        "cta_k_iterations": 2,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm256_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016296794900850125,
+        "max_abs": 0.06246185302734375,
+        "max_abs_reference": 31.131614685058594,
+        "max_abs_over_max_abs_reference": 0.0020063801270584877,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 17,
+        "N": 33,
+        "K": 80,
+        "bm": 128,
+        "stages": 2,
+        "cta_tile": [
+          128,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 32768,
+        "cta_k_iterations": 3,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm128_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016495071902060876,
+        "max_abs": 0.060459136962890625,
+        "max_abs_reference": 30.220928192138672,
+        "max_abs_over_max_abs_reference": 0.0020005718083343903,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 17,
+        "N": 33,
+        "K": 80,
+        "bm": 128,
+        "stages": 3,
+        "cta_tile": [
+          128,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 3,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm128_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016495071902060876,
+        "max_abs": 0.060459136962890625,
+        "max_abs_reference": 30.220928192138672,
+        "max_abs_over_max_abs_reference": 0.0020005718083343903,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 17,
+        "N": 33,
+        "K": 80,
+        "bm": 256,
+        "stages": 2,
+        "cta_tile": [
+          256,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 3,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm256_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016495071902060876,
+        "max_abs": 0.060459136962890625,
+        "max_abs_reference": 30.220928192138672,
+        "max_abs_over_max_abs_reference": 0.0020005718083343903,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 17,
+        "N": 33,
+        "K": 80,
+        "bm": 256,
+        "stages": 3,
+        "cta_tile": [
+          256,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 73728,
+        "cta_k_iterations": 3,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm256_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016495071902060876,
+        "max_abs": 0.060459136962890625,
+        "max_abs_reference": 30.220928192138672,
+        "max_abs_over_max_abs_reference": 0.0020005718083343903,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 112,
+        "bm": 128,
+        "stages": 2,
+        "cta_tile": [
+          128,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 32768,
+        "cta_k_iterations": 4,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm128_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016000992455983242,
+        "max_abs": 0.12375640869140625,
+        "max_abs_reference": 40.296409606933594,
+        "max_abs_over_max_abs_reference": 0.0030711522415662594,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 112,
+        "bm": 128,
+        "stages": 3,
+        "cta_tile": [
+          128,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 4,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm128_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016000992455983242,
+        "max_abs": 0.12375640869140625,
+        "max_abs_reference": 40.296409606933594,
+        "max_abs_over_max_abs_reference": 0.0030711522415662594,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 112,
+        "bm": 256,
+        "stages": 2,
+        "cta_tile": [
+          256,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 4,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm256_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016000992455983242,
+        "max_abs": 0.12375640869140625,
+        "max_abs_reference": 40.296409606933594,
+        "max_abs_over_max_abs_reference": 0.0030711522415662594,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 112,
+        "bm": 256,
+        "stages": 3,
+        "cta_tile": [
+          256,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 73728,
+        "cta_k_iterations": 4,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm256_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016000992455983242,
+        "max_abs": 0.12375640869140625,
+        "max_abs_reference": 40.296409606933594,
+        "max_abs_over_max_abs_reference": 0.0030711522415662594,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 144,
+        "bm": 128,
+        "stages": 2,
+        "cta_tile": [
+          128,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 32768,
+        "cta_k_iterations": 5,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm128_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016451466873794464,
+        "max_abs": 0.10674285888671875,
+        "max_abs_reference": 40.662986755371094,
+        "max_abs_over_max_abs_reference": 0.0026250619397164498,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 144,
+        "bm": 128,
+        "stages": 3,
+        "cta_tile": [
+          128,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 5,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm128_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016451466873794464,
+        "max_abs": 0.10674285888671875,
+        "max_abs_reference": 40.662986755371094,
+        "max_abs_over_max_abs_reference": 0.0026250619397164498,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 144,
+        "bm": 256,
+        "stages": 2,
+        "cta_tile": [
+          256,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 5,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm256_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016451466873794464,
+        "max_abs": 0.10674285888671875,
+        "max_abs_reference": 40.662986755371094,
+        "max_abs_over_max_abs_reference": 0.0026250619397164498,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 144,
+        "bm": 256,
+        "stages": 3,
+        "cta_tile": [
+          256,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 73728,
+        "cta_k_iterations": 5,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm256_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016451466873794464,
+        "max_abs": 0.10674285888671875,
+        "max_abs_reference": 40.662986755371094,
+        "max_abs_over_max_abs_reference": 0.0026250619397164498,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 208,
+        "bm": 128,
+        "stages": 2,
+        "cta_tile": [
+          128,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 32768,
+        "cta_k_iterations": 7,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm128_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016572417678723612,
+        "max_abs": 0.12429046630859375,
+        "max_abs_reference": 56.41346740722656,
+        "max_abs_over_max_abs_reference": 0.00220320558230165,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 208,
+        "bm": 128,
+        "stages": 3,
+        "cta_tile": [
+          128,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 7,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm128_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016572417678723612,
+        "max_abs": 0.12429046630859375,
+        "max_abs_reference": 56.41346740722656,
+        "max_abs_over_max_abs_reference": 0.00220320558230165,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 208,
+        "bm": 256,
+        "stages": 2,
+        "cta_tile": [
+          256,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 7,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm256_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016572417678723612,
+        "max_abs": 0.12429046630859375,
+        "max_abs_reference": 56.41346740722656,
+        "max_abs_over_max_abs_reference": 0.00220320558230165,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 208,
+        "bm": 256,
+        "stages": 3,
+        "cta_tile": [
+          256,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 73728,
+        "cta_k_iterations": 7,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm256_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016572417678723612,
+        "max_abs": 0.12429046630859375,
+        "max_abs_reference": 56.41346740722656,
+        "max_abs_over_max_abs_reference": 0.00220320558230165,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "bm": 128,
+        "stages": 2,
+        "cta_tile": [
+          128,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 32768,
+        "cta_k_iterations": 8,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm128_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016629281529762937,
+        "max_abs": 0.2007904052734375,
+        "max_abs_reference": 74.076416015625,
+        "max_abs_over_max_abs_reference": 0.0027105847727714664,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "bm": 128,
+        "stages": 3,
+        "cta_tile": [
+          128,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 8,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm128_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016629281529762937,
+        "max_abs": 0.2007904052734375,
+        "max_abs_reference": 74.076416015625,
+        "max_abs_over_max_abs_reference": 0.0027105847727714664,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "bm": 256,
+        "stages": 2,
+        "cta_tile": [
+          256,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 8,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm256_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016629281529762937,
+        "max_abs": 0.2007904052734375,
+        "max_abs_reference": 74.076416015625,
+        "max_abs_over_max_abs_reference": 0.0027105847727714664,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "bm": 256,
+        "stages": 3,
+        "cta_tile": [
+          256,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 73728,
+        "cta_k_iterations": 8,
+        "block_threads": 256,
+        "warps": 8,
+        "arm": "m31_bm256_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016629281529762937,
+        "max_abs": 0.2007904052734375,
+        "max_abs_reference": 74.076416015625,
+        "max_abs_over_max_abs_reference": 0.0027105847727714664,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      }
+    ],
+    "bitwise_mismatches": [],
+    "status": "passed"
+  },
+  "benchmark": {
+    "timing_mode": "CUDA Graph only",
+    "timing_unit": "us/call",
+    "graph_replays_per_sample": 1,
+    "calls_per_graph_replay": 5,
+    "warmup_calls_per_arm_before_capture": 3,
+    "graph_warmup_replays_per_arm": 3,
+    "rounds": 3,
+    "samples_per_arm_per_round": 3,
+    "arm_order": "forward, reverse, forward",
+    "arms_per_shape": 8,
+    "candidate_comparison": "4 M31 BM128/256 stage2/3 configs; M29 group2/mode1 stage2/3; Torch strict/default BF16 reduction",
+    "cases": [
+      {
+        "M": 1024,
+        "N": 1024,
+        "K": 1024,
+        "rounds": 3,
+        "samples_per_arm_per_round": 3,
+        "calls_per_graph_replay": 5,
+        "warmup_calls_per_arm_before_capture": 3,
+        "graph_warmup_replays_per_arm": 3,
+        "arm_order_by_round": [
+          [
+            "m31_bm128_s2",
+            "m31_bm128_s3",
+            "m31_bm256_s2",
+            "m31_bm256_s3",
+            "m29_g2_mode1_s2",
+            "m29_g2_mode1_s3",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ],
+          [
+            "torch_default_bf16_reduction",
+            "torch_strict_bf16_reduction",
+            "m29_g2_mode1_s3",
+            "m29_g2_mode1_s2",
+            "m31_bm256_s3",
+            "m31_bm256_s2",
+            "m31_bm128_s3",
+            "m31_bm128_s2"
+          ],
+          [
+            "m31_bm128_s2",
+            "m31_bm128_s3",
+            "m31_bm256_s2",
+            "m31_bm256_s3",
+            "m29_g2_mode1_s2",
+            "m29_g2_mode1_s3",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ]
+        ],
+        "validation": {
+          "before_graph_timing": {
+            "m31_bm128_s2": {
+              "finite": true,
+              "relative_rms": 0.0016619527286670288,
+              "max_abs": 0.4962921142578125,
+              "max_abs_reference": 156.76016235351562,
+              "max_abs_over_max_abs_reference": 0.003165932637519256,
+              "passed": true
+            },
+            "m31_bm128_s3": {
+              "finite": true,
+              "relative_rms": 0.0016619527286670288,
+              "max_abs": 0.4962921142578125,
+              "max_abs_reference": 156.76016235351562,
+              "max_abs_over_max_abs_reference": 0.003165932637519256,
+              "passed": true
+            },
+            "m31_bm256_s2": {
+              "finite": true,
+              "relative_rms": 0.0016619527286670288,
+              "max_abs": 0.4962921142578125,
+              "max_abs_reference": 156.76016235351562,
+              "max_abs_over_max_abs_reference": 0.003165932637519256,
+              "passed": true
+            },
+            "m31_bm256_s3": {
+              "finite": true,
+              "relative_rms": 0.0016619527286670288,
+              "max_abs": 0.4962921142578125,
+              "max_abs_reference": 156.76016235351562,
+              "max_abs_over_max_abs_reference": 0.003165932637519256,
+              "passed": true
+            },
+            "m29_g2_mode1_s2": {
+              "finite": true,
+              "relative_rms": 0.0016619527286670288,
+              "max_abs": 0.4962921142578125,
+              "max_abs_reference": 156.76016235351562,
+              "max_abs_over_max_abs_reference": 0.003165932637519256,
+              "passed": true
+            },
+            "m29_g2_mode1_s3": {
+              "finite": true,
+              "relative_rms": 0.0016619527286670288,
+              "max_abs": 0.4962921142578125,
+              "max_abs_reference": 156.76016235351562,
+              "max_abs_over_max_abs_reference": 0.003165932637519256,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016619524953762894,
+              "max_abs": 0.4962921142578125,
+              "max_abs_reference": 156.76016235351562,
+              "max_abs_over_max_abs_reference": 0.003165932637519256,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0024213418466760405,
+              "max_abs": 0.810577392578125,
+              "max_abs_reference": 156.76016235351562,
+              "max_abs_over_max_abs_reference": 0.00517081240800301,
+              "passed": true
+            }
+          },
+          "after_graph_timing": {
+            "m31_bm128_s2": {
+              "finite": true,
+              "relative_rms": 0.0016619527286670288,
+              "max_abs": 0.4962921142578125,
+              "max_abs_reference": 156.76016235351562,
+              "max_abs_over_max_abs_reference": 0.003165932637519256,
+              "passed": true
+            },
+            "m31_bm128_s3": {
+              "finite": true,
+              "relative_rms": 0.0016619527286670288,
+              "max_abs": 0.4962921142578125,
+              "max_abs_reference": 156.76016235351562,
+              "max_abs_over_max_abs_reference": 0.003165932637519256,
+              "passed": true
+            },
+            "m31_bm256_s2": {
+              "finite": true,
+              "relative_rms": 0.0016619527286670288,
+              "max_abs": 0.4962921142578125,
+              "max_abs_reference": 156.76016235351562,
+              "max_abs_over_max_abs_reference": 0.003165932637519256,
+              "passed": true
+            },
+            "m31_bm256_s3": {
+              "finite": true,
+              "relative_rms": 0.0016619527286670288,
+              "max_abs": 0.4962921142578125,
+              "max_abs_reference": 156.76016235351562,
+              "max_abs_over_max_abs_reference": 0.003165932637519256,
+              "passed": true
+            },
+            "m29_g2_mode1_s2": {
+              "finite": true,
+              "relative_rms": 0.0016619527286670288,
+              "max_abs": 0.4962921142578125,
+              "max_abs_reference": 156.76016235351562,
+              "max_abs_over_max_abs_reference": 0.003165932637519256,
+              "passed": true
+            },
+            "m29_g2_mode1_s3": {
+              "finite": true,
+              "relative_rms": 0.0016619527286670288,
+              "max_abs": 0.4962921142578125,
+              "max_abs_reference": 156.76016235351562,
+              "max_abs_over_max_abs_reference": 0.003165932637519256,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016619524953762894,
+              "max_abs": 0.4962921142578125,
+              "max_abs_reference": 156.76016235351562,
+              "max_abs_over_max_abs_reference": 0.003165932637519256,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0024213418466760405,
+              "max_abs": 0.810577392578125,
+              "max_abs_reference": 156.76016235351562,
+              "max_abs_over_max_abs_reference": 0.00517081240800301,
+              "passed": true
+            }
+          }
+        },
+        "arms": {
+          "m31_bm128_s2": {
+            "kind": "m31_output_tile_mma",
+            "cta_tile": [
+              128,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bm": 128,
+            "bn": 128,
+            "bk": 32,
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 32768,
+            "cta_k_iterations": 32,
+            "block_threads": 256,
+            "warps": 8
+          },
+          "m31_bm128_s3": {
+            "kind": "m31_output_tile_mma",
+            "cta_tile": [
+              128,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bm": 128,
+            "bn": 128,
+            "bk": 32,
+            "stages": 3,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 49152,
+            "cta_k_iterations": 32,
+            "block_threads": 256,
+            "warps": 8
+          },
+          "m31_bm256_s2": {
+            "kind": "m31_output_tile_mma",
+            "cta_tile": [
+              256,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bm": 256,
+            "bn": 128,
+            "bk": 32,
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 49152,
+            "cta_k_iterations": 32,
+            "block_threads": 256,
+            "warps": 8
+          },
+          "m31_bm256_s3": {
+            "kind": "m31_output_tile_mma",
+            "cta_tile": [
+              256,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bm": 256,
+            "bn": 128,
+            "bk": 32,
+            "stages": 3,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 73728,
+            "cta_k_iterations": 32,
+            "block_threads": 256,
+            "warps": 8
+          },
+          "m29_g2_mode1_s2": {
+            "kind": "m29_register_pipeline_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "cta_k_iterations": 32,
+            "block_threads": 128,
+            "warps": 4
+          },
+          "m29_g2_mode1_s3": {
+            "kind": "m29_register_pipeline_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "stages": 3,
+            "shared_layout": "swizzle",
+            "cta_k_iterations": 32,
+            "block_threads": 128,
+            "warps": 4
+          },
+          "torch_strict_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": false,
+            "flag_set_explicitly_during_call_capture_and_replay": true,
+            "flag_restored_after_call": true
+          },
+          "torch_default_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": true,
+            "flag_set_explicitly_during_call_capture_and_replay": true,
+            "flag_restored_after_call": true
+          }
+        },
+        "graph": {
+          "samples_us_per_call": {
+            "m31_bm128_s2": [
+              [
+                125.7472038269043,
+                121.42080068588257,
+                121.24160528182983
+              ],
+              [
+                120.62720060348511,
+                121.03680372238159,
+                120.83200216293335
+              ],
+              [
+                121.03680372238159,
+                121.62560224533081,
+                121.65119647979736
+              ]
+            ],
+            "m31_bm128_s3": [
+              [
+                142.5279974937439,
+                141.92639589309692,
+                142.30400323867798
+              ],
+              [
+                141.68959856033325,
+                141.92639589309692,
+                142.09920167922974
+              ],
+              [
+                142.13119745254517,
+                142.1183943748474,
+                142.1056032180786
+              ]
+            ],
+            "m31_bm256_s2": [
+              [
+                138.18880319595337,
+                138.20799589157104,
+                140.49279689788818
+              ],
+              [
+                138.61759901046753,
+                137.83040046691895,
+                137.6255989074707
+              ],
+              [
+                138.44480514526367,
+                139.8784041404724,
+                141.31200313568115
+              ]
+            ],
+            "m31_bm256_s3": [
+              [
+                143.35999488830566,
+                142.7456021308899,
+                142.95040369033813
+              ],
+              [
+                143.35999488830566,
+                144.17920112609863,
+                143.35999488830566
+              ],
+              [
+                143.5647964477539,
+                143.15520524978638,
+                142.95040369033813
+              ]
+            ],
+            "m29_g2_mode1_s2": [
+              [
+                99.32799935340881,
+                98.71360063552856,
+                99.12319779396057
+              ],
+              [
+                99.09759759902954,
+                99.09120202064514,
+                99.11680221557617
+              ],
+              [
+                99.32799935340881,
+                99.53280091285706,
+                99.32799935340881
+              ]
+            ],
+            "m29_g2_mode1_s3": [
+              [
+                107.92959928512573,
+                110.59199571609497,
+                109.15839672088623
+              ],
+              [
+                108.93440246582031,
+                108.54400396347046,
+                108.12159776687622
+              ],
+              [
+                108.33280086517334,
+                109.14560556411743,
+                109.56799983978271
+              ]
+            ],
+            "torch_strict_bf16_reduction": [
+              [
+                143.35999488830566,
+                141.1072015762329,
+                141.1072015762329
+              ],
+              [
+                145.61280012130737,
+                141.5168046951294,
+                140.49279689788818
+              ],
+              [
+                144.17920112609863,
+                140.69759845733643,
+                140.69759845733643
+              ]
+            ],
+            "torch_default_bf16_reduction": [
+              [
+                75.36640167236328,
+                74.31039810180664,
+                73.93280267715454
+              ],
+              [
+                74.54720139503479,
+                74.9567985534668,
+                74.54720139503479
+              ],
+              [
+                75.57119727134705,
+                74.11199808120728,
+                74.72000122070312
+              ]
+            ]
+          },
+          "median_us_per_call": {
+            "m31_bm128_s2": 121.24160528182983,
+            "m31_bm128_s3": 142.1056032180786,
+            "m31_bm256_s2": 138.44480514526367,
+            "m31_bm256_s3": 143.35999488830566,
+            "m29_g2_mode1_s2": 99.12319779396057,
+            "m29_g2_mode1_s3": 108.93440246582031,
+            "torch_strict_bf16_reduction": 141.1072015762329,
+            "torch_default_bf16_reduction": 74.54720139503479
+          }
+        }
+      },
+      {
+        "M": 2048,
+        "N": 2048,
+        "K": 2048,
+        "rounds": 3,
+        "samples_per_arm_per_round": 3,
+        "calls_per_graph_replay": 5,
+        "warmup_calls_per_arm_before_capture": 3,
+        "graph_warmup_replays_per_arm": 3,
+        "arm_order_by_round": [
+          [
+            "m31_bm128_s2",
+            "m31_bm128_s3",
+            "m31_bm256_s2",
+            "m31_bm256_s3",
+            "m29_g2_mode1_s2",
+            "m29_g2_mode1_s3",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ],
+          [
+            "torch_default_bf16_reduction",
+            "torch_strict_bf16_reduction",
+            "m29_g2_mode1_s3",
+            "m29_g2_mode1_s2",
+            "m31_bm256_s3",
+            "m31_bm256_s2",
+            "m31_bm128_s3",
+            "m31_bm128_s2"
+          ],
+          [
+            "m31_bm128_s2",
+            "m31_bm128_s3",
+            "m31_bm256_s2",
+            "m31_bm256_s3",
+            "m29_g2_mode1_s2",
+            "m29_g2_mode1_s3",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ]
+        ],
+        "validation": {
+          "before_graph_timing": {
+            "m31_bm128_s2": {
+              "finite": true,
+              "relative_rms": 0.001655843322835965,
+              "max_abs": 0.500396728515625,
+              "max_abs_reference": 238.40957641601562,
+              "max_abs_over_max_abs_reference": 0.002098895254284802,
+              "passed": true
+            },
+            "m31_bm128_s3": {
+              "finite": true,
+              "relative_rms": 0.001655843322835965,
+              "max_abs": 0.500396728515625,
+              "max_abs_reference": 238.40957641601562,
+              "max_abs_over_max_abs_reference": 0.002098895254284802,
+              "passed": true
+            },
+            "m31_bm256_s2": {
+              "finite": true,
+              "relative_rms": 0.001655843322835965,
+              "max_abs": 0.500396728515625,
+              "max_abs_reference": 238.40957641601562,
+              "max_abs_over_max_abs_reference": 0.002098895254284802,
+              "passed": true
+            },
+            "m31_bm256_s3": {
+              "finite": true,
+              "relative_rms": 0.001655843322835965,
+              "max_abs": 0.500396728515625,
+              "max_abs_reference": 238.40957641601562,
+              "max_abs_over_max_abs_reference": 0.002098895254284802,
+              "passed": true
+            },
+            "m29_g2_mode1_s2": {
+              "finite": true,
+              "relative_rms": 0.001655843322835965,
+              "max_abs": 0.500396728515625,
+              "max_abs_reference": 238.40957641601562,
+              "max_abs_over_max_abs_reference": 0.002098895254284802,
+              "passed": true
+            },
+            "m29_g2_mode1_s3": {
+              "finite": true,
+              "relative_rms": 0.001655843322835965,
+              "max_abs": 0.500396728515625,
+              "max_abs_reference": 238.40957641601562,
+              "max_abs_over_max_abs_reference": 0.002098895254284802,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.001655843322835965,
+              "max_abs": 0.500396728515625,
+              "max_abs_reference": 238.40957641601562,
+              "max_abs_over_max_abs_reference": 0.002098895254284802,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.001655843322835965,
+              "max_abs": 0.500396728515625,
+              "max_abs_reference": 238.40957641601562,
+              "max_abs_over_max_abs_reference": 0.002098895254284802,
+              "passed": true
+            }
+          },
+          "after_graph_timing": {
+            "m31_bm128_s2": {
+              "finite": true,
+              "relative_rms": 0.001655843322835965,
+              "max_abs": 0.500396728515625,
+              "max_abs_reference": 238.40957641601562,
+              "max_abs_over_max_abs_reference": 0.002098895254284802,
+              "passed": true
+            },
+            "m31_bm128_s3": {
+              "finite": true,
+              "relative_rms": 0.001655843322835965,
+              "max_abs": 0.500396728515625,
+              "max_abs_reference": 238.40957641601562,
+              "max_abs_over_max_abs_reference": 0.002098895254284802,
+              "passed": true
+            },
+            "m31_bm256_s2": {
+              "finite": true,
+              "relative_rms": 0.001655843322835965,
+              "max_abs": 0.500396728515625,
+              "max_abs_reference": 238.40957641601562,
+              "max_abs_over_max_abs_reference": 0.002098895254284802,
+              "passed": true
+            },
+            "m31_bm256_s3": {
+              "finite": true,
+              "relative_rms": 0.001655843322835965,
+              "max_abs": 0.500396728515625,
+              "max_abs_reference": 238.40957641601562,
+              "max_abs_over_max_abs_reference": 0.002098895254284802,
+              "passed": true
+            },
+            "m29_g2_mode1_s2": {
+              "finite": true,
+              "relative_rms": 0.001655843322835965,
+              "max_abs": 0.500396728515625,
+              "max_abs_reference": 238.40957641601562,
+              "max_abs_over_max_abs_reference": 0.002098895254284802,
+              "passed": true
+            },
+            "m29_g2_mode1_s3": {
+              "finite": true,
+              "relative_rms": 0.001655843322835965,
+              "max_abs": 0.500396728515625,
+              "max_abs_reference": 238.40957641601562,
+              "max_abs_over_max_abs_reference": 0.002098895254284802,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.001655843322835965,
+              "max_abs": 0.500396728515625,
+              "max_abs_reference": 238.40957641601562,
+              "max_abs_over_max_abs_reference": 0.002098895254284802,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.001655843322835965,
+              "max_abs": 0.500396728515625,
+              "max_abs_reference": 238.40957641601562,
+              "max_abs_over_max_abs_reference": 0.002098895254284802,
+              "passed": true
+            }
+          }
+        },
+        "arms": {
+          "m31_bm128_s2": {
+            "kind": "m31_output_tile_mma",
+            "cta_tile": [
+              128,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bm": 128,
+            "bn": 128,
+            "bk": 32,
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 32768,
+            "cta_k_iterations": 64,
+            "block_threads": 256,
+            "warps": 8
+          },
+          "m31_bm128_s3": {
+            "kind": "m31_output_tile_mma",
+            "cta_tile": [
+              128,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bm": 128,
+            "bn": 128,
+            "bk": 32,
+            "stages": 3,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 49152,
+            "cta_k_iterations": 64,
+            "block_threads": 256,
+            "warps": 8
+          },
+          "m31_bm256_s2": {
+            "kind": "m31_output_tile_mma",
+            "cta_tile": [
+              256,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bm": 256,
+            "bn": 128,
+            "bk": 32,
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 49152,
+            "cta_k_iterations": 64,
+            "block_threads": 256,
+            "warps": 8
+          },
+          "m31_bm256_s3": {
+            "kind": "m31_output_tile_mma",
+            "cta_tile": [
+              256,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bm": 256,
+            "bn": 128,
+            "bk": 32,
+            "stages": 3,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 73728,
+            "cta_k_iterations": 64,
+            "block_threads": 256,
+            "warps": 8
+          },
+          "m29_g2_mode1_s2": {
+            "kind": "m29_register_pipeline_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "cta_k_iterations": 64,
+            "block_threads": 128,
+            "warps": 4
+          },
+          "m29_g2_mode1_s3": {
+            "kind": "m29_register_pipeline_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "stages": 3,
+            "shared_layout": "swizzle",
+            "cta_k_iterations": 64,
+            "block_threads": 128,
+            "warps": 4
+          },
+          "torch_strict_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": false,
+            "flag_set_explicitly_during_call_capture_and_replay": true,
+            "flag_restored_after_call": true
+          },
+          "torch_default_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": true,
+            "flag_set_explicitly_during_call_capture_and_replay": true,
+            "flag_restored_after_call": true
+          }
+        },
+        "graph": {
+          "samples_us_per_call": {
+            "m31_bm128_s2": [
+              [
+                673.9520072937012,
+                672.5632190704346,
+                670.7200050354004
+              ],
+              [
+                656.5887928009033,
+                651.8784046173096,
+                652.288007736206
+              ],
+              [
+                651.4688014984131,
+                651.8784046173096,
+                652.8639793395996
+              ]
+            ],
+            "m31_bm128_s3": [
+              [
+                762.2655868530273,
+                762.0607852935791,
+                758.9888095855713
+              ],
+              [
+                751.4111995697021,
+                751.2063980102539,
+                751.2063980102539
+              ],
+              [
+                704.5119762420654,
+                703.8976192474365,
+                706.9695949554443
+              ]
+            ],
+            "m31_bm256_s2": [
+              [
+                750.7967948913574,
+                749.1583824157715,
+                752.4352073669434
+              ],
+              [
+                726.2207984924316,
+                723.1488227844238,
+                727.8592109680176
+              ],
+              [
+                684.8512172698975,
+                687.3087882995605,
+                696.5248107910156
+              ]
+            ],
+            "m31_bm256_s3": [
+              [
+                778.0352115631104,
+                774.9631881713867,
+                775.5775928497314
+              ],
+              [
+                748.1344223022461,
+                749.1583824157715,
+                747.3152160644531
+              ],
+              [
+                716.3904190063477,
+                710.041618347168,
+                710.6560230255127
+              ]
+            ],
+            "m29_g2_mode1_s2": [
+              [
+                644.4799900054932,
+                643.6863899230957,
+                647.756814956665
+              ],
+              [
+                627.507209777832,
+                629.145622253418,
+                629.5551776885986
+              ],
+              [
+                619.3344116210938,
+                618.291187286377,
+                615.0144100189209
+              ]
+            ],
+            "m29_g2_mode1_s3": [
+              [
+                698.1632232666016,
+                699.187183380127,
+                699.187183380127
+              ],
+              [
+                693.6255931854248,
+                694.4704055786133,
+                694.8736190795898
+              ],
+              [
+                671.1296081542969,
+                667.0207977294922,
+                667.033576965332
+              ]
+            ],
+            "torch_strict_bf16_reduction": [
+              [
+                542.5151824951172,
+                536.575984954834,
+                533.5040092468262
+              ],
+              [
+                555.8271884918213,
+                519.7824001312256,
+                513.6320114135742
+              ],
+              [
+                490.7072067260742,
+                490.90561866760254,
+                486.60478591918945
+              ]
+            ],
+            "torch_default_bf16_reduction": [
+              [
+                553.7792205810547,
+                555.622386932373,
+                553.9840221405029
+              ],
+              [
+                564.4288063049316,
+                566.0672187805176,
+                556.2367916107178
+              ],
+              [
+                494.1823959350586,
+                548.4543800354004,
+                549.6831893920898
+              ]
+            ]
+          },
+          "median_us_per_call": {
+            "m31_bm128_s2": 652.8639793395996,
+            "m31_bm128_s3": 751.2063980102539,
+            "m31_bm256_s2": 726.2207984924316,
+            "m31_bm256_s3": 748.1344223022461,
+            "m29_g2_mode1_s2": 629.145622253418,
+            "m29_g2_mode1_s3": 694.4704055786133,
+            "torch_strict_bf16_reduction": 519.7824001312256,
+            "torch_default_bf16_reduction": 553.9840221405029
+          }
+        }
+      },
+      {
+        "M": 4096,
+        "N": 4096,
+        "K": 4096,
+        "rounds": 3,
+        "samples_per_arm_per_round": 3,
+        "calls_per_graph_replay": 5,
+        "warmup_calls_per_arm_before_capture": 3,
+        "graph_warmup_replays_per_arm": 3,
+        "arm_order_by_round": [
+          [
+            "m31_bm128_s2",
+            "m31_bm128_s3",
+            "m31_bm256_s2",
+            "m31_bm256_s3",
+            "m29_g2_mode1_s2",
+            "m29_g2_mode1_s3",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ],
+          [
+            "torch_default_bf16_reduction",
+            "torch_strict_bf16_reduction",
+            "m29_g2_mode1_s3",
+            "m29_g2_mode1_s2",
+            "m31_bm256_s3",
+            "m31_bm256_s2",
+            "m31_bm128_s3",
+            "m31_bm128_s2"
+          ],
+          [
+            "m31_bm128_s2",
+            "m31_bm128_s3",
+            "m31_bm256_s2",
+            "m31_bm256_s3",
+            "m29_g2_mode1_s2",
+            "m29_g2_mode1_s3",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ]
+        ],
+        "validation": {
+          "before_graph_timing": {
+            "m31_bm128_s2": {
+              "finite": true,
+              "relative_rms": 0.00166178886040542,
+              "max_abs": 0.9986572265625,
+              "max_abs_reference": 352.1982421875,
+              "max_abs_over_max_abs_reference": 0.0028354974753986542,
+              "passed": true
+            },
+            "m31_bm128_s3": {
+              "finite": true,
+              "relative_rms": 0.00166178886040542,
+              "max_abs": 0.9986572265625,
+              "max_abs_reference": 352.1982421875,
+              "max_abs_over_max_abs_reference": 0.0028354974753986542,
+              "passed": true
+            },
+            "m31_bm256_s2": {
+              "finite": true,
+              "relative_rms": 0.00166178886040542,
+              "max_abs": 0.9986572265625,
+              "max_abs_reference": 352.1982421875,
+              "max_abs_over_max_abs_reference": 0.0028354974753986542,
+              "passed": true
+            },
+            "m31_bm256_s3": {
+              "finite": true,
+              "relative_rms": 0.00166178886040542,
+              "max_abs": 0.9986572265625,
+              "max_abs_reference": 352.1982421875,
+              "max_abs_over_max_abs_reference": 0.0028354974753986542,
+              "passed": true
+            },
+            "m29_g2_mode1_s2": {
+              "finite": true,
+              "relative_rms": 0.00166178886040542,
+              "max_abs": 0.9986572265625,
+              "max_abs_reference": 352.1982421875,
+              "max_abs_over_max_abs_reference": 0.0028354974753986542,
+              "passed": true
+            },
+            "m29_g2_mode1_s3": {
+              "finite": true,
+              "relative_rms": 0.00166178886040542,
+              "max_abs": 0.9986572265625,
+              "max_abs_reference": 352.1982421875,
+              "max_abs_over_max_abs_reference": 0.0028354974753986542,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.00166178886040542,
+              "max_abs": 0.9986572265625,
+              "max_abs_reference": 352.1982421875,
+              "max_abs_over_max_abs_reference": 0.0028354974753986542,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.00166178886040542,
+              "max_abs": 0.9986572265625,
+              "max_abs_reference": 352.1982421875,
+              "max_abs_over_max_abs_reference": 0.0028354974753986542,
+              "passed": true
+            }
+          },
+          "after_graph_timing": {
+            "m31_bm128_s2": {
+              "finite": true,
+              "relative_rms": 0.00166178886040542,
+              "max_abs": 0.9986572265625,
+              "max_abs_reference": 352.1982421875,
+              "max_abs_over_max_abs_reference": 0.0028354974753986542,
+              "passed": true
+            },
+            "m31_bm128_s3": {
+              "finite": true,
+              "relative_rms": 0.00166178886040542,
+              "max_abs": 0.9986572265625,
+              "max_abs_reference": 352.1982421875,
+              "max_abs_over_max_abs_reference": 0.0028354974753986542,
+              "passed": true
+            },
+            "m31_bm256_s2": {
+              "finite": true,
+              "relative_rms": 0.00166178886040542,
+              "max_abs": 0.9986572265625,
+              "max_abs_reference": 352.1982421875,
+              "max_abs_over_max_abs_reference": 0.0028354974753986542,
+              "passed": true
+            },
+            "m31_bm256_s3": {
+              "finite": true,
+              "relative_rms": 0.00166178886040542,
+              "max_abs": 0.9986572265625,
+              "max_abs_reference": 352.1982421875,
+              "max_abs_over_max_abs_reference": 0.0028354974753986542,
+              "passed": true
+            },
+            "m29_g2_mode1_s2": {
+              "finite": true,
+              "relative_rms": 0.00166178886040542,
+              "max_abs": 0.9986572265625,
+              "max_abs_reference": 352.1982421875,
+              "max_abs_over_max_abs_reference": 0.0028354974753986542,
+              "passed": true
+            },
+            "m29_g2_mode1_s3": {
+              "finite": true,
+              "relative_rms": 0.00166178886040542,
+              "max_abs": 0.9986572265625,
+              "max_abs_reference": 352.1982421875,
+              "max_abs_over_max_abs_reference": 0.0028354974753986542,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.00166178886040542,
+              "max_abs": 0.9986572265625,
+              "max_abs_reference": 352.1982421875,
+              "max_abs_over_max_abs_reference": 0.0028354974753986542,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.00166178886040542,
+              "max_abs": 0.9986572265625,
+              "max_abs_reference": 352.1982421875,
+              "max_abs_over_max_abs_reference": 0.0028354974753986542,
+              "passed": true
+            }
+          }
+        },
+        "arms": {
+          "m31_bm128_s2": {
+            "kind": "m31_output_tile_mma",
+            "cta_tile": [
+              128,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bm": 128,
+            "bn": 128,
+            "bk": 32,
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 32768,
+            "cta_k_iterations": 128,
+            "block_threads": 256,
+            "warps": 8
+          },
+          "m31_bm128_s3": {
+            "kind": "m31_output_tile_mma",
+            "cta_tile": [
+              128,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bm": 128,
+            "bn": 128,
+            "bk": 32,
+            "stages": 3,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 49152,
+            "cta_k_iterations": 128,
+            "block_threads": 256,
+            "warps": 8
+          },
+          "m31_bm256_s2": {
+            "kind": "m31_output_tile_mma",
+            "cta_tile": [
+              256,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bm": 256,
+            "bn": 128,
+            "bk": 32,
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 49152,
+            "cta_k_iterations": 128,
+            "block_threads": 256,
+            "warps": 8
+          },
+          "m31_bm256_s3": {
+            "kind": "m31_output_tile_mma",
+            "cta_tile": [
+              256,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bm": 256,
+            "bn": 128,
+            "bk": 32,
+            "stages": 3,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 73728,
+            "cta_k_iterations": 128,
+            "block_threads": 256,
+            "warps": 8
+          },
+          "m29_g2_mode1_s2": {
+            "kind": "m29_register_pipeline_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "cta_k_iterations": 128,
+            "block_threads": 128,
+            "warps": 4
+          },
+          "m29_g2_mode1_s3": {
+            "kind": "m29_register_pipeline_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "stages": 3,
+            "shared_layout": "swizzle",
+            "cta_k_iterations": 128,
+            "block_threads": 128,
+            "warps": 4
+          },
+          "torch_strict_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": false,
+            "flag_set_explicitly_during_call_capture_and_replay": true,
+            "flag_restored_after_call": true
+          },
+          "torch_default_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": true,
+            "flag_set_explicitly_during_call_capture_and_replay": true,
+            "flag_restored_after_call": true
+          }
+        },
+        "graph": {
+          "samples_us_per_call": {
+            "m31_bm128_s2": [
+              [
+                4559.872055053711,
+                4855.769729614258,
+                4946.329498291016
+              ],
+              [
+                4829.9774169921875,
+                5053.644943237305,
+                5169.561767578125
+              ],
+              [
+                5183.89778137207,
+                5153.996658325195,
+                5086.207962036133
+              ]
+            ],
+            "m31_bm128_s3": [
+              [
+                6019.071960449219,
+                5861.376190185547,
+                5730.713653564453
+              ],
+              [
+                5340.947341918945,
+                5556.428909301758,
+                5707.148742675781
+              ],
+              [
+                6103.244781494141,
+                5889.228820800781,
+                5771.263885498047
+              ]
+            ],
+            "m31_bm256_s2": [
+              [
+                5490.687942504883,
+                5112.5823974609375,
+                4988.275146484375
+              ],
+              [
+                5057.740783691406,
+                5005.721664428711,
+                4962.918472290039
+              ],
+              [
+                5504.4097900390625,
+                5177.958297729492,
+                5000.806427001953
+              ]
+            ],
+            "m31_bm256_s3": [
+              [
+                5040.742492675781,
+                5053.222274780273,
+                5058.969497680664
+              ],
+              [
+                6529.228973388672,
+                5708.160018920898,
+                5294.489669799805
+              ],
+              [
+                5062.246322631836,
+                5080.064010620117,
+                5094.195175170898
+              ]
+            ],
+            "m29_g2_mode1_s2": [
+              [
+                4884.070587158203,
+                5089.279937744141,
+                5172.83821105957
+              ],
+              [
+                4996.486282348633,
+                5123.891067504883,
+                5227.519989013672
+              ],
+              [
+                4895.091247558594,
+                5120.000076293945,
+                5319.475173950195
+              ]
+            ],
+            "m29_g2_mode1_s3": [
+              [
+                5935.513687133789,
+                5827.174377441406,
+                5739.519882202148
+              ],
+              [
+                5375.99983215332,
+                5593.088150024414,
+                5745.459365844727
+              ],
+              [
+                6133.964920043945,
+                5931.417465209961,
+                5828.403091430664
+              ]
+            ],
+            "torch_strict_bf16_reduction": [
+              [
+                4421.0174560546875,
+                4036.812973022461,
+                3776.7166137695312
+              ],
+              [
+                3634.3807220458984,
+                3637.4526977539062,
+                3643.801498413086
+              ],
+              [
+                4495.948791503906,
+                4078.7967681884766,
+                3831.769561767578
+              ]
+            ],
+            "torch_default_bf16_reduction": [
+              [
+                3727.974319458008,
+                3690.90576171875,
+                3635.6094360351562
+              ],
+              [
+                3631.7184448242188,
+                3633.1520080566406,
+                3637.41455078125
+              ],
+              [
+                3721.625518798828,
+                3675.532913208008,
+                3653.0174255371094
+              ]
+            ]
+          },
+          "median_us_per_call": {
+            "m31_bm128_s2": 5053.644943237305,
+            "m31_bm128_s3": 5771.263885498047,
+            "m31_bm256_s2": 5057.740783691406,
+            "m31_bm256_s3": 5080.064010620117,
+            "m29_g2_mode1_s2": 5120.000076293945,
+            "m29_g2_mode1_s3": 5827.174377441406,
+            "torch_strict_bf16_reduction": 3831.769561767578,
+            "torch_default_bf16_reduction": 3653.0174255371094
+          }
+        }
+      }
+    ],
+    "status": "passed"
+  }
+}

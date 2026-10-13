@@ -1,0 +1,2555 @@
+{
+  "status": "passed",
+  "seed": 430,
+  "environment": {
+    "python": "3.12.14",
+    "torch": "2.7.1+cu128",
+    "torch_cuda": "12.8",
+    "cuda_home": "/home/tmz/ai/toolchains/cuda-12.8",
+    "cc": "/home/tmz/ai/toolchains/gcc14/usr/bin/x86_64-linux-gnu-gcc-14",
+    "cxx": "/home/tmz/ai/toolchains/gcc14/usr/bin/x86_64-linux-gnu-g++-14",
+    "torch_extensions_dir": null,
+    "device": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "capability": [
+      8,
+      6
+    ],
+    "tf32": false,
+    "float32_matmul_precision": "highest",
+    "allow_bf16_reduced_precision_reduction_outside_baseline_calls": false
+  },
+  "numerics": {
+    "reference": "torch.mm(A.float(), W.float().T), FP32 oracle, TF32 disabled",
+    "comparison": "BF16 output vs FP32 oracle and matched M29 output",
+    "relative_rms_limit": 0.008,
+    "max_abs_over_max_abs_reference_limit": 0.008,
+    "cta_m": 64,
+    "cta_n": 128,
+    "groups": 2,
+    "mode": 1,
+    "mode_name": "b_prefetch",
+    "bk_values": [
+      32,
+      64
+    ],
+    "stages": [
+      2,
+      3
+    ],
+    "candidate_configs_per_shape": 4,
+    "cases": [
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48
+      },
+      {
+        "M": 17,
+        "N": 33,
+        "K": 80
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 112
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 144
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 208
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256
+      }
+    ],
+    "matched_m29_results": [
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "arm": "m29_g2_mode1_s2",
+        "group": 2,
+        "mode": 1,
+        "stages": 2,
+        "layout": "swizzle",
+        "cta_k_iterations": 1,
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "arm": "m29_g2_mode1_s3",
+        "group": 2,
+        "mode": 1,
+        "stages": 3,
+        "layout": "swizzle",
+        "cta_k_iterations": 1,
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "arm": "m29_g2_mode1_s2",
+        "group": 2,
+        "mode": 1,
+        "stages": 2,
+        "layout": "swizzle",
+        "cta_k_iterations": 1,
+        "finite": true,
+        "relative_rms": 0.00021973154650093207,
+        "max_abs": 0.0019359588623046875,
+        "max_abs_reference": 8.810564041137695,
+        "max_abs_over_max_abs_reference": 0.00021973154650093207,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "arm": "m29_g2_mode1_s3",
+        "group": 2,
+        "mode": 1,
+        "stages": 3,
+        "layout": "swizzle",
+        "cta_k_iterations": 1,
+        "finite": true,
+        "relative_rms": 0.00021973154650093207,
+        "max_abs": 0.0019359588623046875,
+        "max_abs_reference": 8.810564041137695,
+        "max_abs_over_max_abs_reference": 0.00021973154650093207,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "arm": "m29_g2_mode1_s2",
+        "group": 2,
+        "mode": 1,
+        "stages": 2,
+        "layout": "swizzle",
+        "cta_k_iterations": 2,
+        "finite": true,
+        "relative_rms": 0.0016892942667594182,
+        "max_abs": 0.06230735778808594,
+        "max_abs_reference": 28.636493682861328,
+        "max_abs_over_max_abs_reference": 0.0021758026132010816,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "arm": "m29_g2_mode1_s3",
+        "group": 2,
+        "mode": 1,
+        "stages": 3,
+        "layout": "swizzle",
+        "cta_k_iterations": 2,
+        "finite": true,
+        "relative_rms": 0.0016892942667594182,
+        "max_abs": 0.06230735778808594,
+        "max_abs_reference": 28.636493682861328,
+        "max_abs_over_max_abs_reference": 0.0021758026132010816,
+        "passed": true
+      },
+      {
+        "M": 17,
+        "N": 33,
+        "K": 80,
+        "arm": "m29_g2_mode1_s2",
+        "group": 2,
+        "mode": 1,
+        "stages": 2,
+        "layout": "swizzle",
+        "cta_k_iterations": 3,
+        "finite": true,
+        "relative_rms": 0.0016967382751634865,
+        "max_abs": 0.0596771240234375,
+        "max_abs_reference": 28.085552215576172,
+        "max_abs_over_max_abs_reference": 0.002124833564438186,
+        "passed": true
+      },
+      {
+        "M": 17,
+        "N": 33,
+        "K": 80,
+        "arm": "m29_g2_mode1_s3",
+        "group": 2,
+        "mode": 1,
+        "stages": 3,
+        "layout": "swizzle",
+        "cta_k_iterations": 3,
+        "finite": true,
+        "relative_rms": 0.0016967382751634865,
+        "max_abs": 0.0596771240234375,
+        "max_abs_reference": 28.085552215576172,
+        "max_abs_over_max_abs_reference": 0.002124833564438186,
+        "passed": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 112,
+        "arm": "m29_g2_mode1_s2",
+        "group": 2,
+        "mode": 1,
+        "stages": 2,
+        "layout": "swizzle",
+        "cta_k_iterations": 4,
+        "finite": true,
+        "relative_rms": 0.0017137747706903181,
+        "max_abs": 0.11865997314453125,
+        "max_abs_reference": 35.89137649536133,
+        "max_abs_over_max_abs_reference": 0.003306085882770952,
+        "passed": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 112,
+        "arm": "m29_g2_mode1_s3",
+        "group": 2,
+        "mode": 1,
+        "stages": 3,
+        "layout": "swizzle",
+        "cta_k_iterations": 4,
+        "finite": true,
+        "relative_rms": 0.0017137747706903181,
+        "max_abs": 0.11865997314453125,
+        "max_abs_reference": 35.89137649536133,
+        "max_abs_over_max_abs_reference": 0.003306085882770952,
+        "passed": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 144,
+        "arm": "m29_g2_mode1_s2",
+        "group": 2,
+        "mode": 1,
+        "stages": 2,
+        "layout": "swizzle",
+        "cta_k_iterations": 5,
+        "finite": true,
+        "relative_rms": 0.0016160964709880602,
+        "max_abs": 0.12009811401367188,
+        "max_abs_reference": 44.01470947265625,
+        "max_abs_over_max_abs_reference": 0.0027285904065385636,
+        "passed": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 144,
+        "arm": "m29_g2_mode1_s3",
+        "group": 2,
+        "mode": 1,
+        "stages": 3,
+        "layout": "swizzle",
+        "cta_k_iterations": 5,
+        "finite": true,
+        "relative_rms": 0.0016160964709880602,
+        "max_abs": 0.12009811401367188,
+        "max_abs_reference": 44.01470947265625,
+        "max_abs_over_max_abs_reference": 0.0027285904065385636,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 208,
+        "arm": "m29_g2_mode1_s2",
+        "group": 2,
+        "mode": 1,
+        "stages": 2,
+        "layout": "swizzle",
+        "cta_k_iterations": 7,
+        "finite": true,
+        "relative_rms": 0.0016563720058351782,
+        "max_abs": 0.12478256225585938,
+        "max_abs_reference": 58.056427001953125,
+        "max_abs_over_max_abs_reference": 0.0021493324460298163,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 208,
+        "arm": "m29_g2_mode1_s3",
+        "group": 2,
+        "mode": 1,
+        "stages": 3,
+        "layout": "swizzle",
+        "cta_k_iterations": 7,
+        "finite": true,
+        "relative_rms": 0.0016563720058351782,
+        "max_abs": 0.12478256225585938,
+        "max_abs_reference": 58.056427001953125,
+        "max_abs_over_max_abs_reference": 0.0021493324460298163,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "arm": "m29_g2_mode1_s2",
+        "group": 2,
+        "mode": 1,
+        "stages": 2,
+        "layout": "swizzle",
+        "cta_k_iterations": 8,
+        "finite": true,
+        "relative_rms": 0.0016510536764003678,
+        "max_abs": 0.14977264404296875,
+        "max_abs_reference": 67.04408264160156,
+        "max_abs_over_max_abs_reference": 0.002233942775287274,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "arm": "m29_g2_mode1_s3",
+        "group": 2,
+        "mode": 1,
+        "stages": 3,
+        "layout": "swizzle",
+        "cta_k_iterations": 8,
+        "finite": true,
+        "relative_rms": 0.0016510536764003678,
+        "max_abs": 0.14977264404296875,
+        "max_abs_reference": 67.04408264160156,
+        "max_abs_over_max_abs_reference": 0.002233942775287274,
+        "passed": true
+      }
+    ],
+    "results": [
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "bk": 32,
+        "stages": 2,
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 24576,
+        "cta_k_iterations": 1,
+        "arm": "m30_bk32_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "bk": 32,
+        "stages": 3,
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 36864,
+        "cta_k_iterations": 1,
+        "arm": "m30_bk32_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "bk": 64,
+        "stages": 2,
+        "cta_tile": [
+          64,
+          128,
+          64
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 1,
+        "arm": "m30_bk64_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "bk": 64,
+        "stages": 3,
+        "cta_tile": [
+          64,
+          128,
+          64
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 73728,
+        "cta_k_iterations": 1,
+        "arm": "m30_bk64_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "bk": 32,
+        "stages": 2,
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 24576,
+        "cta_k_iterations": 1,
+        "arm": "m30_bk32_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.00021973154650093207,
+        "max_abs": 0.0019359588623046875,
+        "max_abs_reference": 8.810564041137695,
+        "max_abs_over_max_abs_reference": 0.00021973154650093207,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "bk": 32,
+        "stages": 3,
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 36864,
+        "cta_k_iterations": 1,
+        "arm": "m30_bk32_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.00021973154650093207,
+        "max_abs": 0.0019359588623046875,
+        "max_abs_reference": 8.810564041137695,
+        "max_abs_over_max_abs_reference": 0.00021973154650093207,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "bk": 64,
+        "stages": 2,
+        "cta_tile": [
+          64,
+          128,
+          64
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 1,
+        "arm": "m30_bk64_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.00021973154650093207,
+        "max_abs": 0.0019359588623046875,
+        "max_abs_reference": 8.810564041137695,
+        "max_abs_over_max_abs_reference": 0.00021973154650093207,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "bk": 64,
+        "stages": 3,
+        "cta_tile": [
+          64,
+          128,
+          64
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 73728,
+        "cta_k_iterations": 1,
+        "arm": "m30_bk64_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.00021973154650093207,
+        "max_abs": 0.0019359588623046875,
+        "max_abs_reference": 8.810564041137695,
+        "max_abs_over_max_abs_reference": 0.00021973154650093207,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "bk": 32,
+        "stages": 2,
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 24576,
+        "cta_k_iterations": 2,
+        "arm": "m30_bk32_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016892942667594182,
+        "max_abs": 0.06230735778808594,
+        "max_abs_reference": 28.636493682861328,
+        "max_abs_over_max_abs_reference": 0.0021758026132010816,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "bk": 32,
+        "stages": 3,
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 36864,
+        "cta_k_iterations": 2,
+        "arm": "m30_bk32_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016892942667594182,
+        "max_abs": 0.06230735778808594,
+        "max_abs_reference": 28.636493682861328,
+        "max_abs_over_max_abs_reference": 0.0021758026132010816,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "bk": 64,
+        "stages": 2,
+        "cta_tile": [
+          64,
+          128,
+          64
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 1,
+        "arm": "m30_bk64_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016892942667594182,
+        "max_abs": 0.06230735778808594,
+        "max_abs_reference": 28.636493682861328,
+        "max_abs_over_max_abs_reference": 0.0021758026132010816,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "bk": 64,
+        "stages": 3,
+        "cta_tile": [
+          64,
+          128,
+          64
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 73728,
+        "cta_k_iterations": 1,
+        "arm": "m30_bk64_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016892942667594182,
+        "max_abs": 0.06230735778808594,
+        "max_abs_reference": 28.636493682861328,
+        "max_abs_over_max_abs_reference": 0.0021758026132010816,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 17,
+        "N": 33,
+        "K": 80,
+        "bk": 32,
+        "stages": 2,
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 24576,
+        "cta_k_iterations": 3,
+        "arm": "m30_bk32_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016967382751634865,
+        "max_abs": 0.0596771240234375,
+        "max_abs_reference": 28.085552215576172,
+        "max_abs_over_max_abs_reference": 0.002124833564438186,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 17,
+        "N": 33,
+        "K": 80,
+        "bk": 32,
+        "stages": 3,
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 36864,
+        "cta_k_iterations": 3,
+        "arm": "m30_bk32_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016967382751634865,
+        "max_abs": 0.0596771240234375,
+        "max_abs_reference": 28.085552215576172,
+        "max_abs_over_max_abs_reference": 0.002124833564438186,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 17,
+        "N": 33,
+        "K": 80,
+        "bk": 64,
+        "stages": 2,
+        "cta_tile": [
+          64,
+          128,
+          64
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 2,
+        "arm": "m30_bk64_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016967382751634865,
+        "max_abs": 0.0596771240234375,
+        "max_abs_reference": 28.085552215576172,
+        "max_abs_over_max_abs_reference": 0.002124833564438186,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 17,
+        "N": 33,
+        "K": 80,
+        "bk": 64,
+        "stages": 3,
+        "cta_tile": [
+          64,
+          128,
+          64
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 73728,
+        "cta_k_iterations": 2,
+        "arm": "m30_bk64_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016967382751634865,
+        "max_abs": 0.0596771240234375,
+        "max_abs_reference": 28.085552215576172,
+        "max_abs_over_max_abs_reference": 0.002124833564438186,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 112,
+        "bk": 32,
+        "stages": 2,
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 24576,
+        "cta_k_iterations": 4,
+        "arm": "m30_bk32_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0017137747706903181,
+        "max_abs": 0.11865997314453125,
+        "max_abs_reference": 35.89137649536133,
+        "max_abs_over_max_abs_reference": 0.003306085882770952,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 112,
+        "bk": 32,
+        "stages": 3,
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 36864,
+        "cta_k_iterations": 4,
+        "arm": "m30_bk32_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0017137747706903181,
+        "max_abs": 0.11865997314453125,
+        "max_abs_reference": 35.89137649536133,
+        "max_abs_over_max_abs_reference": 0.003306085882770952,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 112,
+        "bk": 64,
+        "stages": 2,
+        "cta_tile": [
+          64,
+          128,
+          64
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 2,
+        "arm": "m30_bk64_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0017137747706903181,
+        "max_abs": 0.11865997314453125,
+        "max_abs_reference": 35.89137649536133,
+        "max_abs_over_max_abs_reference": 0.003306085882770952,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 112,
+        "bk": 64,
+        "stages": 3,
+        "cta_tile": [
+          64,
+          128,
+          64
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 73728,
+        "cta_k_iterations": 2,
+        "arm": "m30_bk64_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0017137747706903181,
+        "max_abs": 0.11865997314453125,
+        "max_abs_reference": 35.89137649536133,
+        "max_abs_over_max_abs_reference": 0.003306085882770952,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 144,
+        "bk": 32,
+        "stages": 2,
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 24576,
+        "cta_k_iterations": 5,
+        "arm": "m30_bk32_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016160964709880602,
+        "max_abs": 0.12009811401367188,
+        "max_abs_reference": 44.01470947265625,
+        "max_abs_over_max_abs_reference": 0.0027285904065385636,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 144,
+        "bk": 32,
+        "stages": 3,
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 36864,
+        "cta_k_iterations": 5,
+        "arm": "m30_bk32_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016160964709880602,
+        "max_abs": 0.12009811401367188,
+        "max_abs_reference": 44.01470947265625,
+        "max_abs_over_max_abs_reference": 0.0027285904065385636,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 144,
+        "bk": 64,
+        "stages": 2,
+        "cta_tile": [
+          64,
+          128,
+          64
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 3,
+        "arm": "m30_bk64_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016160964709880602,
+        "max_abs": 0.12009811401367188,
+        "max_abs_reference": 44.01470947265625,
+        "max_abs_over_max_abs_reference": 0.0027285904065385636,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 33,
+        "N": 65,
+        "K": 144,
+        "bk": 64,
+        "stages": 3,
+        "cta_tile": [
+          64,
+          128,
+          64
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 73728,
+        "cta_k_iterations": 3,
+        "arm": "m30_bk64_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016160964709880602,
+        "max_abs": 0.12009811401367188,
+        "max_abs_reference": 44.01470947265625,
+        "max_abs_over_max_abs_reference": 0.0027285904065385636,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 208,
+        "bk": 32,
+        "stages": 2,
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 24576,
+        "cta_k_iterations": 7,
+        "arm": "m30_bk32_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016563720058351782,
+        "max_abs": 0.12478256225585938,
+        "max_abs_reference": 58.056427001953125,
+        "max_abs_over_max_abs_reference": 0.0021493324460298163,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 208,
+        "bk": 32,
+        "stages": 3,
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 36864,
+        "cta_k_iterations": 7,
+        "arm": "m30_bk32_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016563720058351782,
+        "max_abs": 0.12478256225585938,
+        "max_abs_reference": 58.056427001953125,
+        "max_abs_over_max_abs_reference": 0.0021493324460298163,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 208,
+        "bk": 64,
+        "stages": 2,
+        "cta_tile": [
+          64,
+          128,
+          64
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 4,
+        "arm": "m30_bk64_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016563720058351782,
+        "max_abs": 0.12478256225585938,
+        "max_abs_reference": 58.056427001953125,
+        "max_abs_over_max_abs_reference": 0.0021493324460298163,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 208,
+        "bk": 64,
+        "stages": 3,
+        "cta_tile": [
+          64,
+          128,
+          64
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 73728,
+        "cta_k_iterations": 4,
+        "arm": "m30_bk64_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016563720058351782,
+        "max_abs": 0.12478256225585938,
+        "max_abs_reference": 58.056427001953125,
+        "max_abs_over_max_abs_reference": 0.0021493324460298163,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "bk": 32,
+        "stages": 2,
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 24576,
+        "cta_k_iterations": 8,
+        "arm": "m30_bk32_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016510536764003678,
+        "max_abs": 0.14977264404296875,
+        "max_abs_reference": 67.04408264160156,
+        "max_abs_over_max_abs_reference": 0.002233942775287274,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "bk": 32,
+        "stages": 3,
+        "cta_tile": [
+          64,
+          128,
+          32
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 36864,
+        "cta_k_iterations": 8,
+        "arm": "m30_bk32_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016510536764003678,
+        "max_abs": 0.14977264404296875,
+        "max_abs_reference": 67.04408264160156,
+        "max_abs_over_max_abs_reference": 0.002233942775287274,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "bk": 64,
+        "stages": 2,
+        "cta_tile": [
+          64,
+          128,
+          64
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 49152,
+        "cta_k_iterations": 4,
+        "arm": "m30_bk64_s2",
+        "matched_m29_arm": "m29_g2_mode1_s2",
+        "finite": true,
+        "relative_rms": 0.0016510536764003678,
+        "max_abs": 0.14977264404296875,
+        "max_abs_reference": 67.04408264160156,
+        "max_abs_over_max_abs_reference": 0.002233942775287274,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "bk": 64,
+        "stages": 3,
+        "cta_tile": [
+          64,
+          128,
+          64
+        ],
+        "group": 2,
+        "mode": 1,
+        "shared_layout": "swizzle",
+        "dynamic_shared_bytes": 73728,
+        "cta_k_iterations": 4,
+        "arm": "m30_bk64_s3",
+        "matched_m29_arm": "m29_g2_mode1_s3",
+        "finite": true,
+        "relative_rms": 0.0016510536764003678,
+        "max_abs": 0.14977264404296875,
+        "max_abs_reference": 67.04408264160156,
+        "max_abs_over_max_abs_reference": 0.002233942775287274,
+        "passed": true,
+        "fp32_passed": true,
+        "bitwise_equal_to_matched_m29": true
+      }
+    ],
+    "bitwise_mismatches": [],
+    "status": "passed"
+  },
+  "benchmark": {
+    "timing_mode": "CUDA Graph only",
+    "timing_unit": "us/call",
+    "graph_replays_per_sample": 1,
+    "calls_per_graph_replay": 5,
+    "warmup_calls_per_arm_before_capture": 3,
+    "graph_warmup_replays_per_arm": 3,
+    "rounds": 3,
+    "samples_per_arm_per_round": 3,
+    "arm_order": "forward, reverse, forward",
+    "arms_per_shape": 8,
+    "candidate_comparison": "4 M30 BK32/64 stage2/3 configs; M29 group2/mode1 stage2/3; Torch strict/default BF16 reduction",
+    "cases": [
+      {
+        "M": 1024,
+        "N": 1024,
+        "K": 1024,
+        "rounds": 3,
+        "samples_per_arm_per_round": 3,
+        "calls_per_graph_replay": 5,
+        "warmup_calls_per_arm_before_capture": 3,
+        "graph_warmup_replays_per_arm": 3,
+        "arm_order_by_round": [
+          [
+            "m30_bk32_s2",
+            "m30_bk32_s3",
+            "m30_bk64_s2",
+            "m30_bk64_s3",
+            "m29_g2_mode1_s2",
+            "m29_g2_mode1_s3",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ],
+          [
+            "torch_default_bf16_reduction",
+            "torch_strict_bf16_reduction",
+            "m29_g2_mode1_s3",
+            "m29_g2_mode1_s2",
+            "m30_bk64_s3",
+            "m30_bk64_s2",
+            "m30_bk32_s3",
+            "m30_bk32_s2"
+          ],
+          [
+            "m30_bk32_s2",
+            "m30_bk32_s3",
+            "m30_bk64_s2",
+            "m30_bk64_s3",
+            "m29_g2_mode1_s2",
+            "m29_g2_mode1_s3",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ]
+        ],
+        "validation": {
+          "before_graph_timing": {
+            "m30_bk32_s2": {
+              "finite": true,
+              "relative_rms": 0.0016624662243309837,
+              "max_abs": 0.4939117431640625,
+              "max_abs_reference": 170.1085662841797,
+              "max_abs_over_max_abs_reference": 0.002903508941101439,
+              "passed": true
+            },
+            "m30_bk32_s3": {
+              "finite": true,
+              "relative_rms": 0.0016624662243309837,
+              "max_abs": 0.4939117431640625,
+              "max_abs_reference": 170.1085662841797,
+              "max_abs_over_max_abs_reference": 0.002903508941101439,
+              "passed": true
+            },
+            "m30_bk64_s2": {
+              "finite": true,
+              "relative_rms": 0.0016624662243309837,
+              "max_abs": 0.4939117431640625,
+              "max_abs_reference": 170.1085662841797,
+              "max_abs_over_max_abs_reference": 0.002903508941101439,
+              "passed": true
+            },
+            "m30_bk64_s3": {
+              "finite": true,
+              "relative_rms": 0.0016624662243309837,
+              "max_abs": 0.4939117431640625,
+              "max_abs_reference": 170.1085662841797,
+              "max_abs_over_max_abs_reference": 0.002903508941101439,
+              "passed": true
+            },
+            "m29_g2_mode1_s2": {
+              "finite": true,
+              "relative_rms": 0.0016624662243309837,
+              "max_abs": 0.4939117431640625,
+              "max_abs_reference": 170.1085662841797,
+              "max_abs_over_max_abs_reference": 0.002903508941101439,
+              "passed": true
+            },
+            "m29_g2_mode1_s3": {
+              "finite": true,
+              "relative_rms": 0.0016624662243309837,
+              "max_abs": 0.4939117431640625,
+              "max_abs_reference": 170.1085662841797,
+              "max_abs_over_max_abs_reference": 0.002903508941101439,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016624658748388124,
+              "max_abs": 0.4939117431640625,
+              "max_abs_reference": 170.1085662841797,
+              "max_abs_over_max_abs_reference": 0.002903508941101439,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0024170435876048743,
+              "max_abs": 0.77703857421875,
+              "max_abs_reference": 170.1085662841797,
+              "max_abs_over_max_abs_reference": 0.004567897967705202,
+              "passed": true
+            }
+          },
+          "after_graph_timing": {
+            "m30_bk32_s2": {
+              "finite": true,
+              "relative_rms": 0.0016624662243309837,
+              "max_abs": 0.4939117431640625,
+              "max_abs_reference": 170.1085662841797,
+              "max_abs_over_max_abs_reference": 0.002903508941101439,
+              "passed": true
+            },
+            "m30_bk32_s3": {
+              "finite": true,
+              "relative_rms": 0.0016624662243309837,
+              "max_abs": 0.4939117431640625,
+              "max_abs_reference": 170.1085662841797,
+              "max_abs_over_max_abs_reference": 0.002903508941101439,
+              "passed": true
+            },
+            "m30_bk64_s2": {
+              "finite": true,
+              "relative_rms": 0.0016624662243309837,
+              "max_abs": 0.4939117431640625,
+              "max_abs_reference": 170.1085662841797,
+              "max_abs_over_max_abs_reference": 0.002903508941101439,
+              "passed": true
+            },
+            "m30_bk64_s3": {
+              "finite": true,
+              "relative_rms": 0.0016624662243309837,
+              "max_abs": 0.4939117431640625,
+              "max_abs_reference": 170.1085662841797,
+              "max_abs_over_max_abs_reference": 0.002903508941101439,
+              "passed": true
+            },
+            "m29_g2_mode1_s2": {
+              "finite": true,
+              "relative_rms": 0.0016624662243309837,
+              "max_abs": 0.4939117431640625,
+              "max_abs_reference": 170.1085662841797,
+              "max_abs_over_max_abs_reference": 0.002903508941101439,
+              "passed": true
+            },
+            "m29_g2_mode1_s3": {
+              "finite": true,
+              "relative_rms": 0.0016624662243309837,
+              "max_abs": 0.4939117431640625,
+              "max_abs_reference": 170.1085662841797,
+              "max_abs_over_max_abs_reference": 0.002903508941101439,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016624658748388124,
+              "max_abs": 0.4939117431640625,
+              "max_abs_reference": 170.1085662841797,
+              "max_abs_over_max_abs_reference": 0.002903508941101439,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0024170435876048743,
+              "max_abs": 0.77703857421875,
+              "max_abs_reference": 170.1085662841797,
+              "max_abs_over_max_abs_reference": 0.004567897967705202,
+              "passed": true
+            }
+          }
+        },
+        "arms": {
+          "m30_bk32_s2": {
+            "kind": "m30_kdepth_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bk": 32,
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 24576,
+            "cta_k_iterations": 32,
+            "warps": 4
+          },
+          "m30_bk32_s3": {
+            "kind": "m30_kdepth_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bk": 32,
+            "stages": 3,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 36864,
+            "cta_k_iterations": 32,
+            "warps": 4
+          },
+          "m30_bk64_s2": {
+            "kind": "m30_kdepth_mma",
+            "cta_tile": [
+              64,
+              128,
+              64
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bk": 64,
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 49152,
+            "cta_k_iterations": 16,
+            "warps": 4
+          },
+          "m30_bk64_s3": {
+            "kind": "m30_kdepth_mma",
+            "cta_tile": [
+              64,
+              128,
+              64
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bk": 64,
+            "stages": 3,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 73728,
+            "cta_k_iterations": 16,
+            "warps": 4
+          },
+          "m29_g2_mode1_s2": {
+            "kind": "m29_register_pipeline_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "cta_k_iterations": 32,
+            "warps": 4
+          },
+          "m29_g2_mode1_s3": {
+            "kind": "m29_register_pipeline_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "stages": 3,
+            "shared_layout": "swizzle",
+            "cta_k_iterations": 32,
+            "warps": 4
+          },
+          "torch_strict_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": false,
+            "flag_set_explicitly_during_call_capture_and_replay": true,
+            "flag_restored_after_call": true
+          },
+          "torch_default_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": true,
+            "flag_set_explicitly_during_call_capture_and_replay": true,
+            "flag_restored_after_call": true
+          }
+        },
+        "graph": {
+          "samples_us_per_call": {
+            "m30_bk32_s2": [
+              [
+                100.55680274963379,
+                98.71360063552856,
+                98.30399751663208
+              ],
+              [
+                98.9184021949768,
+                98.50879907608032,
+                98.68800044059753
+              ],
+              [
+                98.50879907608032,
+                98.50879907608032,
+                99.12319779396057
+              ]
+            ],
+            "m30_bk32_s3": [
+              [
+                110.59199571609497,
+                111.61600351333618,
+                108.33920240402222
+              ],
+              [
+                108.13440084457397,
+                108.54400396347046,
+                108.7488055229187
+              ],
+              [
+                108.54400396347046,
+                107.92959928512573,
+                107.92959928512573
+              ]
+            ],
+            "m30_bk64_s2": [
+              [
+                100.1471996307373,
+                99.94239807128906,
+                99.481600522995
+              ],
+              [
+                99.91040229797363,
+                99.32799935340881,
+                99.94239807128906
+              ],
+              [
+                99.94239807128906,
+                100.51840543746948,
+                99.94239807128906
+              ]
+            ],
+            "m30_bk64_s3": [
+              [
+                136.60160303115845,
+                136.60160303115845,
+                136.60160303115845
+              ],
+              [
+                136.8064045906067,
+                136.8064045906067,
+                136.8064045906067
+              ],
+              [
+                136.19199991226196,
+                136.19199991226196,
+                135.98719835281372
+              ]
+            ],
+            "m29_g2_mode1_s2": [
+              [
+                98.71360063552856,
+                98.30399751663208,
+                100.76160430908203
+              ],
+              [
+                98.50879907608032,
+                98.30399751663208,
+                98.71360063552856
+              ],
+              [
+                98.9184021949768,
+                98.50879907608032,
+                98.50879907608032
+              ]
+            ],
+            "m29_g2_mode1_s3": [
+              [
+                108.30719470977783,
+                108.33920240402222,
+                107.72479772567749
+              ],
+              [
+                109.36319828033447,
+                108.13440084457397,
+                108.54400396347046
+              ],
+              [
+                108.51199626922607,
+                108.30080509185791,
+                108.33920240402222
+              ]
+            ],
+            "torch_strict_bf16_reduction": [
+              [
+                143.5647964477539,
+                140.69759845733643,
+                140.49279689788818
+              ],
+              [
+                140.90240001678467,
+                140.69759845733643,
+                140.90240001678467
+              ],
+              [
+                145.3760027885437,
+                141.28639698028564,
+                140.90240001678467
+              ]
+            ],
+            "torch_default_bf16_reduction": [
+              [
+                75.15519857406616,
+                73.7663984298706,
+                74.5024025440216
+              ],
+              [
+                74.34239983558655,
+                74.29760098457336,
+                75.16160011291504
+              ],
+              [
+                74.9567985534668,
+                74.1375982761383,
+                73.9520013332367
+              ]
+            ]
+          },
+          "median_us_per_call": {
+            "m30_bk32_s2": 98.68800044059753,
+            "m30_bk32_s3": 108.54400396347046,
+            "m30_bk64_s2": 99.94239807128906,
+            "m30_bk64_s3": 136.60160303115845,
+            "m29_g2_mode1_s2": 98.50879907608032,
+            "m29_g2_mode1_s3": 108.33920240402222,
+            "torch_strict_bf16_reduction": 140.90240001678467,
+            "torch_default_bf16_reduction": 74.34239983558655
+          }
+        }
+      },
+      {
+        "M": 2048,
+        "N": 2048,
+        "K": 2048,
+        "rounds": 3,
+        "samples_per_arm_per_round": 3,
+        "calls_per_graph_replay": 5,
+        "warmup_calls_per_arm_before_capture": 3,
+        "graph_warmup_replays_per_arm": 3,
+        "arm_order_by_round": [
+          [
+            "m30_bk32_s2",
+            "m30_bk32_s3",
+            "m30_bk64_s2",
+            "m30_bk64_s3",
+            "m29_g2_mode1_s2",
+            "m29_g2_mode1_s3",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ],
+          [
+            "torch_default_bf16_reduction",
+            "torch_strict_bf16_reduction",
+            "m29_g2_mode1_s3",
+            "m29_g2_mode1_s2",
+            "m30_bk64_s3",
+            "m30_bk64_s2",
+            "m30_bk32_s3",
+            "m30_bk32_s2"
+          ],
+          [
+            "m30_bk32_s2",
+            "m30_bk32_s3",
+            "m30_bk64_s2",
+            "m30_bk64_s3",
+            "m29_g2_mode1_s2",
+            "m29_g2_mode1_s3",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ]
+        ],
+        "validation": {
+          "before_graph_timing": {
+            "m30_bk32_s2": {
+              "finite": true,
+              "relative_rms": 0.0016552071443301202,
+              "max_abs": 0.5001983642578125,
+              "max_abs_reference": 236.89649963378906,
+              "max_abs_over_max_abs_reference": 0.002111463719519088,
+              "passed": true
+            },
+            "m30_bk32_s3": {
+              "finite": true,
+              "relative_rms": 0.0016552071443301202,
+              "max_abs": 0.5001983642578125,
+              "max_abs_reference": 236.89649963378906,
+              "max_abs_over_max_abs_reference": 0.002111463719519088,
+              "passed": true
+            },
+            "m30_bk64_s2": {
+              "finite": true,
+              "relative_rms": 0.0016552071443301202,
+              "max_abs": 0.5001983642578125,
+              "max_abs_reference": 236.89649963378906,
+              "max_abs_over_max_abs_reference": 0.002111463719519088,
+              "passed": true
+            },
+            "m30_bk64_s3": {
+              "finite": true,
+              "relative_rms": 0.0016552071443301202,
+              "max_abs": 0.5001983642578125,
+              "max_abs_reference": 236.89649963378906,
+              "max_abs_over_max_abs_reference": 0.002111463719519088,
+              "passed": true
+            },
+            "m29_g2_mode1_s2": {
+              "finite": true,
+              "relative_rms": 0.0016552071443301202,
+              "max_abs": 0.5001983642578125,
+              "max_abs_reference": 236.89649963378906,
+              "max_abs_over_max_abs_reference": 0.002111463719519088,
+              "passed": true
+            },
+            "m29_g2_mode1_s3": {
+              "finite": true,
+              "relative_rms": 0.0016552071443301202,
+              "max_abs": 0.5001983642578125,
+              "max_abs_reference": 236.89649963378906,
+              "max_abs_over_max_abs_reference": 0.002111463719519088,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016552071443301202,
+              "max_abs": 0.5001983642578125,
+              "max_abs_reference": 236.89649963378906,
+              "max_abs_over_max_abs_reference": 0.002111463719519088,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016552071443301202,
+              "max_abs": 0.5001983642578125,
+              "max_abs_reference": 236.89649963378906,
+              "max_abs_over_max_abs_reference": 0.002111463719519088,
+              "passed": true
+            }
+          },
+          "after_graph_timing": {
+            "m30_bk32_s2": {
+              "finite": true,
+              "relative_rms": 0.0016552071443301202,
+              "max_abs": 0.5001983642578125,
+              "max_abs_reference": 236.89649963378906,
+              "max_abs_over_max_abs_reference": 0.002111463719519088,
+              "passed": true
+            },
+            "m30_bk32_s3": {
+              "finite": true,
+              "relative_rms": 0.0016552071443301202,
+              "max_abs": 0.5001983642578125,
+              "max_abs_reference": 236.89649963378906,
+              "max_abs_over_max_abs_reference": 0.002111463719519088,
+              "passed": true
+            },
+            "m30_bk64_s2": {
+              "finite": true,
+              "relative_rms": 0.0016552071443301202,
+              "max_abs": 0.5001983642578125,
+              "max_abs_reference": 236.89649963378906,
+              "max_abs_over_max_abs_reference": 0.002111463719519088,
+              "passed": true
+            },
+            "m30_bk64_s3": {
+              "finite": true,
+              "relative_rms": 0.0016552071443301202,
+              "max_abs": 0.5001983642578125,
+              "max_abs_reference": 236.89649963378906,
+              "max_abs_over_max_abs_reference": 0.002111463719519088,
+              "passed": true
+            },
+            "m29_g2_mode1_s2": {
+              "finite": true,
+              "relative_rms": 0.0016552071443301202,
+              "max_abs": 0.5001983642578125,
+              "max_abs_reference": 236.89649963378906,
+              "max_abs_over_max_abs_reference": 0.002111463719519088,
+              "passed": true
+            },
+            "m29_g2_mode1_s3": {
+              "finite": true,
+              "relative_rms": 0.0016552071443301202,
+              "max_abs": 0.5001983642578125,
+              "max_abs_reference": 236.89649963378906,
+              "max_abs_over_max_abs_reference": 0.002111463719519088,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016552071443301202,
+              "max_abs": 0.5001983642578125,
+              "max_abs_reference": 236.89649963378906,
+              "max_abs_over_max_abs_reference": 0.002111463719519088,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016552071443301202,
+              "max_abs": 0.5001983642578125,
+              "max_abs_reference": 236.89649963378906,
+              "max_abs_over_max_abs_reference": 0.002111463719519088,
+              "passed": true
+            }
+          }
+        },
+        "arms": {
+          "m30_bk32_s2": {
+            "kind": "m30_kdepth_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bk": 32,
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 24576,
+            "cta_k_iterations": 64,
+            "warps": 4
+          },
+          "m30_bk32_s3": {
+            "kind": "m30_kdepth_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bk": 32,
+            "stages": 3,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 36864,
+            "cta_k_iterations": 64,
+            "warps": 4
+          },
+          "m30_bk64_s2": {
+            "kind": "m30_kdepth_mma",
+            "cta_tile": [
+              64,
+              128,
+              64
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bk": 64,
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 49152,
+            "cta_k_iterations": 32,
+            "warps": 4
+          },
+          "m30_bk64_s3": {
+            "kind": "m30_kdepth_mma",
+            "cta_tile": [
+              64,
+              128,
+              64
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bk": 64,
+            "stages": 3,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 73728,
+            "cta_k_iterations": 32,
+            "warps": 4
+          },
+          "m29_g2_mode1_s2": {
+            "kind": "m29_register_pipeline_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "cta_k_iterations": 64,
+            "warps": 4
+          },
+          "m29_g2_mode1_s3": {
+            "kind": "m29_register_pipeline_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "stages": 3,
+            "shared_layout": "swizzle",
+            "cta_k_iterations": 64,
+            "warps": 4
+          },
+          "torch_strict_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": false,
+            "flag_set_explicitly_during_call_capture_and_replay": true,
+            "flag_restored_after_call": true
+          },
+          "torch_default_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": true,
+            "flag_set_explicitly_during_call_capture_and_replay": true,
+            "flag_restored_after_call": true
+          }
+        },
+        "graph": {
+          "samples_us_per_call": {
+            "m30_bk32_s2": [
+              [
+                644.0959930419922,
+                641.0240173339844,
+                639.3856048583984
+              ],
+              [
+                627.2704124450684,
+                626.0735988616943,
+                626.8928050994873
+              ],
+              [
+                627.0912170410156,
+                626.4832019805908,
+                627.0976066589355
+              ]
+            ],
+            "m30_bk32_s3": [
+              [
+                692.633581161499,
+                693.8623905181885,
+                693.6639785766602
+              ],
+              [
+                695.7056045532227,
+                696.9024181365967,
+                692.8383827209473
+              ],
+              [
+                692.4287796020508,
+                694.0671920776367,
+                693.8623905181885
+              ]
+            ],
+            "m30_bk64_s2": [
+              [
+                629.3504238128662,
+                630.3743839263916,
+                639.7952079772949
+              ],
+              [
+                632.6272010803223,
+                630.3743839263916,
+                631.1679840087891
+              ],
+              [
+                631.8079948425293,
+                633.0368041992188,
+                633.0368041992188
+              ]
+            ],
+            "m30_bk64_s3": [
+              [
+                963.5392189025879,
+                964.4031524658203,
+                964.7871971130371
+              ],
+              [
+                846.2335586547852,
+                845.4143524169922,
+                880.3775787353516
+              ],
+              [
+                913.203239440918,
+                975.2575874328613,
+                975.2575874328613
+              ]
+            ],
+            "m29_g2_mode1_s2": [
+              [
+                644.5055961608887,
+                640.1855945587158,
+                641.0240173339844
+              ],
+              [
+                617.8815841674805,
+                616.2432193756104,
+                615.8336162567139
+              ],
+              [
+                645.7344055175781,
+                644.7103977203369,
+                647.3663806915283
+              ]
+            ],
+            "m29_g2_mode1_s3": [
+              [
+                693.2479858398438,
+                694.8863983154297,
+                692.8383827209473
+              ],
+              [
+                688.102388381958,
+                688.7423992156982,
+                689.1520023345947
+              ],
+              [
+                681.1264038085938,
+                677.4784088134766,
+                676.8640041351318
+              ]
+            ],
+            "torch_strict_bf16_reduction": [
+              [
+                544.5631980895996,
+                534.1184139251709,
+                533.5040092468262
+              ],
+              [
+                534.9247932434082,
+                522.2400188446045,
+                499.0975856781006
+              ],
+              [
+                511.5903854370117,
+                507.69920349121094,
+                508.28800201416016
+              ]
+            ],
+            "torch_default_bf16_reduction": [
+              [
+                535.9615802764893,
+                534.3232154846191,
+                533.4527969360352
+              ],
+              [
+                533.7088108062744,
+                533.7088108062744,
+                533.5040092468262
+              ],
+              [
+                534.5024108886719,
+                558.6944103240967,
+                558.080005645752
+              ]
+            ]
+          },
+          "median_us_per_call": {
+            "m30_bk32_s2": 627.0976066589355,
+            "m30_bk32_s3": 693.8623905181885,
+            "m30_bk64_s2": 631.8079948425293,
+            "m30_bk64_s3": 963.5392189025879,
+            "m29_g2_mode1_s2": 641.0240173339844,
+            "m29_g2_mode1_s3": 688.7423992156982,
+            "torch_strict_bf16_reduction": 522.2400188446045,
+            "torch_default_bf16_reduction": 534.3232154846191
+          }
+        }
+      },
+      {
+        "M": 4096,
+        "N": 4096,
+        "K": 4096,
+        "rounds": 3,
+        "samples_per_arm_per_round": 3,
+        "calls_per_graph_replay": 5,
+        "warmup_calls_per_arm_before_capture": 3,
+        "graph_warmup_replays_per_arm": 3,
+        "arm_order_by_round": [
+          [
+            "m30_bk32_s2",
+            "m30_bk32_s3",
+            "m30_bk64_s2",
+            "m30_bk64_s3",
+            "m29_g2_mode1_s2",
+            "m29_g2_mode1_s3",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ],
+          [
+            "torch_default_bf16_reduction",
+            "torch_strict_bf16_reduction",
+            "m29_g2_mode1_s3",
+            "m29_g2_mode1_s2",
+            "m30_bk64_s3",
+            "m30_bk64_s2",
+            "m30_bk32_s3",
+            "m30_bk32_s2"
+          ],
+          [
+            "m30_bk32_s2",
+            "m30_bk32_s3",
+            "m30_bk64_s2",
+            "m30_bk64_s3",
+            "m29_g2_mode1_s2",
+            "m29_g2_mode1_s3",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ]
+        ],
+        "validation": {
+          "before_graph_timing": {
+            "m30_bk32_s2": {
+              "finite": true,
+              "relative_rms": 0.0016618296609641524,
+              "max_abs": 0.999603271484375,
+              "max_abs_reference": 354.721435546875,
+              "max_abs_over_max_abs_reference": 0.0028179951119764834,
+              "passed": true
+            },
+            "m30_bk32_s3": {
+              "finite": true,
+              "relative_rms": 0.0016618296609641524,
+              "max_abs": 0.999603271484375,
+              "max_abs_reference": 354.721435546875,
+              "max_abs_over_max_abs_reference": 0.0028179951119764834,
+              "passed": true
+            },
+            "m30_bk64_s2": {
+              "finite": true,
+              "relative_rms": 0.0016618296609641524,
+              "max_abs": 0.999603271484375,
+              "max_abs_reference": 354.721435546875,
+              "max_abs_over_max_abs_reference": 0.0028179951119764834,
+              "passed": true
+            },
+            "m30_bk64_s3": {
+              "finite": true,
+              "relative_rms": 0.0016618296609641524,
+              "max_abs": 0.999603271484375,
+              "max_abs_reference": 354.721435546875,
+              "max_abs_over_max_abs_reference": 0.0028179951119764834,
+              "passed": true
+            },
+            "m29_g2_mode1_s2": {
+              "finite": true,
+              "relative_rms": 0.0016618296609641524,
+              "max_abs": 0.999603271484375,
+              "max_abs_reference": 354.721435546875,
+              "max_abs_over_max_abs_reference": 0.0028179951119764834,
+              "passed": true
+            },
+            "m29_g2_mode1_s3": {
+              "finite": true,
+              "relative_rms": 0.0016618296609641524,
+              "max_abs": 0.999603271484375,
+              "max_abs_reference": 354.721435546875,
+              "max_abs_over_max_abs_reference": 0.0028179951119764834,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016618296609641524,
+              "max_abs": 0.999603271484375,
+              "max_abs_reference": 354.721435546875,
+              "max_abs_over_max_abs_reference": 0.0028179951119764834,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016618296609641524,
+              "max_abs": 0.999603271484375,
+              "max_abs_reference": 354.721435546875,
+              "max_abs_over_max_abs_reference": 0.0028179951119764834,
+              "passed": true
+            }
+          },
+          "after_graph_timing": {
+            "m30_bk32_s2": {
+              "finite": true,
+              "relative_rms": 0.0016618296609641524,
+              "max_abs": 0.999603271484375,
+              "max_abs_reference": 354.721435546875,
+              "max_abs_over_max_abs_reference": 0.0028179951119764834,
+              "passed": true
+            },
+            "m30_bk32_s3": {
+              "finite": true,
+              "relative_rms": 0.0016618296609641524,
+              "max_abs": 0.999603271484375,
+              "max_abs_reference": 354.721435546875,
+              "max_abs_over_max_abs_reference": 0.0028179951119764834,
+              "passed": true
+            },
+            "m30_bk64_s2": {
+              "finite": true,
+              "relative_rms": 0.0016618296609641524,
+              "max_abs": 0.999603271484375,
+              "max_abs_reference": 354.721435546875,
+              "max_abs_over_max_abs_reference": 0.0028179951119764834,
+              "passed": true
+            },
+            "m30_bk64_s3": {
+              "finite": true,
+              "relative_rms": 0.0016618296609641524,
+              "max_abs": 0.999603271484375,
+              "max_abs_reference": 354.721435546875,
+              "max_abs_over_max_abs_reference": 0.0028179951119764834,
+              "passed": true
+            },
+            "m29_g2_mode1_s2": {
+              "finite": true,
+              "relative_rms": 0.0016618296609641524,
+              "max_abs": 0.999603271484375,
+              "max_abs_reference": 354.721435546875,
+              "max_abs_over_max_abs_reference": 0.0028179951119764834,
+              "passed": true
+            },
+            "m29_g2_mode1_s3": {
+              "finite": true,
+              "relative_rms": 0.0016618296609641524,
+              "max_abs": 0.999603271484375,
+              "max_abs_reference": 354.721435546875,
+              "max_abs_over_max_abs_reference": 0.0028179951119764834,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016618296609641524,
+              "max_abs": 0.999603271484375,
+              "max_abs_reference": 354.721435546875,
+              "max_abs_over_max_abs_reference": 0.0028179951119764834,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016618296609641524,
+              "max_abs": 0.999603271484375,
+              "max_abs_reference": 354.721435546875,
+              "max_abs_over_max_abs_reference": 0.0028179951119764834,
+              "passed": true
+            }
+          }
+        },
+        "arms": {
+          "m30_bk32_s2": {
+            "kind": "m30_kdepth_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bk": 32,
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 24576,
+            "cta_k_iterations": 128,
+            "warps": 4
+          },
+          "m30_bk32_s3": {
+            "kind": "m30_kdepth_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bk": 32,
+            "stages": 3,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 36864,
+            "cta_k_iterations": 128,
+            "warps": 4
+          },
+          "m30_bk64_s2": {
+            "kind": "m30_kdepth_mma",
+            "cta_tile": [
+              64,
+              128,
+              64
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bk": 64,
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 49152,
+            "cta_k_iterations": 64,
+            "warps": 4
+          },
+          "m30_bk64_s3": {
+            "kind": "m30_kdepth_mma",
+            "cta_tile": [
+              64,
+              128,
+              64
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "bk": 64,
+            "stages": 3,
+            "shared_layout": "swizzle",
+            "dynamic_shared_bytes": 73728,
+            "cta_k_iterations": 64,
+            "warps": 4
+          },
+          "m29_g2_mode1_s2": {
+            "kind": "m29_register_pipeline_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "stages": 2,
+            "shared_layout": "swizzle",
+            "cta_k_iterations": 128,
+            "warps": 4
+          },
+          "m29_g2_mode1_s3": {
+            "kind": "m29_register_pipeline_mma",
+            "cta_tile": [
+              64,
+              128,
+              32
+            ],
+            "group": 2,
+            "mode": 1,
+            "mode_name": "b_prefetch",
+            "stages": 3,
+            "shared_layout": "swizzle",
+            "cta_k_iterations": 128,
+            "warps": 4
+          },
+          "torch_strict_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": false,
+            "flag_set_explicitly_during_call_capture_and_replay": true,
+            "flag_restored_after_call": true
+          },
+          "torch_default_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": true,
+            "flag_set_explicitly_during_call_capture_and_replay": true,
+            "flag_restored_after_call": true
+          }
+        },
+        "graph": {
+          "samples_us_per_call": {
+            "m30_bk32_s2": [
+              [
+                4771.430587768555,
+                5000.806427001953,
+                5166.899108886719
+              ],
+              [
+                5015.961456298828,
+                5266.636657714844,
+                5281.177520751953
+              ],
+              [
+                5283.430480957031,
+                5273.395156860352,
+                5223.628616333008
+              ]
+            ],
+            "m30_bk32_s3": [
+              [
+                5919.334411621094,
+                5770.444869995117,
+                5732.352066040039
+              ],
+              [
+                5638.1439208984375,
+                5711.654281616211,
+                5739.084625244141
+              ],
+              [
+                5986.713409423828,
+                5841.715240478516,
+                5834.342575073242
+              ]
+            ],
+            "m30_bk64_s2": [
+              [
+                5117.132949829102,
+                5054.8736572265625,
+                5017.804718017578
+              ],
+              [
+                4817.510223388672,
+                4972.1343994140625,
+                5014.73274230957
+              ],
+              [
+                5304.729461669922,
+                5307.187271118164,
+                5309.439849853516
+              ]
+            ],
+            "m30_bk64_s3": [
+              [
+                7780.754852294922,
+                7124.582672119141,
+                6931.622314453125
+              ],
+              [
+                8476.255798339844,
+                7312.793731689453,
+                6977.740478515625
+              ],
+              [
+                8138.9373779296875,
+                7294.745635986328,
+                6971.8017578125
+              ]
+            ],
+            "m29_g2_mode1_s2": [
+              [
+                4938.547134399414,
+                5097.062301635742,
+                5189.427185058594
+              ],
+              [
+                4995.072174072266,
+                5318.041610717773,
+                5469.184112548828
+              ],
+              [
+                4932.403182983398,
+                5143.142318725586,
+                5222.195053100586
+              ]
+            ],
+            "m29_g2_mode1_s3": [
+              [
+                5945.344161987305,
+                5870.355224609375,
+                5769.612884521484
+              ],
+              [
+                5331.763076782227,
+                5631.590270996094,
+                5733.158493041992
+              ],
+              [
+                5989.158248901367,
+                5852.979278564453,
+                5759.999847412109
+              ]
+            ],
+            "torch_strict_bf16_reduction": [
+              [
+                4409.958267211914,
+                4138.188934326172,
+                3808.051300048828
+              ],
+              [
+                3645.0302124023438,
+                3644.416046142578,
+                3643.596649169922
+              ],
+              [
+                4488.166427612305,
+                4017.766571044922,
+                3773.8494873046875
+              ]
+            ],
+            "torch_default_bf16_reduction": [
+              [
+                3690.700912475586,
+                3651.7505645751953,
+                3640.1153564453125
+              ],
+              [
+                3649.5361328125,
+                3646.0479736328125,
+                3645.0302124023438
+              ],
+              [
+                3694.3870544433594,
+                3659.1617584228516,
+                3649.9454498291016
+              ]
+            ]
+          },
+          "median_us_per_call": {
+            "m30_bk32_s2": 5223.628616333008,
+            "m30_bk32_s3": 5770.444869995117,
+            "m30_bk64_s2": 5054.8736572265625,
+            "m30_bk64_s3": 7294.745635986328,
+            "m29_g2_mode1_s2": 5143.142318725586,
+            "m29_g2_mode1_s3": 5769.612884521484,
+            "torch_strict_bf16_reduction": 3808.051300048828,
+            "torch_default_bf16_reduction": 3649.9454498291016
+          }
+        }
+      }
+    ],
+    "status": "passed"
+  }
+}

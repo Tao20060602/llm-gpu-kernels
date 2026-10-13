@@ -1,0 +1,14 @@
+{
+  "arm": "m27",
+  "baseline": false,
+  "allow_bf16_reduced_precision_reduction": null,
+  "accumulator": "native_fp32",
+  "profile_only": true,
+  "runs": 4,
+  "profiled_run": 4,
+  "shape": {
+    "M": 4096,
+    "N": 4096,
+    "K": 4096
+  }
+}

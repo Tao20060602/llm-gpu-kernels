@@ -1,0 +1,14 @@
+{
+  "arm": "torch_default",
+  "baseline": true,
+  "allow_bf16_reduced_precision_reduction": true,
+  "accumulator": null,
+  "profile_only": true,
+  "runs": 4,
+  "profiled_run": 4,
+  "shape": {
+    "M": 4096,
+    "N": 4096,
+    "K": 4096
+  }
+}

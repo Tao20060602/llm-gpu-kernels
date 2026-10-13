@@ -32,7 +32,11 @@ named-barrier 分工。80/28 组数值检查通过且与各自匹配旧路径逐
 M29 固定 CTA64×128/BK32，对照串行、B 寄存器双缓冲、A/B 寄存器双缓冲；
 72 项数值检查与匹配 M27 逐位一致。4096³ 单批改善仅 0.35%，未确认稳定收益，
 不替换现有实现。编译资源、SASS 调度与取舍见 [M29 设计](docs/M29_REGISTER_PIPELINE_DESIGN.md)，
-同批数据见 [M29 报告](docs/M29_REGISTER_PIPELINE_REPORT.md)。PyTorch 同场景 NCU 采集脚本已准备，结果待采集。
+同批数据见 [M29 报告](docs/M29_REGISTER_PIPELINE_REPORT.md)。
+PyTorch 同场景 [NCU 采集](docs/M29_BASELINE_NCU_METRICS.md) 已完成：它采用更大输出 tile，
+occupancy 更低但仍更快；原始 CSV/SASS source 表已保存在仓库内。
+后续逐项对照 BK 深度、输出 tile、CTA 遍历顺序和加载缓存策略；
+进度与结果入口见 [大矩阵 GEMM 当前状态](docs/GEMM_CURRENT_STATUS.md)。
 
 W4A16 首版与三批复测的差异、逐 case 回归及限制见
 [M23 W4 复测报告](docs/M23_W4_REPEAT_REPORT.md)和[完整样本/审计汇总](results/m23-w4-repeat-summary.json)：

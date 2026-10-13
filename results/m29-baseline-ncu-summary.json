@@ -1,0 +1,1406 @@
+{
+  "capture": {
+    "capture_id": "m29-baseline-ncu-20261013T074100Z",
+    "capture_directory": "artifacts/m29-baseline-ncu-20261013T074100Z",
+    "timestamp_utc": "2026-10-13T07:41:00Z",
+    "report_extension": ".ncu-repz",
+    "csv_rows": "header, units, one kernel data row per arm",
+    "csv_columns_per_row": 667,
+    "raw_values": "Counter values and unit strings are copied from the NCU raw CSV without rounding or conversion."
+  },
+  "profile_setup": {
+    "source_worker": "scripts/profile_m29_baseline.py",
+    "input_and_output_dtype": "bfloat16",
+    "shape": {
+      "M": 4096,
+      "N": 4096,
+      "K": 4096
+    },
+    "warmup_calls": 3,
+    "profiled_run": 4,
+    "nvtx_range": "profile_gemm",
+    "seed": 429
+  },
+  "arms": {
+    "torch_default": {
+      "worker": {
+        "arm": "torch_default",
+        "baseline": true,
+        "allow_bf16_reduced_precision_reduction": true,
+        "accumulator": null,
+        "profile_only": true,
+        "runs": 4,
+        "profiled_run": 4,
+        "shape": {
+          "M": 4096,
+          "N": 4096,
+          "K": 4096
+        }
+      },
+      "ncu_report": "artifacts/m29-baseline-ncu-20261013T074100Z/torch_default.ncu-repz",
+      "raw_csv": "artifacts/m29-baseline-ncu-20261013T074100Z/torch_default.csv",
+      "csv_layout": {
+        "rows_including_header_and_units": 3,
+        "header_columns": 667,
+        "units_columns": 667,
+        "kernel_data_rows": 1
+      },
+      "raw_fields": {
+        "ID": {
+          "value": "0",
+          "unit": ""
+        },
+        "Process ID": {
+          "value": "68060",
+          "unit": ""
+        },
+        "Process Name": {
+          "value": "python3.12",
+          "unit": ""
+        },
+        "Host Name": {
+          "value": "127.0.0.1",
+          "unit": ""
+        },
+        "Kernel Name": {
+          "value": "ampere_bf16_s16816gemm_bf16_256x128_ldg8_f2f_stages_32x3_tn",
+          "unit": ""
+        },
+        "Context": {
+          "value": "1",
+          "unit": ""
+        },
+        "Stream": {
+          "value": "7",
+          "unit": ""
+        },
+        "Block Size": {
+          "value": "(256, 1, 1)",
+          "unit": ""
+        },
+        "Grid Size": {
+          "value": "(16, 32, 1)",
+          "unit": ""
+        },
+        "Device": {
+          "value": "0",
+          "unit": ""
+        },
+        "CC": {
+          "value": "8.6",
+          "unit": ""
+        },
+        "derived__lts__t_sectors_lookup_miss_data_promoted_pct": {
+          "value": "49.996165",
+          "unit": "%"
+        },
+        "derived__pct_occupancy_per_block_size": {
+          "value": "146.000000",
+          "unit": "%"
+        },
+        "derived__pct_occupancy_per_register_count": {
+          "value": "4112.000000",
+          "unit": "%/register"
+        },
+        "derived__pct_occupancy_per_shared_mem_size": {
+          "value": "3.184000",
+          "unit": "%/Kbyte"
+        },
+        "dram__bytes.avg.per_second": {
+          "value": "8.692862",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.max.per_second": {
+          "value": "8.695672",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.min.per_second": {
+          "value": "8.690592",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.sum.per_second": {
+          "value": "69.542898",
+          "unit": "Gbyte/s"
+        },
+        "gpu__time_duration.sum": {
+          "value": "3.854688",
+          "unit": "ms"
+        },
+        "launch__occupancy_limit_blocks": {
+          "value": "16.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_limit_registers": {
+          "value": "1.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_limit_shared_mem": {
+          "value": "1.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_limit_warps": {
+          "value": "6.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_per_block_size": {
+          "value": "73",
+          "unit": ""
+        },
+        "launch__occupancy_per_register_count": {
+          "value": "2056",
+          "unit": ""
+        },
+        "launch__occupancy_per_shared_mem_size": {
+          "value": "1592",
+          "unit": ""
+        },
+        "launch__registers_per_thread": {
+          "value": "222",
+          "unit": "register/thread"
+        },
+        "launch__registers_per_thread_allocated": {
+          "value": "224.000000",
+          "unit": "register/thread"
+        },
+        "launch__shared_mem_config_size": {
+          "value": "102.400000",
+          "unit": "Kbyte"
+        },
+        "launch__shared_mem_per_block": {
+          "value": "74.752000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_allocated": {
+          "value": "74.752000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_driver": {
+          "value": "1.024000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_dynamic": {
+          "value": "24.576000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_static": {
+          "value": "49.152000",
+          "unit": "Kbyte/block"
+        },
+        "launch__waves_per_multiprocessor": {
+          "value": "10.67",
+          "unit": ""
+        },
+        "lts__cycles_active.avg": {
+          "value": "5573188.312500",
+          "unit": "cycle"
+        },
+        "lts__cycles_active.max": {
+          "value": "5577061.000000",
+          "unit": "cycle"
+        },
+        "lts__cycles_active.min": {
+          "value": "5568775.000000",
+          "unit": "cycle"
+        },
+        "lts__cycles_active.sum": {
+          "value": "178342026.000000",
+          "unit": "cycle"
+        },
+        "lts__cycles_elapsed.avg": {
+          "value": "5635386.000000",
+          "unit": "cycle"
+        },
+        "lts__cycles_elapsed.max": {
+          "value": "5635386.000000",
+          "unit": "cycle"
+        },
+        "lts__cycles_elapsed.min": {
+          "value": "5635386.000000",
+          "unit": "cycle"
+        },
+        "lts__cycles_elapsed.sum": {
+          "value": "180332352.000000",
+          "unit": "cycle"
+        },
+        "lts__t_sector_hit_rate.pct": {
+          "value": "92.853685",
+          "unit": "%"
+        },
+        "lts__t_sectors_lookup_miss.avg": {
+          "value": "229393.593750",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss.max": {
+          "value": "229416.000000",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss.min": {
+          "value": "229376.000000",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss.sum": {
+          "value": "7340595.000000",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss_data_promoted.avg": {
+          "value": "114688.000000",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss_data_promoted.max": {
+          "value": "114688.000000",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss_data_promoted.min": {
+          "value": "114688.000000",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss_data_promoted.sum": {
+          "value": "3670016.000000",
+          "unit": "sector"
+        },
+        "sm__inst_executed_pipe_tensor_op_hmma.avg.pct_of_peak_sustained_active": {
+          "value": "24.467581",
+          "unit": "%"
+        },
+        "sm__inst_executed_pipe_tensor_op_hmma.avg.pct_of_peak_sustained_elapsed": {
+          "value": "23.683670",
+          "unit": "%"
+        },
+        "sm__inst_executed_pipe_tensor_op_imma.avg.pct_of_peak_sustained_active": {
+          "value": "0",
+          "unit": "%"
+        },
+        "sm__inst_executed_pipe_tensor_op_imma.avg.pct_of_peak_sustained_elapsed": {
+          "value": "0",
+          "unit": "%"
+        },
+        "sm__inst_issued.avg.pct_of_peak_sustained_elapsed": {
+          "value": "5.703410",
+          "unit": "%"
+        },
+        "sm__inst_issued.avg.per_cycle_active": {
+          "value": "0.235688",
+          "unit": "inst/cycle"
+        },
+        "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": {
+          "value": "48.935161",
+          "unit": "%"
+        },
+        "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed": {
+          "value": "47.367341",
+          "unit": "%"
+        },
+        "sm__warps_active.avg.pct_of_peak_sustained_active": {
+          "value": "16.663055",
+          "unit": "%"
+        },
+        "sm__warps_active.avg.per_cycle_active": {
+          "value": "7.998266",
+          "unit": "warp"
+        },
+        "smsp__issue_active.avg.pct_of_peak_sustained_active": {
+          "value": "5.892838",
+          "unit": "%"
+        },
+        "smsp__issue_active.avg.per_cycle_active": {
+          "value": "0.06",
+          "unit": ""
+        },
+        "smsp__pcsamp_sample_count": {
+          "value": "267821",
+          "unit": ""
+        },
+        "smsp__pcsamp_warps_issue_stalled_barrier": {
+          "value": "674",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_barrier_not_issued": {
+          "value": "598",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_branch_resolving": {
+          "value": "416",
+          "unit": "branches"
+        },
+        "smsp__pcsamp_warps_issue_stalled_branch_resolving_not_issued": {
+          "value": "363",
+          "unit": "branches"
+        },
+        "smsp__pcsamp_warps_issue_stalled_dispatch_stall": {
+          "value": "10",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_dispatch_stall_not_issued": {
+          "value": "10",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_drain": {
+          "value": "17",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_drain_not_issued": {
+          "value": "16",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_imc_miss": {
+          "value": "46",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_imc_miss_not_issued": {
+          "value": "46",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_lg_throttle": {
+          "value": "270",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_lg_throttle_not_issued": {
+          "value": "251",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_long_scoreboard": {
+          "value": "272",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_long_scoreboard_not_issued": {
+          "value": "262",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_math_pipe_throttle": {
+          "value": "225907",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_math_pipe_throttle_not_issued": {
+          "value": "221997",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_membar": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_membar_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_mio_throttle": {
+          "value": "637",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_mio_throttle_not_issued": {
+          "value": "566",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_misc": {
+          "value": "2",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_misc_not_issued": {
+          "value": "2",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_no_instructions": {
+          "value": "230",
+          "unit": "inst"
+        },
+        "smsp__pcsamp_warps_issue_stalled_no_instructions_not_issued": {
+          "value": "212",
+          "unit": "inst"
+        },
+        "smsp__pcsamp_warps_issue_stalled_not_selected": {
+          "value": "4170",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_not_selected_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_selected": {
+          "value": "7941",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_selected_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_short_scoreboard": {
+          "value": "145",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_short_scoreboard_not_issued": {
+          "value": "123",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_sleeping": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_sleeping_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_tex_throttle": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_tex_throttle_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_wait": {
+          "value": "27084",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_wait_not_issued": {
+          "value": "26333",
+          "unit": "warp"
+        },
+        "smsp__warps_active.avg.peak_sustained": {
+          "value": "12.000000",
+          "unit": "warp"
+        },
+        "smsp__warps_active.avg.per_cycle_active": {
+          "value": "1.999869",
+          "unit": "warp"
+        },
+        "smsp__warps_eligible.avg.per_cycle_active": {
+          "value": "0.090195",
+          "unit": "warp"
+        }
+      },
+      "tracked_raw_csv": "results/provenance/m29-baseline-ncu/torch_default.csv",
+      "tracked_worker_json": "results/provenance/m29-baseline-ncu/torch_default.worker.json"
+    },
+    "torch_strict": {
+      "worker": {
+        "arm": "torch_strict",
+        "baseline": true,
+        "allow_bf16_reduced_precision_reduction": false,
+        "accumulator": null,
+        "profile_only": true,
+        "runs": 4,
+        "profiled_run": 4,
+        "shape": {
+          "M": 4096,
+          "N": 4096,
+          "K": 4096
+        }
+      },
+      "ncu_report": "artifacts/m29-baseline-ncu-20261013T074100Z/torch_strict.ncu-repz",
+      "raw_csv": "artifacts/m29-baseline-ncu-20261013T074100Z/torch_strict.csv",
+      "csv_layout": {
+        "rows_including_header_and_units": 3,
+        "header_columns": 667,
+        "units_columns": 667,
+        "kernel_data_rows": 1
+      },
+      "raw_fields": {
+        "ID": {
+          "value": "0",
+          "unit": ""
+        },
+        "Process ID": {
+          "value": "68117",
+          "unit": ""
+        },
+        "Process Name": {
+          "value": "python3.12",
+          "unit": ""
+        },
+        "Host Name": {
+          "value": "127.0.0.1",
+          "unit": ""
+        },
+        "Kernel Name": {
+          "value": "ampere_bf16_s16816gemm_bf16_256x128_ldg8_f2f_stages_32x3_tn",
+          "unit": ""
+        },
+        "Context": {
+          "value": "1",
+          "unit": ""
+        },
+        "Stream": {
+          "value": "7",
+          "unit": ""
+        },
+        "Block Size": {
+          "value": "(256, 1, 1)",
+          "unit": ""
+        },
+        "Grid Size": {
+          "value": "(16, 32, 1)",
+          "unit": ""
+        },
+        "Device": {
+          "value": "0",
+          "unit": ""
+        },
+        "CC": {
+          "value": "8.6",
+          "unit": ""
+        },
+        "derived__lts__t_sectors_lookup_miss_data_promoted_pct": {
+          "value": "49.963270",
+          "unit": "%"
+        },
+        "derived__pct_occupancy_per_block_size": {
+          "value": "146.000000",
+          "unit": "%"
+        },
+        "derived__pct_occupancy_per_register_count": {
+          "value": "4112.000000",
+          "unit": "%/register"
+        },
+        "derived__pct_occupancy_per_shared_mem_size": {
+          "value": "3.184000",
+          "unit": "%/Kbyte"
+        },
+        "dram__bytes.avg.per_second": {
+          "value": "8.709343",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.max.per_second": {
+          "value": "8.710629",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.min.per_second": {
+          "value": "8.708132",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.sum.per_second": {
+          "value": "69.674745",
+          "unit": "Gbyte/s"
+        },
+        "gpu__time_duration.sum": {
+          "value": "3.845248",
+          "unit": "ms"
+        },
+        "launch__occupancy_limit_blocks": {
+          "value": "16.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_limit_registers": {
+          "value": "1.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_limit_shared_mem": {
+          "value": "1.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_limit_warps": {
+          "value": "6.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_per_block_size": {
+          "value": "73",
+          "unit": ""
+        },
+        "launch__occupancy_per_register_count": {
+          "value": "2056",
+          "unit": ""
+        },
+        "launch__occupancy_per_shared_mem_size": {
+          "value": "1592",
+          "unit": ""
+        },
+        "launch__registers_per_thread": {
+          "value": "222",
+          "unit": "register/thread"
+        },
+        "launch__registers_per_thread_allocated": {
+          "value": "224.000000",
+          "unit": "register/thread"
+        },
+        "launch__shared_mem_config_size": {
+          "value": "102.400000",
+          "unit": "Kbyte"
+        },
+        "launch__shared_mem_per_block": {
+          "value": "74.752000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_allocated": {
+          "value": "74.752000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_driver": {
+          "value": "1.024000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_dynamic": {
+          "value": "24.576000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_static": {
+          "value": "49.152000",
+          "unit": "Kbyte/block"
+        },
+        "launch__waves_per_multiprocessor": {
+          "value": "10.67",
+          "unit": ""
+        },
+        "lts__cycles_active.avg": {
+          "value": "5562386.812500",
+          "unit": "cycle"
+        },
+        "lts__cycles_active.max": {
+          "value": "5566921.000000",
+          "unit": "cycle"
+        },
+        "lts__cycles_active.min": {
+          "value": "5557576.000000",
+          "unit": "cycle"
+        },
+        "lts__cycles_active.sum": {
+          "value": "177996378.000000",
+          "unit": "cycle"
+        },
+        "lts__cycles_elapsed.avg": {
+          "value": "5634196.000000",
+          "unit": "cycle"
+        },
+        "lts__cycles_elapsed.max": {
+          "value": "5634196.000000",
+          "unit": "cycle"
+        },
+        "lts__cycles_elapsed.min": {
+          "value": "5634196.000000",
+          "unit": "cycle"
+        },
+        "lts__cycles_elapsed.sum": {
+          "value": "180294272.000000",
+          "unit": "cycle"
+        },
+        "lts__t_sector_hit_rate.pct": {
+          "value": "92.858372",
+          "unit": "%"
+        },
+        "lts__t_sectors_lookup_miss.avg": {
+          "value": "229544.625000",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss.max": {
+          "value": "229588.000000",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss.min": {
+          "value": "229504.000000",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss.sum": {
+          "value": "7345428.000000",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss_data_promoted.avg": {
+          "value": "114688.000000",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss_data_promoted.max": {
+          "value": "114688.000000",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss_data_promoted.min": {
+          "value": "114688.000000",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss_data_promoted.sum": {
+          "value": "3670016.000000",
+          "unit": "sector"
+        },
+        "sm__inst_executed_pipe_tensor_op_hmma.avg.pct_of_peak_sustained_active": {
+          "value": "24.464937",
+          "unit": "%"
+        },
+        "sm__inst_executed_pipe_tensor_op_hmma.avg.pct_of_peak_sustained_elapsed": {
+          "value": "23.672700",
+          "unit": "%"
+        },
+        "sm__inst_executed_pipe_tensor_op_imma.avg.pct_of_peak_sustained_active": {
+          "value": "0",
+          "unit": "%"
+        },
+        "sm__inst_executed_pipe_tensor_op_imma.avg.pct_of_peak_sustained_elapsed": {
+          "value": "0",
+          "unit": "%"
+        },
+        "sm__inst_issued.avg.pct_of_peak_sustained_elapsed": {
+          "value": "5.700768",
+          "unit": "%"
+        },
+        "sm__inst_issued.avg.per_cycle_active": {
+          "value": "0.235662",
+          "unit": "inst/cycle"
+        },
+        "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": {
+          "value": "48.929875",
+          "unit": "%"
+        },
+        "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed": {
+          "value": "47.345400",
+          "unit": "%"
+        },
+        "sm__warps_active.avg.pct_of_peak_sustained_active": {
+          "value": "16.662960",
+          "unit": "%"
+        },
+        "sm__warps_active.avg.per_cycle_active": {
+          "value": "7.998221",
+          "unit": "warp"
+        },
+        "smsp__issue_active.avg.pct_of_peak_sustained_active": {
+          "value": "5.893025",
+          "unit": "%"
+        },
+        "smsp__issue_active.avg.per_cycle_active": {
+          "value": "0.06",
+          "unit": ""
+        },
+        "smsp__pcsamp_sample_count": {
+          "value": "267831",
+          "unit": ""
+        },
+        "smsp__pcsamp_warps_issue_stalled_barrier": {
+          "value": "662",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_barrier_not_issued": {
+          "value": "605",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_branch_resolving": {
+          "value": "477",
+          "unit": "branches"
+        },
+        "smsp__pcsamp_warps_issue_stalled_branch_resolving_not_issued": {
+          "value": "414",
+          "unit": "branches"
+        },
+        "smsp__pcsamp_warps_issue_stalled_dispatch_stall": {
+          "value": "15",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_dispatch_stall_not_issued": {
+          "value": "14",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_drain": {
+          "value": "14",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_drain_not_issued": {
+          "value": "14",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_imc_miss": {
+          "value": "54",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_imc_miss_not_issued": {
+          "value": "54",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_lg_throttle": {
+          "value": "291",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_lg_throttle_not_issued": {
+          "value": "270",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_long_scoreboard": {
+          "value": "276",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_long_scoreboard_not_issued": {
+          "value": "269",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_math_pipe_throttle": {
+          "value": "225644",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_math_pipe_throttle_not_issued": {
+          "value": "221819",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_membar": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_membar_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_mio_throttle": {
+          "value": "597",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_mio_throttle_not_issued": {
+          "value": "537",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_misc": {
+          "value": "2",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_misc_not_issued": {
+          "value": "2",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_no_instructions": {
+          "value": "232",
+          "unit": "inst"
+        },
+        "smsp__pcsamp_warps_issue_stalled_no_instructions_not_issued": {
+          "value": "214",
+          "unit": "inst"
+        },
+        "smsp__pcsamp_warps_issue_stalled_not_selected": {
+          "value": "4192",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_not_selected_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_selected": {
+          "value": "7870",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_selected_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_short_scoreboard": {
+          "value": "167",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_short_scoreboard_not_issued": {
+          "value": "142",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_sleeping": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_sleeping_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_tex_throttle": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_tex_throttle_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_wait": {
+          "value": "27338",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_wait_not_issued": {
+          "value": "26623",
+          "unit": "warp"
+        },
+        "smsp__warps_active.avg.peak_sustained": {
+          "value": "12.000000",
+          "unit": "warp"
+        },
+        "smsp__warps_active.avg.per_cycle_active": {
+          "value": "1.999870",
+          "unit": "warp"
+        },
+        "smsp__warps_eligible.avg.per_cycle_active": {
+          "value": "0.090199",
+          "unit": "warp"
+        }
+      },
+      "tracked_raw_csv": "results/provenance/m29-baseline-ncu/torch_strict.csv",
+      "tracked_worker_json": "results/provenance/m29-baseline-ncu/torch_strict.worker.json"
+    },
+    "m27": {
+      "worker": {
+        "arm": "m27",
+        "baseline": false,
+        "allow_bf16_reduced_precision_reduction": null,
+        "accumulator": "native_fp32",
+        "profile_only": true,
+        "runs": 4,
+        "profiled_run": 4,
+        "shape": {
+          "M": 4096,
+          "N": 4096,
+          "K": 4096
+        }
+      },
+      "ncu_report": "artifacts/m29-baseline-ncu-20261013T074100Z/m27.ncu-repz",
+      "raw_csv": "artifacts/m29-baseline-ncu-20261013T074100Z/m27.csv",
+      "csv_layout": {
+        "rows_including_header_and_units": 3,
+        "header_columns": 667,
+        "units_columns": 667,
+        "kernel_data_rows": 1
+      },
+      "raw_fields": {
+        "ID": {
+          "value": "0",
+          "unit": ""
+        },
+        "Process ID": {
+          "value": "68174",
+          "unit": ""
+        },
+        "Process Name": {
+          "value": "python3.12",
+          "unit": ""
+        },
+        "Host Name": {
+          "value": "127.0.0.1",
+          "unit": ""
+        },
+        "Kernel Name": {
+          "value": "void <unnamed>::scheduled_mma<2, 2, 1>(const __nv_bfloat16 *, const __nv_bfloat16 *, __nv_bfloat16 *, int, int, int)",
+          "unit": ""
+        },
+        "Context": {
+          "value": "1",
+          "unit": ""
+        },
+        "Stream": {
+          "value": "7",
+          "unit": ""
+        },
+        "Block Size": {
+          "value": "(128, 1, 1)",
+          "unit": ""
+        },
+        "Grid Size": {
+          "value": "(64, 32, 1)",
+          "unit": ""
+        },
+        "Device": {
+          "value": "0",
+          "unit": ""
+        },
+        "CC": {
+          "value": "8.6",
+          "unit": ""
+        },
+        "derived__lts__t_sectors_lookup_miss_data_promoted_pct": {
+          "value": "0",
+          "unit": "%"
+        },
+        "derived__pct_occupancy_per_block_size": {
+          "value": "818.000000",
+          "unit": "%"
+        },
+        "derived__pct_occupancy_per_register_count": {
+          "value": "6665.000000",
+          "unit": "%/register"
+        },
+        "derived__pct_occupancy_per_shared_mem_size": {
+          "value": "2.563000",
+          "unit": "%/Kbyte"
+        },
+        "dram__bytes.avg.per_second": {
+          "value": "28.490561",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.max.per_second": {
+          "value": "28.493273",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.min.per_second": {
+          "value": "28.488795",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.sum.per_second": {
+          "value": "227.924488",
+          "unit": "Gbyte/s"
+        },
+        "gpu__time_duration.sum": {
+          "value": "5.002208",
+          "unit": "ms"
+        },
+        "launch__occupancy_limit_blocks": {
+          "value": "16.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_limit_registers": {
+          "value": "4.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_limit_shared_mem": {
+          "value": "4.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_limit_warps": {
+          "value": "12.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_per_block_size": {
+          "value": "398",
+          "unit": ""
+        },
+        "launch__occupancy_per_register_count": {
+          "value": "3248",
+          "unit": ""
+        },
+        "launch__occupancy_per_shared_mem_size": {
+          "value": "1248",
+          "unit": ""
+        },
+        "launch__registers_per_thread": {
+          "value": "128",
+          "unit": "register/thread"
+        },
+        "launch__registers_per_thread_allocated": {
+          "value": "128.000000",
+          "unit": "register/thread"
+        },
+        "launch__shared_mem_config_size": {
+          "value": "102.400000",
+          "unit": "Kbyte"
+        },
+        "launch__shared_mem_per_block": {
+          "value": "25.600000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_allocated": {
+          "value": "25.600000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_driver": {
+          "value": "1.024000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_dynamic": {
+          "value": "24.576000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_static": {
+          "value": "0",
+          "unit": "byte/block"
+        },
+        "launch__waves_per_multiprocessor": {
+          "value": "10.67",
+          "unit": ""
+        },
+        "lts__cycles_active.avg": {
+          "value": "6181370.031250",
+          "unit": "cycle"
+        },
+        "lts__cycles_active.max": {
+          "value": "6183469.000000",
+          "unit": "cycle"
+        },
+        "lts__cycles_active.min": {
+          "value": "6180628.000000",
+          "unit": "cycle"
+        },
+        "lts__cycles_active.sum": {
+          "value": "197803841.000000",
+          "unit": "cycle"
+        },
+        "lts__cycles_elapsed.avg": {
+          "value": "6188085.000000",
+          "unit": "cycle"
+        },
+        "lts__cycles_elapsed.max": {
+          "value": "6188085.000000",
+          "unit": "cycle"
+        },
+        "lts__cycles_elapsed.min": {
+          "value": "6188085.000000",
+          "unit": "cycle"
+        },
+        "lts__cycles_elapsed.sum": {
+          "value": "198018720.000000",
+          "unit": "cycle"
+        },
+        "lts__t_sector_hit_rate.pct": {
+          "value": "66.936481",
+          "unit": "%"
+        },
+        "lts__t_sectors_lookup_miss.avg": {
+          "value": "1079317.156250",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss.max": {
+          "value": "1079384.000000",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss.min": {
+          "value": "1079240.000000",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss.sum": {
+          "value": "34538149.000000",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss_data_promoted.avg": {
+          "value": "0",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss_data_promoted.max": {
+          "value": "0",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss_data_promoted.min": {
+          "value": "0",
+          "unit": "sector"
+        },
+        "lts__t_sectors_lookup_miss_data_promoted.sum": {
+          "value": "0",
+          "unit": "sector"
+        },
+        "sm__inst_executed_pipe_tensor_op_hmma.avg.pct_of_peak_sustained_active": {
+          "value": "21.640952",
+          "unit": "%"
+        },
+        "sm__inst_executed_pipe_tensor_op_hmma.avg.pct_of_peak_sustained_elapsed": {
+          "value": "21.452402",
+          "unit": "%"
+        },
+        "sm__inst_executed_pipe_tensor_op_imma.avg.pct_of_peak_sustained_active": {
+          "value": "0",
+          "unit": "%"
+        },
+        "sm__inst_executed_pipe_tensor_op_imma.avg.pct_of_peak_sustained_elapsed": {
+          "value": "0",
+          "unit": "%"
+        },
+        "sm__inst_issued.avg.pct_of_peak_sustained_elapsed": {
+          "value": "25.125256",
+          "unit": "%"
+        },
+        "sm__inst_issued.avg.per_cycle_active": {
+          "value": "1.013843",
+          "unit": "inst/cycle"
+        },
+        "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": {
+          "value": "43.281904",
+          "unit": "%"
+        },
+        "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed": {
+          "value": "42.904804",
+          "unit": "%"
+        },
+        "sm__warps_active.avg.pct_of_peak_sustained_active": {
+          "value": "32.467061",
+          "unit": "%"
+        },
+        "sm__warps_active.avg.per_cycle_active": {
+          "value": "15.584189",
+          "unit": "warp"
+        },
+        "smsp__issue_active.avg.pct_of_peak_sustained_active": {
+          "value": "25.361531",
+          "unit": "%"
+        },
+        "smsp__issue_active.avg.per_cycle_active": {
+          "value": "0.25",
+          "unit": ""
+        },
+        "smsp__pcsamp_sample_count": {
+          "value": "302816",
+          "unit": ""
+        },
+        "smsp__pcsamp_warps_issue_stalled_barrier": {
+          "value": "33045",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_barrier_not_issued": {
+          "value": "26391",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_branch_resolving": {
+          "value": "4008",
+          "unit": "branches"
+        },
+        "smsp__pcsamp_warps_issue_stalled_branch_resolving_not_issued": {
+          "value": "3207",
+          "unit": "branches"
+        },
+        "smsp__pcsamp_warps_issue_stalled_dispatch_stall": {
+          "value": "2782",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_dispatch_stall_not_issued": {
+          "value": "1338",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_drain": {
+          "value": "283",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_drain_not_issued": {
+          "value": "262",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_imc_miss": {
+          "value": "67",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_imc_miss_not_issued": {
+          "value": "66",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_lg_throttle": {
+          "value": "1721",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_lg_throttle_not_issued": {
+          "value": "1646",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_long_scoreboard": {
+          "value": "5642",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_long_scoreboard_not_issued": {
+          "value": "4631",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_math_pipe_throttle": {
+          "value": "131617",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_math_pipe_throttle_not_issued": {
+          "value": "104211",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_membar": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_membar_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_mio_throttle": {
+          "value": "3736",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_mio_throttle_not_issued": {
+          "value": "3507",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_misc": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_misc_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_no_instructions": {
+          "value": "2425",
+          "unit": "inst"
+        },
+        "smsp__pcsamp_warps_issue_stalled_no_instructions_not_issued": {
+          "value": "2018",
+          "unit": "inst"
+        },
+        "smsp__pcsamp_warps_issue_stalled_not_selected": {
+          "value": "6506",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_not_selected_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_selected": {
+          "value": "20066",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_selected_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_short_scoreboard": {
+          "value": "37020",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_short_scoreboard_not_issued": {
+          "value": "29038",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_sleeping": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_sleeping_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_tex_throttle": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_tex_throttle_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_wait": {
+          "value": "53898",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_wait_not_issued": {
+          "value": "40655",
+          "unit": "warp"
+        },
+        "smsp__warps_active.avg.peak_sustained": {
+          "value": "12.000000",
+          "unit": "warp"
+        },
+        "smsp__warps_active.avg.per_cycle_active": {
+          "value": "3.898785",
+          "unit": "warp"
+        },
+        "smsp__warps_eligible.avg.per_cycle_active": {
+          "value": "0.338588",
+          "unit": "warp"
+        }
+      },
+      "tracked_raw_csv": "results/provenance/m29-baseline-ncu/m27.csv",
+      "tracked_worker_json": "results/provenance/m29-baseline-ncu/m27.worker.json"
+    }
+  },
+  "counter_availability": {
+    "dram_byte_counts": {
+      "available": false,
+      "read_bytes": false,
+      "write_bytes": false,
+      "total_bytes": false,
+      "matching_raw_metric_names": [],
+      "available_dram_rate_metric_names": [
+        "dram__bytes.avg.per_second",
+        "dram__bytes.max.per_second",
+        "dram__bytes.min.per_second",
+        "dram__bytes.sum.per_second"
+      ]
+    },
+    "global_l1_load_sectors": {
+      "available": false,
+      "metric_names": []
+    },
+    "l2_bytes_or_throughput": {
+      "available": false,
+      "metric_names": []
+    },
+    "l2_sectors": {
+      "available_lookup_miss_metrics": [
+        "lts__t_sectors_lookup_miss.avg",
+        "lts__t_sectors_lookup_miss.max",
+        "lts__t_sectors_lookup_miss.min",
+        "lts__t_sectors_lookup_miss.sum",
+        "lts__t_sectors_lookup_miss_data_promoted.avg",
+        "lts__t_sectors_lookup_miss_data_promoted.max",
+        "lts__t_sectors_lookup_miss_data_promoted.min",
+        "lts__t_sectors_lookup_miss_data_promoted.sum"
+      ],
+      "available_total_sector_metrics": []
+    }
+  }
+}
