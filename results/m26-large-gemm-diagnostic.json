@@ -1,0 +1,5485 @@
+{
+  "status": "passed",
+  "seed": 426,
+  "source_sha256": {
+    "scripts/run_m26_gemm_check.py": "7b09b7d8df624632deafd120490c2cee1b32fc417476d3535db67e4918e703cd",
+    "src/llm_gpu_kernels/gemm_mma.py": "5a4af18505602cb10aa74d3386fe8d35313b2e04b867582a8f3d2086a0ad4e8c",
+    "src/llm_gpu_kernels/gemm_mma_tiled.py": "577dd66000a82bb6dbb9a03c190f04ac8c73318c1b9800ac0f4171ff33f8333c",
+    "src/llm_gpu_kernels/cuda_bf16_mma_tiled.cu": "d870d879cd4d1f660a8de81fcd897721c67f1e5a9403465a0aeed13a524347f4"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "torch": "2.7.1+cu128",
+    "torch_cuda": "12.8",
+    "cuda_home": "/home/tmz/ai/toolchains/cuda-12.8",
+    "cxx": "/home/tmz/ai/toolchains/gcc14/usr/bin/x86_64-linux-gnu-g++-14",
+    "max_jobs": "1",
+    "torch_extensions_dir": "artifacts/m25-build/torch_extensions",
+    "device": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "capability": [
+      8,
+      6
+    ],
+    "tf32": false,
+    "float32_matmul_precision": "highest",
+    "allow_bf16_reduced_precision_reduction_outside_baseline_calls": false
+  },
+  "numerics": {
+    "reference": "torch.mm(A.float(), W.float().T), FP32 oracle, TF32 disabled",
+    "comparison": "BF16 output converted to FP32; no elementwise relative error",
+    "relative_rms_limit": 0.008,
+    "max_abs_over_max_abs_reference_limit": 0.008,
+    "candidate_configs_per_shape": 24,
+    "results": [
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 1,
+        "layout": "padding",
+        "arm": "tiled_64x64_s1_padding",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 1,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s1_swizzle",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 2,
+        "layout": "padding",
+        "arm": "tiled_64x64_s2_padding",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 2,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s2_swizzle",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 3,
+        "layout": "padding",
+        "arm": "tiled_64x64_s3_padding",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 3,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s3_swizzle",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 4,
+        "layout": "padding",
+        "arm": "tiled_64x64_s4_padding",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 4,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s4_swizzle",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 1,
+        "layout": "padding",
+        "arm": "tiled_64x128_s1_padding",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 1,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s1_swizzle",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 2,
+        "layout": "padding",
+        "arm": "tiled_64x128_s2_padding",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 2,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s2_swizzle",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 3,
+        "layout": "padding",
+        "arm": "tiled_64x128_s3_padding",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 3,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s3_swizzle",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 4,
+        "layout": "padding",
+        "arm": "tiled_64x128_s4_padding",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 4,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s4_swizzle",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 1,
+        "layout": "padding",
+        "arm": "tiled_128x128_s1_padding",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 1,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s1_swizzle",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 2,
+        "layout": "padding",
+        "arm": "tiled_128x128_s2_padding",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 2,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s2_swizzle",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 3,
+        "layout": "padding",
+        "arm": "tiled_128x128_s3_padding",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 3,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s3_swizzle",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 4,
+        "layout": "padding",
+        "arm": "tiled_128x128_s4_padding",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 0,
+        "N": 17,
+        "K": 16,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 4,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s4_swizzle",
+        "finite": true,
+        "relative_rms": 0.0,
+        "max_abs": 0.0,
+        "max_abs_reference": 0.0,
+        "max_abs_over_max_abs_reference": 0.0,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 1,
+        "layout": "padding",
+        "arm": "tiled_64x64_s1_padding",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 1,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s1_swizzle",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 2,
+        "layout": "padding",
+        "arm": "tiled_64x64_s2_padding",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 2,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s2_swizzle",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 3,
+        "layout": "padding",
+        "arm": "tiled_64x64_s3_padding",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 3,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s3_swizzle",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 4,
+        "layout": "padding",
+        "arm": "tiled_64x64_s4_padding",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 4,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s4_swizzle",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 1,
+        "layout": "padding",
+        "arm": "tiled_64x128_s1_padding",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 1,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s1_swizzle",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 2,
+        "layout": "padding",
+        "arm": "tiled_64x128_s2_padding",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 2,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s2_swizzle",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 3,
+        "layout": "padding",
+        "arm": "tiled_64x128_s3_padding",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 3,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s3_swizzle",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 4,
+        "layout": "padding",
+        "arm": "tiled_64x128_s4_padding",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 4,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s4_swizzle",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 1,
+        "layout": "padding",
+        "arm": "tiled_128x128_s1_padding",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 1,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s1_swizzle",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 2,
+        "layout": "padding",
+        "arm": "tiled_128x128_s2_padding",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 2,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s2_swizzle",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 3,
+        "layout": "padding",
+        "arm": "tiled_128x128_s3_padding",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 3,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s3_swizzle",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 4,
+        "layout": "padding",
+        "arm": "tiled_128x128_s4_padding",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 1,
+        "N": 1,
+        "K": 16,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 4,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s4_swizzle",
+        "finite": true,
+        "relative_rms": 0.0008679985703552959,
+        "max_abs": 0.00011348724365234375,
+        "max_abs_reference": 0.13074588775634766,
+        "max_abs_over_max_abs_reference": 0.0008679985703552959,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 1,
+        "layout": "padding",
+        "arm": "tiled_64x64_s1_padding",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 1,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s1_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 2,
+        "layout": "padding",
+        "arm": "tiled_64x64_s2_padding",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 2,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s2_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 3,
+        "layout": "padding",
+        "arm": "tiled_64x64_s3_padding",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 3,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s3_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 4,
+        "layout": "padding",
+        "arm": "tiled_64x64_s4_padding",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 4,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s4_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 1,
+        "layout": "padding",
+        "arm": "tiled_64x128_s1_padding",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 1,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s1_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 2,
+        "layout": "padding",
+        "arm": "tiled_64x128_s2_padding",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 2,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s2_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 3,
+        "layout": "padding",
+        "arm": "tiled_64x128_s3_padding",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 3,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s3_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 4,
+        "layout": "padding",
+        "arm": "tiled_64x128_s4_padding",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 4,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s4_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 1,
+        "layout": "padding",
+        "arm": "tiled_128x128_s1_padding",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 1,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s1_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 2,
+        "layout": "padding",
+        "arm": "tiled_128x128_s2_padding",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 2,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s2_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 3,
+        "layout": "padding",
+        "arm": "tiled_128x128_s3_padding",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 3,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s3_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 4,
+        "layout": "padding",
+        "arm": "tiled_128x128_s4_padding",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 65,
+        "N": 129,
+        "K": 48,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 4,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s4_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016638946183936318,
+        "max_abs": 0.06224822998046875,
+        "max_abs_reference": 29.986427307128906,
+        "max_abs_over_max_abs_reference": 0.0020758801754842595,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 1,
+        "layout": "padding",
+        "arm": "tiled_64x64_s1_padding",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 1,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s1_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 2,
+        "layout": "padding",
+        "arm": "tiled_64x64_s2_padding",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 2,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s2_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 3,
+        "layout": "padding",
+        "arm": "tiled_64x64_s3_padding",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 3,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s3_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 4,
+        "layout": "padding",
+        "arm": "tiled_64x64_s4_padding",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 4,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s4_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 1,
+        "layout": "padding",
+        "arm": "tiled_64x128_s1_padding",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 1,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s1_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 2,
+        "layout": "padding",
+        "arm": "tiled_64x128_s2_padding",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 2,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s2_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 3,
+        "layout": "padding",
+        "arm": "tiled_64x128_s3_padding",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 3,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s3_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 4,
+        "layout": "padding",
+        "arm": "tiled_64x128_s4_padding",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 4,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s4_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 1,
+        "layout": "padding",
+        "arm": "tiled_128x128_s1_padding",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 1,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s1_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 2,
+        "layout": "padding",
+        "arm": "tiled_128x128_s2_padding",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 2,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s2_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 3,
+        "layout": "padding",
+        "arm": "tiled_128x128_s3_padding",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 3,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s3_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 4,
+        "layout": "padding",
+        "arm": "tiled_128x128_s4_padding",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 129,
+        "N": 127,
+        "K": 64,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 4,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s4_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016430489933288365,
+        "max_abs": 0.062389373779296875,
+        "max_abs_reference": 30.219684600830078,
+        "max_abs_over_max_abs_reference": 0.002064527628378463,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 1,
+        "layout": "padding",
+        "arm": "tiled_64x64_s1_padding",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 1,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s1_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 2,
+        "layout": "padding",
+        "arm": "tiled_64x64_s2_padding",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 2,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s2_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 3,
+        "layout": "padding",
+        "arm": "tiled_64x64_s3_padding",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 3,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s3_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 4,
+        "layout": "padding",
+        "arm": "tiled_64x64_s4_padding",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          64,
+          64
+        ],
+        "stages": 4,
+        "layout": "swizzle",
+        "arm": "tiled_64x64_s4_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 1,
+        "layout": "padding",
+        "arm": "tiled_64x128_s1_padding",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 1,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s1_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 2,
+        "layout": "padding",
+        "arm": "tiled_64x128_s2_padding",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 2,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s2_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 3,
+        "layout": "padding",
+        "arm": "tiled_64x128_s3_padding",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 3,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s3_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 4,
+        "layout": "padding",
+        "arm": "tiled_64x128_s4_padding",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          64,
+          128
+        ],
+        "stages": 4,
+        "layout": "swizzle",
+        "arm": "tiled_64x128_s4_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 1,
+        "layout": "padding",
+        "arm": "tiled_128x128_s1_padding",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 1,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s1_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 2,
+        "layout": "padding",
+        "arm": "tiled_128x128_s2_padding",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 2,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s2_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 3,
+        "layout": "padding",
+        "arm": "tiled_128x128_s3_padding",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 3,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s3_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 4,
+        "layout": "padding",
+        "arm": "tiled_128x128_s4_padding",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      },
+      {
+        "M": 256,
+        "N": 256,
+        "K": 256,
+        "tile": [
+          128,
+          128
+        ],
+        "stages": 4,
+        "layout": "swizzle",
+        "arm": "tiled_128x128_s4_swizzle",
+        "finite": true,
+        "relative_rms": 0.0016737558554090137,
+        "max_abs": 0.24854278564453125,
+        "max_abs_reference": 75.28758239746094,
+        "max_abs_over_max_abs_reference": 0.003301245407674471,
+        "passed": true
+      }
+    ],
+    "status": "passed"
+  },
+  "benchmark": {
+    "timing_mode": "CUDA Graph only",
+    "timing_unit": "us/call",
+    "graph_replays_per_sample": 1,
+    "calls_per_graph_replay": 5,
+    "warmup_calls_per_arm_before_capture": 3,
+    "graph_warmup_replays_per_arm": 3,
+    "rounds": 3,
+    "samples_per_arm_per_round": 3,
+    "arm_order": "forward, reverse, forward",
+    "tile_configs_per_shape": 12,
+    "candidate_comparison": "12 tiled candidates, M25 stages=2, Torch strict BF16 reduction off, Torch reduced-precision reduction on",
+    "cases": [
+      {
+        "M": 1024,
+        "N": 1024,
+        "K": 1024,
+        "input_sha256": {
+          "A": "795811283f6cb9c5b64a432a92d9a5eb620520dfc58b8cd68206bf2f96d8a418",
+          "W": "19c851de61769cf621677370f9c29a2fa3190cdf74ffada85eb1bd9c1ec4172f"
+        },
+        "arms": {
+          "tiled_64x64_s2_padding": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              64
+            ],
+            "stages": 2,
+            "layout": "padding"
+          },
+          "tiled_64x64_s2_swizzle": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              64
+            ],
+            "stages": 2,
+            "layout": "swizzle"
+          },
+          "tiled_64x64_s3_padding": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              64
+            ],
+            "stages": 3,
+            "layout": "padding"
+          },
+          "tiled_64x64_s3_swizzle": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              64
+            ],
+            "stages": 3,
+            "layout": "swizzle"
+          },
+          "tiled_64x128_s2_padding": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              128
+            ],
+            "stages": 2,
+            "layout": "padding"
+          },
+          "tiled_64x128_s2_swizzle": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              128
+            ],
+            "stages": 2,
+            "layout": "swizzle"
+          },
+          "tiled_64x128_s3_padding": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              128
+            ],
+            "stages": 3,
+            "layout": "padding"
+          },
+          "tiled_64x128_s3_swizzle": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              128
+            ],
+            "stages": 3,
+            "layout": "swizzle"
+          },
+          "tiled_128x128_s2_padding": {
+            "kind": "tiled_mma",
+            "tile": [
+              128,
+              128
+            ],
+            "stages": 2,
+            "layout": "padding"
+          },
+          "tiled_128x128_s2_swizzle": {
+            "kind": "tiled_mma",
+            "tile": [
+              128,
+              128
+            ],
+            "stages": 2,
+            "layout": "swizzle"
+          },
+          "tiled_128x128_s3_padding": {
+            "kind": "tiled_mma",
+            "tile": [
+              128,
+              128
+            ],
+            "stages": 3,
+            "layout": "padding"
+          },
+          "tiled_128x128_s3_swizzle": {
+            "kind": "tiled_mma",
+            "tile": [
+              128,
+              128
+            ],
+            "stages": 3,
+            "layout": "swizzle"
+          },
+          "m25_stage_2": {
+            "kind": "m25_bf16_mma",
+            "stages": 2
+          },
+          "torch_strict_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": false,
+            "flag_set_explicitly_during_call_and_capture": true,
+            "flag_restored_after_call": true
+          },
+          "torch_default_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": true,
+            "flag_set_explicitly_during_call_and_capture": true,
+            "flag_restored_after_call": true
+          }
+        },
+        "rounds": 3,
+        "samples_per_arm_per_round": 3,
+        "calls_per_graph_replay": 5,
+        "graph_warmup_replays": 3,
+        "arm_order_by_round": [
+          [
+            "tiled_64x64_s2_padding",
+            "tiled_64x64_s2_swizzle",
+            "tiled_64x64_s3_padding",
+            "tiled_64x64_s3_swizzle",
+            "tiled_64x128_s2_padding",
+            "tiled_64x128_s2_swizzle",
+            "tiled_64x128_s3_padding",
+            "tiled_64x128_s3_swizzle",
+            "tiled_128x128_s2_padding",
+            "tiled_128x128_s2_swizzle",
+            "tiled_128x128_s3_padding",
+            "tiled_128x128_s3_swizzle",
+            "m25_stage_2",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ],
+          [
+            "torch_default_bf16_reduction",
+            "torch_strict_bf16_reduction",
+            "m25_stage_2",
+            "tiled_128x128_s3_swizzle",
+            "tiled_128x128_s3_padding",
+            "tiled_128x128_s2_swizzle",
+            "tiled_128x128_s2_padding",
+            "tiled_64x128_s3_swizzle",
+            "tiled_64x128_s3_padding",
+            "tiled_64x128_s2_swizzle",
+            "tiled_64x128_s2_padding",
+            "tiled_64x64_s3_swizzle",
+            "tiled_64x64_s3_padding",
+            "tiled_64x64_s2_swizzle",
+            "tiled_64x64_s2_padding"
+          ],
+          [
+            "tiled_64x64_s2_padding",
+            "tiled_64x64_s2_swizzle",
+            "tiled_64x64_s3_padding",
+            "tiled_64x64_s3_swizzle",
+            "tiled_64x128_s2_padding",
+            "tiled_64x128_s2_swizzle",
+            "tiled_64x128_s3_padding",
+            "tiled_64x128_s3_swizzle",
+            "tiled_128x128_s2_padding",
+            "tiled_128x128_s2_swizzle",
+            "tiled_128x128_s3_padding",
+            "tiled_128x128_s3_swizzle",
+            "m25_stage_2",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ]
+        ],
+        "validation": {
+          "before_graph_timing": {
+            "tiled_64x64_s2_padding": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_64x64_s2_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_64x64_s3_padding": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_64x64_s3_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_64x128_s2_padding": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_64x128_s2_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_64x128_s3_padding": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_64x128_s3_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_128x128_s2_padding": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_128x128_s2_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_128x128_s3_padding": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_128x128_s3_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "m25_stage_2": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016590803151246435,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.00242143180267323,
+              "max_abs": 0.7194671630859375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.004725484725232171,
+              "passed": true
+            }
+          },
+          "after_graph_timing": {
+            "tiled_64x64_s2_padding": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_64x64_s2_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_64x64_s3_padding": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_64x64_s3_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_64x128_s2_padding": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_64x128_s2_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_64x128_s3_padding": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_64x128_s3_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_128x128_s2_padding": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_128x128_s2_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_128x128_s3_padding": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "tiled_128x128_s3_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "m25_stage_2": {
+              "finite": true,
+              "relative_rms": 0.0016590804315949126,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016590803151246435,
+              "max_abs": 0.4993896484375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.003280008145901433,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.00242143180267323,
+              "max_abs": 0.7194671630859375,
+              "max_abs_reference": 152.2525634765625,
+              "max_abs_over_max_abs_reference": 0.004725484725232171,
+              "passed": true
+            }
+          },
+          "after_graph_timing_by_round": [
+            {
+              "round": 1,
+              "arms": {
+                "tiled_64x64_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x64_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x64_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x64_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x128_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x128_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x128_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x128_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_128x128_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_128x128_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_128x128_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_128x128_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "m25_stage_2": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "torch_strict_bf16_reduction": {
+                  "finite": true,
+                  "relative_rms": 0.0016590803151246435,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "torch_default_bf16_reduction": {
+                  "finite": true,
+                  "relative_rms": 0.00242143180267323,
+                  "max_abs": 0.7194671630859375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.004725484725232171,
+                  "passed": true
+                }
+              }
+            },
+            {
+              "round": 2,
+              "arms": {
+                "tiled_64x64_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x64_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x64_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x64_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x128_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x128_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x128_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x128_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_128x128_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_128x128_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_128x128_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_128x128_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "m25_stage_2": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "torch_strict_bf16_reduction": {
+                  "finite": true,
+                  "relative_rms": 0.0016590803151246435,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "torch_default_bf16_reduction": {
+                  "finite": true,
+                  "relative_rms": 0.00242143180267323,
+                  "max_abs": 0.7194671630859375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.004725484725232171,
+                  "passed": true
+                }
+              }
+            },
+            {
+              "round": 3,
+              "arms": {
+                "tiled_64x64_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x64_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x64_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x64_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x128_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x128_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x128_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_64x128_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_128x128_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_128x128_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_128x128_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "tiled_128x128_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "m25_stage_2": {
+                  "finite": true,
+                  "relative_rms": 0.0016590804315949126,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "torch_strict_bf16_reduction": {
+                  "finite": true,
+                  "relative_rms": 0.0016590803151246435,
+                  "max_abs": 0.4993896484375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.003280008145901433,
+                  "passed": true
+                },
+                "torch_default_bf16_reduction": {
+                  "finite": true,
+                  "relative_rms": 0.00242143180267323,
+                  "max_abs": 0.7194671630859375,
+                  "max_abs_reference": 152.2525634765625,
+                  "max_abs_over_max_abs_reference": 0.004725484725232171,
+                  "passed": true
+                }
+              }
+            }
+          ]
+        },
+        "graph": {
+          "samples_us_per_call": {
+            "tiled_64x64_s2_padding": [
+              [
+                97.68959879875183,
+                95.23199796676636,
+                95.4367995262146
+              ],
+              [
+                95.4367995262146,
+                95.84640264511108,
+                95.84640264511108
+              ],
+              [
+                99.53280091285706,
+                95.84640264511108,
+                95.84640264511108
+              ]
+            ],
+            "tiled_64x64_s2_swizzle": [
+              [
+                96.05119824409485,
+                97.07520008087158,
+                96.25599980354309
+              ],
+              [
+                96.46080136299133,
+                96.0319995880127,
+                95.64160108566284
+              ],
+              [
+                96.66560292243958,
+                96.23680114746094,
+                97.28000164031982
+              ]
+            ],
+            "tiled_64x64_s3_padding": [
+              [
+                99.71839785575867,
+                99.12319779396057,
+                99.92960095405579
+              ],
+              [
+                100.35200119018555,
+                99.12319779396057,
+                100.53119659423828
+              ],
+              [
+                99.53280091285706,
+                99.12319779396057,
+                99.53280091285706
+              ]
+            ],
+            "tiled_64x64_s3_swizzle": [
+              [
+                96.25599980354309,
+                97.22880125045776,
+                96.05119824409485
+              ],
+              [
+                96.46080136299133,
+                96.66560292243958,
+                98.87999892234802
+              ],
+              [
+                96.25599980354309,
+                97.89440035820007,
+                96.46080136299133
+              ]
+            ],
+            "tiled_64x128_s2_padding": [
+              [
+                95.64160108566284,
+                97.28000164031982,
+                96.25599980354309
+              ],
+              [
+                96.87039852142334,
+                96.46080136299133,
+                95.62240242958069
+              ],
+              [
+                97.65120148658752,
+                96.66560292243958,
+                96.46080136299133
+              ]
+            ],
+            "tiled_64x128_s2_swizzle": [
+              [
+                100.35200119018555,
+                100.96640586853027,
+                100.33279657363892
+              ],
+              [
+                100.12160539627075,
+                99.32799935340881,
+                100.35200119018555
+              ],
+              [
+                103.83360385894775,
+                100.76160430908203,
+                101.17119550704956
+              ]
+            ],
+            "tiled_64x128_s3_padding": [
+              [
+                106.90560340881348,
+                106.90560340881348,
+                107.47519731521606
+              ],
+              [
+                106.70080184936523,
+                109.56799983978271,
+                106.70080184936523
+              ],
+              [
+                107.51999616622925,
+                107.315194606781,
+                107.11040496826172
+              ]
+            ],
+            "tiled_64x128_s3_swizzle": [
+              [
+                111.61600351333618,
+                111.00159883499146,
+                108.7488055229187
+              ],
+              [
+                109.56799983978271,
+                108.10879468917847,
+                108.13440084457397
+              ],
+              [
+                108.69760513305664,
+                107.51999616622925,
+                107.92959928512573
+              ]
+            ],
+            "tiled_128x128_s2_padding": [
+              [
+                124.10880327224731,
+                123.0847954750061,
+                122.67520427703857
+              ],
+              [
+                123.28959703445435,
+                122.88000583648682,
+                122.67520427703857
+              ],
+              [
+                126.56639814376831,
+                123.28959703445435,
+                122.87360429763794
+              ]
+            ],
+            "tiled_128x128_s2_swizzle": [
+              [
+                145.17120122909546,
+                144.79360580444336,
+                143.76959800720215
+              ],
+              [
+                144.58880424499512,
+                147.66080379486084,
+                144.58240270614624
+              ],
+              [
+                144.14080381393433,
+                144.38400268554688,
+                143.95519495010376
+              ]
+            ],
+            "tiled_128x128_s3_padding": [
+              [
+                138.2207989692688,
+                136.19199991226196,
+                138.8543963432312
+              ],
+              [
+                138.21439743041992,
+                138.42560052871704,
+                138.01599740982056
+              ],
+              [
+                138.0288004875183,
+                141.5168046951294,
+                138.2207989692688
+              ]
+            ],
+            "tiled_128x128_s3_swizzle": [
+              [
+                141.27999544143677,
+                141.31200313568115,
+                141.31200313568115
+              ],
+              [
+                140.90240001678467,
+                143.3087944984436,
+                141.31200313568115
+              ],
+              [
+                141.5168046951294,
+                141.72159433364868,
+                140.90240001678467
+              ]
+            ],
+            "m25_stage_2": [
+              [
+                98.69440197944641,
+                98.67519736289978,
+                98.50879907608032
+              ],
+              [
+                98.9184021949768,
+                98.30399751663208,
+                98.91200065612793
+              ],
+              [
+                99.28320050239563,
+                98.70719909667969,
+                98.9184021949768
+              ]
+            ],
+            "torch_strict_bf16_reduction": [
+              [
+                143.35999488830566,
+                140.69759845733643,
+                140.49279689788818
+              ],
+              [
+                140.69759845733643,
+                140.28799533843994,
+                140.90240001678467
+              ],
+              [
+                146.62400484085083,
+                140.87680578231812,
+                140.49279689788818
+              ]
+            ],
+            "torch_default_bf16_reduction": [
+              [
+                75.57119727134705,
+                74.54720139503479,
+                74.099200963974
+              ],
+              [
+                78.23359966278076,
+                74.54720139503479,
+                74.54720139503479
+              ],
+              [
+                74.75200295448303,
+                74.1375982761383,
+                75.98080039024353
+              ]
+            ]
+          },
+          "median_us_per_call": {
+            "tiled_64x64_s2_padding": 95.84640264511108,
+            "tiled_64x64_s2_swizzle": 96.25599980354309,
+            "tiled_64x64_s3_padding": 99.53280091285706,
+            "tiled_64x64_s3_swizzle": 96.46080136299133,
+            "tiled_64x128_s2_padding": 96.46080136299133,
+            "tiled_64x128_s2_swizzle": 100.35200119018555,
+            "tiled_64x128_s3_padding": 107.11040496826172,
+            "tiled_64x128_s3_swizzle": 108.69760513305664,
+            "tiled_128x128_s2_padding": 123.0847954750061,
+            "tiled_128x128_s2_swizzle": 144.58240270614624,
+            "tiled_128x128_s3_padding": 138.2207989692688,
+            "tiled_128x128_s3_swizzle": 141.31200313568115,
+            "m25_stage_2": 98.70719909667969,
+            "torch_strict_bf16_reduction": 140.69759845733643,
+            "torch_default_bf16_reduction": 74.54720139503479
+          }
+        }
+      },
+      {
+        "M": 2048,
+        "N": 2048,
+        "K": 2048,
+        "input_sha256": {
+          "A": "79a8490eb5d2d2a724a2d1aa98f139d51c858414025495956b15d97895f8ecfa",
+          "W": "a623b7231917d8eb7c0b4c3bae7fc7c5ec9ba45aceeac2bda1b8daa990adc0cf"
+        },
+        "arms": {
+          "tiled_64x64_s2_padding": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              64
+            ],
+            "stages": 2,
+            "layout": "padding"
+          },
+          "tiled_64x64_s2_swizzle": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              64
+            ],
+            "stages": 2,
+            "layout": "swizzle"
+          },
+          "tiled_64x64_s3_padding": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              64
+            ],
+            "stages": 3,
+            "layout": "padding"
+          },
+          "tiled_64x64_s3_swizzle": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              64
+            ],
+            "stages": 3,
+            "layout": "swizzle"
+          },
+          "tiled_64x128_s2_padding": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              128
+            ],
+            "stages": 2,
+            "layout": "padding"
+          },
+          "tiled_64x128_s2_swizzle": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              128
+            ],
+            "stages": 2,
+            "layout": "swizzle"
+          },
+          "tiled_64x128_s3_padding": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              128
+            ],
+            "stages": 3,
+            "layout": "padding"
+          },
+          "tiled_64x128_s3_swizzle": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              128
+            ],
+            "stages": 3,
+            "layout": "swizzle"
+          },
+          "tiled_128x128_s2_padding": {
+            "kind": "tiled_mma",
+            "tile": [
+              128,
+              128
+            ],
+            "stages": 2,
+            "layout": "padding"
+          },
+          "tiled_128x128_s2_swizzle": {
+            "kind": "tiled_mma",
+            "tile": [
+              128,
+              128
+            ],
+            "stages": 2,
+            "layout": "swizzle"
+          },
+          "tiled_128x128_s3_padding": {
+            "kind": "tiled_mma",
+            "tile": [
+              128,
+              128
+            ],
+            "stages": 3,
+            "layout": "padding"
+          },
+          "tiled_128x128_s3_swizzle": {
+            "kind": "tiled_mma",
+            "tile": [
+              128,
+              128
+            ],
+            "stages": 3,
+            "layout": "swizzle"
+          },
+          "m25_stage_2": {
+            "kind": "m25_bf16_mma",
+            "stages": 2
+          },
+          "torch_strict_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": false,
+            "flag_set_explicitly_during_call_and_capture": true,
+            "flag_restored_after_call": true
+          },
+          "torch_default_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": true,
+            "flag_set_explicitly_during_call_and_capture": true,
+            "flag_restored_after_call": true
+          }
+        },
+        "rounds": 3,
+        "samples_per_arm_per_round": 3,
+        "calls_per_graph_replay": 5,
+        "graph_warmup_replays": 3,
+        "arm_order_by_round": [
+          [
+            "tiled_64x64_s2_padding",
+            "tiled_64x64_s2_swizzle",
+            "tiled_64x64_s3_padding",
+            "tiled_64x64_s3_swizzle",
+            "tiled_64x128_s2_padding",
+            "tiled_64x128_s2_swizzle",
+            "tiled_64x128_s3_padding",
+            "tiled_64x128_s3_swizzle",
+            "tiled_128x128_s2_padding",
+            "tiled_128x128_s2_swizzle",
+            "tiled_128x128_s3_padding",
+            "tiled_128x128_s3_swizzle",
+            "m25_stage_2",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ],
+          [
+            "torch_default_bf16_reduction",
+            "torch_strict_bf16_reduction",
+            "m25_stage_2",
+            "tiled_128x128_s3_swizzle",
+            "tiled_128x128_s3_padding",
+            "tiled_128x128_s2_swizzle",
+            "tiled_128x128_s2_padding",
+            "tiled_64x128_s3_swizzle",
+            "tiled_64x128_s3_padding",
+            "tiled_64x128_s2_swizzle",
+            "tiled_64x128_s2_padding",
+            "tiled_64x64_s3_swizzle",
+            "tiled_64x64_s3_padding",
+            "tiled_64x64_s2_swizzle",
+            "tiled_64x64_s2_padding"
+          ],
+          [
+            "tiled_64x64_s2_padding",
+            "tiled_64x64_s2_swizzle",
+            "tiled_64x64_s3_padding",
+            "tiled_64x64_s3_swizzle",
+            "tiled_64x128_s2_padding",
+            "tiled_64x128_s2_swizzle",
+            "tiled_64x128_s3_padding",
+            "tiled_64x128_s3_swizzle",
+            "tiled_128x128_s2_padding",
+            "tiled_128x128_s2_swizzle",
+            "tiled_128x128_s3_padding",
+            "tiled_128x128_s3_swizzle",
+            "m25_stage_2",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ]
+        ],
+        "validation": {
+          "before_graph_timing": {
+            "tiled_64x64_s2_padding": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_64x64_s2_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_64x64_s3_padding": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_64x64_s3_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_64x128_s2_padding": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_64x128_s2_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_64x128_s3_padding": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_64x128_s3_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_128x128_s2_padding": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_128x128_s2_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_128x128_s3_padding": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_128x128_s3_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "m25_stage_2": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            }
+          },
+          "after_graph_timing": {
+            "tiled_64x64_s2_padding": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_64x64_s2_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_64x64_s3_padding": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_64x64_s3_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_64x128_s2_padding": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_64x128_s2_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_64x128_s3_padding": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_64x128_s3_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_128x128_s2_padding": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_128x128_s2_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_128x128_s3_padding": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "tiled_128x128_s3_swizzle": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "m25_stage_2": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.0016558368046090933,
+              "max_abs": 0.50030517578125,
+              "max_abs_reference": 229.0572509765625,
+              "max_abs_over_max_abs_reference": 0.002184192701380329,
+              "passed": true
+            }
+          },
+          "after_graph_timing_by_round": [
+            {
+              "round": 1,
+              "arms": {
+                "tiled_64x64_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x64_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x64_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x64_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x128_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x128_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x128_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x128_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_128x128_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_128x128_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_128x128_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_128x128_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "m25_stage_2": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "torch_strict_bf16_reduction": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "torch_default_bf16_reduction": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                }
+              }
+            },
+            {
+              "round": 2,
+              "arms": {
+                "tiled_64x64_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x64_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x64_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x64_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x128_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x128_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x128_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x128_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_128x128_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_128x128_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_128x128_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_128x128_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "m25_stage_2": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "torch_strict_bf16_reduction": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "torch_default_bf16_reduction": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                }
+              }
+            },
+            {
+              "round": 3,
+              "arms": {
+                "tiled_64x64_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x64_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x64_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x64_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x128_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x128_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x128_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_64x128_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_128x128_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_128x128_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_128x128_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "tiled_128x128_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "m25_stage_2": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "torch_strict_bf16_reduction": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                },
+                "torch_default_bf16_reduction": {
+                  "finite": true,
+                  "relative_rms": 0.0016558368046090933,
+                  "max_abs": 0.50030517578125,
+                  "max_abs_reference": 229.0572509765625,
+                  "max_abs_over_max_abs_reference": 0.002184192701380329,
+                  "passed": true
+                }
+              }
+            }
+          ]
+        },
+        "graph": {
+          "samples_us_per_call": {
+            "tiled_64x64_s2_padding": [
+              [
+                677.2736072540283,
+                664.1664028167725,
+                666.8288230895996
+              ],
+              [
+                693.6575889587402,
+                692.2239780426025,
+                692.633581161499
+              ],
+              [
+                683.8272094726562,
+                672.5632190704346,
+                671.1296081542969
+              ]
+            ],
+            "tiled_64x64_s2_swizzle": [
+              [
+                660.6592178344727,
+                659.0464115142822,
+                659.4560146331787
+              ],
+              [
+                668.8767910003662,
+                685.260820388794,
+                686.2847805023193
+              ],
+              [
+                665.1904106140137,
+                662.937593460083,
+                662.937593460083
+              ]
+            ],
+            "tiled_64x64_s3_padding": [
+              [
+                695.7056045532227,
+                711.46240234375,
+                730.9311866760254
+              ],
+              [
+                715.3664112091064,
+                715.1616096496582,
+                716.3904190063477
+              ],
+              [
+                709.8368167877197,
+                712.9087924957275,
+                713.9264106750488
+              ]
+            ],
+            "tiled_64x64_s3_swizzle": [
+              [
+                710.2335929870605,
+                708.8128089904785,
+                707.7888011932373
+              ],
+              [
+                693.2479858398438,
+                691.4048194885254,
+                694.0671920776367
+              ],
+              [
+                694.0671920776367,
+                694.6559906005859,
+                696.1152076721191
+              ]
+            ],
+            "tiled_64x128_s2_padding": [
+              [
+                724.5823860168457,
+                723.7631797790527,
+                724.3775844573975
+              ],
+              [
+                676.0255813598633,
+                677.888011932373,
+                676.0447978973389
+              ],
+              [
+                733.9968204498291,
+                735.4368209838867,
+                733.184003829956
+              ]
+            ],
+            "tiled_64x128_s2_swizzle": [
+              [
+                710.425615310669,
+                710.8607769012451,
+                710.4512214660645
+              ],
+              [
+                652.0832061767578,
+                663.5519981384277,
+                669.9007987976074
+              ],
+              [
+                719.052791595459,
+                719.871997833252,
+                699.3919849395752
+              ]
+            ],
+            "tiled_64x128_s3_padding": [
+              [
+                787.6224040985107,
+                784.9984169006348,
+                784.7743988037109
+              ],
+              [
+                698.1632232666016,
+                698.1247901916504,
+                698.7775802612305
+              ],
+              [
+                766.9760227203369,
+                767.3855781555176,
+                767.9999828338623
+              ]
+            ],
+            "tiled_64x128_s3_swizzle": [
+              [
+                780.6975841522217,
+                785.6128215789795,
+                789.4847869873047
+              ],
+              [
+                700.2111911773682,
+                698.367977142334,
+                696.3200092315674
+              ],
+              [
+                763.8720035552979,
+                752.4352073669434,
+                736.6399765014648
+              ]
+            ],
+            "tiled_128x128_s2_padding": [
+              [
+                818.3808326721191,
+                777.6256084442139,
+                778.6303997039795
+              ],
+              [
+                710.2464199066162,
+                710.041618347168,
+                709.4272136688232
+              ],
+              [
+                784.1792106628418,
+                785.6128215789795,
+                783.7696075439453
+              ]
+            ],
+            "tiled_128x128_s2_swizzle": [
+              [
+                864.2560005187988,
+                860.7680320739746,
+                860.5695724487305
+              ],
+              [
+                858.521556854248,
+                857.049560546875,
+                803.8399696350098
+              ],
+              [
+                849.8815536499023,
+                824.7296333312988,
+                821.452808380127
+              ]
+            ],
+            "tiled_128x128_s3_padding": [
+              [
+                823.5008239746094,
+                823.0912208557129,
+                823.2959747314453
+              ],
+              [
+                766.3104057312012,
+                821.452808380127,
+                821.6575622558594
+              ],
+              [
+                788.0703926086426,
+                787.8655910491943,
+                756.3263893127441
+              ]
+            ],
+            "tiled_128x128_s3_swizzle": [
+              [
+                833.3312034606934,
+                834.5600128173828,
+                802.6111602783203
+              ],
+              [
+                700.0063896179199,
+                700.2111911773682,
+                707.7888011932373
+              ],
+              [
+                737.2799873352051,
+                740.7616138458252,
+                739.1232013702393
+              ]
+            ],
+            "m25_stage_2": [
+              [
+                784.7743988037109,
+                784.9855899810791,
+                783.9615821838379
+              ],
+              [
+                779.468822479248,
+                777.8175830841064,
+                772.5056171417236
+              ],
+              [
+                786.2271785736084,
+                790.5087947845459,
+                790.118408203125
+              ]
+            ],
+            "torch_strict_bf16_reduction": [
+              [
+                535.5519771575928,
+                531.660795211792,
+                531.660795211792
+              ],
+              [
+                504.2175769805908,
+                503.3984184265137,
+                503.19361686706543
+              ],
+              [
+                513.2287979125977,
+                509.3376159667969,
+                509.31200981140137
+              ]
+            ],
+            "torch_default_bf16_reduction": [
+              [
+                532.2751998901367,
+                531.660795211792,
+                531.660795211792
+              ],
+              [
+                508.5184097290039,
+                504.2175769805908,
+                503.3984184265137
+              ],
+              [
+                510.32958030700684,
+                509.9008083343506,
+                519.1679954528809
+              ]
+            ]
+          },
+          "median_us_per_call": {
+            "tiled_64x64_s2_padding": 677.2736072540283,
+            "tiled_64x64_s2_swizzle": 662.937593460083,
+            "tiled_64x64_s3_padding": 713.9264106750488,
+            "tiled_64x64_s3_swizzle": 694.6559906005859,
+            "tiled_64x128_s2_padding": 724.3775844573975,
+            "tiled_64x128_s2_swizzle": 710.425615310669,
+            "tiled_64x128_s3_padding": 767.3855781555176,
+            "tiled_64x128_s3_swizzle": 752.4352073669434,
+            "tiled_128x128_s2_padding": 778.6303997039795,
+            "tiled_128x128_s2_swizzle": 857.049560546875,
+            "tiled_128x128_s3_padding": 821.452808380127,
+            "tiled_128x128_s3_swizzle": 739.1232013702393,
+            "m25_stage_2": 784.7743988037109,
+            "torch_strict_bf16_reduction": 509.3376159667969,
+            "torch_default_bf16_reduction": 510.32958030700684
+          }
+        }
+      },
+      {
+        "M": 4096,
+        "N": 4096,
+        "K": 4096,
+        "input_sha256": {
+          "A": "e0af0b3a8f53c604ed32627b0d7e18dd9e0c5f94c82102a3fbfb9b44f65cdc6e",
+          "W": "6803bb8d8637920fb37a93b9acc07d04dc4e1c5350805e1a7678966da499f202"
+        },
+        "arms": {
+          "tiled_64x64_s2_padding": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              64
+            ],
+            "stages": 2,
+            "layout": "padding"
+          },
+          "tiled_64x64_s2_swizzle": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              64
+            ],
+            "stages": 2,
+            "layout": "swizzle"
+          },
+          "tiled_64x64_s3_padding": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              64
+            ],
+            "stages": 3,
+            "layout": "padding"
+          },
+          "tiled_64x64_s3_swizzle": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              64
+            ],
+            "stages": 3,
+            "layout": "swizzle"
+          },
+          "tiled_64x128_s2_padding": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              128
+            ],
+            "stages": 2,
+            "layout": "padding"
+          },
+          "tiled_64x128_s2_swizzle": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              128
+            ],
+            "stages": 2,
+            "layout": "swizzle"
+          },
+          "tiled_64x128_s3_padding": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              128
+            ],
+            "stages": 3,
+            "layout": "padding"
+          },
+          "tiled_64x128_s3_swizzle": {
+            "kind": "tiled_mma",
+            "tile": [
+              64,
+              128
+            ],
+            "stages": 3,
+            "layout": "swizzle"
+          },
+          "tiled_128x128_s2_padding": {
+            "kind": "tiled_mma",
+            "tile": [
+              128,
+              128
+            ],
+            "stages": 2,
+            "layout": "padding"
+          },
+          "tiled_128x128_s2_swizzle": {
+            "kind": "tiled_mma",
+            "tile": [
+              128,
+              128
+            ],
+            "stages": 2,
+            "layout": "swizzle"
+          },
+          "tiled_128x128_s3_padding": {
+            "kind": "tiled_mma",
+            "tile": [
+              128,
+              128
+            ],
+            "stages": 3,
+            "layout": "padding"
+          },
+          "tiled_128x128_s3_swizzle": {
+            "kind": "tiled_mma",
+            "tile": [
+              128,
+              128
+            ],
+            "stages": 3,
+            "layout": "swizzle"
+          },
+          "m25_stage_2": {
+            "kind": "m25_bf16_mma",
+            "stages": 2
+          },
+          "torch_strict_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": false,
+            "flag_set_explicitly_during_call_and_capture": true,
+            "flag_restored_after_call": true
+          },
+          "torch_default_bf16_reduction": {
+            "kind": "torch_mm",
+            "allow_bf16_reduced_precision_reduction": true,
+            "flag_set_explicitly_during_call_and_capture": true,
+            "flag_restored_after_call": true
+          }
+        },
+        "rounds": 3,
+        "samples_per_arm_per_round": 3,
+        "calls_per_graph_replay": 5,
+        "graph_warmup_replays": 3,
+        "arm_order_by_round": [
+          [
+            "tiled_64x64_s2_padding",
+            "tiled_64x64_s2_swizzle",
+            "tiled_64x64_s3_padding",
+            "tiled_64x64_s3_swizzle",
+            "tiled_64x128_s2_padding",
+            "tiled_64x128_s2_swizzle",
+            "tiled_64x128_s3_padding",
+            "tiled_64x128_s3_swizzle",
+            "tiled_128x128_s2_padding",
+            "tiled_128x128_s2_swizzle",
+            "tiled_128x128_s3_padding",
+            "tiled_128x128_s3_swizzle",
+            "m25_stage_2",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ],
+          [
+            "torch_default_bf16_reduction",
+            "torch_strict_bf16_reduction",
+            "m25_stage_2",
+            "tiled_128x128_s3_swizzle",
+            "tiled_128x128_s3_padding",
+            "tiled_128x128_s2_swizzle",
+            "tiled_128x128_s2_padding",
+            "tiled_64x128_s3_swizzle",
+            "tiled_64x128_s3_padding",
+            "tiled_64x128_s2_swizzle",
+            "tiled_64x128_s2_padding",
+            "tiled_64x64_s3_swizzle",
+            "tiled_64x64_s3_padding",
+            "tiled_64x64_s2_swizzle",
+            "tiled_64x64_s2_padding"
+          ],
+          [
+            "tiled_64x64_s2_padding",
+            "tiled_64x64_s2_swizzle",
+            "tiled_64x64_s3_padding",
+            "tiled_64x64_s3_swizzle",
+            "tiled_64x128_s2_padding",
+            "tiled_64x128_s2_swizzle",
+            "tiled_64x128_s3_padding",
+            "tiled_64x128_s3_swizzle",
+            "tiled_128x128_s2_padding",
+            "tiled_128x128_s2_swizzle",
+            "tiled_128x128_s3_padding",
+            "tiled_128x128_s3_swizzle",
+            "m25_stage_2",
+            "torch_strict_bf16_reduction",
+            "torch_default_bf16_reduction"
+          ]
+        ],
+        "validation": {
+          "before_graph_timing": {
+            "tiled_64x64_s2_padding": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_64x64_s2_swizzle": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_64x64_s3_padding": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_64x64_s3_swizzle": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_64x128_s2_padding": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_64x128_s2_swizzle": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_64x128_s3_padding": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_64x128_s3_swizzle": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_128x128_s2_padding": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_128x128_s2_swizzle": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_128x128_s3_padding": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_128x128_s3_swizzle": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "m25_stage_2": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            }
+          },
+          "after_graph_timing": {
+            "tiled_64x64_s2_padding": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_64x64_s2_swizzle": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_64x64_s3_padding": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_64x64_s3_swizzle": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_64x128_s2_padding": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_64x128_s2_swizzle": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_64x128_s3_padding": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_64x128_s3_swizzle": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_128x128_s2_padding": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_128x128_s2_swizzle": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_128x128_s3_padding": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "tiled_128x128_s3_swizzle": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "m25_stage_2": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "torch_strict_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            },
+            "torch_default_bf16_reduction": {
+              "finite": true,
+              "relative_rms": 0.001661611758993756,
+              "max_abs": 0.997650146484375,
+              "max_abs_reference": 352.8642578125,
+              "max_abs_over_max_abs_reference": 0.0028272915842173286,
+              "passed": true
+            }
+          },
+          "after_graph_timing_by_round": [
+            {
+              "round": 1,
+              "arms": {
+                "tiled_64x64_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x64_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x64_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x64_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x128_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x128_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x128_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x128_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_128x128_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_128x128_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_128x128_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_128x128_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "m25_stage_2": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "torch_strict_bf16_reduction": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "torch_default_bf16_reduction": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                }
+              }
+            },
+            {
+              "round": 2,
+              "arms": {
+                "tiled_64x64_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x64_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x64_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x64_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x128_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x128_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x128_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x128_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_128x128_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_128x128_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_128x128_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_128x128_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "m25_stage_2": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "torch_strict_bf16_reduction": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "torch_default_bf16_reduction": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                }
+              }
+            },
+            {
+              "round": 3,
+              "arms": {
+                "tiled_64x64_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x64_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x64_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x64_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x128_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x128_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x128_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_64x128_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_128x128_s2_padding": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_128x128_s2_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_128x128_s3_padding": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "tiled_128x128_s3_swizzle": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "m25_stage_2": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "torch_strict_bf16_reduction": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                },
+                "torch_default_bf16_reduction": {
+                  "finite": true,
+                  "relative_rms": 0.001661611758993756,
+                  "max_abs": 0.997650146484375,
+                  "max_abs_reference": 352.8642578125,
+                  "max_abs_over_max_abs_reference": 0.0028272915842173286,
+                  "passed": true
+                }
+              }
+            }
+          ]
+        },
+        "graph": {
+          "samples_us_per_call": {
+            "tiled_64x64_s2_padding": [
+              [
+                6765.977478027344,
+                7224.320220947266,
+                7276.953887939453
+              ],
+              [
+                7559.372711181641,
+                7441.817474365234,
+                7350.067138671875
+              ],
+              [
+                6798.336029052734,
+                7152.025604248047,
+                7195.442962646484
+              ]
+            ],
+            "tiled_64x64_s2_swizzle": [
+              [
+                7202.816009521484,
+                7266.508483886719,
+                7268.9666748046875
+              ],
+              [
+                7464.959716796875,
+                7631.462097167969,
+                7522.509002685547
+              ],
+              [
+                7131.545257568359,
+                7181.926727294922,
+                7186.637115478516
+              ]
+            ],
+            "tiled_64x64_s3_padding": [
+              [
+                7275.315093994141,
+                7234.764862060547,
+                7257.292938232422
+              ],
+              [
+                7380.992126464844,
+                7243.775939941406,
+                7175.373077392578
+              ],
+              [
+                7189.299011230469,
+                7189.702606201172,
+                7161.036682128906
+              ]
+            ],
+            "tiled_64x64_s3_swizzle": [
+              [
+                7243.161773681641,
+                7254.2205810546875,
+                7244.7998046875
+              ],
+              [
+                7558.553314208984,
+                7771.54541015625,
+                7672.627258300781
+              ],
+              [
+                7237.017822265625,
+                7265.2801513671875,
+                7303.571319580078
+              ]
+            ],
+            "tiled_64x128_s2_padding": [
+              [
+                5611.929702758789,
+                5543.116760253906,
+                5451.571273803711
+              ],
+              [
+                5682.175827026367,
+                5699.788665771484,
+                5747.507095336914
+              ],
+              [
+                5681.97135925293,
+                5626.470565795898,
+                5539.609527587891
+              ]
+            ],
+            "tiled_64x128_s2_swizzle": [
+              [
+                5285.478210449219,
+                5289.779281616211,
+                5289.574432373047
+              ],
+              [
+                5211.1358642578125,
+                5486.182403564453,
+                5533.900833129883
+              ],
+              [
+                5350.400161743164,
+                5446.041488647461,
+                5406.924819946289
+              ]
+            ],
+            "tiled_64x128_s3_padding": [
+              [
+                5980.774307250977,
+                5933.875274658203,
+                5866.90559387207
+              ],
+              [
+                5892.089462280273,
+                5844.172668457031,
+                5836.179351806641
+              ],
+              [
+                6083.9935302734375,
+                5957.427215576172,
+                5925.068664550781
+              ]
+            ],
+            "tiled_64x128_s3_swizzle": [
+              [
+                5649.612808227539,
+                5732.352066040039,
+                5724.121475219727
+              ],
+              [
+                5509.920120239258,
+                5649.203109741211,
+                5742.387390136719
+              ],
+              [
+                5783.961486816406,
+                5782.732772827148,
+                5778.841781616211
+              ]
+            ],
+            "tiled_128x128_s2_padding": [
+              [
+                5792.563247680664,
+                5607.424163818359,
+                5592.268753051758
+              ],
+              [
+                5261.721420288086,
+                5398.316955566406,
+                5394.841766357422
+              ],
+              [
+                5905.408096313477,
+                5720.8831787109375,
+                5717.81120300293
+              ]
+            ],
+            "tiled_128x128_s2_swizzle": [
+              [
+                6461.817932128906,
+                6329.13932800293,
+                6089.113616943359
+              ],
+              [
+                5756.313705444336,
+                5706.752014160156,
+                5707.366561889648
+              ],
+              [
+                6374.809646606445,
+                6082.559967041016,
+                5876.94091796875
+              ]
+            ],
+            "tiled_128x128_s3_padding": [
+              [
+                5695.692825317383,
+                5612.947082519531,
+                5587.129592895508
+              ],
+              [
+                5541.683197021484,
+                5525.708770751953,
+                5518.94416809082
+              ],
+              [
+                5554.540634155273,
+                5536.767959594727,
+                5531.238555908203
+              ]
+            ],
+            "tiled_128x128_s3_swizzle": [
+              [
+                5637.529754638672,
+                5637.734222412109,
+                5636.91520690918
+              ],
+              [
+                6919.37255859375,
+                6607.257843017578,
+                5737.868881225586
+              ],
+              [
+                5637.900924682617,
+                5642.240142822266,
+                5633.433532714844
+              ]
+            ],
+            "m25_stage_2": [
+              [
+                7301.324462890625,
+                7608.115386962891,
+                7605.043029785156
+              ],
+              [
+                7189.46533203125,
+                7515.545654296875,
+                7598.4893798828125
+              ],
+              [
+                7329.587554931641,
+                7588.249969482422,
+                7620.191955566406
+              ]
+            ],
+            "torch_strict_bf16_reduction": [
+              [
+                4904.755020141602,
+                4354.227066040039,
+                3871.129608154297
+              ],
+              [
+                3626.803207397461,
+                3630.8929443359375,
+                3625.369644165039
+              ],
+              [
+                4947.353744506836,
+                4319.4366455078125,
+                3904.9217224121094
+              ]
+            ],
+            "torch_default_bf16_reduction": [
+              [
+                3724.697494506836,
+                3651.3473510742188,
+                3641.9200897216797
+              ],
+              [
+                3561.6127014160156,
+                3585.228729248047,
+                3642.105484008789
+              ],
+              [
+                3727.7694702148438,
+                3672.0638275146484,
+                3659.9807739257812
+              ]
+            ]
+          },
+          "median_us_per_call": {
+            "tiled_64x64_s2_padding": 7224.320220947266,
+            "tiled_64x64_s2_swizzle": 7266.508483886719,
+            "tiled_64x64_s3_padding": 7234.764862060547,
+            "tiled_64x64_s3_swizzle": 7265.2801513671875,
+            "tiled_64x128_s2_padding": 5626.470565795898,
+            "tiled_64x128_s2_swizzle": 5350.400161743164,
+            "tiled_64x128_s3_padding": 5925.068664550781,
+            "tiled_64x128_s3_swizzle": 5732.352066040039,
+            "tiled_128x128_s2_padding": 5607.424163818359,
+            "tiled_128x128_s2_swizzle": 6082.559967041016,
+            "tiled_128x128_s3_padding": 5541.683197021484,
+            "tiled_128x128_s3_swizzle": 5637.900924682617,
+            "m25_stage_2": 7588.249969482422,
+            "torch_strict_bf16_reduction": 3904.9217224121094,
+            "torch_default_bf16_reduction": 3651.3473510742188
+          }
+        }
+      }
+    ]
+  }
+}

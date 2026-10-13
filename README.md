@@ -16,6 +16,12 @@ M25 正在加深 Ampere GEMM：新增直接 `ldmatrix` / `mma.sync` 的 BF16
 [M25 诊断报告](docs/M25_MMA_DIAGNOSTIC_REPORT.md)，线程映射与缓冲生命周期见
 [M25 设计讲义](docs/M25_MMA_PIPELINE_DESIGN.md)。
 
+M26 按大矩阵目标新增 64×64 / 64×128 / 128×128 CTA 与 padding/swizzle 对照，
+已完成 120 组数值检查和 1024³/2048³/4096³ 同批 Graph 诊断。本轮各尺寸最快候选
+相对 M25 S2 耗时降低约 2.9% / 15.5% / 29.5%，但均慢于默认 PyTorch BF16 基线；
+这是观察后的候选比较，不是冻结最优策略。见 [设计讲义](docs/M26_LARGE_GEMM_DESIGN.md)、
+[诊断报告](docs/M26_LARGE_GEMM_REPORT.md) 和 [原始结果](results/m26-large-gemm-diagnostic.json)。
+
 W4A16 首版与三批复测的差异、逐 case 回归及限制见
 [M23 W4 复测报告](docs/M23_W4_REPEAT_REPORT.md)和[完整样本/审计汇总](results/m23-w4-repeat-summary.json)：
 固定T17/T193四case的Full Graph p50几何平均相对同量化权重vLLM低10.00%，T1024两case
