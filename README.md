@@ -9,6 +9,11 @@
 [M20 报告](docs/M20_REAL_MOE_REPORT.md)；它与 M7 合成输入结果分开记录。
 完整 MoE prepared 接口与缓冲区生命周期见 [使用说明](docs/MOE_USAGE.md)。
 
+M25 正在加深 Ampere GEMM：新增直接 `ldmatrix` / `mma.sync` 的 BF16
+`A @ W.T` 实验路径，以及同步和 2/3/4 级 `cp.async` 环形流水。
+它尚未经过运行时数值验证或性能测量，也未接入默认 MoE 路径；线程映射、
+缓冲生命周期与后续布局/warp 分工见 [M25 设计讲义](docs/M25_MMA_PIPELINE_DESIGN.md)。
+
 W4A16 首版与三批复测的差异、逐 case 回归及限制见
 [M23 W4 复测报告](docs/M23_W4_REPEAT_REPORT.md)和[完整样本/审计汇总](results/m23-w4-repeat-summary.json)：
 固定T17/T193四case的Full Graph p50几何平均相对同量化权重vLLM低10.00%，T1024两case
