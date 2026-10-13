@@ -1,0 +1,1234 @@
+{
+  "source_directory": "artifacts/m26-ncu-20261013T142633",
+  "raw_value_policy": "Every metric value is stored as the original CSV string, with the unit string from the CSV units row. No derived values or unit conversions are computed.",
+  "cases": {
+    "m25": {
+      "csv": "artifacts/m26-ncu-20261013T142633/m25.csv",
+      "data_rows": 1,
+      "worker_json": {
+        "arm": "m25",
+        "shape": {
+          "M": 4096,
+          "N": 4096,
+          "K": 4096
+        },
+        "binary_sha256": "f82f0d30aae6126f3b81fe76652617ce3df863e2d3c66882dcf21d3c7606c86b",
+        "runs": 4,
+        "profile_only": true
+      },
+      "profile_log": {
+        "profiled_kernel": "bf16_mma",
+        "ncu_passes": 13,
+        "report_path_in_log": "/home/tmz/文档/ChatGPT/llm-gpu-kernels/artifacts/m26-ncu-20261013T142633/m25.ncu-repz",
+        "import_log_line_count": 0
+      },
+      "launch_record": {
+        "ID": {
+          "value": "0",
+          "unit": ""
+        },
+        "Process ID": {
+          "value": "43254",
+          "unit": ""
+        },
+        "Process Name": {
+          "value": "python3.12",
+          "unit": ""
+        },
+        "Kernel Name": {
+          "value": "void <unnamed>::bf16_mma<2>(const __nv_bfloat16 *, const __nv_bfloat16 *, __nv_bfloat16 *, int, int, int)",
+          "unit": ""
+        },
+        "Block Size": {
+          "value": "(128, 1, 1)",
+          "unit": ""
+        },
+        "Grid Size": {
+          "value": "(128, 64, 1)",
+          "unit": ""
+        },
+        "Device": {
+          "value": "0",
+          "unit": ""
+        },
+        "CC": {
+          "value": "8.6",
+          "unit": ""
+        },
+        "device__attribute_display_name": {
+          "value": "NVIDIA GeForce RTX 3080 Laptop GPU",
+          "unit": ""
+        }
+      },
+      "metrics": {
+        "derived__memory_l1_conflicts_shared_nway": {
+          "value": "84",
+          "unit": ""
+        },
+        "derived__memory_l1_wavefronts_shared_excessive": {
+          "value": "100663296",
+          "unit": ""
+        },
+        "derived__memory_l2_theoretical_sectors_global_excessive": {
+          "value": "3.145728",
+          "unit": "Mbyte"
+        },
+        "derived__pct_occupancy_per_block_size": {
+          "value": "3280.000000",
+          "unit": "%"
+        },
+        "derived__pct_occupancy_per_register_count": {
+          "value": "8170.000000",
+          "unit": "%/register"
+        },
+        "derived__pct_occupancy_per_shared_mem_size": {
+          "value": "3.637000",
+          "unit": "%/Kbyte"
+        },
+        "dram__bytes.avg.per_second": {
+          "value": "38.376049",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.max.per_second": {
+          "value": "38.378079",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.min.per_second": {
+          "value": "38.374056",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.sum.per_second": {
+          "value": "307.008396",
+          "unit": "Gbyte/s"
+        },
+        "gpu__compute_memory_access_throughput.avg.pct_of_peak_sustained_elapsed": {
+          "value": "75.388239",
+          "unit": "%"
+        },
+        "gpu__compute_memory_request_throughput.avg.pct_of_peak_sustained_elapsed": {
+          "value": "74.122852",
+          "unit": "%"
+        },
+        "gpu__time_duration.sum": {
+          "value": "7.222880",
+          "unit": "ms"
+        },
+        "launch__occupancy_limit_blocks": {
+          "value": "16.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_limit_registers": {
+          "value": "8.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_limit_shared_mem": {
+          "value": "6.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_limit_warps": {
+          "value": "12.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_per_block_size": {
+          "value": "1588",
+          "unit": ""
+        },
+        "launch__occupancy_per_register_count": {
+          "value": "3960",
+          "unit": ""
+        },
+        "launch__occupancy_per_shared_mem_size": {
+          "value": "1768",
+          "unit": ""
+        },
+        "launch__registers_per_thread": {
+          "value": "58",
+          "unit": "register/thread"
+        },
+        "launch__registers_per_thread_allocated": {
+          "value": "64.000000",
+          "unit": "register/thread"
+        },
+        "launch__shared_mem_per_block": {
+          "value": "16.384000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_allocated": {
+          "value": "16.384000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_driver": {
+          "value": "1.024000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_dynamic": {
+          "value": "15.360000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_static": {
+          "value": "0",
+          "unit": "byte/block"
+        },
+        "lts__t_sector_hit_rate.pct": {
+          "value": "66.652358",
+          "unit": "%"
+        },
+        "memory_l1_tag_requests_global": {
+          "value": "104857600",
+          "unit": "sectors"
+        },
+        "memory_l1_wavefronts_shared": {
+          "value": "251658240",
+          "unit": "sectors"
+        },
+        "memory_l1_wavefronts_shared_ideal": {
+          "value": "150994944",
+          "unit": "sectors"
+        },
+        "memory_l2_theoretical_sectors_global": {
+          "value": "205520896",
+          "unit": "sectors"
+        },
+        "memory_l2_theoretical_sectors_global_ideal": {
+          "value": "202375168",
+          "unit": "sectors"
+        },
+        "sm__inst_executed_pipe_tensor_op_hmma.avg.pct_of_peak_sustained_active": {
+          "value": "15.676766",
+          "unit": "%"
+        },
+        "sm__inst_executed_pipe_tensor_op_hmma.avg.pct_of_peak_sustained_elapsed": {
+          "value": "15.682559",
+          "unit": "%"
+        },
+        "sm__instruction_throughput.avg.pct_of_peak_sustained_elapsed": {
+          "value": "31.365118",
+          "unit": "%"
+        },
+        "sm__memory_throughput.avg.pct_of_peak_sustained_elapsed": {
+          "value": "29.711098",
+          "unit": "%"
+        },
+        "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": {
+          "value": "31.353532",
+          "unit": "%"
+        },
+        "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed": {
+          "value": "31.365118",
+          "unit": "%"
+        },
+        "sm__warps_active.avg.pct_of_peak_sustained_active": {
+          "value": "49.241811",
+          "unit": "%"
+        },
+        "sm__warps_active.avg.per_cycle_active": {
+          "value": "23.636069",
+          "unit": "warp"
+        },
+        "smsp__issue_active.avg.pct_of_peak_sustained_active": {
+          "value": "25.131191",
+          "unit": "%"
+        },
+        "smsp__issue_active.avg.per_cycle_active": {
+          "value": "0.25",
+          "unit": ""
+        },
+        "smsp__pcsamp_aggregated_passes": {
+          "value": "2",
+          "unit": "pass"
+        },
+        "smsp__pcsamp_sample_count": {
+          "value": "417579",
+          "unit": ""
+        },
+        "smsp__pcsamp_warps_issue_stalled_barrier": {
+          "value": "85519",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_barrier_not_issued": {
+          "value": "66902",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_branch_resolving": {
+          "value": "5363",
+          "unit": "branches"
+        },
+        "smsp__pcsamp_warps_issue_stalled_branch_resolving_not_issued": {
+          "value": "3933",
+          "unit": "branches"
+        },
+        "smsp__pcsamp_warps_issue_stalled_dispatch_stall": {
+          "value": "2799",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_dispatch_stall_not_issued": {
+          "value": "1938",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_drain": {
+          "value": "453",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_drain_not_issued": {
+          "value": "395",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_imc_miss": {
+          "value": "47",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_imc_miss_not_issued": {
+          "value": "44",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_lg_throttle": {
+          "value": "705",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_lg_throttle_not_issued": {
+          "value": "648",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_long_scoreboard": {
+          "value": "38037",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_long_scoreboard_not_issued": {
+          "value": "33064",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_math_pipe_throttle": {
+          "value": "82079",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_math_pipe_throttle_not_issued": {
+          "value": "57541",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_membar": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_membar_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_mio_throttle": {
+          "value": "55408",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_mio_throttle_not_issued": {
+          "value": "51474",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_misc": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_misc_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_no_instructions": {
+          "value": "1729",
+          "unit": "inst"
+        },
+        "smsp__pcsamp_warps_issue_stalled_no_instructions_not_issued": {
+          "value": "1224",
+          "unit": "inst"
+        },
+        "smsp__pcsamp_warps_issue_stalled_not_selected": {
+          "value": "7322",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_not_selected_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_selected": {
+          "value": "18071",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_selected_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_short_scoreboard": {
+          "value": "70360",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_short_scoreboard_not_issued": {
+          "value": "54002",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_sleeping": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_sleeping_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_tex_throttle": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_tex_throttle_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_wait": {
+          "value": "49687",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_wait_not_issued": {
+          "value": "34564",
+          "unit": "warp"
+        },
+        "smsp__warps_active.avg.peak_sustained": {
+          "value": "12.000000",
+          "unit": "warp"
+        },
+        "smsp__warps_active.avg.per_cycle_active": {
+          "value": "5.940950",
+          "unit": "warp"
+        },
+        "smsp__warps_eligible.avg.per_cycle_active": {
+          "value": "0.354783",
+          "unit": "warp"
+        }
+      }
+    },
+    "m26_padding": {
+      "csv": "artifacts/m26-ncu-20261013T142633/m26_padding.csv",
+      "data_rows": 1,
+      "worker_json": {
+        "arm": "m26_padding",
+        "shape": {
+          "M": 4096,
+          "N": 4096,
+          "K": 4096
+        },
+        "binary_sha256": "6799b6acd12364124f81f3252713a76efec69c2fc0ea4362b84e32526f52d921",
+        "runs": 4,
+        "profile_only": true
+      },
+      "profile_log": {
+        "profiled_kernel": "tiled_mma",
+        "ncu_passes": 13,
+        "report_path_in_log": "/home/tmz/文档/ChatGPT/llm-gpu-kernels/artifacts/m26-ncu-20261013T142633/m26_padding.ncu-repz",
+        "import_log_line_count": 0
+      },
+      "launch_record": {
+        "ID": {
+          "value": "0",
+          "unit": ""
+        },
+        "Process ID": {
+          "value": "43310",
+          "unit": ""
+        },
+        "Process Name": {
+          "value": "python3.12",
+          "unit": ""
+        },
+        "Kernel Name": {
+          "value": "void <unnamed>::tiled_mma<64, 128, 2, 0>(const __nv_bfloat16 *, const __nv_bfloat16 *, __nv_bfloat16 *, int, int, int)",
+          "unit": ""
+        },
+        "Block Size": {
+          "value": "(128, 1, 1)",
+          "unit": ""
+        },
+        "Grid Size": {
+          "value": "(64, 32, 1)",
+          "unit": ""
+        },
+        "Device": {
+          "value": "0",
+          "unit": ""
+        },
+        "CC": {
+          "value": "8.6",
+          "unit": ""
+        },
+        "device__attribute_display_name": {
+          "value": "NVIDIA GeForce RTX 3080 Laptop GPU",
+          "unit": ""
+        }
+      },
+      "metrics": {
+        "derived__memory_l1_conflicts_shared_nway": {
+          "value": "180",
+          "unit": ""
+        },
+        "derived__memory_l1_wavefronts_shared_excessive": {
+          "value": "50331648",
+          "unit": ""
+        },
+        "derived__memory_l2_theoretical_sectors_global_excessive": {
+          "value": "3.145728",
+          "unit": "Mbyte"
+        },
+        "derived__pct_occupancy_per_block_size": {
+          "value": "774.000000",
+          "unit": "%"
+        },
+        "derived__pct_occupancy_per_register_count": {
+          "value": "5633.000000",
+          "unit": "%/register"
+        },
+        "derived__pct_occupancy_per_shared_mem_size": {
+          "value": "2.563000",
+          "unit": "%/Kbyte"
+        },
+        "dram__bytes.avg.per_second": {
+          "value": "27.716399",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.max.per_second": {
+          "value": "27.718842",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.min.per_second": {
+          "value": "27.713767",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.sum.per_second": {
+          "value": "221.731196",
+          "unit": "Gbyte/s"
+        },
+        "gpu__compute_memory_access_throughput.avg.pct_of_peak_sustained_elapsed": {
+          "value": "48.086743",
+          "unit": "%"
+        },
+        "gpu__compute_memory_request_throughput.avg.pct_of_peak_sustained_elapsed": {
+          "value": "49.536503",
+          "unit": "%"
+        },
+        "gpu__time_duration.sum": {
+          "value": "5.221824",
+          "unit": "ms"
+        },
+        "launch__occupancy_limit_blocks": {
+          "value": "16.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_limit_registers": {
+          "value": "4.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_limit_shared_mem": {
+          "value": "3.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_limit_warps": {
+          "value": "12.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_per_block_size": {
+          "value": "377",
+          "unit": ""
+        },
+        "launch__occupancy_per_register_count": {
+          "value": "2732",
+          "unit": ""
+        },
+        "launch__occupancy_per_shared_mem_size": {
+          "value": "1248",
+          "unit": ""
+        },
+        "launch__registers_per_thread": {
+          "value": "126",
+          "unit": "register/thread"
+        },
+        "launch__registers_per_thread_allocated": {
+          "value": "128.000000",
+          "unit": "register/thread"
+        },
+        "launch__shared_mem_per_block": {
+          "value": "31.744000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_allocated": {
+          "value": "31.744000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_driver": {
+          "value": "1.024000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_dynamic": {
+          "value": "30.720000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_static": {
+          "value": "0",
+          "unit": "byte/block"
+        },
+        "lts__t_sector_hit_rate.pct": {
+          "value": "66.570526",
+          "unit": "%"
+        },
+        "memory_l1_tag_requests_global": {
+          "value": "54525952",
+          "unit": "sectors"
+        },
+        "memory_l1_wavefronts_shared": {
+          "value": "125829120",
+          "unit": "sectors"
+        },
+        "memory_l1_wavefronts_shared_ideal": {
+          "value": "75497472",
+          "unit": "sectors"
+        },
+        "memory_l2_theoretical_sectors_global": {
+          "value": "104857600",
+          "unit": "sectors"
+        },
+        "memory_l2_theoretical_sectors_global_ideal": {
+          "value": "101711872",
+          "unit": "sectors"
+        },
+        "sm__inst_executed_pipe_tensor_op_hmma.avg.pct_of_peak_sustained_active": {
+          "value": "19.781477",
+          "unit": "%"
+        },
+        "sm__inst_executed_pipe_tensor_op_hmma.avg.pct_of_peak_sustained_elapsed": {
+          "value": "19.551048",
+          "unit": "%"
+        },
+        "sm__instruction_throughput.avg.pct_of_peak_sustained_elapsed": {
+          "value": "39.102096",
+          "unit": "%"
+        },
+        "sm__memory_throughput.avg.pct_of_peak_sustained_elapsed": {
+          "value": "20.486596",
+          "unit": "%"
+        },
+        "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": {
+          "value": "39.562953",
+          "unit": "%"
+        },
+        "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed": {
+          "value": "39.102096",
+          "unit": "%"
+        },
+        "sm__warps_active.avg.pct_of_peak_sustained_active": {
+          "value": "24.640988",
+          "unit": "%"
+        },
+        "sm__warps_active.avg.per_cycle_active": {
+          "value": "11.827674",
+          "unit": "warp"
+        },
+        "smsp__issue_active.avg.pct_of_peak_sustained_active": {
+          "value": "20.497437",
+          "unit": "%"
+        },
+        "smsp__issue_active.avg.per_cycle_active": {
+          "value": "0.20",
+          "unit": ""
+        },
+        "smsp__pcsamp_aggregated_passes": {
+          "value": "2",
+          "unit": "pass"
+        },
+        "smsp__pcsamp_sample_count": {
+          "value": "331395",
+          "unit": ""
+        },
+        "smsp__pcsamp_warps_issue_stalled_barrier": {
+          "value": "60024",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_barrier_not_issued": {
+          "value": "52214",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_branch_resolving": {
+          "value": "5149",
+          "unit": "branches"
+        },
+        "smsp__pcsamp_warps_issue_stalled_branch_resolving_not_issued": {
+          "value": "3881",
+          "unit": "branches"
+        },
+        "smsp__pcsamp_warps_issue_stalled_dispatch_stall": {
+          "value": "3154",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_dispatch_stall_not_issued": {
+          "value": "918",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_drain": {
+          "value": "386",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_drain_not_issued": {
+          "value": "353",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_imc_miss": {
+          "value": "54",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_imc_miss_not_issued": {
+          "value": "52",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_lg_throttle": {
+          "value": "4558",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_lg_throttle_not_issued": {
+          "value": "4402",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_long_scoreboard": {
+          "value": "12738",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_long_scoreboard_not_issued": {
+          "value": "10710",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_math_pipe_throttle": {
+          "value": "139953",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_math_pipe_throttle_not_issued": {
+          "value": "122658",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_membar": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_membar_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_mio_throttle": {
+          "value": "19668",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_mio_throttle_not_issued": {
+          "value": "18295",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_misc": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_misc_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_no_instructions": {
+          "value": "3122",
+          "unit": "inst"
+        },
+        "smsp__pcsamp_warps_issue_stalled_no_instructions_not_issued": {
+          "value": "2596",
+          "unit": "inst"
+        },
+        "smsp__pcsamp_warps_issue_stalled_not_selected": {
+          "value": "7863",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_not_selected_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_selected": {
+          "value": "23286",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_selected_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_short_scoreboard": {
+          "value": "1849",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_short_scoreboard_not_issued": {
+          "value": "1636",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_sleeping": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_sleeping_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_tex_throttle": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_tex_throttle_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_wait": {
+          "value": "49591",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_wait_not_issued": {
+          "value": "37642",
+          "unit": "warp"
+        },
+        "smsp__warps_active.avg.peak_sustained": {
+          "value": "12.000000",
+          "unit": "warp"
+        },
+        "smsp__warps_active.avg.per_cycle_active": {
+          "value": "2.952909",
+          "unit": "warp"
+        },
+        "smsp__warps_eligible.avg.per_cycle_active": {
+          "value": "0.276399",
+          "unit": "warp"
+        }
+      }
+    },
+    "m26_swizzle": {
+      "csv": "artifacts/m26-ncu-20261013T142633/m26_swizzle.csv",
+      "data_rows": 1,
+      "worker_json": {
+        "arm": "m26_swizzle",
+        "shape": {
+          "M": 4096,
+          "N": 4096,
+          "K": 4096
+        },
+        "binary_sha256": "6799b6acd12364124f81f3252713a76efec69c2fc0ea4362b84e32526f52d921",
+        "runs": 4,
+        "profile_only": true
+      },
+      "profile_log": {
+        "profiled_kernel": "tiled_mma",
+        "ncu_passes": 13,
+        "report_path_in_log": "/home/tmz/文档/ChatGPT/llm-gpu-kernels/artifacts/m26-ncu-20261013T142633/m26_swizzle.ncu-repz",
+        "import_log_line_count": 0
+      },
+      "launch_record": {
+        "ID": {
+          "value": "0",
+          "unit": ""
+        },
+        "Process ID": {
+          "value": "43369",
+          "unit": ""
+        },
+        "Process Name": {
+          "value": "python3.12",
+          "unit": ""
+        },
+        "Kernel Name": {
+          "value": "void <unnamed>::tiled_mma<64, 128, 2, 1>(const __nv_bfloat16 *, const __nv_bfloat16 *, __nv_bfloat16 *, int, int, int)",
+          "unit": ""
+        },
+        "Block Size": {
+          "value": "(128, 1, 1)",
+          "unit": ""
+        },
+        "Grid Size": {
+          "value": "(64, 32, 1)",
+          "unit": ""
+        },
+        "Device": {
+          "value": "0",
+          "unit": ""
+        },
+        "CC": {
+          "value": "8.6",
+          "unit": ""
+        },
+        "device__attribute_display_name": {
+          "value": "NVIDIA GeForce RTX 3080 Laptop GPU",
+          "unit": ""
+        }
+      },
+      "metrics": {
+        "derived__memory_l1_conflicts_shared_nway": {
+          "value": "136",
+          "unit": ""
+        },
+        "derived__memory_l1_wavefronts_shared_excessive": {
+          "value": "25165824",
+          "unit": ""
+        },
+        "derived__memory_l2_theoretical_sectors_global_excessive": {
+          "value": "3.145728",
+          "unit": "Mbyte"
+        },
+        "derived__pct_occupancy_per_block_size": {
+          "value": "476.000000",
+          "unit": "%"
+        },
+        "derived__pct_occupancy_per_register_count": {
+          "value": "6665.000000",
+          "unit": "%/register"
+        },
+        "derived__pct_occupancy_per_shared_mem_size": {
+          "value": "2.155000",
+          "unit": "%/Kbyte"
+        },
+        "dram__bytes.avg.per_second": {
+          "value": "28.645471",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.max.per_second": {
+          "value": "28.646946",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.min.per_second": {
+          "value": "28.644307",
+          "unit": "Gbyte/s"
+        },
+        "dram__bytes.sum.per_second": {
+          "value": "229.163765",
+          "unit": "Gbyte/s"
+        },
+        "gpu__compute_memory_access_throughput.avg.pct_of_peak_sustained_elapsed": {
+          "value": "49.708195",
+          "unit": "%"
+        },
+        "gpu__compute_memory_request_throughput.avg.pct_of_peak_sustained_elapsed": {
+          "value": "51.197099",
+          "unit": "%"
+        },
+        "gpu__time_duration.sum": {
+          "value": "5.141600",
+          "unit": "ms"
+        },
+        "launch__occupancy_limit_blocks": {
+          "value": "16.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_limit_registers": {
+          "value": "3.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_limit_shared_mem": {
+          "value": "4.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_limit_warps": {
+          "value": "12.000000",
+          "unit": "block"
+        },
+        "launch__occupancy_per_block_size": {
+          "value": "234",
+          "unit": ""
+        },
+        "launch__occupancy_per_register_count": {
+          "value": "3248",
+          "unit": ""
+        },
+        "launch__occupancy_per_shared_mem_size": {
+          "value": "1044",
+          "unit": ""
+        },
+        "launch__registers_per_thread": {
+          "value": "157",
+          "unit": "register/thread"
+        },
+        "launch__registers_per_thread_allocated": {
+          "value": "160.000000",
+          "unit": "register/thread"
+        },
+        "launch__shared_mem_per_block": {
+          "value": "25.600000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_allocated": {
+          "value": "25.600000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_driver": {
+          "value": "1.024000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_dynamic": {
+          "value": "24.576000",
+          "unit": "Kbyte/block"
+        },
+        "launch__shared_mem_per_block_static": {
+          "value": "0",
+          "unit": "byte/block"
+        },
+        "lts__t_sector_hit_rate.pct": {
+          "value": "65.976994",
+          "unit": "%"
+        },
+        "memory_l1_tag_requests_global": {
+          "value": "54525952",
+          "unit": "sectors"
+        },
+        "memory_l1_wavefronts_shared": {
+          "value": "100663296",
+          "unit": "sectors"
+        },
+        "memory_l1_wavefronts_shared_ideal": {
+          "value": "75497472",
+          "unit": "sectors"
+        },
+        "memory_l2_theoretical_sectors_global": {
+          "value": "104857600",
+          "unit": "sectors"
+        },
+        "memory_l2_theoretical_sectors_global_ideal": {
+          "value": "101711872",
+          "unit": "sectors"
+        },
+        "sm__inst_executed_pipe_tensor_op_hmma.avg.pct_of_peak_sustained_active": {
+          "value": "20.494016",
+          "unit": "%"
+        },
+        "sm__inst_executed_pipe_tensor_op_hmma.avg.pct_of_peak_sustained_elapsed": {
+          "value": "20.262737",
+          "unit": "%"
+        },
+        "sm__instruction_throughput.avg.pct_of_peak_sustained_elapsed": {
+          "value": "40.525473",
+          "unit": "%"
+        },
+        "sm__memory_throughput.avg.pct_of_peak_sustained_elapsed": {
+          "value": "21.232340",
+          "unit": "%"
+        },
+        "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active": {
+          "value": "40.988033",
+          "unit": "%"
+        },
+        "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed": {
+          "value": "40.525473",
+          "unit": "%"
+        },
+        "sm__warps_active.avg.pct_of_peak_sustained_active": {
+          "value": "24.478720",
+          "unit": "%"
+        },
+        "sm__warps_active.avg.per_cycle_active": {
+          "value": "11.749786",
+          "unit": "warp"
+        },
+        "smsp__issue_active.avg.pct_of_peak_sustained_active": {
+          "value": "23.894419",
+          "unit": "%"
+        },
+        "smsp__issue_active.avg.per_cycle_active": {
+          "value": "0.24",
+          "unit": ""
+        },
+        "smsp__pcsamp_aggregated_passes": {
+          "value": "2",
+          "unit": "pass"
+        },
+        "smsp__pcsamp_sample_count": {
+          "value": "320126",
+          "unit": ""
+        },
+        "smsp__pcsamp_warps_issue_stalled_barrier": {
+          "value": "28792",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_barrier_not_issued": {
+          "value": "23633",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_branch_resolving": {
+          "value": "5317",
+          "unit": "branches"
+        },
+        "smsp__pcsamp_warps_issue_stalled_branch_resolving_not_issued": {
+          "value": "4181",
+          "unit": "branches"
+        },
+        "smsp__pcsamp_warps_issue_stalled_dispatch_stall": {
+          "value": "3042",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_dispatch_stall_not_issued": {
+          "value": "1046",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_drain": {
+          "value": "412",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_drain_not_issued": {
+          "value": "378",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_imc_miss": {
+          "value": "42",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_imc_miss_not_issued": {
+          "value": "36",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_lg_throttle": {
+          "value": "4618",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_lg_throttle_not_issued": {
+          "value": "4461",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_long_scoreboard": {
+          "value": "9810",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_long_scoreboard_not_issued": {
+          "value": "7866",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_math_pipe_throttle": {
+          "value": "161302",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_math_pipe_throttle_not_issued": {
+          "value": "137045",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_membar": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_membar_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_mio_throttle": {
+          "value": "15107",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_mio_throttle_not_issued": {
+          "value": "13321",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_misc": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_misc_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_no_instructions": {
+          "value": "2890",
+          "unit": "inst"
+        },
+        "smsp__pcsamp_warps_issue_stalled_no_instructions_not_issued": {
+          "value": "2404",
+          "unit": "inst"
+        },
+        "smsp__pcsamp_warps_issue_stalled_not_selected": {
+          "value": "9000",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_not_selected_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_selected": {
+          "value": "26390",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_selected_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_short_scoreboard": {
+          "value": "5278",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_short_scoreboard_not_issued": {
+          "value": "4566",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_sleeping": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_sleeping_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_tex_throttle": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_tex_throttle_not_issued": {
+          "value": "0",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_wait": {
+          "value": "48126",
+          "unit": "warp"
+        },
+        "smsp__pcsamp_warps_issue_stalled_wait_not_issued": {
+          "value": "37266",
+          "unit": "warp"
+        },
+        "smsp__warps_active.avg.peak_sustained": {
+          "value": "12.000000",
+          "unit": "warp"
+        },
+        "smsp__warps_active.avg.per_cycle_active": {
+          "value": "2.935041",
+          "unit": "warp"
+        },
+        "smsp__warps_eligible.avg.per_cycle_active": {
+          "value": "0.324326",
+          "unit": "warp"
+        }
+      }
+    }
+  },
+  "availability": {
+    "direct_theoretical_occupancy_percent": {
+      "status": "no single unambiguous direct metric selected; related launch limits and derived CSV fields are preserved verbatim",
+      "related_fields": [
+        "launch__occupancy_limit_blocks",
+        "launch__occupancy_limit_registers",
+        "launch__occupancy_limit_shared_mem",
+        "launch__occupancy_limit_warps",
+        "launch__occupancy_per_block_size",
+        "launch__occupancy_per_register_count",
+        "launch__occupancy_per_shared_mem_size",
+        "derived__pct_occupancy_per_block_size",
+        "derived__pct_occupancy_per_register_count",
+        "derived__pct_occupancy_per_shared_mem_size"
+      ]
+    },
+    "issued_warps": {
+      "status": "not present in all three CSV headers",
+      "searched_prefixes": [
+        "smsp__warps_issued",
+        "smsp__warp_issued"
+      ]
+    },
+    "non_pc_normalized_stall_metrics": {
+      "status": "not present in all three CSV headers",
+      "searched_pattern": "smsp__warp_issue_stalled_*_per_warp_active.pct"
+    },
+    "l2_throughput": {
+      "status": "no lts__*throughput field present; sm__memory_throughput is retained under its exact name"
+    },
+    "dram_total_bytes": {
+      "status": "no DRAM byte-total field present; dram__bytes.*.per_second rates are retained under exact names; no total calculated"
+    },
+    "raw_derived_values": {
+      "status": "raw CSV strings preserved; unitless/ambiguous derived fields are not interpreted or normalized"
+    }
+  }
+}

@@ -22,6 +22,13 @@ M26 按大矩阵目标新增 64×64 / 64×128 / 128×128 CTA 与 padding/swizzle
 这是观察后的候选比较，不是冻结最优策略。见 [设计讲义](docs/M26_LARGE_GEMM_DESIGN.md)、
 [诊断报告](docs/M26_LARGE_GEMM_REPORT.md) 和 [原始结果](results/m26-large-gemm-diagnostic.json)。
 
+M26 的 NCU 采集与 SASS 采样定位已完成，见 [计数器](docs/M26_NCU_METRICS.md)。
+随后 M27 探索 `ldmatrix`/MMA 短批交错，M28 实现 1/2 producer + 4 consumer warp 的
+named-barrier 分工。80/28 组数值检查通过且与各自匹配旧路径逐位一致；M27 部分
+形状有小幅改善，M28 相对 M27 的优势不足以确认可靠收益，均仍慢于默认 Torch 大矩阵基线。
+设计取舍见 [M27/M28 讲义](docs/M27_M28_DESIGN.md)，全部候选和退化见
+[M27 报告](docs/M27_SCHEDULE_REPORT.md) / [M28 报告](docs/M28_WARP_SPECIALIZATION_REPORT.md)。
+
 W4A16 首版与三批复测的差异、逐 case 回归及限制见
 [M23 W4 复测报告](docs/M23_W4_REPEAT_REPORT.md)和[完整样本/审计汇总](results/m23-w4-repeat-summary.json)：
 固定T17/T193四case的Full Graph p50几何平均相对同量化权重vLLM低10.00%，T1024两case
