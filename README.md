@@ -11,8 +11,10 @@
 
 M25 正在加深 Ampere GEMM：新增直接 `ldmatrix` / `mma.sync` 的 BF16
 `A @ W.T` 实验路径，以及同步和 2/3/4 级 `cp.async` 环形流水。
-它尚未经过运行时数值验证或性能测量，也未接入默认 MoE 路径；线程映射、
-缓冲生命周期与后续布局/warp 分工见 [M25 设计讲义](docs/M25_MMA_PIPELINE_DESIGN.md)。
+它已完成 28 组核心数值检查和四形状小规模基准，尚未接入默认 MoE 路径；
+不同形状的最佳流水深度不同，小 M 仍慢于 PyTorch 对照。结果与范围见
+[M25 诊断报告](docs/M25_MMA_DIAGNOSTIC_REPORT.md)，线程映射与缓冲生命周期见
+[M25 设计讲义](docs/M25_MMA_PIPELINE_DESIGN.md)。
 
 W4A16 首版与三批复测的差异、逐 case 回归及限制见
 [M23 W4 复测报告](docs/M23_W4_REPEAT_REPORT.md)和[完整样本/审计汇总](results/m23-w4-repeat-summary.json)：

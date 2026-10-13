@@ -2,7 +2,7 @@
 
 ## 目标与状态
 
-实验核计算 `C = A @ W.T`，其中 `A[M,K]`、`W[N,K]` 与 `C[M,N]` 为连续 BF16，累加为 FP32，写回 BF16。2026-10-13 已使用 CUDA 12.8 / GCC 14 完成 SM86 扩展编译和加载。**尚未运行数值验证，也未采集性能；不能据此宣称正确性通过或有性能收益。**
+实验核计算 `C = A @ W.T`，其中 `A[M,K]`、`W[N,K]` 与 `C[M,N]` 为连续 BF16，累加为 FP32，写回 BF16。2026-10-13 已使用 CUDA 12.8 / GCC 14 完成 SM86 扩展编译和加载，随后完成 28 组核心数值检查和四形状小规模基准，结果见 [M25 诊断报告](M25_MMA_DIAGNOSTIC_REPORT.md)。当前结果仅支持这些固定样本，尚未冻结调度策略，不能宣称全域性能优势。
 
 K 至少为 16 且是 16 的倍数，M 可为零，M/N 尾块补零并屏蔽无效输出；输入基址要求 16-byte 对齐。绑定的 buffers 不能 resize/替换，调用者负责跨 stream 依赖及避免同一输出并发写入。
 
@@ -34,15 +34,15 @@ K 至少为 16 且是 16 的倍数，M 可为零，M/N 尾块补零并屏蔽无�
 
 提高 S 会增加预取深度，也按每 stage 7.5 KiB 增加 shared 占用；它是否隐藏了更多延迟、是否损害驻留度，需要后续测量回答。
 
-## 待验证接口示例
+## 实验接口示例
 
 ```python
 from llm_gpu_kernels.gemm_mma import prepare_bf16_mma
 
-plan = prepare_bf16_mma(a, w, stages=3)  # 待验证实验
+plan = prepare_bf16_mma(a, w, stages=3)  # 实验配置，非冻结最优策略
 out = plan.run()                         # C = A @ W.T，BF16 输出
 ```
 
 ## 后续阶段
 
-按顺序单独推进：shared-memory swizzle → warp specialization → MoE 集成，再评估 W4 路径。每一步都需要独立数值检查与性能证据；本讲义不代表这些阶段已实现或已验证。
+先根据诊断结果分析 tile、任务并行度和资源开销，再推进 shared-memory swizzle、warp specialization 与 MoE/W4 集成。每一步都需要独立数值检查与性能证据；本讲义不代表这些阶段已实现或已验证。
