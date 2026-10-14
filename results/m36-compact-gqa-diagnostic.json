@@ -1,0 +1,2603 @@
+{
+  "schema": 1,
+  "run_id": "m36-compact-gqa-diagnostic",
+  "status": "passed",
+  "date_utc": "2026-10-14T08:14:45Z",
+  "seed": 3607,
+  "limits": {
+    "relative_rms": 0.008,
+    "normalized_max": 0.008
+  },
+  "configs": [
+    {
+      "stages": 1,
+      "p_mode": 1,
+      "p_mode_name": "direct_register"
+    },
+    {
+      "stages": 2,
+      "p_mode": 1,
+      "p_mode_name": "direct_register"
+    }
+  ],
+  "compact_resource_table": [
+    {
+      "stages": 1,
+      "p_mode": 1,
+      "p_mode_name": "direct_register",
+      "cta_m": 64,
+      "key_tile": 32,
+      "warps": 4,
+      "qk_tile_bytes": 16384,
+      "kv_pipeline_bytes": 16384,
+      "probability_scratch_bytes": 0,
+      "shared_memory_bytes": 32768,
+      "registers_per_thread": 223,
+      "spill_bytes": 0,
+      "spill_stores": 0,
+      "spill_loads": 0,
+      "stack_bytes": 0,
+      "ldl_instructions": 0,
+      "stl_instructions": 0,
+      "hmma_bf16_f32_instructions": 256,
+      "ldsm_instructions": 288,
+      "shared_memory_delta_vs_m34_bytes": -4096,
+      "shared_memory_delta_vs_compact_s1_bytes": 0,
+      "registers_delta_vs_m34": 0
+    },
+    {
+      "stages": 2,
+      "p_mode": 1,
+      "p_mode_name": "direct_register",
+      "cta_m": 64,
+      "key_tile": 32,
+      "warps": 4,
+      "qk_tile_bytes": 16384,
+      "kv_pipeline_bytes": 32768,
+      "probability_scratch_bytes": 0,
+      "shared_memory_bytes": 49152,
+      "registers_per_thread": 230,
+      "spill_bytes": 0,
+      "spill_stores": 0,
+      "spill_loads": 0,
+      "stack_bytes": 0,
+      "ldl_instructions": 0,
+      "stl_instructions": 0,
+      "hmma_bf16_f32_instructions": 256,
+      "ldsm_instructions": 288,
+      "shared_memory_delta_vs_m34_bytes": -4096,
+      "shared_memory_delta_vs_compact_s1_bytes": 16384,
+      "registers_delta_vs_m34": 0
+    }
+  ],
+  "protocol": {
+    "functional_shapes": 8,
+    "compact_configurations": 2,
+    "expected_numerical_results": 16,
+    "performance_tokens": [
+      32,
+      96,
+      256
+    ],
+    "performance_history_lengths": [
+      2048,
+      64,
+      512
+    ],
+    "performance_arms": 5,
+    "graph_calls_per_replay": 4,
+    "round_order": [
+      "forward",
+      "reverse",
+      "forward"
+    ],
+    "samples_per_arm_per_round": 3,
+    "timed_unit": "complete forward, milliseconds"
+  },
+  "source_hashes": {
+    "AGENTS.md": "c660e682d6930bc310a02567be4b5f8e11decfa21e8313696f40e02d7ac9d468",
+    "docs/CONTRACT.md": "b46958c069ab8e1d5bd8c6eb9143f0cc43110e61c2e9270cfd193ce5791cd907",
+    "scripts/run_m34_attention_check.py": "aad91cf275b6db2dabafc518b53e958bd8e4a43e5111cae30829ee3913d85cf1",
+    "scripts/run_m36_compact_gqa_check.py": "58c11cfc9d1d0eaa48aa7c531dcd6f15f01e71ca1e7d0d220ddb36a17c7ac955",
+    "src/llm_gpu_kernels/attention_baseline.py": "56064a0328cc0873d6468776e06b959fdff53feaba308c59ea0b99444b2e9438",
+    "src/llm_gpu_kernels/attention_baseline_benchmark.py": "15a88dd4277d9978356bc314c75371a0921ab2930698dbbac01d2019c1ea866e",
+    "src/llm_gpu_kernels/attention_segmented.py": "e72702f5def4df841fba274af87d22efa72e260a19617316dcadc22cae4768cb",
+    "src/llm_gpu_kernels/attention_segmented_benchmark.py": "5961ef2f74fd94a7d6a973edcf471e3a7377ecaa2a040265848d796e7a47a0b4",
+    "src/llm_gpu_kernels/attention_cuda.py": "3b1d48285ccde07b2b3012bdb5a5d65b596a4cc6363fb0a0b3192dd7eea3ec49",
+    "src/llm_gpu_kernels/attention_cuda_compact.py": "7c08add42e8745a6ad9af54ec86757643e19b6bcb53ae1a505bd81c235bd13d8",
+    "src/llm_gpu_kernels/attention_raw_boundary.py": "9c157907477655d3f9afc43ff847f998963413eab2ea970dc9b05a4ef21c4920",
+    "src/llm_gpu_kernels/cuda_bf16_mma.cu": "1becd90b7958159471fbfa1bdb97ee714ef193b3d88a6a90d2a37f0aead4f4c8",
+    "src/llm_gpu_kernels/cuda_bf16_mma_cache_policy.cu": "437f0cbd30e4c90b4788c8038504d2e86dcedf8e399f2293675735d83e087609",
+    "src/llm_gpu_kernels/cuda_bf16_mma_kdepth.cu": "4b9e3bed1a02c5a607c43a2099ff725638c1ef816b7d93f2a73a60e73f1c6a8b",
+    "src/llm_gpu_kernels/cuda_bf16_mma_output_tile.cu": "7067f0cc67545b96069884fcc3ffe60694c2ba9abeb99ac7e3a073e7599a7254",
+    "src/llm_gpu_kernels/cuda_bf16_mma_raster.cu": "6753e989fa02deb52e4b274a39bb7e0cceb80b7fae9d69599b367c989214446b",
+    "src/llm_gpu_kernels/cuda_bf16_mma_register_pipeline.cu": "756b8ccc706a43deca38fda07f95bda2fc0ed38c1d8a52fec54ff3dfafabad75",
+    "src/llm_gpu_kernels/cuda_bf16_mma_scheduled.cu": "008489dfafda77b0cb70a25bdd6c2b80433522b4874405d97f972484ee448db1",
+    "src/llm_gpu_kernels/cuda_bf16_mma_tiled.cu": "d870d879cd4d1f660a8de81fcd897721c67f1e5a9403465a0aeed13a524347f4",
+    "src/llm_gpu_kernels/cuda_bf16_mma_warp_specialized.cu": "a7de6e60c683147ae5654b752bed61e80ea746639cb3560c1a6763c64140b791",
+    "src/llm_gpu_kernels/cuda_gate_up.cu": "9012fa52379a87296ff2f29076ff15951c90e3d82ba996d424a5c5e3aa6c4893",
+    "src/llm_gpu_kernels/cuda_gqa_attention.cu": "b5e1a966ab06fd583c228d82da66a8daaafbe59c892229d2c95d1c038536143f",
+    "src/llm_gpu_kernels/cuda_gqa_attention_compact.cu": "0b4cba3457b8829d14b325ff4494b379323560c3987d77e147c7b409e7dc5cfa",
+    "src/llm_gpu_kernels/cuda_gqa_attention_rolled.cu": "2ce02a67fb30eb0c3456f2fda2168efd6995f7f412dced03751270105e0e3d4c",
+    "src/llm_gpu_kernels/cuda_w4_gate_up.cu": "9568364b9f7ef506259466b13cf16259dee6e459094335288914788a68aa60ac",
+    "src/llm_gpu_kernels/cuda_w4_layout_gate_up.cu": "cd187a98c403adcf4970aafbd5d1d3e004fcdfd30930c156427bf8b8318fdef1"
+  },
+  "numerical_cases": [
+    {
+      "case": "T0_history_empty",
+      "T": 0,
+      "segment_lengths": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "allocated",
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0,
+        "normalized_max": 0.0,
+        "max_abs": 0.0,
+        "finite": true,
+        "empty": true,
+        "passed": true
+      },
+      "m34_same_stage_p1_vs_chunked_fp32": {
+        "relative_rms": 0.0,
+        "normalized_max": 0.0,
+        "max_abs": 0.0,
+        "finite": true,
+        "empty": true,
+        "passed": true
+      },
+      "bitwise_equal_to_m34_same_stage_p1": true,
+      "resources": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 0,
+        "shared_memory_bytes": 32768,
+        "registers_per_thread": 223,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "ldl_instructions": 0,
+        "stl_instructions": 0,
+        "hmma_bf16_f32_instructions": 256,
+        "ldsm_instructions": 288
+      },
+      "passed": true
+    },
+    {
+      "case": "T0_history_empty",
+      "T": 0,
+      "segment_lengths": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "provided",
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0,
+        "normalized_max": 0.0,
+        "max_abs": 0.0,
+        "finite": true,
+        "empty": true,
+        "passed": true
+      },
+      "m34_same_stage_p1_vs_chunked_fp32": {
+        "relative_rms": 0.0,
+        "normalized_max": 0.0,
+        "max_abs": 0.0,
+        "finite": true,
+        "empty": true,
+        "passed": true
+      },
+      "bitwise_equal_to_m34_same_stage_p1": true,
+      "resources": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 0,
+        "shared_memory_bytes": 49152,
+        "registers_per_thread": 230,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "ldl_instructions": 0,
+        "stl_instructions": 0,
+        "hmma_bf16_f32_instructions": 256,
+        "ldsm_instructions": 288
+      },
+      "passed": true
+    },
+    {
+      "case": "T1_history_empty",
+      "T": 1,
+      "segment_lengths": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "provided",
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0,
+        "normalized_max": 0.0,
+        "max_abs": 0.0,
+        "finite": true,
+        "passed": true
+      },
+      "m34_same_stage_p1_vs_chunked_fp32": {
+        "relative_rms": 0.0,
+        "normalized_max": 0.0,
+        "max_abs": 0.0,
+        "finite": true,
+        "passed": true
+      },
+      "bitwise_equal_to_m34_same_stage_p1": true,
+      "resources": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 0,
+        "shared_memory_bytes": 32768,
+        "registers_per_thread": 223,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "ldl_instructions": 0,
+        "stl_instructions": 0,
+        "hmma_bf16_f32_instructions": 256,
+        "ldsm_instructions": 288
+      },
+      "passed": true
+    },
+    {
+      "case": "T1_history_empty",
+      "T": 1,
+      "segment_lengths": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "allocated",
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0,
+        "normalized_max": 0.0,
+        "max_abs": 0.0,
+        "finite": true,
+        "passed": true
+      },
+      "m34_same_stage_p1_vs_chunked_fp32": {
+        "relative_rms": 0.0,
+        "normalized_max": 0.0,
+        "max_abs": 0.0,
+        "finite": true,
+        "passed": true
+      },
+      "bitwise_equal_to_m34_same_stage_p1": true,
+      "resources": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 0,
+        "shared_memory_bytes": 49152,
+        "registers_per_thread": 230,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "ldl_instructions": 0,
+        "stl_instructions": 0,
+        "hmma_bf16_f32_instructions": 256,
+        "ldsm_instructions": 288
+      },
+      "passed": true
+    },
+    {
+      "case": "T9_history_17_0_3",
+      "T": 9,
+      "segment_lengths": [
+        17,
+        0,
+        3,
+        9
+      ],
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "allocated",
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0020018008071929216,
+        "normalized_max": 0.002693943679332733,
+        "max_abs": 0.0037832260131835938,
+        "finite": true,
+        "passed": true
+      },
+      "m34_same_stage_p1_vs_chunked_fp32": {
+        "relative_rms": 0.0020018008071929216,
+        "normalized_max": 0.002693943679332733,
+        "max_abs": 0.0037832260131835938,
+        "finite": true,
+        "passed": true
+      },
+      "bitwise_equal_to_m34_same_stage_p1": true,
+      "resources": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 0,
+        "shared_memory_bytes": 32768,
+        "registers_per_thread": 223,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "ldl_instructions": 0,
+        "stl_instructions": 0,
+        "hmma_bf16_f32_instructions": 256,
+        "ldsm_instructions": 288
+      },
+      "passed": true
+    },
+    {
+      "case": "T9_history_17_0_3",
+      "T": 9,
+      "segment_lengths": [
+        17,
+        0,
+        3,
+        9
+      ],
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "provided",
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0020018008071929216,
+        "normalized_max": 0.002693943679332733,
+        "max_abs": 0.0037832260131835938,
+        "finite": true,
+        "passed": true
+      },
+      "m34_same_stage_p1_vs_chunked_fp32": {
+        "relative_rms": 0.0020018008071929216,
+        "normalized_max": 0.002693943679332733,
+        "max_abs": 0.0037832260131835938,
+        "finite": true,
+        "passed": true
+      },
+      "bitwise_equal_to_m34_same_stage_p1": true,
+      "resources": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 0,
+        "shared_memory_bytes": 49152,
+        "registers_per_thread": 230,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "ldl_instructions": 0,
+        "stl_instructions": 0,
+        "hmma_bf16_f32_instructions": 256,
+        "ldsm_instructions": 288
+      },
+      "passed": true
+    },
+    {
+      "case": "T17_history_33_1_0",
+      "T": 17,
+      "segment_lengths": [
+        33,
+        1,
+        0,
+        17
+      ],
+      "current_v_padded": true,
+      "current_v_stride": [
+        6144,
+        128,
+        1
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "provided",
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.00204983982257545,
+        "normalized_max": 0.003787652589380741,
+        "max_abs": 0.005262017250061035,
+        "finite": true,
+        "passed": true
+      },
+      "m34_same_stage_p1_vs_chunked_fp32": {
+        "relative_rms": 0.00204983982257545,
+        "normalized_max": 0.003787652589380741,
+        "max_abs": 0.005262017250061035,
+        "finite": true,
+        "passed": true
+      },
+      "bitwise_equal_to_m34_same_stage_p1": true,
+      "resources": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 0,
+        "shared_memory_bytes": 32768,
+        "registers_per_thread": 223,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "ldl_instructions": 0,
+        "stl_instructions": 0,
+        "hmma_bf16_f32_instructions": 256,
+        "ldsm_instructions": 288
+      },
+      "passed": true
+    },
+    {
+      "case": "T17_history_33_1_0",
+      "T": 17,
+      "segment_lengths": [
+        33,
+        1,
+        0,
+        17
+      ],
+      "current_v_padded": true,
+      "current_v_stride": [
+        6144,
+        128,
+        1
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "allocated",
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.00204983982257545,
+        "normalized_max": 0.003787652589380741,
+        "max_abs": 0.005262017250061035,
+        "finite": true,
+        "passed": true
+      },
+      "m34_same_stage_p1_vs_chunked_fp32": {
+        "relative_rms": 0.00204983982257545,
+        "normalized_max": 0.003787652589380741,
+        "max_abs": 0.005262017250061035,
+        "finite": true,
+        "passed": true
+      },
+      "bitwise_equal_to_m34_same_stage_p1": true,
+      "resources": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 0,
+        "shared_memory_bytes": 49152,
+        "registers_per_thread": 230,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "ldl_instructions": 0,
+        "stl_instructions": 0,
+        "hmma_bf16_f32_instructions": 256,
+        "ldsm_instructions": 288
+      },
+      "passed": true
+    },
+    {
+      "case": "T64_history_64_16_32",
+      "T": 64,
+      "segment_lengths": [
+        64,
+        16,
+        32,
+        64
+      ],
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "allocated",
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0021154959686100483,
+        "normalized_max": 0.0017893007025122643,
+        "max_abs": 0.0023946762084960938,
+        "finite": true,
+        "passed": true
+      },
+      "m34_same_stage_p1_vs_chunked_fp32": {
+        "relative_rms": 0.0021154959686100483,
+        "normalized_max": 0.0017893007025122643,
+        "max_abs": 0.0023946762084960938,
+        "finite": true,
+        "passed": true
+      },
+      "bitwise_equal_to_m34_same_stage_p1": true,
+      "resources": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 0,
+        "shared_memory_bytes": 32768,
+        "registers_per_thread": 223,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "ldl_instructions": 0,
+        "stl_instructions": 0,
+        "hmma_bf16_f32_instructions": 256,
+        "ldsm_instructions": 288
+      },
+      "passed": true
+    },
+    {
+      "case": "T64_history_64_16_32",
+      "T": 64,
+      "segment_lengths": [
+        64,
+        16,
+        32,
+        64
+      ],
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "provided",
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0021154959686100483,
+        "normalized_max": 0.0017893007025122643,
+        "max_abs": 0.0023946762084960938,
+        "finite": true,
+        "passed": true
+      },
+      "m34_same_stage_p1_vs_chunked_fp32": {
+        "relative_rms": 0.0021154959686100483,
+        "normalized_max": 0.0017893007025122643,
+        "max_abs": 0.0023946762084960938,
+        "finite": true,
+        "passed": true
+      },
+      "bitwise_equal_to_m34_same_stage_p1": true,
+      "resources": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 0,
+        "shared_memory_bytes": 49152,
+        "registers_per_thread": 230,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "ldl_instructions": 0,
+        "stl_instructions": 0,
+        "hmma_bf16_f32_instructions": 256,
+        "ldsm_instructions": 288
+      },
+      "passed": true
+    },
+    {
+      "case": "T65_history_31_32_17",
+      "T": 65,
+      "segment_lengths": [
+        31,
+        32,
+        17,
+        65
+      ],
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "provided",
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.002098108408972621,
+        "normalized_max": 0.0022960547357797623,
+        "max_abs": 0.0030995607376098633,
+        "finite": true,
+        "passed": true
+      },
+      "m34_same_stage_p1_vs_chunked_fp32": {
+        "relative_rms": 0.002098108408972621,
+        "normalized_max": 0.0022960547357797623,
+        "max_abs": 0.0030995607376098633,
+        "finite": true,
+        "passed": true
+      },
+      "bitwise_equal_to_m34_same_stage_p1": true,
+      "resources": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 0,
+        "shared_memory_bytes": 32768,
+        "registers_per_thread": 223,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "ldl_instructions": 0,
+        "stl_instructions": 0,
+        "hmma_bf16_f32_instructions": 256,
+        "ldsm_instructions": 288
+      },
+      "passed": true
+    },
+    {
+      "case": "T65_history_31_32_17",
+      "T": 65,
+      "segment_lengths": [
+        31,
+        32,
+        17,
+        65
+      ],
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "allocated",
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.002098108408972621,
+        "normalized_max": 0.0022960547357797623,
+        "max_abs": 0.0030995607376098633,
+        "finite": true,
+        "passed": true
+      },
+      "m34_same_stage_p1_vs_chunked_fp32": {
+        "relative_rms": 0.002098108408972621,
+        "normalized_max": 0.0022960547357797623,
+        "max_abs": 0.0030995607376098633,
+        "finite": true,
+        "passed": true
+      },
+      "bitwise_equal_to_m34_same_stage_p1": true,
+      "resources": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 0,
+        "shared_memory_bytes": 49152,
+        "registers_per_thread": 230,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "ldl_instructions": 0,
+        "stl_instructions": 0,
+        "hmma_bf16_f32_instructions": 256,
+        "ldsm_instructions": 288
+      },
+      "passed": true
+    },
+    {
+      "case": "T96_history_128_64_32",
+      "T": 96,
+      "segment_lengths": [
+        128,
+        64,
+        32,
+        96
+      ],
+      "current_v_padded": true,
+      "current_v_stride": [
+        6144,
+        128,
+        1
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "allocated",
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0021519591100513935,
+        "normalized_max": 0.002580350963398814,
+        "max_abs": 0.0019037723541259766,
+        "finite": true,
+        "passed": true
+      },
+      "m34_same_stage_p1_vs_chunked_fp32": {
+        "relative_rms": 0.0021519591100513935,
+        "normalized_max": 0.002580350963398814,
+        "max_abs": 0.0019037723541259766,
+        "finite": true,
+        "passed": true
+      },
+      "bitwise_equal_to_m34_same_stage_p1": true,
+      "resources": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 0,
+        "shared_memory_bytes": 32768,
+        "registers_per_thread": 223,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "ldl_instructions": 0,
+        "stl_instructions": 0,
+        "hmma_bf16_f32_instructions": 256,
+        "ldsm_instructions": 288
+      },
+      "passed": true
+    },
+    {
+      "case": "T96_history_128_64_32",
+      "T": 96,
+      "segment_lengths": [
+        128,
+        64,
+        32,
+        96
+      ],
+      "current_v_padded": true,
+      "current_v_stride": [
+        6144,
+        128,
+        1
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "provided",
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0021519591100513935,
+        "normalized_max": 0.002580350963398814,
+        "max_abs": 0.0019037723541259766,
+        "finite": true,
+        "passed": true
+      },
+      "m34_same_stage_p1_vs_chunked_fp32": {
+        "relative_rms": 0.0021519591100513935,
+        "normalized_max": 0.002580350963398814,
+        "max_abs": 0.0019037723541259766,
+        "finite": true,
+        "passed": true
+      },
+      "bitwise_equal_to_m34_same_stage_p1": true,
+      "resources": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 0,
+        "shared_memory_bytes": 49152,
+        "registers_per_thread": 230,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "ldl_instructions": 0,
+        "stl_instructions": 0,
+        "hmma_bf16_f32_instructions": 256,
+        "ldsm_instructions": 288
+      },
+      "passed": true
+    },
+    {
+      "case": "T129_history_64_0_33",
+      "T": 129,
+      "segment_lengths": [
+        64,
+        0,
+        33,
+        129
+      ],
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "provided",
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.002115897834300995,
+        "normalized_max": 0.0026042053941637278,
+        "max_abs": 0.003893136978149414,
+        "finite": true,
+        "passed": true
+      },
+      "m34_same_stage_p1_vs_chunked_fp32": {
+        "relative_rms": 0.002115897834300995,
+        "normalized_max": 0.0026042053941637278,
+        "max_abs": 0.003893136978149414,
+        "finite": true,
+        "passed": true
+      },
+      "bitwise_equal_to_m34_same_stage_p1": true,
+      "resources": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 0,
+        "shared_memory_bytes": 32768,
+        "registers_per_thread": 223,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "ldl_instructions": 0,
+        "stl_instructions": 0,
+        "hmma_bf16_f32_instructions": 256,
+        "ldsm_instructions": 288
+      },
+      "passed": true
+    },
+    {
+      "case": "T129_history_64_0_33",
+      "T": 129,
+      "segment_lengths": [
+        64,
+        0,
+        33,
+        129
+      ],
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "allocated",
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.002115897834300995,
+        "normalized_max": 0.0026042053941637278,
+        "max_abs": 0.003893136978149414,
+        "finite": true,
+        "passed": true
+      },
+      "m34_same_stage_p1_vs_chunked_fp32": {
+        "relative_rms": 0.002115897834300995,
+        "normalized_max": 0.0026042053941637278,
+        "max_abs": 0.003893136978149414,
+        "finite": true,
+        "passed": true
+      },
+      "bitwise_equal_to_m34_same_stage_p1": true,
+      "resources": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 0,
+        "shared_memory_bytes": 49152,
+        "registers_per_thread": 230,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "ldl_instructions": 0,
+        "stl_instructions": 0,
+        "hmma_bf16_f32_instructions": 256,
+        "ldsm_instructions": 288
+      },
+      "passed": true
+    }
+  ],
+  "performance_cases": [
+    {
+      "T": 32,
+      "status": "passed",
+      "phase": "post_timing_validation",
+      "arm_order": [
+        "compact_s1_p1",
+        "compact_s2_p1",
+        "m34_s1_p1",
+        "m34_s2_p1",
+        "reusable_raw_pack_fa2"
+      ],
+      "conversion": {
+        "compact_s1_p1": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "compact_s2_p1": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "m34_s1_p1": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "m34_s2_p1": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "reusable_raw_pack_fa2": {
+          "packing_mode": "reusable_raw_layout_pack_each_call",
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 10878976,
+          "conversion_read_write_traffic_bytes_per_call": 21757952,
+          "contiguous_staging_bytes": 0,
+          "reusable_packed_kv_staging_bytes": 10878976
+        }
+      },
+      "input_sha256": "c5bc71bd05749b7f22153fc57ff2800f8b52df6726c0847d3096c35ad8a12d04",
+      "current_v_stride": [
+        6144,
+        128,
+        1
+      ],
+      "before_timing_vs_fp32": {
+        "compact_s1_p1": {
+          "relative_rms": 0.0022689125034958124,
+          "normalized_max": 0.003065763972699642,
+          "max_abs": 0.000561058521270752,
+          "finite": true,
+          "passed": true
+        },
+        "compact_s2_p1": {
+          "relative_rms": 0.0022689125034958124,
+          "normalized_max": 0.003065763972699642,
+          "max_abs": 0.000561058521270752,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s1_p1": {
+          "relative_rms": 0.0022689125034958124,
+          "normalized_max": 0.003065763972699642,
+          "max_abs": 0.000561058521270752,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s2_p1": {
+          "relative_rms": 0.0022689125034958124,
+          "normalized_max": 0.003065763972699642,
+          "max_abs": 0.000561058521270752,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_raw_pack_fa2": {
+          "relative_rms": 0.0022299005649983883,
+          "normalized_max": 0.002995413960888982,
+          "max_abs": 0.0005481839179992676,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "graph_before_timing_vs_fp32": {
+        "compact_s1_p1": {
+          "relative_rms": 0.0022689125034958124,
+          "normalized_max": 0.003065763972699642,
+          "max_abs": 0.000561058521270752,
+          "finite": true,
+          "passed": true
+        },
+        "compact_s2_p1": {
+          "relative_rms": 0.0022689125034958124,
+          "normalized_max": 0.003065763972699642,
+          "max_abs": 0.000561058521270752,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s1_p1": {
+          "relative_rms": 0.0022689125034958124,
+          "normalized_max": 0.003065763972699642,
+          "max_abs": 0.000561058521270752,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s2_p1": {
+          "relative_rms": 0.0022689125034958124,
+          "normalized_max": 0.003065763972699642,
+          "max_abs": 0.000561058521270752,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_raw_pack_fa2": {
+          "relative_rms": 0.0022299005649983883,
+          "normalized_max": 0.002995413960888982,
+          "max_abs": 0.0005481839179992676,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "timing": {
+        "rounds": [
+          {
+            "direction": "forward",
+            "order": [
+              "compact_s1_p1",
+              "compact_s2_p1",
+              "m34_s1_p1",
+              "m34_s2_p1",
+              "reusable_raw_pack_fa2"
+            ],
+            "samples_ms_per_forward": {
+              "compact_s1_p1": [
+                0.22604000568389893,
+                0.22471199929714203,
+                0.224248006939888
+              ],
+              "compact_s2_p1": [
+                0.19097599387168884,
+                0.18969599902629852,
+                0.18943999707698822
+              ],
+              "m34_s1_p1": [
+                0.22630399465560913,
+                0.2240000069141388,
+                0.2242559939622879
+              ],
+              "m34_s2_p1": [
+                0.19094400107860565,
+                0.18890400230884552,
+                0.18891200423240662
+              ],
+              "reusable_raw_pack_fa2": [
+                0.1653199940919876,
+                0.16460800170898438,
+                0.16485600173473358
+              ]
+            }
+          },
+          {
+            "direction": "reverse",
+            "order": [
+              "reusable_raw_pack_fa2",
+              "m34_s2_p1",
+              "m34_s1_p1",
+              "compact_s2_p1",
+              "compact_s1_p1"
+            ],
+            "samples_ms_per_forward": {
+              "reusable_raw_pack_fa2": [
+                0.16512000560760498,
+                0.1666560024023056,
+                0.1656319946050644
+              ],
+              "m34_s2_p1": [
+                0.1950719952583313,
+                0.19071200489997864,
+                0.18918399512767792
+              ],
+              "m34_s1_p1": [
+                0.22755199670791626,
+                0.2250239998102188,
+                0.2247679978609085
+              ],
+              "compact_s2_p1": [
+                0.19145600497722626,
+                0.18890400230884552,
+                0.1886720061302185
+              ],
+              "compact_s1_p1": [
+                0.22579200565814972,
+                0.2242559939622879,
+                0.2242559939622879
+              ]
+            }
+          },
+          {
+            "direction": "forward",
+            "order": [
+              "compact_s1_p1",
+              "compact_s2_p1",
+              "m34_s1_p1",
+              "m34_s2_p1",
+              "reusable_raw_pack_fa2"
+            ],
+            "samples_ms_per_forward": {
+              "compact_s1_p1": [
+                0.22835199534893036,
+                0.22603200376033783,
+                0.22499999403953552
+              ],
+              "compact_s2_p1": [
+                0.19251200556755066,
+                0.18995200097560883,
+                0.1886720061302185
+              ],
+              "m34_s1_p1": [
+                0.22604799270629883,
+                0.2242559939622879,
+                0.2245119959115982
+              ],
+              "m34_s2_p1": [
+                0.19046400487422943,
+                0.18938399851322174,
+                0.18887199461460114
+              ],
+              "reusable_raw_pack_fa2": [
+                0.1648399978876114,
+                0.16460800170898438,
+                0.16486400365829468
+              ]
+            }
+          }
+        ],
+        "summary": {
+          "compact_s1_p1": {
+            "event_p50_ms_per_forward": 0.22499999403953552,
+            "event_p95_ms_per_forward": 0.22742719948291779
+          },
+          "compact_s2_p1": {
+            "event_p50_ms_per_forward": 0.18969599902629852,
+            "event_p95_ms_per_forward": 0.1920896053314209
+          },
+          "m34_s1_p1": {
+            "event_p50_ms_per_forward": 0.2247679978609085,
+            "event_p95_ms_per_forward": 0.2270527958869934
+          },
+          "m34_s2_p1": {
+            "event_p50_ms_per_forward": 0.18938399851322174,
+            "event_p95_ms_per_forward": 0.19342079758644104
+          },
+          "reusable_raw_pack_fa2": {
+            "event_p50_ms_per_forward": 0.16486400365829468,
+            "event_p95_ms_per_forward": 0.16624639928340912
+          }
+        },
+        "round_order": [
+          "forward",
+          "reverse",
+          "forward"
+        ],
+        "samples_per_arm_per_round": 3,
+        "calls_per_graph_replay": 4,
+        "units": "milliseconds per complete attention forward",
+        "rounds_count": 3
+      },
+      "after_timing_vs_fp32": {
+        "compact_s1_p1": {
+          "relative_rms": 0.0022689125034958124,
+          "normalized_max": 0.003065763972699642,
+          "max_abs": 0.000561058521270752,
+          "finite": true,
+          "passed": true
+        },
+        "compact_s2_p1": {
+          "relative_rms": 0.0022689125034958124,
+          "normalized_max": 0.003065763972699642,
+          "max_abs": 0.000561058521270752,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s1_p1": {
+          "relative_rms": 0.0022689125034958124,
+          "normalized_max": 0.003065763972699642,
+          "max_abs": 0.000561058521270752,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s2_p1": {
+          "relative_rms": 0.0022689125034958124,
+          "normalized_max": 0.003065763972699642,
+          "max_abs": 0.000561058521270752,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_raw_pack_fa2": {
+          "relative_rms": 0.0022299005649983883,
+          "normalized_max": 0.002995413960888982,
+          "max_abs": 0.0005481839179992676,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "graph_after_timing_vs_fp32": {
+        "compact_s1_p1": {
+          "relative_rms": 0.0022689125034958124,
+          "normalized_max": 0.003065763972699642,
+          "max_abs": 0.000561058521270752,
+          "finite": true,
+          "passed": true
+        },
+        "compact_s2_p1": {
+          "relative_rms": 0.0022689125034958124,
+          "normalized_max": 0.003065763972699642,
+          "max_abs": 0.000561058521270752,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s1_p1": {
+          "relative_rms": 0.0022689125034958124,
+          "normalized_max": 0.003065763972699642,
+          "max_abs": 0.000561058521270752,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s2_p1": {
+          "relative_rms": 0.0022689125034958124,
+          "normalized_max": 0.003065763972699642,
+          "max_abs": 0.000561058521270752,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_raw_pack_fa2": {
+          "relative_rms": 0.0022299005649983883,
+          "normalized_max": 0.002995413960888982,
+          "max_abs": 0.0005481839179992676,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "resources": {
+        "compact_s1_p1": {
+          "stages": 1,
+          "p_mode": 1,
+          "p_mode_name": "direct_register",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 16384,
+          "probability_scratch_bytes": 0,
+          "shared_memory_bytes": 32768,
+          "registers_per_thread": 223,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "ldl_instructions": 0,
+          "stl_instructions": 0,
+          "hmma_bf16_f32_instructions": 256,
+          "ldsm_instructions": 288,
+          "shared_memory_delta_vs_m34_bytes": -4096,
+          "registers_delta_vs_m34": 0
+        },
+        "compact_s2_p1": {
+          "stages": 2,
+          "p_mode": 1,
+          "p_mode_name": "direct_register",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 32768,
+          "probability_scratch_bytes": 0,
+          "shared_memory_bytes": 49152,
+          "registers_per_thread": 230,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "ldl_instructions": 0,
+          "stl_instructions": 0,
+          "hmma_bf16_f32_instructions": 256,
+          "ldsm_instructions": 288,
+          "shared_memory_delta_vs_m34_bytes": -4096,
+          "registers_delta_vs_m34": 0
+        },
+        "m34_s1_p1": {
+          "stages": 1,
+          "p_mode": 1,
+          "p_mode_name": "direct_register",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 16384,
+          "probability_scratch_bytes": 4096,
+          "shared_memory_bytes": 36864,
+          "registers_per_thread": 223,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "barriers": 1
+        },
+        "m34_s2_p1": {
+          "stages": 2,
+          "p_mode": 1,
+          "p_mode_name": "direct_register",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 32768,
+          "probability_scratch_bytes": 4096,
+          "shared_memory_bytes": 53248,
+          "registers_per_thread": 230,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "barriers": 1
+        },
+        "reusable_raw_pack_fa2": {
+          "packed_kv_workspace_bytes": 10878976,
+          "owned_output_bytes": 262144,
+          "shared_memory_bytes": null
+        }
+      },
+      "shared_memory_differences_vs_m34_same_stage_p1": {
+        "compact_s1_p1": -4096,
+        "compact_s2_p1": -4096
+      },
+      "history_lengths": [
+        2048,
+        64,
+        512
+      ],
+      "segment_lengths": [
+        2048,
+        64,
+        512,
+        32
+      ],
+      "seed": 4607,
+      "input_hash_preserved": true,
+      "bitwise_equal_to_m34_same_stage_p1": {
+        "1": {
+          "api_before_timing": true,
+          "graph_before_timing": true,
+          "api_after_timing": true,
+          "graph_after_timing": true,
+          "required_for_correctness": false
+        },
+        "2": {
+          "api_before_timing": true,
+          "graph_before_timing": true,
+          "api_after_timing": true,
+          "graph_after_timing": true,
+          "required_for_correctness": false
+        }
+      },
+      "workspace_bytes": {
+        "compact_s1_p1": 262144,
+        "compact_s2_p1": 262144,
+        "m34_s1_p1": 262144,
+        "m34_s2_p1": 262144,
+        "reusable_raw_pack_fa2": 10878976
+      },
+      "workspace_scope": "compact and M34 values are owned BF16 output bytes; FA2 is reusable packed K/V bytes and excludes its output; no contiguous V staging is used",
+      "passed": true
+    },
+    {
+      "T": 96,
+      "status": "passed",
+      "phase": "post_timing_validation",
+      "arm_order": [
+        "compact_s1_p1",
+        "compact_s2_p1",
+        "m34_s1_p1",
+        "m34_s2_p1",
+        "reusable_raw_pack_fa2"
+      ],
+      "conversion": {
+        "compact_s1_p1": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "compact_s2_p1": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "m34_s1_p1": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "m34_s2_p1": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "reusable_raw_pack_fa2": {
+          "packing_mode": "reusable_raw_layout_pack_each_call",
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 11141120,
+          "conversion_read_write_traffic_bytes_per_call": 22282240,
+          "contiguous_staging_bytes": 0,
+          "reusable_packed_kv_staging_bytes": 11141120
+        }
+      },
+      "input_sha256": "c4730221801bfe5b7e5539125b8101a6ea911319bdbe34183d8847ca9b03a9e9",
+      "current_v_stride": [
+        6144,
+        128,
+        1
+      ],
+      "before_timing_vs_fp32": {
+        "compact_s1_p1": {
+          "relative_rms": 0.0022563862148672342,
+          "normalized_max": 0.0031857292633503675,
+          "max_abs": 0.000590786337852478,
+          "finite": true,
+          "passed": true
+        },
+        "compact_s2_p1": {
+          "relative_rms": 0.0022563862148672342,
+          "normalized_max": 0.0031857292633503675,
+          "max_abs": 0.000590786337852478,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s1_p1": {
+          "relative_rms": 0.0022563862148672342,
+          "normalized_max": 0.0031857292633503675,
+          "max_abs": 0.000590786337852478,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s2_p1": {
+          "relative_rms": 0.0022563862148672342,
+          "normalized_max": 0.0031857292633503675,
+          "max_abs": 0.000590786337852478,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_raw_pack_fa2": {
+          "relative_rms": 0.0022240669932216406,
+          "normalized_max": 0.002629048191010952,
+          "max_abs": 0.00048755109310150146,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "graph_before_timing_vs_fp32": {
+        "compact_s1_p1": {
+          "relative_rms": 0.0022563862148672342,
+          "normalized_max": 0.0031857292633503675,
+          "max_abs": 0.000590786337852478,
+          "finite": true,
+          "passed": true
+        },
+        "compact_s2_p1": {
+          "relative_rms": 0.0022563862148672342,
+          "normalized_max": 0.0031857292633503675,
+          "max_abs": 0.000590786337852478,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s1_p1": {
+          "relative_rms": 0.0022563862148672342,
+          "normalized_max": 0.0031857292633503675,
+          "max_abs": 0.000590786337852478,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s2_p1": {
+          "relative_rms": 0.0022563862148672342,
+          "normalized_max": 0.0031857292633503675,
+          "max_abs": 0.000590786337852478,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_raw_pack_fa2": {
+          "relative_rms": 0.0022240669932216406,
+          "normalized_max": 0.002629048191010952,
+          "max_abs": 0.00048755109310150146,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "timing": {
+        "rounds": [
+          {
+            "direction": "forward",
+            "order": [
+              "compact_s1_p1",
+              "compact_s2_p1",
+              "m34_s1_p1",
+              "m34_s2_p1",
+              "reusable_raw_pack_fa2"
+            ],
+            "samples_ms_per_forward": {
+              "compact_s1_p1": [
+                0.32282400131225586,
+                0.32204800844192505,
+                0.32100000977516174
+              ],
+              "compact_s2_p1": [
+                0.32102400064468384,
+                0.32128000259399414,
+                0.32102400064468384
+              ],
+              "m34_s1_p1": [
+                0.32179200649261475,
+                0.32122400403022766,
+                0.32153600454330444
+              ],
+              "m34_s2_p1": [
+                0.3829759955406189,
+                0.3819519877433777,
+                0.38092800974845886
+              ],
+              "reusable_raw_pack_fa2": [
+                0.2905600070953369,
+                0.2908160090446472,
+                0.2905600070953369
+              ]
+            }
+          },
+          {
+            "direction": "reverse",
+            "order": [
+              "reusable_raw_pack_fa2",
+              "m34_s2_p1",
+              "m34_s1_p1",
+              "compact_s2_p1",
+              "compact_s1_p1"
+            ],
+            "samples_ms_per_forward": {
+              "reusable_raw_pack_fa2": [
+                0.29414400458335876,
+                0.29258400201797485,
+                0.2902880012989044
+              ],
+              "m34_s2_p1": [
+                0.3827199935913086,
+                0.38016000390052795,
+                0.3832319974899292
+              ],
+              "m34_s1_p1": [
+                0.3235839903354645,
+                0.31916800141334534,
+                0.32076799869537354
+              ],
+              "compact_s2_p1": [
+                0.32307198643684387,
+                0.32204800844192505,
+                0.32178398966789246
+              ],
+              "compact_s1_p1": [
+                0.32230401039123535,
+                0.3197439908981323,
+                0.32102400064468384
+              ]
+            }
+          },
+          {
+            "direction": "forward",
+            "order": [
+              "compact_s1_p1",
+              "compact_s2_p1",
+              "m34_s1_p1",
+              "m34_s2_p1",
+              "reusable_raw_pack_fa2"
+            ],
+            "samples_ms_per_forward": {
+              "compact_s1_p1": [
+                0.32128000259399414,
+                0.32102400064468384,
+                0.32076799869537354
+              ],
+              "compact_s2_p1": [
+                0.3238399922847748,
+                0.32230401039123535,
+                0.32179200649261475
+              ],
+              "m34_s1_p1": [
+                0.32051199674606323,
+                0.31972000002861023,
+                0.32051199674606323
+              ],
+              "m34_s2_p1": [
+                0.3829759955406189,
+                0.3824639916419983,
+                0.3821440041065216
+              ],
+              "reusable_raw_pack_fa2": [
+                0.2910720109939575,
+                0.2954240143299103,
+                0.2948960065841675
+              ]
+            }
+          }
+        ],
+        "summary": {
+          "compact_s1_p1": {
+            "event_p50_ms_per_forward": 0.32102400064468384,
+            "event_p95_ms_per_forward": 0.3226160049438477
+          },
+          "compact_s2_p1": {
+            "event_p50_ms_per_forward": 0.32179200649261475,
+            "event_p95_ms_per_forward": 0.3235327899456024
+          },
+          "m34_s1_p1": {
+            "event_p50_ms_per_forward": 0.32076799869537354,
+            "event_p95_ms_per_forward": 0.3228671967983246
+          },
+          "m34_s2_p1": {
+            "event_p50_ms_per_forward": 0.3824639916419983,
+            "event_p95_ms_per_forward": 0.3831295967102051
+          },
+          "reusable_raw_pack_fa2": {
+            "event_p50_ms_per_forward": 0.2910720109939575,
+            "event_p95_ms_per_forward": 0.29521281123161314
+          }
+        },
+        "round_order": [
+          "forward",
+          "reverse",
+          "forward"
+        ],
+        "samples_per_arm_per_round": 3,
+        "calls_per_graph_replay": 4,
+        "units": "milliseconds per complete attention forward",
+        "rounds_count": 3
+      },
+      "after_timing_vs_fp32": {
+        "compact_s1_p1": {
+          "relative_rms": 0.0022563862148672342,
+          "normalized_max": 0.0031857292633503675,
+          "max_abs": 0.000590786337852478,
+          "finite": true,
+          "passed": true
+        },
+        "compact_s2_p1": {
+          "relative_rms": 0.0022563862148672342,
+          "normalized_max": 0.0031857292633503675,
+          "max_abs": 0.000590786337852478,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s1_p1": {
+          "relative_rms": 0.0022563862148672342,
+          "normalized_max": 0.0031857292633503675,
+          "max_abs": 0.000590786337852478,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s2_p1": {
+          "relative_rms": 0.0022563862148672342,
+          "normalized_max": 0.0031857292633503675,
+          "max_abs": 0.000590786337852478,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_raw_pack_fa2": {
+          "relative_rms": 0.0022240669932216406,
+          "normalized_max": 0.002629048191010952,
+          "max_abs": 0.00048755109310150146,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "graph_after_timing_vs_fp32": {
+        "compact_s1_p1": {
+          "relative_rms": 0.0022563862148672342,
+          "normalized_max": 0.0031857292633503675,
+          "max_abs": 0.000590786337852478,
+          "finite": true,
+          "passed": true
+        },
+        "compact_s2_p1": {
+          "relative_rms": 0.0022563862148672342,
+          "normalized_max": 0.0031857292633503675,
+          "max_abs": 0.000590786337852478,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s1_p1": {
+          "relative_rms": 0.0022563862148672342,
+          "normalized_max": 0.0031857292633503675,
+          "max_abs": 0.000590786337852478,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s2_p1": {
+          "relative_rms": 0.0022563862148672342,
+          "normalized_max": 0.0031857292633503675,
+          "max_abs": 0.000590786337852478,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_raw_pack_fa2": {
+          "relative_rms": 0.0022240669932216406,
+          "normalized_max": 0.002629048191010952,
+          "max_abs": 0.00048755109310150146,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "resources": {
+        "compact_s1_p1": {
+          "stages": 1,
+          "p_mode": 1,
+          "p_mode_name": "direct_register",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 16384,
+          "probability_scratch_bytes": 0,
+          "shared_memory_bytes": 32768,
+          "registers_per_thread": 223,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "ldl_instructions": 0,
+          "stl_instructions": 0,
+          "hmma_bf16_f32_instructions": 256,
+          "ldsm_instructions": 288,
+          "shared_memory_delta_vs_m34_bytes": -4096,
+          "registers_delta_vs_m34": 0
+        },
+        "compact_s2_p1": {
+          "stages": 2,
+          "p_mode": 1,
+          "p_mode_name": "direct_register",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 32768,
+          "probability_scratch_bytes": 0,
+          "shared_memory_bytes": 49152,
+          "registers_per_thread": 230,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "ldl_instructions": 0,
+          "stl_instructions": 0,
+          "hmma_bf16_f32_instructions": 256,
+          "ldsm_instructions": 288,
+          "shared_memory_delta_vs_m34_bytes": -4096,
+          "registers_delta_vs_m34": 0
+        },
+        "m34_s1_p1": {
+          "stages": 1,
+          "p_mode": 1,
+          "p_mode_name": "direct_register",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 16384,
+          "probability_scratch_bytes": 4096,
+          "shared_memory_bytes": 36864,
+          "registers_per_thread": 223,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "barriers": 1
+        },
+        "m34_s2_p1": {
+          "stages": 2,
+          "p_mode": 1,
+          "p_mode_name": "direct_register",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 32768,
+          "probability_scratch_bytes": 4096,
+          "shared_memory_bytes": 53248,
+          "registers_per_thread": 230,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "barriers": 1
+        },
+        "reusable_raw_pack_fa2": {
+          "packed_kv_workspace_bytes": 11141120,
+          "owned_output_bytes": 786432,
+          "shared_memory_bytes": null
+        }
+      },
+      "shared_memory_differences_vs_m34_same_stage_p1": {
+        "compact_s1_p1": -4096,
+        "compact_s2_p1": -4096
+      },
+      "history_lengths": [
+        2048,
+        64,
+        512
+      ],
+      "segment_lengths": [
+        2048,
+        64,
+        512,
+        96
+      ],
+      "seed": 4607,
+      "input_hash_preserved": true,
+      "bitwise_equal_to_m34_same_stage_p1": {
+        "1": {
+          "api_before_timing": true,
+          "graph_before_timing": true,
+          "api_after_timing": true,
+          "graph_after_timing": true,
+          "required_for_correctness": false
+        },
+        "2": {
+          "api_before_timing": true,
+          "graph_before_timing": true,
+          "api_after_timing": true,
+          "graph_after_timing": true,
+          "required_for_correctness": false
+        }
+      },
+      "workspace_bytes": {
+        "compact_s1_p1": 786432,
+        "compact_s2_p1": 786432,
+        "m34_s1_p1": 786432,
+        "m34_s2_p1": 786432,
+        "reusable_raw_pack_fa2": 11141120
+      },
+      "workspace_scope": "compact and M34 values are owned BF16 output bytes; FA2 is reusable packed K/V bytes and excludes its output; no contiguous V staging is used",
+      "passed": true
+    },
+    {
+      "T": 256,
+      "status": "passed",
+      "phase": "post_timing_validation",
+      "arm_order": [
+        "compact_s1_p1",
+        "compact_s2_p1",
+        "m34_s1_p1",
+        "m34_s2_p1",
+        "reusable_raw_pack_fa2"
+      ],
+      "conversion": {
+        "compact_s1_p1": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "compact_s2_p1": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "m34_s1_p1": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "m34_s2_p1": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "reusable_raw_pack_fa2": {
+          "packing_mode": "reusable_raw_layout_pack_each_call",
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 11796480,
+          "conversion_read_write_traffic_bytes_per_call": 23592960,
+          "contiguous_staging_bytes": 0,
+          "reusable_packed_kv_staging_bytes": 11796480
+        }
+      },
+      "input_sha256": "defcdda8c8dea32abaadbb4ac8cba2ee29597b898c08a96d9fda5f224a9dee96",
+      "current_v_stride": [
+        6144,
+        128,
+        1
+      ],
+      "before_timing_vs_fp32": {
+        "compact_s1_p1": {
+          "relative_rms": 0.0022761384025216103,
+          "normalized_max": 0.002780889393761754,
+          "max_abs": 0.0005294829607009888,
+          "finite": true,
+          "passed": true
+        },
+        "compact_s2_p1": {
+          "relative_rms": 0.0022761384025216103,
+          "normalized_max": 0.002780889393761754,
+          "max_abs": 0.0005294829607009888,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s1_p1": {
+          "relative_rms": 0.0022761384025216103,
+          "normalized_max": 0.002780889393761754,
+          "max_abs": 0.0005294829607009888,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s2_p1": {
+          "relative_rms": 0.0022761384025216103,
+          "normalized_max": 0.002780889393761754,
+          "max_abs": 0.0005294829607009888,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_raw_pack_fa2": {
+          "relative_rms": 0.0022783258464187384,
+          "normalized_max": 0.003026397665962577,
+          "max_abs": 0.0005762279033660889,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "graph_before_timing_vs_fp32": {
+        "compact_s1_p1": {
+          "relative_rms": 0.0022761384025216103,
+          "normalized_max": 0.002780889393761754,
+          "max_abs": 0.0005294829607009888,
+          "finite": true,
+          "passed": true
+        },
+        "compact_s2_p1": {
+          "relative_rms": 0.0022761384025216103,
+          "normalized_max": 0.002780889393761754,
+          "max_abs": 0.0005294829607009888,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s1_p1": {
+          "relative_rms": 0.0022761384025216103,
+          "normalized_max": 0.002780889393761754,
+          "max_abs": 0.0005294829607009888,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s2_p1": {
+          "relative_rms": 0.0022761384025216103,
+          "normalized_max": 0.002780889393761754,
+          "max_abs": 0.0005294829607009888,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_raw_pack_fa2": {
+          "relative_rms": 0.0022783258464187384,
+          "normalized_max": 0.003026397665962577,
+          "max_abs": 0.0005762279033660889,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "timing": {
+        "rounds": [
+          {
+            "direction": "forward",
+            "order": [
+              "compact_s1_p1",
+              "compact_s2_p1",
+              "m34_s1_p1",
+              "m34_s2_p1",
+              "reusable_raw_pack_fa2"
+            ],
+            "samples_ms_per_forward": {
+              "compact_s1_p1": [
+                0.5470319986343384,
+                0.5455359816551208,
+                0.5465599894523621
+              ],
+              "compact_s2_p1": [
+                0.5140479803085327,
+                0.5125120282173157,
+                0.5245440006256104
+              ],
+              "m34_s1_p1": [
+                0.5468159914016724,
+                0.5465599894523621,
+                0.5447279810905457
+              ],
+              "m34_s2_p1": [
+                0.5957120060920715,
+                0.5941759943962097,
+                0.5969359874725342
+              ],
+              "reusable_raw_pack_fa2": [
+                0.4677119851112366,
+                0.469760000705719,
+                0.4679679870605469
+              ]
+            }
+          },
+          {
+            "direction": "reverse",
+            "order": [
+              "reusable_raw_pack_fa2",
+              "m34_s2_p1",
+              "m34_s1_p1",
+              "compact_s2_p1",
+              "compact_s1_p1"
+            ],
+            "samples_ms_per_forward": {
+              "reusable_raw_pack_fa2": [
+                0.4677119851112366,
+                0.46745601296424866,
+                0.46795201301574707
+              ],
+              "m34_s2_p1": [
+                0.5969359874725342,
+                0.5946879982948303,
+                0.5987840294837952
+              ],
+              "m34_s1_p1": [
+                0.544975996017456,
+                0.544983983039856,
+                0.5447679758071899
+              ],
+              "compact_s2_p1": [
+                0.5135359764099121,
+                0.514303982257843,
+                0.514303982257843
+              ],
+              "compact_s1_p1": [
+                0.5457760095596313,
+                0.5463039875030518,
+                0.5465599894523621
+              ]
+            }
+          },
+          {
+            "direction": "forward",
+            "order": [
+              "compact_s1_p1",
+              "compact_s2_p1",
+              "m34_s1_p1",
+              "m34_s2_p1",
+              "reusable_raw_pack_fa2"
+            ],
+            "samples_ms_per_forward": {
+              "compact_s1_p1": [
+                0.5457919836044312,
+                0.5463039875030518,
+                0.5463039875030518
+              ],
+              "compact_s2_p1": [
+                0.518343985080719,
+                0.5140479803085327,
+                0.5137919783592224
+              ],
+              "m34_s1_p1": [
+                0.5450239777565002,
+                0.5480960011482239,
+                0.546783983707428
+              ],
+              "m34_s2_p1": [
+                0.5946559906005859,
+                0.5593519806861877,
+                0.5537279844284058
+              ],
+              "reusable_raw_pack_fa2": [
+                0.449535995721817,
+                0.4492799937725067,
+                0.45132800936698914
+              ]
+            }
+          }
+        ],
+        "summary": {
+          "compact_s1_p1": {
+            "event_p50_ms_per_forward": 0.5463039875030518,
+            "event_p95_ms_per_forward": 0.5468431949615479
+          },
+          "compact_s2_p1": {
+            "event_p50_ms_per_forward": 0.5140479803085327,
+            "event_p95_ms_per_forward": 0.5220639944076538
+          },
+          "m34_s1_p1": {
+            "event_p50_ms_per_forward": 0.5450239777565002,
+            "event_p95_ms_per_forward": 0.5475839972496033
+          },
+          "m34_s2_p1": {
+            "event_p50_ms_per_forward": 0.5946879982948303,
+            "event_p95_ms_per_forward": 0.5980448126792908
+          },
+          "reusable_raw_pack_fa2": {
+            "event_p50_ms_per_forward": 0.4677119851112366,
+            "event_p95_ms_per_forward": 0.46904319524765015
+          }
+        },
+        "round_order": [
+          "forward",
+          "reverse",
+          "forward"
+        ],
+        "samples_per_arm_per_round": 3,
+        "calls_per_graph_replay": 4,
+        "units": "milliseconds per complete attention forward",
+        "rounds_count": 3
+      },
+      "after_timing_vs_fp32": {
+        "compact_s1_p1": {
+          "relative_rms": 0.0022761384025216103,
+          "normalized_max": 0.002780889393761754,
+          "max_abs": 0.0005294829607009888,
+          "finite": true,
+          "passed": true
+        },
+        "compact_s2_p1": {
+          "relative_rms": 0.0022761384025216103,
+          "normalized_max": 0.002780889393761754,
+          "max_abs": 0.0005294829607009888,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s1_p1": {
+          "relative_rms": 0.0022761384025216103,
+          "normalized_max": 0.002780889393761754,
+          "max_abs": 0.0005294829607009888,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s2_p1": {
+          "relative_rms": 0.0022761384025216103,
+          "normalized_max": 0.002780889393761754,
+          "max_abs": 0.0005294829607009888,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_raw_pack_fa2": {
+          "relative_rms": 0.0022783258464187384,
+          "normalized_max": 0.003026397665962577,
+          "max_abs": 0.0005762279033660889,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "graph_after_timing_vs_fp32": {
+        "compact_s1_p1": {
+          "relative_rms": 0.0022761384025216103,
+          "normalized_max": 0.002780889393761754,
+          "max_abs": 0.0005294829607009888,
+          "finite": true,
+          "passed": true
+        },
+        "compact_s2_p1": {
+          "relative_rms": 0.0022761384025216103,
+          "normalized_max": 0.002780889393761754,
+          "max_abs": 0.0005294829607009888,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s1_p1": {
+          "relative_rms": 0.0022761384025216103,
+          "normalized_max": 0.002780889393761754,
+          "max_abs": 0.0005294829607009888,
+          "finite": true,
+          "passed": true
+        },
+        "m34_s2_p1": {
+          "relative_rms": 0.0022761384025216103,
+          "normalized_max": 0.002780889393761754,
+          "max_abs": 0.0005294829607009888,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_raw_pack_fa2": {
+          "relative_rms": 0.0022783258464187384,
+          "normalized_max": 0.003026397665962577,
+          "max_abs": 0.0005762279033660889,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "resources": {
+        "compact_s1_p1": {
+          "stages": 1,
+          "p_mode": 1,
+          "p_mode_name": "direct_register",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 16384,
+          "probability_scratch_bytes": 0,
+          "shared_memory_bytes": 32768,
+          "registers_per_thread": 223,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "ldl_instructions": 0,
+          "stl_instructions": 0,
+          "hmma_bf16_f32_instructions": 256,
+          "ldsm_instructions": 288,
+          "shared_memory_delta_vs_m34_bytes": -4096,
+          "registers_delta_vs_m34": 0
+        },
+        "compact_s2_p1": {
+          "stages": 2,
+          "p_mode": 1,
+          "p_mode_name": "direct_register",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 32768,
+          "probability_scratch_bytes": 0,
+          "shared_memory_bytes": 49152,
+          "registers_per_thread": 230,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "ldl_instructions": 0,
+          "stl_instructions": 0,
+          "hmma_bf16_f32_instructions": 256,
+          "ldsm_instructions": 288,
+          "shared_memory_delta_vs_m34_bytes": -4096,
+          "registers_delta_vs_m34": 0
+        },
+        "m34_s1_p1": {
+          "stages": 1,
+          "p_mode": 1,
+          "p_mode_name": "direct_register",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 16384,
+          "probability_scratch_bytes": 4096,
+          "shared_memory_bytes": 36864,
+          "registers_per_thread": 223,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "barriers": 1
+        },
+        "m34_s2_p1": {
+          "stages": 2,
+          "p_mode": 1,
+          "p_mode_name": "direct_register",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 32768,
+          "probability_scratch_bytes": 4096,
+          "shared_memory_bytes": 53248,
+          "registers_per_thread": 230,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "barriers": 1
+        },
+        "reusable_raw_pack_fa2": {
+          "packed_kv_workspace_bytes": 11796480,
+          "owned_output_bytes": 2097152,
+          "shared_memory_bytes": null
+        }
+      },
+      "shared_memory_differences_vs_m34_same_stage_p1": {
+        "compact_s1_p1": -4096,
+        "compact_s2_p1": -4096
+      },
+      "history_lengths": [
+        2048,
+        64,
+        512
+      ],
+      "segment_lengths": [
+        2048,
+        64,
+        512,
+        256
+      ],
+      "seed": 4607,
+      "input_hash_preserved": true,
+      "bitwise_equal_to_m34_same_stage_p1": {
+        "1": {
+          "api_before_timing": true,
+          "graph_before_timing": true,
+          "api_after_timing": true,
+          "graph_after_timing": true,
+          "required_for_correctness": false
+        },
+        "2": {
+          "api_before_timing": true,
+          "graph_before_timing": true,
+          "api_after_timing": true,
+          "graph_after_timing": true,
+          "required_for_correctness": false
+        }
+      },
+      "workspace_bytes": {
+        "compact_s1_p1": 2097152,
+        "compact_s2_p1": 2097152,
+        "m34_s1_p1": 2097152,
+        "m34_s2_p1": 2097152,
+        "reusable_raw_pack_fa2": 11796480
+      },
+      "workspace_scope": "compact and M34 values are owned BF16 output bytes; FA2 is reusable packed K/V bytes and excludes its output; no contiguous V staging is used",
+      "passed": true
+    }
+  ],
+  "telemetry_before": {
+    "returncode": 0,
+    "stdout": "595.91.07, 42, 13.19 W, 210 MHz, 405 MHz, 179 MiB",
+    "stderr": ""
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "torch": "2.7.1+cu128",
+    "torch_path": "/home/tmz/\u6587\u6863/ChatGPT/llm-gpu-kernels/.venv/lib/python3.12/site-packages/torch/__init__.py",
+    "cuda_runtime": "12.8",
+    "triton": "3.3.1",
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "sm": [
+      8,
+      6
+    ],
+    "fa2": {
+      "provenance": {
+        "schema": 1,
+        "version": "2.8.3.post1",
+        "tag": "v2.8.3.post1",
+        "tag_commit_short": "a8aa52b",
+        "runtime_path": "/home/tmz/ai/baselines/flash-attention-2.8.3.post1",
+        "wheel_name": "flash_attn-2.8.3.post1+cu12torch2.7cxx11abiTRUE-cp312-cp312-linux_x86_64.whl",
+        "official_wheel_url": "https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3.post1/flash_attn-2.8.3.post1%2Bcu12torch2.7cxx11abiTRUE-cp312-cp312-linux_x86_64.whl",
+        "official_release_api": "https://api.github.com/repos/Dao-AILab/flash-attention/releases/tags/v2.8.3.post1",
+        "official_release_asset_digest": "sha256:f87164bb919f5597cb94f7485196be6ac7842b71d7bf8e9f8e9133b9045ab5ea",
+        "wheel_sha256_verified": "f87164bb919f5597cb94f7485196be6ac7842b71d7bf8e9f8e9133b9045ab5ea",
+        "official_files_verified_count": 86,
+        "all_upstream_package_files_match_wheel": true,
+        "dependencies": {
+          "einops": "0.8.2"
+        },
+        "torch": "project .venv 2.7.1+cu128; not installed in overlay",
+        "scope": "FA2 public operator baseline; no source patches",
+        "wheel_build_version": "2.8.3.post1+cu12torch2.7cxx11abitrue"
+      },
+      "provenance_sha256": "500136ecc2bfa9385e573b38da27a26506ff42dacc7673ef322d6eb79a616780",
+      "imported_module_path": "/home/tmz/ai/baselines/flash-attention-2.8.3.post1/flash_attn/__init__.py",
+      "actual_distribution_version": "2.8.3.post1",
+      "runtime_path": "/home/tmz/ai/baselines/flash-attention-2.8.3.post1"
+    },
+    "tf32": false,
+    "bf16_reduced_precision_reduction": false
+  },
+  "source_hashes_after": {
+    "AGENTS.md": "c660e682d6930bc310a02567be4b5f8e11decfa21e8313696f40e02d7ac9d468",
+    "docs/CONTRACT.md": "b46958c069ab8e1d5bd8c6eb9143f0cc43110e61c2e9270cfd193ce5791cd907",
+    "scripts/run_m34_attention_check.py": "aad91cf275b6db2dabafc518b53e958bd8e4a43e5111cae30829ee3913d85cf1",
+    "scripts/run_m36_compact_gqa_check.py": "58c11cfc9d1d0eaa48aa7c531dcd6f15f01e71ca1e7d0d220ddb36a17c7ac955",
+    "src/llm_gpu_kernels/attention_baseline.py": "56064a0328cc0873d6468776e06b959fdff53feaba308c59ea0b99444b2e9438",
+    "src/llm_gpu_kernels/attention_baseline_benchmark.py": "15a88dd4277d9978356bc314c75371a0921ab2930698dbbac01d2019c1ea866e",
+    "src/llm_gpu_kernels/attention_segmented.py": "e72702f5def4df841fba274af87d22efa72e260a19617316dcadc22cae4768cb",
+    "src/llm_gpu_kernels/attention_segmented_benchmark.py": "5961ef2f74fd94a7d6a973edcf471e3a7377ecaa2a040265848d796e7a47a0b4",
+    "src/llm_gpu_kernels/attention_cuda.py": "3b1d48285ccde07b2b3012bdb5a5d65b596a4cc6363fb0a0b3192dd7eea3ec49",
+    "src/llm_gpu_kernels/attention_cuda_compact.py": "7c08add42e8745a6ad9af54ec86757643e19b6bcb53ae1a505bd81c235bd13d8",
+    "src/llm_gpu_kernels/attention_raw_boundary.py": "9c157907477655d3f9afc43ff847f998963413eab2ea970dc9b05a4ef21c4920",
+    "src/llm_gpu_kernels/cuda_bf16_mma.cu": "1becd90b7958159471fbfa1bdb97ee714ef193b3d88a6a90d2a37f0aead4f4c8",
+    "src/llm_gpu_kernels/cuda_bf16_mma_cache_policy.cu": "437f0cbd30e4c90b4788c8038504d2e86dcedf8e399f2293675735d83e087609",
+    "src/llm_gpu_kernels/cuda_bf16_mma_kdepth.cu": "4b9e3bed1a02c5a607c43a2099ff725638c1ef816b7d93f2a73a60e73f1c6a8b",
+    "src/llm_gpu_kernels/cuda_bf16_mma_output_tile.cu": "7067f0cc67545b96069884fcc3ffe60694c2ba9abeb99ac7e3a073e7599a7254",
+    "src/llm_gpu_kernels/cuda_bf16_mma_raster.cu": "6753e989fa02deb52e4b274a39bb7e0cceb80b7fae9d69599b367c989214446b",
+    "src/llm_gpu_kernels/cuda_bf16_mma_register_pipeline.cu": "756b8ccc706a43deca38fda07f95bda2fc0ed38c1d8a52fec54ff3dfafabad75",
+    "src/llm_gpu_kernels/cuda_bf16_mma_scheduled.cu": "008489dfafda77b0cb70a25bdd6c2b80433522b4874405d97f972484ee448db1",
+    "src/llm_gpu_kernels/cuda_bf16_mma_tiled.cu": "d870d879cd4d1f660a8de81fcd897721c67f1e5a9403465a0aeed13a524347f4",
+    "src/llm_gpu_kernels/cuda_bf16_mma_warp_specialized.cu": "a7de6e60c683147ae5654b752bed61e80ea746639cb3560c1a6763c64140b791",
+    "src/llm_gpu_kernels/cuda_gate_up.cu": "9012fa52379a87296ff2f29076ff15951c90e3d82ba996d424a5c5e3aa6c4893",
+    "src/llm_gpu_kernels/cuda_gqa_attention.cu": "b5e1a966ab06fd583c228d82da66a8daaafbe59c892229d2c95d1c038536143f",
+    "src/llm_gpu_kernels/cuda_gqa_attention_compact.cu": "0b4cba3457b8829d14b325ff4494b379323560c3987d77e147c7b409e7dc5cfa",
+    "src/llm_gpu_kernels/cuda_gqa_attention_rolled.cu": "2ce02a67fb30eb0c3456f2fda2168efd6995f7f412dced03751270105e0e3d4c",
+    "src/llm_gpu_kernels/cuda_w4_gate_up.cu": "9568364b9f7ef506259466b13cf16259dee6e459094335288914788a68aa60ac",
+    "src/llm_gpu_kernels/cuda_w4_layout_gate_up.cu": "cd187a98c403adcf4970aafbd5d1d3e004fcdfd30930c156427bf8b8318fdef1"
+  },
+  "passed": true,
+  "telemetry_after": {
+    "returncode": 0,
+    "stdout": "595.91.07, 47, 42.18 W, 1695 MHz, 7001 MHz, 507 MiB",
+    "stderr": ""
+  }
+}

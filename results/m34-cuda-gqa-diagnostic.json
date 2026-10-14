@@ -1,0 +1,3577 @@
+{
+  "schema": 1,
+  "run_id": "m34-diagnostic",
+  "status": "passed",
+  "date_utc": "2026-10-14T07:59:02Z",
+  "seed": 3409,
+  "limits": {
+    "relative_rms": 0.008,
+    "normalized_max": 0.008
+  },
+  "configs": [
+    {
+      "stages": 1,
+      "p_mode": 0,
+      "p_mode_name": "shared"
+    },
+    {
+      "stages": 1,
+      "p_mode": 1,
+      "p_mode_name": "direct_register"
+    },
+    {
+      "stages": 2,
+      "p_mode": 0,
+      "p_mode_name": "shared"
+    },
+    {
+      "stages": 2,
+      "p_mode": 1,
+      "p_mode_name": "direct_register"
+    }
+  ],
+  "cuda_resource_table": [
+    {
+      "stages": 1,
+      "p_mode": 0,
+      "p_mode_name": "shared",
+      "cta_m": 64,
+      "key_tile": 32,
+      "warps": 4,
+      "qk_tile_bytes": 16384,
+      "kv_pipeline_bytes": 16384,
+      "probability_scratch_bytes": 4096,
+      "shared_memory_bytes": 36864,
+      "registers_per_thread": 235,
+      "spill_bytes": 0,
+      "spill_stores": 0,
+      "spill_loads": 0,
+      "stack_bytes": 0,
+      "barriers": 1,
+      "shared_memory_delta_vs_s1_p0_bytes": 0
+    },
+    {
+      "stages": 1,
+      "p_mode": 1,
+      "p_mode_name": "direct_register",
+      "cta_m": 64,
+      "key_tile": 32,
+      "warps": 4,
+      "qk_tile_bytes": 16384,
+      "kv_pipeline_bytes": 16384,
+      "probability_scratch_bytes": 4096,
+      "shared_memory_bytes": 36864,
+      "registers_per_thread": 223,
+      "spill_bytes": 0,
+      "spill_stores": 0,
+      "spill_loads": 0,
+      "stack_bytes": 0,
+      "barriers": 1,
+      "shared_memory_delta_vs_s1_p0_bytes": 0
+    },
+    {
+      "stages": 2,
+      "p_mode": 0,
+      "p_mode_name": "shared",
+      "cta_m": 64,
+      "key_tile": 32,
+      "warps": 4,
+      "qk_tile_bytes": 16384,
+      "kv_pipeline_bytes": 32768,
+      "probability_scratch_bytes": 4096,
+      "shared_memory_bytes": 53248,
+      "registers_per_thread": 237,
+      "spill_bytes": 0,
+      "spill_stores": 0,
+      "spill_loads": 0,
+      "stack_bytes": 0,
+      "barriers": 1,
+      "shared_memory_delta_vs_s1_p0_bytes": 16384
+    },
+    {
+      "stages": 2,
+      "p_mode": 1,
+      "p_mode_name": "direct_register",
+      "cta_m": 64,
+      "key_tile": 32,
+      "warps": 4,
+      "qk_tile_bytes": 16384,
+      "kv_pipeline_bytes": 32768,
+      "probability_scratch_bytes": 4096,
+      "shared_memory_bytes": 53248,
+      "registers_per_thread": 230,
+      "spill_bytes": 0,
+      "spill_stores": 0,
+      "spill_loads": 0,
+      "stack_bytes": 0,
+      "barriers": 1,
+      "shared_memory_delta_vs_s1_p0_bytes": 16384
+    }
+  ],
+  "protocol": {
+    "numerical_cases": 8,
+    "cuda_configurations": 4,
+    "expected_numerical_results": 32,
+    "performance_tokens": [
+      32,
+      96,
+      256
+    ],
+    "performance_history_lengths": [
+      2048,
+      64,
+      512
+    ],
+    "arms": 6,
+    "graph_calls_per_replay": 4,
+    "round_order": [
+      "forward",
+      "reverse",
+      "forward"
+    ],
+    "samples_per_arm_per_round": 3,
+    "timed_unit": "complete forward, milliseconds"
+  },
+  "scope": "GPU-resident four-segment GQA attention only; no RoPE, model, H2D, routing, or serving",
+  "source_hashes": {
+    "AGENTS.md": "c660e682d6930bc310a02567be4b5f8e11decfa21e8313696f40e02d7ac9d468",
+    "docs/CONTRACT.md": "b46958c069ab8e1d5bd8c6eb9143f0cc43110e61c2e9270cfd193ce5791cd907",
+    "scripts/run_m34_attention_check.py": "e4afb6d1cc3a050163db81d3e980c4ee93b45edc8123d8f77a1b164802319b19",
+    "src/llm_gpu_kernels/attention_baseline.py": "56064a0328cc0873d6468776e06b959fdff53feaba308c59ea0b99444b2e9438",
+    "src/llm_gpu_kernels/attention_baseline_benchmark.py": "15a88dd4277d9978356bc314c75371a0921ab2930698dbbac01d2019c1ea866e",
+    "src/llm_gpu_kernels/attention_nonempty.py": "38f9e629c5542dba556c87e96c7b89be4344ff1a4c6f9a110b98356207398cea",
+    "src/llm_gpu_kernels/attention_segmented.py": "e72702f5def4df841fba274af87d22efa72e260a19617316dcadc22cae4768cb",
+    "src/llm_gpu_kernels/attention_segmented_benchmark.py": "5961ef2f74fd94a7d6a973edcf471e3a7377ecaa2a040265848d796e7a47a0b4",
+    "src/llm_gpu_kernels/benchmark.py": "c3a12e68e37b09f62d7dd78d14738537074dc60b7a02e20c96e24d1923c565e4",
+    "src/llm_gpu_kernels/attention_cuda.py": "3b1d48285ccde07b2b3012bdb5a5d65b596a4cc6363fb0a0b3192dd7eea3ec49",
+    "src/llm_gpu_kernels/cuda_gqa_attention.cu": "b5e1a966ab06fd583c228d82da66a8daaafbe59c892229d2c95d1c038536143f"
+  },
+  "numerical_cases": [
+    {
+      "case": "T0_history_empty",
+      "T": 0,
+      "segment_lengths": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 0,
+        "p_mode_name": "shared"
+      },
+      "out_mode": "allocated",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0,
+        "normalized_max": 0.0,
+        "max_abs": 0.0,
+        "finite": true,
+        "empty": true,
+        "passed": true
+      },
+      "output_shape": [
+        0,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 1,
+        "p_mode": 0,
+        "p_mode_name": "shared",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 36864,
+        "registers_per_thread": 235,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T0_history_empty",
+      "T": 0,
+      "segment_lengths": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "provided",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0,
+        "normalized_max": 0.0,
+        "max_abs": 0.0,
+        "finite": true,
+        "empty": true,
+        "passed": true
+      },
+      "output_shape": [
+        0,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 36864,
+        "registers_per_thread": 223,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T0_history_empty",
+      "T": 0,
+      "segment_lengths": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 0,
+        "p_mode_name": "shared"
+      },
+      "out_mode": "allocated",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0,
+        "normalized_max": 0.0,
+        "max_abs": 0.0,
+        "finite": true,
+        "empty": true,
+        "passed": true
+      },
+      "output_shape": [
+        0,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 2,
+        "p_mode": 0,
+        "p_mode_name": "shared",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 53248,
+        "registers_per_thread": 237,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T0_history_empty",
+      "T": 0,
+      "segment_lengths": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "provided",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0,
+        "normalized_max": 0.0,
+        "max_abs": 0.0,
+        "finite": true,
+        "empty": true,
+        "passed": true
+      },
+      "output_shape": [
+        0,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 53248,
+        "registers_per_thread": 230,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T1_history_empty",
+      "T": 1,
+      "segment_lengths": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 0,
+        "p_mode_name": "shared"
+      },
+      "out_mode": "provided",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0,
+        "normalized_max": 0.0,
+        "max_abs": 0.0,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        1,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 1,
+        "p_mode": 0,
+        "p_mode_name": "shared",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 36864,
+        "registers_per_thread": 235,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T1_history_empty",
+      "T": 1,
+      "segment_lengths": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "allocated",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0,
+        "normalized_max": 0.0,
+        "max_abs": 0.0,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        1,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 36864,
+        "registers_per_thread": 223,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T1_history_empty",
+      "T": 1,
+      "segment_lengths": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 0,
+        "p_mode_name": "shared"
+      },
+      "out_mode": "provided",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0,
+        "normalized_max": 0.0,
+        "max_abs": 0.0,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        1,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 2,
+        "p_mode": 0,
+        "p_mode_name": "shared",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 53248,
+        "registers_per_thread": 237,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T1_history_empty",
+      "T": 1,
+      "segment_lengths": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "allocated",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0,
+        "normalized_max": 0.0,
+        "max_abs": 0.0,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        1,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 53248,
+        "registers_per_thread": 230,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T9_history_17_0_3",
+      "T": 9,
+      "segment_lengths": [
+        17,
+        0,
+        3,
+        9
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 0,
+        "p_mode_name": "shared"
+      },
+      "out_mode": "allocated",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0020202023442834616,
+        "normalized_max": 0.0025818259455263615,
+        "max_abs": 0.004629254341125488,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        9,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 1,
+        "p_mode": 0,
+        "p_mode_name": "shared",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 36864,
+        "registers_per_thread": 235,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T9_history_17_0_3",
+      "T": 9,
+      "segment_lengths": [
+        17,
+        0,
+        3,
+        9
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "provided",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0020202023442834616,
+        "normalized_max": 0.0025818259455263615,
+        "max_abs": 0.004629254341125488,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        9,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 36864,
+        "registers_per_thread": 223,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T9_history_17_0_3",
+      "T": 9,
+      "segment_lengths": [
+        17,
+        0,
+        3,
+        9
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 0,
+        "p_mode_name": "shared"
+      },
+      "out_mode": "allocated",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0020202023442834616,
+        "normalized_max": 0.0025818259455263615,
+        "max_abs": 0.004629254341125488,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        9,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 2,
+        "p_mode": 0,
+        "p_mode_name": "shared",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 53248,
+        "registers_per_thread": 237,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T9_history_17_0_3",
+      "T": 9,
+      "segment_lengths": [
+        17,
+        0,
+        3,
+        9
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "provided",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0020202023442834616,
+        "normalized_max": 0.0025818259455263615,
+        "max_abs": 0.004629254341125488,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        9,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 53248,
+        "registers_per_thread": 230,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T17_history_33_1_0",
+      "T": 17,
+      "segment_lengths": [
+        33,
+        1,
+        0,
+        17
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 0,
+        "p_mode_name": "shared"
+      },
+      "out_mode": "provided",
+      "current_v_padded": true,
+      "current_v_stride": [
+        6144,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0020692222751677036,
+        "normalized_max": 0.002800457878038287,
+        "max_abs": 0.004049420356750488,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        17,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 1,
+        "p_mode": 0,
+        "p_mode_name": "shared",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 36864,
+        "registers_per_thread": 235,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T17_history_33_1_0",
+      "T": 17,
+      "segment_lengths": [
+        33,
+        1,
+        0,
+        17
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "allocated",
+      "current_v_padded": true,
+      "current_v_stride": [
+        6144,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0020692222751677036,
+        "normalized_max": 0.002800457878038287,
+        "max_abs": 0.004049420356750488,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        17,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 36864,
+        "registers_per_thread": 223,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T17_history_33_1_0",
+      "T": 17,
+      "segment_lengths": [
+        33,
+        1,
+        0,
+        17
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 0,
+        "p_mode_name": "shared"
+      },
+      "out_mode": "provided",
+      "current_v_padded": true,
+      "current_v_stride": [
+        6144,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0020692222751677036,
+        "normalized_max": 0.002800457878038287,
+        "max_abs": 0.004049420356750488,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        17,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 2,
+        "p_mode": 0,
+        "p_mode_name": "shared",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 53248,
+        "registers_per_thread": 237,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T17_history_33_1_0",
+      "T": 17,
+      "segment_lengths": [
+        33,
+        1,
+        0,
+        17
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "allocated",
+      "current_v_padded": true,
+      "current_v_stride": [
+        6144,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0020692222751677036,
+        "normalized_max": 0.002800457878038287,
+        "max_abs": 0.004049420356750488,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        17,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 53248,
+        "registers_per_thread": 230,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T64_history_64_16_32",
+      "T": 64,
+      "segment_lengths": [
+        64,
+        16,
+        32,
+        64
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 0,
+        "p_mode_name": "shared"
+      },
+      "out_mode": "allocated",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.002119546988978982,
+        "normalized_max": 0.0023560794070363045,
+        "max_abs": 0.00222700834274292,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        64,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 1,
+        "p_mode": 0,
+        "p_mode_name": "shared",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 36864,
+        "registers_per_thread": 235,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T64_history_64_16_32",
+      "T": 64,
+      "segment_lengths": [
+        64,
+        16,
+        32,
+        64
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "provided",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.002119546988978982,
+        "normalized_max": 0.0023560794070363045,
+        "max_abs": 0.00222700834274292,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        64,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 36864,
+        "registers_per_thread": 223,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T64_history_64_16_32",
+      "T": 64,
+      "segment_lengths": [
+        64,
+        16,
+        32,
+        64
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 0,
+        "p_mode_name": "shared"
+      },
+      "out_mode": "allocated",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.002119546988978982,
+        "normalized_max": 0.0023560794070363045,
+        "max_abs": 0.00222700834274292,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        64,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 2,
+        "p_mode": 0,
+        "p_mode_name": "shared",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 53248,
+        "registers_per_thread": 237,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T64_history_64_16_32",
+      "T": 64,
+      "segment_lengths": [
+        64,
+        16,
+        32,
+        64
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "provided",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.002119546988978982,
+        "normalized_max": 0.0023560794070363045,
+        "max_abs": 0.00222700834274292,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        64,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 53248,
+        "registers_per_thread": 230,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T65_history_31_32_17",
+      "T": 65,
+      "segment_lengths": [
+        31,
+        32,
+        17,
+        65
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 0,
+        "p_mode_name": "shared"
+      },
+      "out_mode": "provided",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0020999505650252104,
+        "normalized_max": 0.002651122398674488,
+        "max_abs": 0.0026668310165405273,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        65,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 1,
+        "p_mode": 0,
+        "p_mode_name": "shared",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 36864,
+        "registers_per_thread": 235,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T65_history_31_32_17",
+      "T": 65,
+      "segment_lengths": [
+        31,
+        32,
+        17,
+        65
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "allocated",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0020999505650252104,
+        "normalized_max": 0.002651122398674488,
+        "max_abs": 0.0026668310165405273,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        65,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 36864,
+        "registers_per_thread": 223,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T65_history_31_32_17",
+      "T": 65,
+      "segment_lengths": [
+        31,
+        32,
+        17,
+        65
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 0,
+        "p_mode_name": "shared"
+      },
+      "out_mode": "provided",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0020999505650252104,
+        "normalized_max": 0.002651122398674488,
+        "max_abs": 0.0026668310165405273,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        65,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 2,
+        "p_mode": 0,
+        "p_mode_name": "shared",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 53248,
+        "registers_per_thread": 237,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T65_history_31_32_17",
+      "T": 65,
+      "segment_lengths": [
+        31,
+        32,
+        17,
+        65
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "allocated",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0020999505650252104,
+        "normalized_max": 0.002651122398674488,
+        "max_abs": 0.0026668310165405273,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        65,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 53248,
+        "registers_per_thread": 230,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T96_history_128_64_32",
+      "T": 96,
+      "segment_lengths": [
+        128,
+        64,
+        32,
+        96
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 0,
+        "p_mode_name": "shared"
+      },
+      "out_mode": "allocated",
+      "current_v_padded": true,
+      "current_v_stride": [
+        6144,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.002147645689547062,
+        "normalized_max": 0.0029237421695142984,
+        "max_abs": 0.0020067691802978516,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        96,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 1,
+        "p_mode": 0,
+        "p_mode_name": "shared",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 36864,
+        "registers_per_thread": 235,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T96_history_128_64_32",
+      "T": 96,
+      "segment_lengths": [
+        128,
+        64,
+        32,
+        96
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "provided",
+      "current_v_padded": true,
+      "current_v_stride": [
+        6144,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.002147645689547062,
+        "normalized_max": 0.0029237421695142984,
+        "max_abs": 0.0020067691802978516,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        96,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 36864,
+        "registers_per_thread": 223,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T96_history_128_64_32",
+      "T": 96,
+      "segment_lengths": [
+        128,
+        64,
+        32,
+        96
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 0,
+        "p_mode_name": "shared"
+      },
+      "out_mode": "allocated",
+      "current_v_padded": true,
+      "current_v_stride": [
+        6144,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.002147645689547062,
+        "normalized_max": 0.0029237421695142984,
+        "max_abs": 0.0020067691802978516,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        96,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 2,
+        "p_mode": 0,
+        "p_mode_name": "shared",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 53248,
+        "registers_per_thread": 237,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T96_history_128_64_32",
+      "T": 96,
+      "segment_lengths": [
+        128,
+        64,
+        32,
+        96
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "provided",
+      "current_v_padded": true,
+      "current_v_stride": [
+        6144,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.002147645689547062,
+        "normalized_max": 0.0029237421695142984,
+        "max_abs": 0.0020067691802978516,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        96,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 53248,
+        "registers_per_thread": 230,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T129_history_64_0_33",
+      "T": 129,
+      "segment_lengths": [
+        64,
+        0,
+        33,
+        129
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 0,
+        "p_mode_name": "shared"
+      },
+      "out_mode": "provided",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0021093853283673525,
+        "normalized_max": 0.0021465050522238016,
+        "max_abs": 0.0022597908973693848,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        129,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 1,
+        "p_mode": 0,
+        "p_mode_name": "shared",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 36864,
+        "registers_per_thread": 235,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T129_history_64_0_33",
+      "T": 129,
+      "segment_lengths": [
+        64,
+        0,
+        33,
+        129
+      ],
+      "config": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "allocated",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0021093853283673525,
+        "normalized_max": 0.0021465050522238016,
+        "max_abs": 0.0022597908973693848,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        129,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 1,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 16384,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 36864,
+        "registers_per_thread": 223,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T129_history_64_0_33",
+      "T": 129,
+      "segment_lengths": [
+        64,
+        0,
+        33,
+        129
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 0,
+        "p_mode_name": "shared"
+      },
+      "out_mode": "provided",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0021093853283673525,
+        "normalized_max": 0.0021465050522238016,
+        "max_abs": 0.0022597908973693848,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        129,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 2,
+        "p_mode": 0,
+        "p_mode_name": "shared",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 53248,
+        "registers_per_thread": 237,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    },
+    {
+      "case": "T129_history_64_0_33",
+      "T": 129,
+      "segment_lengths": [
+        64,
+        0,
+        33,
+        129
+      ],
+      "config": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register"
+      },
+      "out_mode": "allocated",
+      "current_v_padded": false,
+      "current_v_stride": [
+        1024,
+        128,
+        1
+      ],
+      "status": "passed",
+      "vs_chunked_fp32": {
+        "relative_rms": 0.0021093853283673525,
+        "normalized_max": 0.0021465050522238016,
+        "max_abs": 0.0022597908973693848,
+        "finite": true,
+        "passed": true
+      },
+      "output_shape": [
+        129,
+        32,
+        128
+      ],
+      "output_dtype": "torch.bfloat16",
+      "resources": {
+        "stages": 2,
+        "p_mode": 1,
+        "p_mode_name": "direct_register",
+        "cta_m": 64,
+        "key_tile": 32,
+        "warps": 4,
+        "qk_tile_bytes": 16384,
+        "kv_pipeline_bytes": 32768,
+        "probability_scratch_bytes": 4096,
+        "shared_memory_bytes": 53248,
+        "registers_per_thread": 230,
+        "spill_bytes": 0,
+        "spill_stores": 0,
+        "spill_loads": 0,
+        "stack_bytes": 0,
+        "barriers": 1
+      },
+      "passed": true
+    }
+  ],
+  "performance_cases": [
+    {
+      "T": 32,
+      "status": "passed",
+      "phase": "post_timing_validation",
+      "arm_order": [
+        "cuda_s1_p0",
+        "cuda_s1_p1",
+        "cuda_s2_p0",
+        "cuda_s2_p1",
+        "m15_triton_g4_s2",
+        "reusable_pack_fa2"
+      ],
+      "conversion": {
+        "cuda_s1_p0": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "cuda_s1_p1": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "cuda_s2_p0": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "cuda_s2_p1": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "m15_triton_g4_s2": {
+          "converted_value_segments": [
+            3
+          ],
+          "conversion_logical_bytes_per_call": 65536,
+          "conversion_read_write_traffic_bytes_per_call": 131072,
+          "contiguous_staging_bytes": 65536
+        },
+        "reusable_pack_fa2": {
+          "converted_value_segments": [
+            3
+          ],
+          "conversion_logical_bytes_per_call": 65536,
+          "conversion_read_write_traffic_bytes_per_call": 131072,
+          "contiguous_staging_bytes": 65536
+        }
+      },
+      "input_sha256": "ef7de0cb714297b9d9d3e6f5acdc6b3be98002b15b3668ef028613717a6350b8",
+      "current_v_stride": [
+        6144,
+        128,
+        1
+      ],
+      "before_timing_vs_fp32": {
+        "cuda_s1_p0": {
+          "relative_rms": 0.0022623848635703325,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s1_p1": {
+          "relative_rms": 0.0022623848635703325,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p0": {
+          "relative_rms": 0.0022623848635703325,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p1": {
+          "relative_rms": 0.0022623848635703325,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "m15_triton_g4_s2": {
+          "relative_rms": 0.002264690352603793,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_pack_fa2": {
+          "relative_rms": 0.002227751538157463,
+          "normalized_max": 0.003004417521879077,
+          "max_abs": 0.0004594475030899048,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "graph_before_timing_vs_fp32": {
+        "cuda_s1_p0": {
+          "relative_rms": 0.0022623848635703325,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s1_p1": {
+          "relative_rms": 0.0022623848635703325,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p0": {
+          "relative_rms": 0.0022623848635703325,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p1": {
+          "relative_rms": 0.0022623848635703325,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "m15_triton_g4_s2": {
+          "relative_rms": 0.002264690352603793,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_pack_fa2": {
+          "relative_rms": 0.002227751538157463,
+          "normalized_max": 0.003004417521879077,
+          "max_abs": 0.0004594475030899048,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "timing": {
+        "rounds": [
+          {
+            "direction": "forward",
+            "order": [
+              "cuda_s1_p0",
+              "cuda_s1_p1",
+              "cuda_s2_p0",
+              "cuda_s2_p1",
+              "m15_triton_g4_s2",
+              "reusable_pack_fa2"
+            ],
+            "samples_ms_per_forward": {
+              "cuda_s1_p0": [
+                0.24324800074100494,
+                0.24422399699687958,
+                0.24191999435424805
+              ],
+              "cuda_s1_p1": [
+                0.22937600314617157,
+                0.22553600370883942,
+                0.2252800017595291
+              ],
+              "cuda_s2_p0": [
+                0.2022400051355362,
+                0.20019200444221497,
+                0.20044800639152527
+              ],
+              "cuda_s2_p1": [
+                0.19123199582099915,
+                0.18993599712848663,
+                0.19200000166893005
+              ],
+              "m15_triton_g4_s2": [
+                0.32230401039123535,
+                0.32128000259399414,
+                0.32175999879837036
+              ],
+              "reusable_pack_fa2": [
+                0.16556799411773682,
+                0.1658879965543747,
+                0.1661120057106018
+              ]
+            }
+          },
+          {
+            "direction": "reverse",
+            "order": [
+              "reusable_pack_fa2",
+              "m15_triton_g4_s2",
+              "cuda_s2_p1",
+              "cuda_s2_p0",
+              "cuda_s1_p1",
+              "cuda_s1_p0"
+            ],
+            "samples_ms_per_forward": {
+              "reusable_pack_fa2": [
+                0.1671680063009262,
+                0.1653359979391098,
+                0.1650719940662384
+              ],
+              "m15_triton_g4_s2": [
+                0.32179200649261475,
+                0.32076799869537354,
+                0.32102400064468384
+              ],
+              "cuda_s2_p1": [
+                0.19094400107860565,
+                0.19200000166893005,
+                0.19276799261569977
+              ],
+              "cuda_s2_p0": [
+                0.20787200331687927,
+                0.20070399343967438,
+                0.20068800449371338
+              ],
+              "cuda_s1_p1": [
+                0.22963200509548187,
+                0.22547200322151184,
+                0.2303999960422516
+              ],
+              "cuda_s1_p0": [
+                0.24320000410079956,
+                0.24115200340747833,
+                0.24108800292015076
+              ]
+            }
+          },
+          {
+            "direction": "forward",
+            "order": [
+              "cuda_s1_p0",
+              "cuda_s1_p1",
+              "cuda_s2_p0",
+              "cuda_s2_p1",
+              "m15_triton_g4_s2",
+              "reusable_pack_fa2"
+            ],
+            "samples_ms_per_forward": {
+              "cuda_s1_p0": [
+                0.24134400486946106,
+                0.24089600145816803,
+                0.24166400730609894
+              ],
+              "cuda_s1_p1": [
+                0.22681599855422974,
+                0.22473600506782532,
+                0.2245119959115982
+              ],
+              "cuda_s2_p0": [
+                0.2024960070848465,
+                0.19993600249290466,
+                0.20044800639152527
+              ],
+              "cuda_s2_p1": [
+                0.19097599387168884,
+                0.1950719952583313,
+                0.19119200110435486
+              ],
+              "m15_triton_g4_s2": [
+                0.32307198643684387,
+                0.3338240087032318,
+                0.3256320059299469
+              ],
+              "reusable_pack_fa2": [
+                0.16819199919700623,
+                0.16582399606704712,
+                0.16460800170898438
+              ]
+            }
+          }
+        ],
+        "summary": {
+          "cuda_s1_p0": {
+            "event_p50_ms_per_forward": 0.24166400730609894,
+            "event_p95_ms_per_forward": 0.24383359849452974
+          },
+          "cuda_s1_p1": {
+            "event_p50_ms_per_forward": 0.22553600370883942,
+            "event_p95_ms_per_forward": 0.2300927996635437
+          },
+          "cuda_s2_p0": {
+            "event_p50_ms_per_forward": 0.20068800449371338,
+            "event_p95_ms_per_forward": 0.20572160482406615
+          },
+          "cuda_s2_p1": {
+            "event_p50_ms_per_forward": 0.19123199582099915,
+            "event_p95_ms_per_forward": 0.1941503942012787
+          },
+          "m15_triton_g4_s2": {
+            "event_p50_ms_per_forward": 0.32179200649261475,
+            "event_p95_ms_per_forward": 0.33054720759391787
+          },
+          "reusable_pack_fa2": {
+            "event_p50_ms_per_forward": 0.16582399606704712,
+            "event_p95_ms_per_forward": 0.16778240203857422
+          }
+        },
+        "round_order": [
+          "forward",
+          "reverse",
+          "forward"
+        ],
+        "samples_per_arm_per_round": 3,
+        "calls_per_graph_replay": 4,
+        "units": "milliseconds per complete attention forward",
+        "rounds_count": 3
+      },
+      "after_timing_vs_fp32": {
+        "cuda_s1_p0": {
+          "relative_rms": 0.0022623848635703325,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s1_p1": {
+          "relative_rms": 0.0022623848635703325,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p0": {
+          "relative_rms": 0.0022623848635703325,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p1": {
+          "relative_rms": 0.0022623848635703325,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "m15_triton_g4_s2": {
+          "relative_rms": 0.002264690352603793,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_pack_fa2": {
+          "relative_rms": 0.002227751538157463,
+          "normalized_max": 0.003004417521879077,
+          "max_abs": 0.0004594475030899048,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "graph_after_timing_vs_fp32": {
+        "cuda_s1_p0": {
+          "relative_rms": 0.0022623848635703325,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s1_p1": {
+          "relative_rms": 0.0022623848635703325,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p0": {
+          "relative_rms": 0.0022623848635703325,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p1": {
+          "relative_rms": 0.0022623848635703325,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "m15_triton_g4_s2": {
+          "relative_rms": 0.002264690352603793,
+          "normalized_max": 0.003960806876420975,
+          "max_abs": 0.0006057024002075195,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_pack_fa2": {
+          "relative_rms": 0.002227751538157463,
+          "normalized_max": 0.003004417521879077,
+          "max_abs": 0.0004594475030899048,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "resources": {
+        "cuda_s1_p0": {
+          "stages": 1,
+          "p_mode": 0,
+          "p_mode_name": "shared",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 16384,
+          "probability_scratch_bytes": 4096,
+          "shared_memory_bytes": 36864,
+          "registers_per_thread": 235,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "barriers": 1
+        },
+        "cuda_s1_p1": {
+          "stages": 1,
+          "p_mode": 1,
+          "p_mode_name": "direct_register",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 16384,
+          "probability_scratch_bytes": 4096,
+          "shared_memory_bytes": 36864,
+          "registers_per_thread": 223,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "barriers": 1
+        },
+        "cuda_s2_p0": {
+          "stages": 2,
+          "p_mode": 0,
+          "p_mode_name": "shared",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 32768,
+          "probability_scratch_bytes": 4096,
+          "shared_memory_bytes": 53248,
+          "registers_per_thread": 237,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "barriers": 1
+        },
+        "cuda_s2_p1": {
+          "stages": 2,
+          "p_mode": 1,
+          "p_mode_name": "direct_register",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 32768,
+          "probability_scratch_bytes": 4096,
+          "shared_memory_bytes": 53248,
+          "registers_per_thread": 230,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "barriers": 1
+        },
+        "m15_triton_g4_s2": {
+          "registers": 255,
+          "spills": 212,
+          "shared_memory_bytes": 65536
+        },
+        "reusable_pack_fa2": {
+          "packed_kv_workspace_bytes": 10878976,
+          "owned_output_bytes": 262144,
+          "shared_memory_bytes": null
+        }
+      },
+      "compile_artifacts": {
+        "m15_triton_g4_s2": {
+          "path": "artifacts/m34-diagnostic/m15-triton-g4-s2-T32",
+          "ptx_sha256": "62b19b04a7491260b537163f60a42e49fcaac6c44830c6462e3a3cf8b9d6d423",
+          "cubin_sha256": "f526b08d750477f95fb7c4afaf45e089ae9bba086732b2ebdeab9d226c8e6090",
+          "ptx_mma_instructions": 1024,
+          "sass_hmma_instructions": 960,
+          "sass_disassembly_returncode": 0,
+          "registers": 255,
+          "shared_memory_bytes": 65536,
+          "spills": 212
+        }
+      },
+      "workspace_scope": "CUDA and Triton values are owned BF16 output bytes; FA2 is reusable packed K/V bytes and excludes its output; contiguous V staging is reported separately",
+      "case_index": 0,
+      "history_lengths": [
+        2048,
+        64,
+        512
+      ],
+      "segment_lengths": [
+        2048,
+        64,
+        512,
+        32
+      ],
+      "seed": 4409,
+      "input_hash_preserved": true,
+      "workspace_bytes": {
+        "cuda_s1_p0": 262144,
+        "cuda_s1_p1": 262144,
+        "cuda_s2_p0": 262144,
+        "cuda_s2_p1": 262144,
+        "m15_triton_g4_s2": 262144,
+        "reusable_pack_fa2": 10878976
+      },
+      "shared_memory_differences_vs_s1_p0": {
+        "cuda_s1_p0": 0,
+        "cuda_s1_p1": 0,
+        "cuda_s2_p0": 16384,
+        "cuda_s2_p1": 16384
+      },
+      "passed": true
+    },
+    {
+      "T": 96,
+      "status": "passed",
+      "phase": "post_timing_validation",
+      "arm_order": [
+        "cuda_s1_p0",
+        "cuda_s1_p1",
+        "cuda_s2_p0",
+        "cuda_s2_p1",
+        "m15_triton_g4_s2",
+        "reusable_pack_fa2"
+      ],
+      "conversion": {
+        "cuda_s1_p0": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "cuda_s1_p1": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "cuda_s2_p0": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "cuda_s2_p1": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "m15_triton_g4_s2": {
+          "converted_value_segments": [
+            3
+          ],
+          "conversion_logical_bytes_per_call": 196608,
+          "conversion_read_write_traffic_bytes_per_call": 393216,
+          "contiguous_staging_bytes": 196608
+        },
+        "reusable_pack_fa2": {
+          "converted_value_segments": [
+            3
+          ],
+          "conversion_logical_bytes_per_call": 196608,
+          "conversion_read_write_traffic_bytes_per_call": 393216,
+          "contiguous_staging_bytes": 196608
+        }
+      },
+      "input_sha256": "1c1e287a8643da31adc9077ebdd5aa18b957040ca3c5de879117dca5f6a7d035",
+      "current_v_stride": [
+        6144,
+        128,
+        1
+      ],
+      "before_timing_vs_fp32": {
+        "cuda_s1_p0": {
+          "relative_rms": 0.002256940118968487,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s1_p1": {
+          "relative_rms": 0.002256940118968487,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p0": {
+          "relative_rms": 0.002256940118968487,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p1": {
+          "relative_rms": 0.002256940118968487,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "m15_triton_g4_s2": {
+          "relative_rms": 0.00226012640632689,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_pack_fa2": {
+          "relative_rms": 0.002223861636593938,
+          "normalized_max": 0.0033168960362672806,
+          "max_abs": 0.0005618035793304443,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "graph_before_timing_vs_fp32": {
+        "cuda_s1_p0": {
+          "relative_rms": 0.002256940118968487,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s1_p1": {
+          "relative_rms": 0.002256940118968487,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p0": {
+          "relative_rms": 0.002256940118968487,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p1": {
+          "relative_rms": 0.002256940118968487,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "m15_triton_g4_s2": {
+          "relative_rms": 0.00226012640632689,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_pack_fa2": {
+          "relative_rms": 0.002223861636593938,
+          "normalized_max": 0.0033168960362672806,
+          "max_abs": 0.0005618035793304443,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "timing": {
+        "rounds": [
+          {
+            "direction": "forward",
+            "order": [
+              "cuda_s1_p0",
+              "cuda_s1_p1",
+              "cuda_s2_p0",
+              "cuda_s2_p1",
+              "m15_triton_g4_s2",
+              "reusable_pack_fa2"
+            ],
+            "samples_ms_per_forward": {
+              "cuda_s1_p0": [
+                0.31807199120521545,
+                0.3169279992580414,
+                0.3176479935646057
+              ],
+              "cuda_s1_p1": [
+                0.32025599479675293,
+                0.3197439908981323,
+                0.3199999928474426
+              ],
+              "cuda_s2_p0": [
+                0.40755200386047363,
+                0.4057599902153015,
+                0.4034560024738312
+              ],
+              "cuda_s2_p1": [
+                0.3840000033378601,
+                0.38016000390052795,
+                0.3800959885120392
+              ],
+              "m15_triton_g4_s2": [
+                0.3266560137271881,
+                0.326911985874176,
+                0.3266560137271881
+              ],
+              "reusable_pack_fa2": [
+                0.29286399483680725,
+                0.2935679852962494,
+                0.2940880060195923
+              ]
+            }
+          },
+          {
+            "direction": "reverse",
+            "order": [
+              "reusable_pack_fa2",
+              "m15_triton_g4_s2",
+              "cuda_s2_p1",
+              "cuda_s2_p0",
+              "cuda_s1_p1",
+              "cuda_s1_p0"
+            ],
+            "samples_ms_per_forward": {
+              "reusable_pack_fa2": [
+                0.2930639982223511,
+                0.29260799288749695,
+                0.2910720109939575
+              ],
+              "m15_triton_g4_s2": [
+                0.3266560137271881,
+                0.32762399315834045,
+                0.32716798782348633
+              ],
+              "cuda_s2_p1": [
+                0.3845120072364807,
+                0.3837440013885498,
+                0.38037601113319397
+              ],
+              "cuda_s2_p0": [
+                0.4065279960632324,
+                0.4034560024738312,
+                0.40294399857521057
+              ],
+              "cuda_s1_p1": [
+                0.33535999059677124,
+                0.32128000259399414,
+                0.32051199674606323
+              ],
+              "cuda_s1_p0": [
+                0.3187200129032135,
+                0.317656010389328,
+                0.3181760013103485
+              ]
+            }
+          },
+          {
+            "direction": "forward",
+            "order": [
+              "cuda_s1_p0",
+              "cuda_s1_p1",
+              "cuda_s2_p0",
+              "cuda_s2_p1",
+              "m15_triton_g4_s2",
+              "reusable_pack_fa2"
+            ],
+            "samples_ms_per_forward": {
+              "cuda_s1_p0": [
+                0.3171840012073517,
+                0.3166080117225647,
+                0.3163680136203766
+              ],
+              "cuda_s1_p1": [
+                0.32051199674606323,
+                0.317440003156662,
+                0.3199999928474426
+              ],
+              "cuda_s2_p0": [
+                0.4060159921646118,
+                0.4052479863166809,
+                0.4055039882659912
+              ],
+              "cuda_s2_p1": [
+                0.3829759955406189,
+                0.3811280131340027,
+                0.3834879994392395
+              ],
+              "m15_triton_g4_s2": [
+                0.326911985874176,
+                0.32716798782348633,
+                0.3264000117778778
+              ],
+              "reusable_pack_fa2": [
+                0.29258400201797485,
+                0.29363200068473816,
+                0.2938239872455597
+              ]
+            }
+          }
+        ],
+        "summary": {
+          "cuda_s1_p0": {
+            "event_p50_ms_per_forward": 0.3176479935646057,
+            "event_p95_ms_per_forward": 0.3185024082660675
+          },
+          "cuda_s1_p1": {
+            "event_p50_ms_per_forward": 0.32025599479675293,
+            "event_p95_ms_per_forward": 0.3297279953956604
+          },
+          "cuda_s2_p0": {
+            "event_p50_ms_per_forward": 0.4055039882659912,
+            "event_p95_ms_per_forward": 0.40714240074157715
+          },
+          "cuda_s2_p1": {
+            "event_p50_ms_per_forward": 0.3829759955406189,
+            "event_p95_ms_per_forward": 0.38430720567703247
+          },
+          "m15_triton_g4_s2": {
+            "event_p50_ms_per_forward": 0.326911985874176,
+            "event_p95_ms_per_forward": 0.3274415910243988
+          },
+          "reusable_pack_fa2": {
+            "event_p50_ms_per_forward": 0.2930639982223511,
+            "event_p95_ms_per_forward": 0.29398239850997926
+          }
+        },
+        "round_order": [
+          "forward",
+          "reverse",
+          "forward"
+        ],
+        "samples_per_arm_per_round": 3,
+        "calls_per_graph_replay": 4,
+        "units": "milliseconds per complete attention forward",
+        "rounds_count": 3
+      },
+      "after_timing_vs_fp32": {
+        "cuda_s1_p0": {
+          "relative_rms": 0.002256940118968487,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s1_p1": {
+          "relative_rms": 0.002256940118968487,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p0": {
+          "relative_rms": 0.002256940118968487,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p1": {
+          "relative_rms": 0.002256940118968487,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "m15_triton_g4_s2": {
+          "relative_rms": 0.00226012640632689,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_pack_fa2": {
+          "relative_rms": 0.002223861636593938,
+          "normalized_max": 0.0033168960362672806,
+          "max_abs": 0.0005618035793304443,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "graph_after_timing_vs_fp32": {
+        "cuda_s1_p0": {
+          "relative_rms": 0.002256940118968487,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s1_p1": {
+          "relative_rms": 0.002256940118968487,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p0": {
+          "relative_rms": 0.002256940118968487,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p1": {
+          "relative_rms": 0.002256940118968487,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "m15_triton_g4_s2": {
+          "relative_rms": 0.00226012640632689,
+          "normalized_max": 0.0034026734065264463,
+          "max_abs": 0.0005763322114944458,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_pack_fa2": {
+          "relative_rms": 0.002223861636593938,
+          "normalized_max": 0.0033168960362672806,
+          "max_abs": 0.0005618035793304443,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "resources": {
+        "cuda_s1_p0": {
+          "stages": 1,
+          "p_mode": 0,
+          "p_mode_name": "shared",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 16384,
+          "probability_scratch_bytes": 4096,
+          "shared_memory_bytes": 36864,
+          "registers_per_thread": 235,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "barriers": 1
+        },
+        "cuda_s1_p1": {
+          "stages": 1,
+          "p_mode": 1,
+          "p_mode_name": "direct_register",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 16384,
+          "probability_scratch_bytes": 4096,
+          "shared_memory_bytes": 36864,
+          "registers_per_thread": 223,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "barriers": 1
+        },
+        "cuda_s2_p0": {
+          "stages": 2,
+          "p_mode": 0,
+          "p_mode_name": "shared",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 32768,
+          "probability_scratch_bytes": 4096,
+          "shared_memory_bytes": 53248,
+          "registers_per_thread": 237,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "barriers": 1
+        },
+        "cuda_s2_p1": {
+          "stages": 2,
+          "p_mode": 1,
+          "p_mode_name": "direct_register",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 32768,
+          "probability_scratch_bytes": 4096,
+          "shared_memory_bytes": 53248,
+          "registers_per_thread": 230,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "barriers": 1
+        },
+        "m15_triton_g4_s2": {
+          "registers": 255,
+          "spills": 240,
+          "shared_memory_bytes": 65536
+        },
+        "reusable_pack_fa2": {
+          "packed_kv_workspace_bytes": 11141120,
+          "owned_output_bytes": 786432,
+          "shared_memory_bytes": null
+        }
+      },
+      "compile_artifacts": {
+        "m15_triton_g4_s2": {
+          "path": "artifacts/m34-diagnostic/m15-triton-g4-s2-T96",
+          "ptx_sha256": "8f6f398c769e56edf16de2b3f7ab76279d3c7f971037feaa351186dc3cafd21b",
+          "cubin_sha256": "4b7b8b31280a5a9a62bd00bbcafe8f5650cf4ec46ebdbc8f335848a5cb656ec2",
+          "ptx_mma_instructions": 1024,
+          "sass_hmma_instructions": 1024,
+          "sass_disassembly_returncode": 0,
+          "registers": 255,
+          "shared_memory_bytes": 65536,
+          "spills": 240
+        }
+      },
+      "workspace_scope": "CUDA and Triton values are owned BF16 output bytes; FA2 is reusable packed K/V bytes and excludes its output; contiguous V staging is reported separately",
+      "case_index": 1,
+      "history_lengths": [
+        2048,
+        64,
+        512
+      ],
+      "segment_lengths": [
+        2048,
+        64,
+        512,
+        96
+      ],
+      "seed": 4409,
+      "input_hash_preserved": true,
+      "workspace_bytes": {
+        "cuda_s1_p0": 786432,
+        "cuda_s1_p1": 786432,
+        "cuda_s2_p0": 786432,
+        "cuda_s2_p1": 786432,
+        "m15_triton_g4_s2": 786432,
+        "reusable_pack_fa2": 11141120
+      },
+      "shared_memory_differences_vs_s1_p0": {
+        "cuda_s1_p0": 0,
+        "cuda_s1_p1": 0,
+        "cuda_s2_p0": 16384,
+        "cuda_s2_p1": 16384
+      },
+      "passed": true
+    },
+    {
+      "T": 256,
+      "status": "passed",
+      "phase": "post_timing_validation",
+      "arm_order": [
+        "cuda_s1_p0",
+        "cuda_s1_p1",
+        "cuda_s2_p0",
+        "cuda_s2_p1",
+        "m15_triton_g4_s2",
+        "reusable_pack_fa2"
+      ],
+      "conversion": {
+        "cuda_s1_p0": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "cuda_s1_p1": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "cuda_s2_p0": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "cuda_s2_p1": {
+          "converted_value_segments": [],
+          "conversion_logical_bytes_per_call": 0,
+          "conversion_read_write_traffic_bytes_per_call": 0,
+          "contiguous_staging_bytes": 0
+        },
+        "m15_triton_g4_s2": {
+          "converted_value_segments": [
+            3
+          ],
+          "conversion_logical_bytes_per_call": 524288,
+          "conversion_read_write_traffic_bytes_per_call": 1048576,
+          "contiguous_staging_bytes": 524288
+        },
+        "reusable_pack_fa2": {
+          "converted_value_segments": [
+            3
+          ],
+          "conversion_logical_bytes_per_call": 524288,
+          "conversion_read_write_traffic_bytes_per_call": 1048576,
+          "contiguous_staging_bytes": 524288
+        }
+      },
+      "input_sha256": "93f13c0f07bb08a8f1abf6c67810c055db00fe2d1f03278fc2dfb1af3cb41909",
+      "current_v_stride": [
+        6144,
+        128,
+        1
+      ],
+      "before_timing_vs_fp32": {
+        "cuda_s1_p0": {
+          "relative_rms": 0.002261779736727476,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s1_p1": {
+          "relative_rms": 0.002261779736727476,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p0": {
+          "relative_rms": 0.002261779736727476,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p1": {
+          "relative_rms": 0.002261779736727476,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "m15_triton_g4_s2": {
+          "relative_rms": 0.0022633059415966272,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_pack_fa2": {
+          "relative_rms": 0.0022646754514425993,
+          "normalized_max": 0.0032300972379744053,
+          "max_abs": 0.0005704909563064575,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "graph_before_timing_vs_fp32": {
+        "cuda_s1_p0": {
+          "relative_rms": 0.002261779736727476,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s1_p1": {
+          "relative_rms": 0.002261779736727476,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p0": {
+          "relative_rms": 0.002261779736727476,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p1": {
+          "relative_rms": 0.002261779736727476,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "m15_triton_g4_s2": {
+          "relative_rms": 0.0022633059415966272,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_pack_fa2": {
+          "relative_rms": 0.0022646754514425993,
+          "normalized_max": 0.0032300972379744053,
+          "max_abs": 0.0005704909563064575,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "timing": {
+        "rounds": [
+          {
+            "direction": "forward",
+            "order": [
+              "cuda_s1_p0",
+              "cuda_s1_p1",
+              "cuda_s2_p0",
+              "cuda_s2_p1",
+              "m15_triton_g4_s2",
+              "reusable_pack_fa2"
+            ],
+            "samples_ms_per_forward": {
+              "cuda_s1_p0": [
+                0.5709999799728394,
+                0.5729280114173889,
+                0.5683199763298035
+              ],
+              "cuda_s1_p1": [
+                0.5488640069961548,
+                0.5470319986343384,
+                0.547327995300293
+              ],
+              "cuda_s2_p0": [
+                0.6328319907188416,
+                0.6284800171852112,
+                0.6305279731750488
+              ],
+              "cuda_s2_p1": [
+                0.5957120060920715,
+                0.5939199924468994,
+                0.5936639904975891
+              ],
+              "m15_triton_g4_s2": [
+                0.6702079772949219,
+                0.6679040193557739,
+                0.6665999889373779
+              ],
+              "reusable_pack_fa2": [
+                0.46745601296424866,
+                0.46720001101493835,
+                0.46720001101493835
+              ]
+            }
+          },
+          {
+            "direction": "reverse",
+            "order": [
+              "reusable_pack_fa2",
+              "m15_triton_g4_s2",
+              "cuda_s2_p1",
+              "cuda_s2_p0",
+              "cuda_s1_p1",
+              "cuda_s1_p0"
+            ],
+            "samples_ms_per_forward": {
+              "reusable_pack_fa2": [
+                0.4702720046043396,
+                0.4682239890098572,
+                0.46745601296424866
+              ],
+              "m15_triton_g4_s2": [
+                0.6673920154571533,
+                0.6668800115585327,
+                0.6698960065841675
+              ],
+              "cuda_s2_p1": [
+                0.5985280275344849,
+                0.5967360138893127,
+                0.59443199634552
+              ],
+              "cuda_s2_p0": [
+                0.632319986820221,
+                0.6302719712257385,
+                0.6289920210838318
+              ],
+              "cuda_s1_p1": [
+                0.5480960011482239,
+                0.5457919836044312,
+                0.5437440276145935
+              ],
+              "cuda_s1_p0": [
+                0.5708479881286621,
+                0.5680639743804932,
+                0.5670400261878967
+              ]
+            }
+          },
+          {
+            "direction": "forward",
+            "order": [
+              "cuda_s1_p0",
+              "cuda_s1_p1",
+              "cuda_s2_p0",
+              "cuda_s2_p1",
+              "m15_triton_g4_s2",
+              "reusable_pack_fa2"
+            ],
+            "samples_ms_per_forward": {
+              "cuda_s1_p0": [
+                0.5711359977722168,
+                0.5703679919242859,
+                0.5690879821777344
+              ],
+              "cuda_s1_p1": [
+                0.5480960011482239,
+                0.547327995300293,
+                0.5442559719085693
+              ],
+              "cuda_s2_p0": [
+                0.6338000297546387,
+                0.6320639848709106,
+                0.5911039710044861
+              ],
+              "cuda_s2_p1": [
+                0.5488640069961548,
+                0.546504020690918,
+                0.5465599894523621
+              ],
+              "m15_triton_g4_s2": [
+                0.6062080264091492,
+                0.6228479743003845,
+                0.6110560297966003
+              ],
+              "reusable_pack_fa2": [
+                0.4485119879245758,
+                0.4479280114173889,
+                0.4469600021839142
+              ]
+            }
+          }
+        ],
+        "summary": {
+          "cuda_s1_p0": {
+            "event_p50_ms_per_forward": 0.5703679919242859,
+            "event_p95_ms_per_forward": 0.5722112059593201
+          },
+          "cuda_s1_p1": {
+            "event_p50_ms_per_forward": 0.547327995300293,
+            "event_p95_ms_per_forward": 0.5485568046569824
+          },
+          "cuda_s2_p0": {
+            "event_p50_ms_per_forward": 0.6305279731750488,
+            "event_p95_ms_per_forward": 0.6334128141403198
+          },
+          "cuda_s2_p1": {
+            "event_p50_ms_per_forward": 0.5939199924468994,
+            "event_p95_ms_per_forward": 0.597811222076416
+          },
+          "m15_triton_g4_s2": {
+            "event_p50_ms_per_forward": 0.6668800115585327,
+            "event_p95_ms_per_forward": 0.6700831890106201
+          },
+          "reusable_pack_fa2": {
+            "event_p50_ms_per_forward": 0.46720001101493835,
+            "event_p95_ms_per_forward": 0.46945279836654663
+          }
+        },
+        "round_order": [
+          "forward",
+          "reverse",
+          "forward"
+        ],
+        "samples_per_arm_per_round": 3,
+        "calls_per_graph_replay": 4,
+        "units": "milliseconds per complete attention forward",
+        "rounds_count": 3
+      },
+      "after_timing_vs_fp32": {
+        "cuda_s1_p0": {
+          "relative_rms": 0.002261779736727476,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s1_p1": {
+          "relative_rms": 0.002261779736727476,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p0": {
+          "relative_rms": 0.002261779736727476,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p1": {
+          "relative_rms": 0.002261779736727476,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "m15_triton_g4_s2": {
+          "relative_rms": 0.0022633059415966272,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_pack_fa2": {
+          "relative_rms": 0.0022646754514425993,
+          "normalized_max": 0.0032300972379744053,
+          "max_abs": 0.0005704909563064575,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "graph_after_timing_vs_fp32": {
+        "cuda_s1_p0": {
+          "relative_rms": 0.002261779736727476,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s1_p1": {
+          "relative_rms": 0.002261779736727476,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p0": {
+          "relative_rms": 0.002261779736727476,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "cuda_s2_p1": {
+          "relative_rms": 0.002261779736727476,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "m15_triton_g4_s2": {
+          "relative_rms": 0.0022633059415966272,
+          "normalized_max": 0.0032706791535019875,
+          "max_abs": 0.0005776584148406982,
+          "finite": true,
+          "passed": true
+        },
+        "reusable_pack_fa2": {
+          "relative_rms": 0.0022646754514425993,
+          "normalized_max": 0.0032300972379744053,
+          "max_abs": 0.0005704909563064575,
+          "finite": true,
+          "passed": true
+        }
+      },
+      "resources": {
+        "cuda_s1_p0": {
+          "stages": 1,
+          "p_mode": 0,
+          "p_mode_name": "shared",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 16384,
+          "probability_scratch_bytes": 4096,
+          "shared_memory_bytes": 36864,
+          "registers_per_thread": 235,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "barriers": 1
+        },
+        "cuda_s1_p1": {
+          "stages": 1,
+          "p_mode": 1,
+          "p_mode_name": "direct_register",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 16384,
+          "probability_scratch_bytes": 4096,
+          "shared_memory_bytes": 36864,
+          "registers_per_thread": 223,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "barriers": 1
+        },
+        "cuda_s2_p0": {
+          "stages": 2,
+          "p_mode": 0,
+          "p_mode_name": "shared",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 32768,
+          "probability_scratch_bytes": 4096,
+          "shared_memory_bytes": 53248,
+          "registers_per_thread": 237,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "barriers": 1
+        },
+        "cuda_s2_p1": {
+          "stages": 2,
+          "p_mode": 1,
+          "p_mode_name": "direct_register",
+          "cta_m": 64,
+          "key_tile": 32,
+          "warps": 4,
+          "qk_tile_bytes": 16384,
+          "kv_pipeline_bytes": 32768,
+          "probability_scratch_bytes": 4096,
+          "shared_memory_bytes": 53248,
+          "registers_per_thread": 230,
+          "spill_bytes": 0,
+          "spill_stores": 0,
+          "spill_loads": 0,
+          "stack_bytes": 0,
+          "barriers": 1
+        },
+        "m15_triton_g4_s2": {
+          "registers": 255,
+          "spills": 240,
+          "shared_memory_bytes": 65536
+        },
+        "reusable_pack_fa2": {
+          "packed_kv_workspace_bytes": 11796480,
+          "owned_output_bytes": 2097152,
+          "shared_memory_bytes": null
+        }
+      },
+      "compile_artifacts": {
+        "m15_triton_g4_s2": {
+          "path": "artifacts/m34-diagnostic/m15-triton-g4-s2-T256",
+          "ptx_sha256": "831cd549cf95198de11d61b799374cbb2b74cb14d02a795ba0948b56a64e2213",
+          "cubin_sha256": "701e8975440720fbaf73d10578ac5a7d373a6d2ffa3db09745a9782eb2e8971c",
+          "ptx_mma_instructions": 1024,
+          "sass_hmma_instructions": 1024,
+          "sass_disassembly_returncode": 0,
+          "registers": 255,
+          "shared_memory_bytes": 65536,
+          "spills": 240
+        }
+      },
+      "workspace_scope": "CUDA and Triton values are owned BF16 output bytes; FA2 is reusable packed K/V bytes and excludes its output; contiguous V staging is reported separately",
+      "case_index": 2,
+      "history_lengths": [
+        2048,
+        64,
+        512
+      ],
+      "segment_lengths": [
+        2048,
+        64,
+        512,
+        256
+      ],
+      "seed": 4409,
+      "input_hash_preserved": true,
+      "workspace_bytes": {
+        "cuda_s1_p0": 2097152,
+        "cuda_s1_p1": 2097152,
+        "cuda_s2_p0": 2097152,
+        "cuda_s2_p1": 2097152,
+        "m15_triton_g4_s2": 2097152,
+        "reusable_pack_fa2": 11796480
+      },
+      "shared_memory_differences_vs_s1_p0": {
+        "cuda_s1_p0": 0,
+        "cuda_s1_p1": 0,
+        "cuda_s2_p0": 16384,
+        "cuda_s2_p1": 16384
+      },
+      "passed": true
+    }
+  ],
+  "telemetry_before": {
+    "returncode": 0,
+    "stdout": "595.91.07, 43, 13.22 W, 210 MHz, 405 MHz, 179 MiB",
+    "stderr": ""
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "torch": "2.7.1+cu128",
+    "torch_path": "/home/tmz/\u6587\u6863/ChatGPT/llm-gpu-kernels/.venv/lib/python3.12/site-packages/torch/__init__.py",
+    "cuda_runtime": "12.8",
+    "triton": "3.3.1",
+    "gpu": "NVIDIA GeForce RTX 3080 Laptop GPU",
+    "sm": [
+      8,
+      6
+    ],
+    "fa2": {
+      "provenance": {
+        "schema": 1,
+        "version": "2.8.3.post1",
+        "tag": "v2.8.3.post1",
+        "tag_commit_short": "a8aa52b",
+        "runtime_path": "/home/tmz/ai/baselines/flash-attention-2.8.3.post1",
+        "wheel_name": "flash_attn-2.8.3.post1+cu12torch2.7cxx11abiTRUE-cp312-cp312-linux_x86_64.whl",
+        "official_wheel_url": "https://github.com/Dao-AILab/flash-attention/releases/download/v2.8.3.post1/flash_attn-2.8.3.post1%2Bcu12torch2.7cxx11abiTRUE-cp312-cp312-linux_x86_64.whl",
+        "official_release_api": "https://api.github.com/repos/Dao-AILab/flash-attention/releases/tags/v2.8.3.post1",
+        "official_release_asset_digest": "sha256:f87164bb919f5597cb94f7485196be6ac7842b71d7bf8e9f8e9133b9045ab5ea",
+        "wheel_sha256_verified": "f87164bb919f5597cb94f7485196be6ac7842b71d7bf8e9f8e9133b9045ab5ea",
+        "official_files_verified_count": 86,
+        "all_upstream_package_files_match_wheel": true,
+        "dependencies": {
+          "einops": "0.8.2"
+        },
+        "torch": "project .venv 2.7.1+cu128; not installed in overlay",
+        "scope": "FA2 public operator baseline; no source patches",
+        "wheel_build_version": "2.8.3.post1+cu12torch2.7cxx11abitrue"
+      },
+      "provenance_sha256": "500136ecc2bfa9385e573b38da27a26506ff42dacc7673ef322d6eb79a616780",
+      "imported_module_path": "/home/tmz/ai/baselines/flash-attention-2.8.3.post1/flash_attn/__init__.py",
+      "actual_distribution_version": "2.8.3.post1",
+      "runtime_path": "/home/tmz/ai/baselines/flash-attention-2.8.3.post1"
+    },
+    "tf32": false,
+    "bf16_reduced_precision_reduction": false
+  },
+  "source_hashes_after": {
+    "AGENTS.md": "c660e682d6930bc310a02567be4b5f8e11decfa21e8313696f40e02d7ac9d468",
+    "docs/CONTRACT.md": "b46958c069ab8e1d5bd8c6eb9143f0cc43110e61c2e9270cfd193ce5791cd907",
+    "scripts/run_m34_attention_check.py": "e4afb6d1cc3a050163db81d3e980c4ee93b45edc8123d8f77a1b164802319b19",
+    "src/llm_gpu_kernels/attention_baseline.py": "56064a0328cc0873d6468776e06b959fdff53feaba308c59ea0b99444b2e9438",
+    "src/llm_gpu_kernels/attention_baseline_benchmark.py": "15a88dd4277d9978356bc314c75371a0921ab2930698dbbac01d2019c1ea866e",
+    "src/llm_gpu_kernels/attention_nonempty.py": "38f9e629c5542dba556c87e96c7b89be4344ff1a4c6f9a110b98356207398cea",
+    "src/llm_gpu_kernels/attention_segmented.py": "e72702f5def4df841fba274af87d22efa72e260a19617316dcadc22cae4768cb",
+    "src/llm_gpu_kernels/attention_segmented_benchmark.py": "5961ef2f74fd94a7d6a973edcf471e3a7377ecaa2a040265848d796e7a47a0b4",
+    "src/llm_gpu_kernels/benchmark.py": "c3a12e68e37b09f62d7dd78d14738537074dc60b7a02e20c96e24d1923c565e4",
+    "src/llm_gpu_kernels/attention_cuda.py": "3b1d48285ccde07b2b3012bdb5a5d65b596a4cc6363fb0a0b3192dd7eea3ec49",
+    "src/llm_gpu_kernels/cuda_gqa_attention.cu": "b5e1a966ab06fd583c228d82da66a8daaafbe59c892229d2c95d1c038536143f"
+  },
+  "passed": true,
+  "telemetry_after": {
+    "returncode": 0,
+    "stdout": "595.91.07, 47, 43.63 W, 1740 MHz, 7001 MHz, 531 MiB",
+    "stderr": ""
+  }
+}

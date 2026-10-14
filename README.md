@@ -38,6 +38,12 @@ occupancy 更低但仍更快；原始 CSV/SASS source 表已保存在仓库内�
 后续逐项对照 BK 深度、输出 tile、CTA 遍历顺序和加载缓存策略；
 进度与结果入口见 [大矩阵 GEMM 当前状态](docs/GEMM_CURRENT_STATUS.md)。
 
+M34–M36新增SM86手写CUDA BF16四段GQA前向：MMA/online softmax、P寄存器直通、
+K/V异步搬运和padded V直接读取。80项数值检查通过；取消四段展开虽降低寄存器却退化，
+删除direct-P未用的4KiB共享暂存在T96/T256上让两级流水相对匹配旧版少15.86%/13.56%，
+但仍慢于raw-layout pack+FA2，不切换默认。源码、结果和取舍见
+[CUDA Attention当前状态](docs/ATTENTION_CUDA_CURRENT_STATUS.md)及[外部方案参考](docs/M34_REFERENCE_NOTES.md)。
+
 W4A16 首版与三批复测的差异、逐 case 回归及限制见
 [M23 W4 复测报告](docs/M23_W4_REPEAT_REPORT.md)和[完整样本/审计汇总](results/m23-w4-repeat-summary.json)：
 固定T17/T193四case的Full Graph p50几何平均相对同量化权重vLLM低10.00%，T1024两case
