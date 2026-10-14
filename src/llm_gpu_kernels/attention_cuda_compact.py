@@ -14,9 +14,8 @@ from .gemm_mma import PreparedBf16Mma, _storage_identity
 
 _EXTENSION = None
 _LOCK = threading.Lock()
-_MODULE_NAME = "llm_gpu_kernels_m36_compact_gqa_sm86_v1"
+_MODULE_NAME = "llm_gpu_kernels_m36_compact_gqa_sm86_v2"
 _STAGES = (1, 2)
-_P_MODES = (1,)
 _GCC14_VERSION = re.compile(r"^14(?:\.|$)")
 
 
@@ -47,7 +46,7 @@ def _verified_gcc14(variable):
 
 
 def load_cuda_gqa_compact():
-    """Load the CUDA 12.8 / GCC 14 / SM86 M36 extension on first use."""
+    """Load the CUDA 12.8 / GCC 14 / SM86 compact v2 extension on first use."""
     global _EXTENSION
     with _LOCK:
         if _EXTENSION is None:
@@ -74,7 +73,7 @@ def load_cuda_gqa_compact():
             if (cpp_extension.CUDA_HOME is None
                     or Path(cpp_extension.CUDA_HOME).resolve() != home):
                 raise RuntimeError("cpp_extension CUDA_HOME differs from explicit CUDA_HOME")
-            build_directory = Path(__file__).resolve().parents[2] / "artifacts" / "m36-build"
+            build_directory = Path(__file__).resolve().parents[2] / "artifacts" / "m36-build-v2"
             build_directory.mkdir(parents=True, exist_ok=True)
             source = Path(__file__).with_name("cuda_gqa_attention_compact.cu")
             if not source.is_file():
@@ -133,18 +132,16 @@ class PreparedCudaGqaCompact(PreparedBf16Mma):
         return self.owners[-1]
 
 
-def prepare_cuda_gqa_compact(q, segments, out=None, *, stages=1, p_mode=1):
-    """Prepare the fixed-address M36 four-segment BF16 GQA forward on SM86.
+def prepare_cuda_gqa_compact(q, segments, out=None, *, stages=1):
+    """Prepare the fixed-address compact four-segment BF16 GQA forward on SM86.
 
     ``segments`` is ordered as selected, sink, recent, and current. Input values
     may change in place; shapes, strides, devices, and storage must stay fixed.
     Callers establish cross-stream dependencies and avoid concurrent writes to
-    one output. M36 exposes only the register-direct probability mode.
+    one output.
     """
     if type(stages) is not int or stages not in _STAGES:
         raise ValueError("stages must be 1 or 2")
-    if type(p_mode) is not int or p_mode not in _P_MODES:
-        raise ValueError("p_mode must be 1")
     if not isinstance(q, torch.Tensor) or q.ndim != 3 or tuple(q.shape[1:]) != (32, 128):
         raise ValueError("q must have shape [T, 32, 128]")
     if q.device.type != "cuda" or q.dtype != torch.bfloat16:
@@ -184,6 +181,6 @@ def prepare_cuda_gqa_compact(q, segments, out=None, *, stages=1, p_mode=1):
     with torch.cuda.device(q.device):
         module = load_cuda_gqa_compact()
         native = module.CompactCudaGqaPlan(
-            q, keys, values, out, stages, p_mode
+            q, keys, values, out, stages
         )
     return PreparedCudaGqaCompact(owners=(*inputs, out), native=native)

@@ -7,7 +7,7 @@ NCU="/home/tmz/ai/profilers/nsight-compute-2026.3.0/opt/nvidia/nsight-compute/20
 PYTHON="$REPO_ROOT/.venv/bin/python"
 WORKER="$REPO_ROOT/scripts/profile_m36_gqa.py"
 M34_BINARY="$REPO_ROOT/artifacts/m34-build/llm_gpu_kernels_m34_cuda_gqa_sm86_v1.so"
-M36_BINARY="$REPO_ROOT/artifacts/m36-build/llm_gpu_kernels_m36_compact_gqa_sm86_v1.so"
+M36_BINARY="$REPO_ROOT/artifacts/m36-build-v2/llm_gpu_kernels_m36_compact_gqa_sm86_v2.so"
 TOKENS=256
 
 die() {

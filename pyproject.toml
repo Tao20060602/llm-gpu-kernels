@@ -11,6 +11,7 @@ dependencies = ["torch==2.7.1+cu128", "triton==3.3.1", "numpy==2.5.3", "psutil==
 
 [project.optional-dependencies]
 baseline = ["ninja==1.13.2", "packaging==26.3"]
+test = ["pytest==9.1.1"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

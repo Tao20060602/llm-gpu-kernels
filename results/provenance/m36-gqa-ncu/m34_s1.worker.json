@@ -1,0 +1,18 @@
+{
+  "arm": "m34_s1",
+  "tokens": 256,
+  "seed": 436,
+  "history_lengths": [
+    2048,
+    64,
+    512
+  ],
+  "current_v_token_stride": 6144,
+  "stages": 1,
+  "p_mode": 1,
+  "shared_declared_bytes": 36864,
+  "shared_declared_bits": 294912,
+  "profile_only": true,
+  "warmups": 3,
+  "profiled_runs": 1
+}

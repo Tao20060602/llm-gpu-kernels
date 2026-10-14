@@ -14,7 +14,7 @@ M34_BINARY = (
 )
 M36_BINARY = (
     REPO_ROOT
-    / "artifacts/m36-build/llm_gpu_kernels_m36_compact_gqa_sm86_v1.so"
+    / "artifacts/m36-build-v2/llm_gpu_kernels_m36_compact_gqa_sm86_v2.so"
 )
 SEED = 436
 HISTORY_LENGTHS = (2048, 64, 512)
@@ -92,11 +92,11 @@ def main() -> None:
     values = [value for _, value in segments]
 
     stages = 1 if args.arm == "m34_s1" else 2
+    binary = M36_BINARY if args.arm == "m36_s2" else M34_BINARY
+    extension = _load_extension(binary)
     if args.arm == "m36_s2":
-        extension = _load_extension(M36_BINARY)
-        plan = extension.CompactCudaGqaPlan(q, keys, values, output, stages, 1)
+        plan = extension.CompactCudaGqaPlan(q, keys, values, output, stages)
     else:
-        extension = _load_extension(M34_BINARY)
         plan = extension.CudaGqaAttentionPlan(q, keys, values, output, stages, 1)
 
     for _ in range(3):
@@ -113,6 +113,7 @@ def main() -> None:
     shared_bytes = _shared_declared_bytes(args.arm, stages)
     result = {
         "arm": args.arm,
+        "extension_module": binary.stem,
         "tokens": args.tokens,
         "seed": SEED,
         "history_lengths": list(HISTORY_LENGTHS),

@@ -1,0 +1,16 @@
+
+Fatbin elf code:
+================
+arch = sm_86
+code version = [1,7]
+host = linux
+compile_size = 64bit
+identifier = /home/tmz/文档/ChatGPT/llm-gpu-kernels/src/llm_gpu_kernels/cuda_gqa_attention_compact.cu
+
+Resource usage:
+ Common:
+  GLOBAL:11 CONSTANT[4]:88
+ Function _ZN68_GLOBAL__N__937b2b03_29_cuda_gqa_attention_compact_cu_650949e3_8323319compact_gqa_forwardILi2EEEvPK13__nv_bfloat16NS_8SegmentsEPS1_il:
+  REG:231 STACK:0 SHARED:0 LOCAL:0 CONSTANT[0]:528 TEXTURE:0 SURFACE:0 SAMPLER:0
+ Function _ZN68_GLOBAL__N__937b2b03_29_cuda_gqa_attention_compact_cu_650949e3_8323319compact_gqa_forwardILi1EEEvPK13__nv_bfloat16NS_8SegmentsEPS1_il:
+  REG:221 STACK:0 SHARED:0 LOCAL:0 CONSTANT[0]:528 TEXTURE:0 SURFACE:0 SAMPLER:0

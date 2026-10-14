@@ -1,4 +1,4 @@
-// M36: retain M34 direct-P arithmetic; remove its unused shared P scratch.
+// Compact SM86 GQA: direct-P only; complete history tiles use unmasked scaling.
 #include <torch/extension.h>
 #include <pybind11/stl.h>
 #include <c10/cuda/CUDAGuard.h>
@@ -12,7 +12,9 @@
 namespace {
 using namespace llm_gpu_kernels_sm86;
 constexpr int Queries=64,Keys=32,Dim=128,Threads=128;
-constexpr int QElements=Queries*Dim,KVElements=2*Keys*Dim,PElements=Queries*Keys;
+constexpr int QElements=Queries*Dim,KVElements=2*Keys*Dim;
+template<int Stages>
+constexpr int SharedBytes=(QElements+Stages*KVElements)*2;
 struct Segments {
   const __nv_bfloat16* k[4];
   const __nv_bfloat16* v[4];
@@ -72,7 +74,7 @@ __device__ __forceinline__ float row_sum(float x) {
   return x+__shfl_xor_sync(0xffffffff,x,2);
 }
 
-template<int Stages,bool DirectP>
+template<int Stages>
 __global__ void compact_gqa_forward(const __nv_bfloat16* q,Segments segments,
     __nv_bfloat16* out,int tokens,int64_t q_stride) {
   const int lane=threadIdx.x%32,warp=threadIdx.x/32;
@@ -82,7 +84,6 @@ __global__ void compact_gqa_forward(const __nv_bfloat16* q,Segments segments,
   extern __shared__ __align__(32) __nv_bfloat16 shared[];
   auto* sq=shared;
   auto* skv=shared+QElements;
-  auto* sp=skv+Stages*KVElements;
   for(int vector=threadIdx.x;vector<Queries*16;vector+=Threads) {
     const int row=vector/16,col=(vector%16)*8;
     const bool valid=start_q+row<tokens;
@@ -121,17 +122,32 @@ __global__ void compact_gqa_forward(const __nv_bfloat16* q,Segments segments,
           mma(score[ni],ar,br);
         }
       }
+      // Uniform tile validity is derived from bounds, not a caller option.
+      const bool full_history=segment<3 && start_q+Queries<=tokens &&
+          tile*Keys+Keys<=segments.length[segment];
+      if(full_history) {
+        #pragma unroll
+        for(int ni=0;ni<4;++ni) {
+          #pragma unroll
+          for(int e=0;e<4;++e)score[ni][e]*=0.08838834764831845f;
+        }
+      } else {
+        #pragma unroll
+        for(int ni=0;ni<4;++ni) {
+          #pragma unroll
+          for(int e=0;e<4;++e) {
+            const int r=e/2,key=tile*Keys+ni*8+(lane%4)*2+e%2;
+            const bool valid=query[r]<tokens && key<segments.length[segment] &&
+                (segment!=3 || key<=query[r]);
+            score[ni][e]=valid?score[ni][e]*0.08838834764831845f:-CUDART_INF_F;
+          }
+        }
+      }
       float local_max[2]={-CUDART_INF_F,-CUDART_INF_F};
       #pragma unroll
       for(int ni=0;ni<4;++ni) {
         #pragma unroll
-        for(int e=0;e<4;++e) {
-          const int r=e/2,key=tile*Keys+ni*8+(lane%4)*2+e%2;
-          const bool valid=query[r]<tokens && key<segments.length[segment] &&
-              (segment!=3 || key<=query[r]);
-          score[ni][e]=valid?score[ni][e]*0.08838834764831845f:-CUDART_INF_F;
-          local_max[r]=fmaxf(local_max[r],score[ni][e]);
-        }
+        for(int e=0;e<4;++e)local_max[e/2]=fmaxf(local_max[e/2],score[ni][e]);
       }
       float alpha[2];
       #pragma unroll
@@ -149,8 +165,6 @@ __global__ void compact_gqa_forward(const __nv_bfloat16* q,Segments segments,
           const float probability=score[ni][e]==-CUDART_INF_F?0.0f:__expf(score[ni][e]-maximum[r]);
           score[ni][e]=probability;
           partial_sum[r]+=probability;
-          if constexpr(!DirectP)
-            sp[index<true>(local_row+r*8,ni*8+(lane%4)*2+e%2)]=__float2bfloat16_rn(probability);
         }
       }
       #pragma unroll
@@ -161,17 +175,14 @@ __global__ void compact_gqa_forward(const __nv_bfloat16* q,Segments segments,
         #pragma unroll
         for(int e=0;e<4;++e)output[ni][e]*=alpha[e/2];
       }
-      if constexpr(!DirectP)__syncthreads();
       #pragma unroll
       for(int kk=0;kk<Keys;kk+=16) {
         uint32_t ar[4];
-        if constexpr(DirectP) {
-          const int ni=kk/8;
-          ar[0]=pack_bf16(score[ni][0],score[ni][1]);
-          ar[1]=pack_bf16(score[ni][2],score[ni][3]);
-          ar[2]=pack_bf16(score[ni+1][0],score[ni+1][1]);
-          ar[3]=pack_bf16(score[ni+1][2],score[ni+1][3]);
-        } else load_a<true>(ar,sp,lane,warp*16,kk);
+        const int ni=kk/8;
+        ar[0]=pack_bf16(score[ni][0],score[ni][1]);
+        ar[1]=pack_bf16(score[ni][2],score[ni][3]);
+        ar[2]=pack_bf16(score[ni+1][0],score[ni+1][1]);
+        ar[3]=pack_bf16(score[ni+1][2],score[ni+1][3]);
         #pragma unroll
         for(int ni=0;ni<16;++ni) {
           uint32_t br[2];
@@ -201,19 +212,19 @@ class CompactCudaGqaPlan {
   torch::Tensor q_,out_;
   std::vector<torch::Tensor> ks_,vs_;
   Segments segments_{};
-  int device_,tokens_,stages_,p_mode_;
-  template<int Stages,bool DirectP>
+  int device_,tokens_,stages_;
+  template<int Stages>
   void initialize(const cudaDeviceProp& props) {
-    constexpr int Bytes=(QElements+Stages*KVElements+(DirectP?0:PElements))*2;
+    constexpr int Bytes=SharedBytes<Stages>;
     TORCH_CHECK(Bytes<=props.sharedMemPerBlockOptin,"shared memory opt-in limit exceeded");
     if(Bytes>props.sharedMemPerBlock)
-      C10_CUDA_CHECK(cudaFuncSetAttribute(compact_gqa_forward<Stages,DirectP>,cudaFuncAttributeMaxDynamicSharedMemorySize,Bytes));
+      C10_CUDA_CHECK(cudaFuncSetAttribute(compact_gqa_forward<Stages>,cudaFuncAttributeMaxDynamicSharedMemorySize,Bytes));
   }
-  template<int Stages,bool DirectP>
+  template<int Stages>
   void launch() {
     const dim3 grid((tokens_+Queries-1)/Queries,32);
     const auto stream=c10::cuda::getCurrentCUDAStream(device_);
-    compact_gqa_forward<Stages,DirectP><<<grid,Threads,(QElements+Stages*KVElements+(DirectP?0:PElements))*2,stream>>>(
+    compact_gqa_forward<Stages><<<grid,Threads,SharedBytes<Stages>,stream>>>(
         reinterpret_cast<const __nv_bfloat16*>(q_.data_ptr()),segments_,
         reinterpret_cast<__nv_bfloat16*>(out_.data_ptr()),tokens_,q_.stride(0));
     C10_CUDA_KERNEL_LAUNCH_CHECK();
@@ -230,14 +241,14 @@ class CompactCudaGqaPlan {
   }
  public:
   CompactCudaGqaPlan(torch::Tensor q,std::vector<torch::Tensor> ks,
-      std::vector<torch::Tensor> vs,torch::Tensor out,int stages,int p_mode)
-      :q_(q),out_(out),ks_(std::move(ks)),vs_(std::move(vs)),stages_(stages),p_mode_(p_mode) {
+      std::vector<torch::Tensor> vs,torch::Tensor out,int stages)
+      :q_(q),out_(out),ks_(std::move(ks)),vs_(std::move(vs)),stages_(stages) {
     TORCH_CHECK(q_.is_cuda() && out_.is_cuda(),"CUDA required");
     device_=q_.get_device();
     TORCH_CHECK(out_.get_device()==device_ && out_.scalar_type()==at::kBFloat16 &&
                 out_.is_contiguous() && out_.sizes()==q_.sizes(),"invalid output");
     TORCH_CHECK(ks_.size()==4 && vs_.size()==4,"four KV pairs required");
-    TORCH_CHECK((stages_==1 || stages_==2) && p_mode_==1,"invalid configuration");
+    TORCH_CHECK(stages_==1 || stages_==2,"invalid configuration");
     validate_input(q_,32);tokens_=q_.size(0);
     for(int segment=0;segment<4;++segment) {
       validate_input(ks_[segment],8);validate_input(vs_[segment],8);
@@ -252,24 +263,24 @@ class CompactCudaGqaPlan {
     cudaDeviceProp props;C10_CUDA_CHECK(cudaGetDeviceProperties(&props,device_));
     TORCH_CHECK(props.major==8 && props.minor==6,"M36 targets SM86");
     if(stages_==1) {
-      initialize<1,true>(props);
+      initialize<1>(props);
     } else {
-      initialize<2,true>(props);
+      initialize<2>(props);
     }
   }
   void run() {
     if(tokens_==0)return;
     c10::cuda::CUDAGuard guard(device_);
     if(stages_==1) {
-      launch<1,true>();
+      launch<1>();
     } else {
-      launch<2,true>();
+      launch<2>();
     }
   }
 };
 } // namespace
 PYBIND11_MODULE(TORCH_EXTENSION_NAME,m) {
   pybind11::class_<CompactCudaGqaPlan>(m,"CompactCudaGqaPlan")
-      .def(pybind11::init<torch::Tensor,std::vector<torch::Tensor>,std::vector<torch::Tensor>,torch::Tensor,int,int>())
+      .def(pybind11::init<torch::Tensor,std::vector<torch::Tensor>,std::vector<torch::Tensor>,torch::Tensor,int>())
       .def("run",&CompactCudaGqaPlan::run);
 }

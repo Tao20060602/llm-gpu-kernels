@@ -43,6 +43,8 @@ K/V异步搬运和padded V直接读取。80项数值检查通过；取消四段�
 删除direct-P未用的4KiB共享暂存在T96/T256上让两级流水相对匹配旧版少15.86%/13.56%，
 但仍慢于raw-layout pack+FA2，不切换默认。源码、结果和取舍见
 [CUDA Attention当前状态](docs/ATTENTION_CUDA_CURRENT_STATUS.md)及[外部方案参考](docs/M34_REFERENCE_NOTES.md)。
+T256 的 profile-only NCU 采集已完成：M34 S2 到 M36 v1 S2 的共享内存 launch 限制从 1 增至 2 blocks，寄存器限制均为 2 blocks；active-warp 计数为 8.333455% / 14.273184%。每臂一次 profile，不是 benchmark 速度或因果证明，详见 [NCU 报告](docs/M36_GQA_NCU_REPORT.md)和[汇总 JSON](results/m36-gqa-ncu-summary.json)。
+M37 compact-mask 单轮 diagnostic 已完成：在 kernel 内推导完整历史 tile 的 mask 分支，并移除 compact API 的 `p_mode`；prepare 仅保留 `stages` 配置，不改默认。16 个数值 case 和 2 个 e2e case 均通过；e2e 覆盖固定 buffers 值更新、非默认 stream 与 Graph；e2e 最大 relative RMS / normalized max 为 0.0022706119 / 0.0033076003。同批 M37 S2 相对保留的 M36 v1 control 在 T96/T256 快 3.52%/1.83%，S1 在 T32/T96 回归 1.84%/0.96%；raw-pack+FA2 仍快于所有尺寸。该批与 M36 历史表不能混算。见 [M37 设计](docs/M37_COMPACT_MASK_DESIGN.md)、[报告](docs/M37_COMPACT_MASK_REPORT.md)和[e2e S1](results/provenance/m37-e2e/m37_compact_attention_s1.json)/[S2](results/provenance/m37-e2e/m37_compact_attention_s2.json)记录。
 
 W4A16 首版与三批复测的差异、逐 case 回归及限制见
 [M23 W4 复测报告](docs/M23_W4_REPEAT_REPORT.md)和[完整样本/审计汇总](results/m23-w4-repeat-summary.json)：

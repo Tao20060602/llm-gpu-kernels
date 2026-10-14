@@ -1,0 +1,21 @@
+Detected CUDA files, patching ldflags
+Emitting ninja build file /home/tmz/文档/ChatGPT/llm-gpu-kernels/artifacts/m36-build-v2/build.ninja...
+Building extension module llm_gpu_kernels_m36_compact_gqa_sm86_v2...
+Using envvar MAX_JOBS (1) as the number of workers...
+python 3.12.14 (main, Sep  1 2026, 14:16:52) [Clang 22.1.3 ]
+torch 2.7.1+cu128 cuda 12.8
+[1/2] /home/tmz/ai/toolchains/cuda-12.8/bin/nvcc --generate-dependencies-with-compile --dependency-output cuda_gqa_attention_compact.cuda.o.d -ccbin /home/tmz/ai/toolchains/gcc14/usr/bin/x86_64-linux-gnu-gcc-14 -DTORCH_EXTENSION_NAME=llm_gpu_kernels_m36_compact_gqa_sm86_v2 -DTORCH_API_INCLUDE_EXTENSION_H -DPYBIND11_COMPILER_TYPE=\"_gcc\" -DPYBIND11_STDLIB=\"_libstdcpp\" -DPYBIND11_BUILD_ABI=\"_cxxabi1016\" -isystem '/home/tmz/文档/ChatGPT/llm-gpu-kernels/.venv/lib/python3.12/site-packages/torch/include' -isystem '/home/tmz/文档/ChatGPT/llm-gpu-kernels/.venv/lib/python3.12/site-packages/torch/include/torch/csrc/api/include' -isystem /home/tmz/ai/toolchains/cuda-12.8/include -isystem /home/tmz/.local/share/uv/python/cpython-3.12.14-linux-x86_64-gnu/include/python3.12 -D_GLIBCXX_USE_CXX11_ABI=1 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr -gencode=arch=compute_86,code=sm_86 --compiler-options '-fPIC' -O3 -std=c++17 -lineinfo -gencode=arch=compute_86,code=sm_86 --ptxas-options=-v -c '/home/tmz/文档/ChatGPT/llm-gpu-kernels/src/llm_gpu_kernels/cuda_gqa_attention_compact.cu' -o cuda_gqa_attention_compact.cuda.o
+ptxas info    : 11 bytes gmem, 88 bytes cmem[4]
+ptxas info    : Compiling entry function '_ZN68_GLOBAL__N__937b2b03_29_cuda_gqa_attention_compact_cu_650949e3_8323319compact_gqa_forwardILi2EEEvPK13__nv_bfloat16NS_8SegmentsEPS1_il' for 'sm_86'
+ptxas info    : Function properties for _ZN68_GLOBAL__N__937b2b03_29_cuda_gqa_attention_compact_cu_650949e3_8323319compact_gqa_forwardILi2EEEvPK13__nv_bfloat16NS_8SegmentsEPS1_il
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 231 registers, used 1 barriers, 528 bytes cmem[0]
+ptxas info    : Compile time = 353.925 ms
+ptxas info    : Compiling entry function '_ZN68_GLOBAL__N__937b2b03_29_cuda_gqa_attention_compact_cu_650949e3_8323319compact_gqa_forwardILi1EEEvPK13__nv_bfloat16NS_8SegmentsEPS1_il' for 'sm_86'
+ptxas info    : Function properties for _ZN68_GLOBAL__N__937b2b03_29_cuda_gqa_attention_compact_cu_650949e3_8323319compact_gqa_forwardILi1EEEvPK13__nv_bfloat16NS_8SegmentsEPS1_il
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 221 registers, used 1 barriers, 528 bytes cmem[0]
+ptxas info    : Compile time = 350.278 ms
+[2/2] /home/tmz/ai/toolchains/gcc14/usr/bin/x86_64-linux-gnu-g++-14 cuda_gqa_attention_compact.cuda.o -shared -L/home/tmz/文档/ChatGPT/llm-gpu-kernels/.venv/lib/python3.12/site-packages/torch/lib -lc10 -lc10_cuda -ltorch_cpu -ltorch_cuda -ltorch -ltorch_python -L/home/tmz/ai/toolchains/cuda-12.8/lib64 -lcudart -o llm_gpu_kernels_m36_compact_gqa_sm86_v2.so
+Loading extension module llm_gpu_kernels_m36_compact_gqa_sm86_v2...
+loaded llm_gpu_kernels_m36_compact_gqa_sm86_v2

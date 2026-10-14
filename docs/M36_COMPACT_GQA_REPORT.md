@@ -2,6 +2,8 @@
 
 Status: **passed**
 
+This is the historical M36 v1 result from commit `3338707`, which can reproduce the v1 binary. The live compact-v2 diagnostic writes to the M37 result and report paths.
+
 ## Scope and protocol
 
 Fixed BF16 GQA semantics use Q[T,32,128], four K/V[L,8,128] pairs, fully visible history, causal current keys, and the same FP32 softmax/BF16 probability and output arithmetic as M34. M36 exposes only direct-register P mode and stages 1/2. Its shared layout omits M34's unused 4 KiB probability scratch.

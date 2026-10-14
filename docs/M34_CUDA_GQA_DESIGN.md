@@ -29,13 +29,13 @@ Both P modes reserve the same P scratch area to isolate the dataflow change from
 
 Q and K/V may have token padding with contiguous inner strides `(128,1)`, token stride at least `heads*128` and divisible by eight BF16 elements, and a 16-byte-aligned base. Each segment carries its actual K and V token stride; current V stride6144 is read directly rather than copied into a contiguous global intermediate. Output is contiguous and must not share storage with any input.
 
-The prepared wrapper retains all owners and checks metadata before each run. Shape/address are bound; values may change in place. The kernel launches on the current stream and allocates no tensors in run. Callers establish cross-stream dependencies and avoid overlapping writes to one output. The wrapper subclasses the existing owner holder because its output is the final owner rather than the GEMM holder's third owner.
+The prepared wrapper retains references to the input and output owners so their storage stays alive. Callers must keep tensor shape, stride, and storage fixed for the prepared object's lifetime; `run` does not promise runtime metadata or storage revalidation. Values may change in place while those caller preconditions hold. The kernel launches on the current stream and allocates no tensors in `run`. Callers establish cross-stream dependencies and avoid overlapping writes to one output. The wrapper subclasses the existing owner holder because its output is the final owner rather than the GEMM holder's third owner.
 
 ## Evaluation scope
 
 Eight functional cases × four configurations cover T0/T1, empty history, uneven lengths, T tails, and padded current V. Benchmark T32/T96/T256 with history `[2048,64,512]`, against the existing Triton implementation including any required layout conversion, and reusable pack + official FA2. Graphs contain four calls per replay; three forward/reverse/forward rounds with three samples per arm. Compile/prepare are outside timing; every arm is checked before and after timing. Preserve all candidates and failures.
 
-The first measurements establish this CUDA baseline and the two controlled changes. They do not imply a new best implementation or engine TTFT gain. No CUDA attention counters have yet been captured.
+The first measurements establish this CUDA baseline and the two controlled changes. They do not imply a new best implementation or engine TTFT gain.
 
 Source: [kernel](../src/llm_gpu_kernels/cuda_gqa_attention.cu), [wrapper](../src/llm_gpu_kernels/attention_cuda.py), [runner](../scripts/run_m34_attention_check.py).
 
@@ -44,3 +44,7 @@ Source: [kernel](../src/llm_gpu_kernels/cuda_gqa_attention.cu), [wrapper](../src
 All 32 numerical cases passed. CUDA best-case Graph p50 is 191.23/317.65/547.33 µs for T32/T96/T256, versus reusable pack+FA2 at 165.82/293.06/467.20 µs. These are synthetic inputs with the production-shaped padded V layout, not captured model activations. FA2 is still faster in all three cases. Direct P helps most arms but S1/shared is marginally fastest at T96; two stages helps T32 but hurts T96/T256. No universal configuration is selected.
 
 Compiled registers for S1/shared, S1/direct, S2/shared and S2/direct are 235/223/237/230, with zero stack/spills. The unexpectedly high register budget motivates a separate rolled segment-loop experiment (M35), rather than adding register-resident Q immediately. The first build failed due to a missing math-constants include; its log is preserved, and the explicit include fixed the build before GPU validation. Timing and errors are in [the report](M34_CUDA_GQA_REPORT.md).
+
+## Profile-only NCU follow-up
+
+A T256 profile-only capture of M34 S1, M34 S2 and M36 v1 S2 is complete (three warmups and one profiled launch per arm). For M34 S2 → M36 S2, worker-declared dynamic shared memory is 53,248 → 49,152 B; the CSV reports total/dynamic/static per-block shared memory as 54.272/53.248 Kbyte and 0 byte versus 50.176/49.152 Kbyte and 0 byte. The NCU shared-memory launch occupancy limit changes from 1 to 2 blocks while the register limit stays at 2 blocks. The captured `sm__warps_active.avg.pct_of_peak_sustained_active` changes from 8.333455% to 14.273184%. This measures the launch-resource limit transition for these specializations; one profiled launch does not establish performance causality. NCU duration is profiler output, not unprofiled benchmark speed. See [the M36 GQA NCU report](M36_GQA_NCU_REPORT.md) and [summary JSON](../results/m36-gqa-ncu-summary.json).

@@ -1,0 +1,59 @@
+{
+  "evidence": {
+    "compile_load_log": "loader-build.log",
+    "cubin_path": "artifacts/m37-build/cuda_gqa_attention_compact.sm_86.cubin",
+    "cubin_sha256": "c2a661bb5aad6c0ad99a0dacf92c2f501b2ca04e8113b55f50de3af188fa1aba",
+    "cuobjdump_sass_source": "artifacts/m37-build/cuda-gqa-sm86.sass",
+    "dynamic_shared_basis": "SharedBytes<Stages> = (64*128 + Stages*(2*32*128))*2 bytes",
+    "extension_path": "artifacts/m36-build-v2/llm_gpu_kernels_m36_compact_gqa_sm86_v2.so",
+    "extension_sha256": "f1668273b7b04cecf6d60635dbf235041aa94d312c51134c96d455e18570a9ed",
+    "nvdisasm_cross_check": "artifacts/m37-build/nvdisasm-sm86.sass",
+    "ptxas_cuobjdump_resources": "resource-usage.txt",
+    "source_path": "src/llm_gpu_kernels/cuda_gqa_attention_compact.cu",
+    "source_sha256": "2953ba22a4b551075595de929c7f304190f13fc8fa1bd4ec51ba4a1b4f255c25"
+  },
+  "extension_module": "llm_gpu_kernels_m36_compact_gqa_sm86_v2",
+  "operation": "CPU build/load and static cubin inspection only; no GPU kernel launch or tests",
+  "resources_by_stages": {
+    "1": {
+      "dynamic_shared_bytes": 32768,
+      "registers_per_thread": 221,
+      "sass_instructions": {
+        "HMMA": 256,
+        "LDL": 0,
+        "LDSM": 288,
+        "STL": 0
+      },
+      "spill_bytes": 0,
+      "spill_loads": 0,
+      "spill_stores": 0,
+      "stack_bytes": 0,
+      "static_shared_bytes": 0
+    },
+    "2": {
+      "dynamic_shared_bytes": 49152,
+      "registers_per_thread": 231,
+      "sass_instructions": {
+        "HMMA": 256,
+        "LDL": 0,
+        "LDSM": 288,
+        "STL": 0
+      },
+      "spill_bytes": 0,
+      "spill_loads": 0,
+      "spill_stores": 0,
+      "stack_bytes": 0,
+      "static_shared_bytes": 0
+    }
+  },
+  "schema": 1,
+  "target": "sm_86",
+  "toolchain": {
+    "cuobjdump": "13.1.80",
+    "gcc": "14.3.0",
+    "nvcc": "12.8.93",
+    "nvdisasm": "13.1.80",
+    "python": "3.12.14",
+    "pytorch": "2.7.1+cu128"
+  }
+}

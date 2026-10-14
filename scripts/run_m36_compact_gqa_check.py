@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""M36 compact-SMEM CUDA GQA numerical and fixed-arm graph diagnostic."""
+"""M37 compact-v2 CUDA GQA numerical and fixed-arm graph diagnostic."""
 
 from __future__ import annotations
 
@@ -32,13 +32,16 @@ from llm_gpu_kernels.attention_segmented_benchmark import (
     _chunked_fp32_reference,
 )
 from llm_gpu_kernels.attention_cuda import prepare_cuda_gqa_attention
-from llm_gpu_kernels.attention_cuda_compact import prepare_cuda_gqa_compact
+from llm_gpu_kernels.attention_cuda_compact import (
+    load_cuda_gqa_compact,
+    prepare_cuda_gqa_compact,
+)
 from llm_gpu_kernels.attention_raw_boundary import RawPackAttention
 
 
-RESULT_PATH = ROOT / "results/m36-compact-gqa-diagnostic.json"
-ARTIFACT_ROOT = ROOT / "artifacts/m36-diagnostic"
-REPORT_PATH = ROOT / "docs/M36_COMPACT_GQA_REPORT.md"
+RESULT_PATH = ROOT / "results/m37-compact-v2-gqa-diagnostic.json"
+ARTIFACT_ROOT = ROOT / "artifacts/m37-compact-v2-diagnostic"
+REPORT_PATH = ROOT / "docs/M37_COMPACT_V2_GQA_REPORT.md"
 SEED = 3607
 LIMITS = {"relative_rms": 0.008, "normalized_max": 0.008}
 NUMERIC_CASES = m34.NUMERIC_CASES
@@ -48,17 +51,18 @@ GRAPH_CALLS = m34.GRAPH_CALLS
 MEASUREMENT_ORDERS = m34.MEASUREMENT_ORDERS
 SAMPLES_PER_ARM_PER_ROUND = m34.SAMPLES_PER_ARM_PER_ROUND
 COMPACT_CONFIGS = tuple(
+    # p_mode records the fixed implementation fact; it is not a compact API choice.
     {"stages": stages, "p_mode": 1, "p_mode_name": "direct_register"}
     for stages in (1, 2)
 )
 M34_REFERENCE_ARMS = {1: "m34_s1_p1", 2: "m34_s2_p1"}
 FA2_ARM = "reusable_raw_pack_fa2"
 
-# Shared memory is fixed by the compact kernel layout. Register and local-memory
-# fields are filled from the explicit native compile evidence before the run.
+# Register/local-memory and SASS counts are from the M37 v2 build evidence in
+# artifacts/m37-build. Dynamic shared bytes are derived by _compact_resource_record.
 COMPACT_COMPILE_RESOURCES = {
     1: {
-        "registers_per_thread": 223,
+        "registers_per_thread": 221,
         "spill_bytes": 0,
         "spill_stores": 0,
         "spill_loads": 0,
@@ -69,7 +73,7 @@ COMPACT_COMPILE_RESOURCES = {
         "ldsm_instructions": 288,
     },
     2: {
-        "registers_per_thread": 230,
+        "registers_per_thread": 231,
         "spill_bytes": 0,
         "spill_stores": 0,
         "spill_loads": 0,
@@ -187,7 +191,7 @@ def _run_numerical_checks(record: dict, save) -> None:
             save()
             try:
                 compact_plan = prepare_cuda_gqa_compact(
-                    q, segments, out=out, stages=stages, p_mode=1,
+                    q, segments, out=out, stages=stages,
                 )
                 compact_output = compact_plan.run()
                 reference_plan = prepare_cuda_gqa_attention(
@@ -252,7 +256,7 @@ def _performance_case(tokens: int, record: dict, save) -> dict:
         stages = config["stages"]
         name = _config_name("compact", stages)
         plan = prepare_cuda_gqa_compact(
-            q, segments, stages=stages, p_mode=1,
+            q, segments, stages=stages,
         )
         names.append(name)
         functions[name] = plan.run
@@ -457,7 +461,7 @@ def _resource_table() -> list[dict]:
 
 def _summary_report(record: dict) -> str:
     lines = [
-        "# M36 compact-SMEM GQA comparison",
+        "# M37 compact-v2 GQA comparison",
         "",
         f"Status: **{record.get('status', 'unknown')}**",
         "",
@@ -465,7 +469,7 @@ def _summary_report(record: dict) -> str:
         "",
         "Fixed BF16 GQA semantics use Q[T,32,128], four K/V[L,8,128] pairs, fully visible "
         "history, causal current keys, and the same FP32 softmax/BF16 probability and output "
-        "arithmetic as M34. M36 exposes only direct-register P mode and stages 1/2. Its shared "
+        "arithmetic as M34. M37 compact v2 fixes direct-register P and supports stages 1/2. Its shared "
         "layout omits M34's unused 4 KiB probability scratch.",
         "",
         "The eight functional shapes match M34; each of the two compact configurations is "
@@ -473,7 +477,7 @@ def _summary_report(record: dict) -> str:
         "M34 with the same stage count is recorded as a non-gating comparison.",
         "",
         "Timing uses T32/T96/T256 with history lengths (2048,64,512), current-V token stride "
-        "6144, and five arms: compact S1/S2, M34 S1/P1 and S2/P1, and reusable raw-layout "
+        "6144, and five arms: compact v2 S1/S2, M34 S1/P1 and S2/P1, and reusable raw-layout "
         "pack+FA2. Each graph replay contains four forwards; three forward/reverse/forward "
         "rounds use three samples per arm per round. FA2 packs the four source segments into "
         "reusable K/V buffers on each invocation, so packing is timed; it reads padded current "
@@ -514,7 +518,7 @@ def _summary_report(record: dict) -> str:
         "",
         "## Compact resources and M34 comparison",
         "",
-        "M36 shared memory is `64*128*2 + 2*32*128*stages*2`; the omitted probability "
+        "Compact v2 shared memory is `64*128*2 + 2*32*128*stages*2`; the omitted probability "
         "scratch is 4096 bytes. M34 uses the same Q/KV allocation plus that scratch.",
         "",
         "| Stages | Shared bytes | Delta vs M34 (B) | Delta vs compact S1 (B) | Registers/thread | Delta regs vs M34 | Spill bytes | Stack bytes | LDL/STL | HMMA/LDSM |",
@@ -539,7 +543,7 @@ def _summary_report(record: dict) -> str:
         "",
         f"Diagnostic JSON: `{RESULT_PATH.relative_to(ROOT)}`.",
         f"Raw diagnostic directory: `{ARTIFACT_ROOT.relative_to(ROOT)}`.",
-        "CUDA extension build output: `artifacts/m36-build/`.",
+        "CUDA extension build output: `artifacts/m36-build-v2/`.",
         "",
     ]
     if record.get("failure"):
@@ -553,7 +557,7 @@ def run() -> None:
     source_hashes = _source_hashes()
     record = {
         "schema": 1,
-        "run_id": "m36-compact-gqa-diagnostic",
+        "run_id": "m37-compact-v2-gqa-diagnostic",
         "status": "running",
         "date_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "seed": SEED,
@@ -600,7 +604,8 @@ def run() -> None:
         torch.backends.cuda.matmul.allow_bf16_reduced_precision_reduction = False
         gpu = torch.cuda.get_device_properties(torch.cuda.current_device())
         if (gpu.major, gpu.minor) != (8, 6):
-            raise RuntimeError(f"M36 is scoped to SM86, got SM{gpu.major}{gpu.minor}")
+            raise RuntimeError(f"compact v2 is scoped to SM86, got SM{gpu.major}{gpu.minor}")
+        record["compact_extension_module"] = load_cuda_gqa_compact().__name__
         record["runtime"] = {
             "python": platform.python_version(),
             "torch": torch.__version__,
@@ -626,7 +631,7 @@ def run() -> None:
 
         after_hashes = _source_hashes()
         if source_hashes != after_hashes:
-            raise RuntimeError("source files changed during M36 diagnostic")
+            raise RuntimeError("source files changed during M37 compact-v2 diagnostic")
         record["source_hashes_after"] = after_hashes
         record["status"] = "passed"
         record["passed"] = True
@@ -647,7 +652,7 @@ def run() -> None:
         record["telemetry_after"] = _telemetry()
         record["source_hashes_after"] = _source_hashes()
         save()
-        print(f"M36 result: {RESULT_PATH.relative_to(ROOT)}", flush=True)
+        print(f"M37 result: {RESULT_PATH.relative_to(ROOT)}", flush=True)
 
 
 if __name__ == "__main__":
